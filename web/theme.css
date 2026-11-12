@@ -556,10 +556,13 @@ code,
     top: 20px;
     left: 24px;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
     width: var(--bl-avatar-size);
     height: var(--bl-avatar-size);
+    /* 抵消酒馆给头像容器预留的 50px 底部 padding，否则 flex 居中会把头像顶偏 */
+    padding: 0;
+    box-sizing: content-box;
 }
 
 #chat .mes[is_user="false"] .mesAvatarWrapper .avatar {
@@ -901,10 +904,13 @@ code,
     top: 12px;
     left: 16px;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
     width: 36px;
     height: 36px;
+    /* 抵消酒馆给头像容器预留的底部 padding */
+    padding: 0;
+    box-sizing: content-box;
 }
 
 #chat .mes[is_user="true"] .mesAvatarWrapper .avatar {

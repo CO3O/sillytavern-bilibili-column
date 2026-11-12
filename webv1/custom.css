@@ -5,4 +5,4 @@
  */
 
 /* 统一走 v1 版本标签；改完样式后递增 v 参数，强制绕过 jsDelivr 与浏览器缓存 */
-@import url("https://cdn.jsdelivr.net/gh/CO3O/sillytavern-bilibili-column@v1.6/web/theme.css?v=10");
+@import url("https://cdn.jsdelivr.net/gh/CO3O/sillytavern-bilibili-column@v1.7/web/theme.css?v=11");

@@ -30,10 +30,13 @@
     top: 12px;
     left: 16px;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
     width: 36px;
     height: 36px;
+    /* 抵消酒馆给头像容器预留的底部 padding */
+    padding: 0;
+    box-sizing: content-box;
 }
 
 #chat .mes[is_user="true"] .mesAvatarWrapper .avatar {

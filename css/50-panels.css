@@ -210,26 +210,40 @@ input[type="range"] {
 }
 
 /* ---------- 提示消息 ---------- */
-#toast-container > div {
+/*
+ * 酒馆原生用 body #toast-container .toast-success { background-color: #5d9e5d } 这类
+ * 语义底色，权重比 #toast-container > div 高；只改边框就会变成「绿底 + 粉边」的拼接感。
+ * 这里统一接管成主题的白卡片：1px 淡边 + 3px 色条表达语义。
+ * 原生图标是透明底的纯白 PNG（白勾、白叹号），放到白底上等于消失，
+ * 所以关掉 background-image，并把原本给图标预留的左侧 50px 内边距收回。
+ */
+body #toast-container > div.toast {
     background-color: var(--bl-bg-1);
+    background-image: none;
     border: 1px solid var(--bl-line);
     border-left: 3px solid var(--bl-blue);
     border-radius: var(--bl-radius-sm);
     box-shadow: var(--bl-shadow-float);
     color: var(--bl-text-1);
     opacity: 1;
+    padding: 10px 12px 10px 14px;
+    width: 300px;
 }
 
-#toast-container > .toast-success {
+body #toast-container > div.toast.toast-success {
     border-left-color: var(--bl-pink);
 }
 
-#toast-container > .toast-error {
+body #toast-container > div.toast.toast-error {
     border-left-color: #F56C6C;
 }
 
-#toast-container > .toast-warning {
+body #toast-container > div.toast.toast-warning {
     border-left-color: #FFB800;
+}
+
+body #toast-container > div.toast.toast-info {
+    border-left-color: var(--bl-blue);
 }
 
 /* ---------- 加载与欢迎页 ---------- */

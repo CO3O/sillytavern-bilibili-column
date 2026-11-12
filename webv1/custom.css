@@ -1,0 +1,7 @@
+/*
+ * Bilibili 专栏 · Web v1 —— 纯网络版
+ * 全部样式托管在 jsDelivr，本主题 JSON 只负责引入；断网时不会有自定义样式。
+ * 主版本（Bilibili 专栏）仍是离线可用的内嵌版，两者互不影响。
+ */
+
+@import url("https://cdn.jsdelivr.net/gh/CO3O/sillytavern-bilibili-column@web-v1/web/theme.css");

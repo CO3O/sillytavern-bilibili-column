@@ -526,16 +526,8 @@ code,
 /* ---------- 聊天区容器 ---------- */
 #chat {
     background-color: var(--bl-bg-2);
-    /* 左右留白由容器宽度动态决定：窄屏贴边，宽屏逐渐增加 */
+    /* 卡片保持全宽，左右留白放在卡片内部 */
     padding: 6px 0 8px;
-}
-
-@media (min-width: 641px) {
-    #chat {
-        /* 按容器宽度取 5%，16–40px 之间自动伸缩 */
-        padding-left: clamp(16px, 5%, 40px);
-        padding-right: clamp(16px, 5%, 40px);
-    }
 }
 
 
@@ -546,12 +538,14 @@ code,
 
 /* ---------- 专栏卡片 ---------- */
 #chat .mes[is_user="false"] {
+    /* 卡片保持全宽，文字左右留白按容器宽度动态伸缩 */
+    --bl-card-pad-x: clamp(24px, 5%, 56px);
     position: relative;
     display: block;
     width: 100%;
     align-self: center;
     margin: 0 auto var(--bl-chat-gap);
-    padding: 20px 24px 12px;
+    padding: 20px var(--bl-card-pad-x) 12px;
     background-color: var(--bl-bg-1);
     border: 1px solid var(--bl-line);
     border-radius: var(--bl-radius);
@@ -562,7 +556,7 @@ code,
 #chat .mes[is_user="false"] .mesAvatarWrapper {
     position: absolute;
     top: 20px;
-    left: 24px;
+    left: var(--bl-card-pad-x);
     display: flex;
     align-items: flex-start;
     justify-content: center;
@@ -886,12 +880,14 @@ code,
  */
 
 #chat .mes[is_user="true"] {
+    /* 卡片保持全宽，文字左右留白按容器宽度动态伸缩 */
+    --bl-card-pad-x: clamp(16px, 4%, 40px);
     position: relative;
     display: block;
     width: 100%;
     align-self: center;
     margin: 0 auto 10px;
-    padding: 12px 16px 10px;
+    padding: 12px var(--bl-card-pad-x) 10px;
     background-color: var(--bl-bg-3);
     border: 1px solid transparent;
     border-radius: var(--bl-radius);
@@ -910,7 +906,7 @@ code,
 #chat .mes[is_user="true"] .mesAvatarWrapper {
     position: absolute;
     top: 12px;
-    left: 16px;
+    left: var(--bl-card-pad-x);
     display: flex;
     align-items: flex-start;
     justify-content: center;
@@ -2521,19 +2517,21 @@ body #toast-container > div.toast.toast-info {
     }
 
     #chat .mes[is_user="false"] {
-        padding: 12px 12px 8px;
+        --bl-card-pad-x: 12px;
+        padding: 12px var(--bl-card-pad-x) 8px;
         border-radius: var(--bl-radius-sm);
     }
 
     #chat .mes[is_user="true"] {
-        padding: 10px 12px 8px;
+        --bl-card-pad-x: 12px;
+        padding: 10px var(--bl-card-pad-x) 8px;
         border-radius: var(--bl-radius-sm);
     }
 
     /* 头像统一挪到标题 / 昵称行左侧，正文占满整行 */
     #chat .mes[is_user="false"] .mesAvatarWrapper {
         top: 12px;
-        left: 12px;
+        left: var(--bl-card-pad-x);
         width: var(--bl-avatar-size);
         height: var(--bl-avatar-size);
     }
@@ -2546,7 +2544,7 @@ body #toast-container > div.toast.toast-info {
 
     #chat .mes[is_user="true"] .mesAvatarWrapper {
         top: 10px;
-        left: 12px;
+        left: var(--bl-card-pad-x);
         width: 32px;
         height: 32px;
     }

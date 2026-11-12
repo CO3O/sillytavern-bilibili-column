@@ -5,12 +5,14 @@
 
 /* ---------- 专栏卡片 ---------- */
 #chat .mes[is_user="false"] {
+    /* 卡片保持全宽，文字左右留白按容器宽度动态伸缩 */
+    --bl-card-pad-x: clamp(24px, 5%, 56px);
     position: relative;
     display: block;
     width: 100%;
     align-self: center;
     margin: 0 auto var(--bl-chat-gap);
-    padding: 20px 24px 12px;
+    padding: 20px var(--bl-card-pad-x) 12px;
     background-color: var(--bl-bg-1);
     border: 1px solid var(--bl-line);
     border-radius: var(--bl-radius);
@@ -21,7 +23,7 @@
 #chat .mes[is_user="false"] .mesAvatarWrapper {
     position: absolute;
     top: 20px;
-    left: 24px;
+    left: var(--bl-card-pad-x);
     display: flex;
     align-items: flex-start;
     justify-content: center;

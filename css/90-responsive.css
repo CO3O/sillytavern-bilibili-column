@@ -14,19 +14,21 @@
     }
 
     #chat .mes[is_user="false"] {
-        padding: 12px 12px 8px;
+        --bl-card-pad-x: 12px;
+        padding: 12px var(--bl-card-pad-x) 8px;
         border-radius: var(--bl-radius-sm);
     }
 
     #chat .mes[is_user="true"] {
-        padding: 10px 12px 8px;
+        --bl-card-pad-x: 12px;
+        padding: 10px var(--bl-card-pad-x) 8px;
         border-radius: var(--bl-radius-sm);
     }
 
     /* 头像统一挪到标题 / 昵称行左侧，正文占满整行 */
     #chat .mes[is_user="false"] .mesAvatarWrapper {
         top: 12px;
-        left: 12px;
+        left: var(--bl-card-pad-x);
         width: var(--bl-avatar-size);
         height: var(--bl-avatar-size);
     }
@@ -39,7 +41,7 @@
 
     #chat .mes[is_user="true"] .mesAvatarWrapper {
         top: 10px;
-        left: 12px;
+        left: var(--bl-card-pad-x);
         width: 32px;
         height: 32px;
     }

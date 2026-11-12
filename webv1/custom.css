@@ -4,5 +4,5 @@
  * 主版本（Bilibili 专栏）仍是离线可用的内嵌版，两者互不影响。
  */
 
-/* 用 webv1 分支引用，分支上的样式表更新后能直接被拉到，不受固定 tag 缓存限制 */
-@import url("https://cdn.jsdelivr.net/gh/CO3O/sillytavern-bilibili-column@webv1/web/theme.css");
+/* 用 webv1 分支引用；改完样式后递增 v 参数，强制绕过 jsDelivr 与浏览器缓存 */
+@import url("https://cdn.jsdelivr.net/gh/CO3O/sillytavern-bilibili-column@webv1/web/theme.css?v=2");

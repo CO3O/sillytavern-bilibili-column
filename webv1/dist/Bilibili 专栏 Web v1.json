@@ -37,5 +37,5 @@
     "show_swipe_num_all_messages": false,
     "click_to_edit": false,
     "media_display": "list",
-    "custom_css": "/*\n * Bilibili 专栏 · Web v1 —— 纯网络版\n * 全部样式托管在 jsDelivr，本主题 JSON 只负责引入；断网时不会有自定义样式。\n * 主版本（Bilibili 专栏）仍是离线可用的内嵌版，两者互不影响。\n */\n\n/* 用 webv1 分支引用，分支上的样式表更新后能直接被拉到，不受固定 tag 缓存限制 */\n@import url(\"https://cdn.jsdelivr.net/gh/CO3O/sillytavern-bilibili-column@webv1/web/theme.css\");\n"
+    "custom_css": "/*\n * Bilibili 专栏 · Web v1 —— 纯网络版\n * 全部样式托管在 jsDelivr，本主题 JSON 只负责引入；断网时不会有自定义样式。\n * 主版本（Bilibili 专栏）仍是离线可用的内嵌版，两者互不影响。\n */\n\n/* 用 webv1 分支引用；改完样式后递增 v 参数，强制绕过 jsDelivr 与浏览器缓存 */\n@import url(\"https://cdn.jsdelivr.net/gh/CO3O/sillytavern-bilibili-column@webv1/web/theme.css?v=2\");\n"
 }

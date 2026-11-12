@@ -119,7 +119,6 @@
 
 /* 停止 / 继续 / 扮演：显隐仍由酒馆的 .displayNone（带 !important）控制。
    这里用 flex 把图标居中，否则 12px 的 FA 字形会缩在粉圆左上角变成一个小点 */
-#mes_stop,
 #mes_continue,
 #mes_impersonate,
 #stscript_stop,
@@ -144,15 +143,44 @@
     transition: background-color var(--bl-ease), transform var(--bl-ease), filter var(--bl-ease);
 }
 
-/* fa-circle-stop 在 28px 圆里看起来只是个白点，换成清晰的白色停止方块 */
+/*
+ * 停止按钮：完全以发送按钮为基准。
+ * 酒馆给 #send_but 的尺寸来自 #rightSendForm>div 的 var(--bottomFormBlockSize)，
+ * 而 .mes_stop 被 :not(.mes_stop) 排除在外，还带 padding-right:2px，
+ * 所以这里用同一个变量、清掉内边距，两者天然等大。
+ * 不碰 display —— 显隐仍由酒馆控制；方块用绝对定位保证与圆心重合。
+ */
+#mes_stop {
+    position: relative;
+    box-sizing: border-box;
+    width: var(--bottomFormBlockSize) !important;
+    height: var(--bottomFormBlockSize) !important;
+    min-width: 0;
+    padding: 0 !important;
+    border: none;
+    border-radius: var(--bl-radius-pill);
+    background-color: var(--bl-pink);
+    color: #FFFFFF;
+    overflow: hidden;
+    cursor: pointer;
+    box-shadow: none;
+    transition: background-color var(--bl-ease), transform var(--bl-ease), filter var(--bl-ease);
+}
+
+/* 去掉酒馆自带的 fa-circle-stop 字形 */
 #mes_stop i {
     display: none;
 }
 
+/* 圆心与方块中心重合 */
 #mes_stop::after {
     content: "";
-    width: 10px;
-    height: 10px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 12px;
+    height: 12px;
     border-radius: 2px;
     background-color: #FFFFFF;
 }

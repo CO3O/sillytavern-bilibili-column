@@ -46,7 +46,7 @@
     line-height: 20px;
     text-align: left;
     resize: none;
-    outline: none;
+    outline: 2px solid transparent;
 }
 
 #send_textarea::placeholder {
@@ -90,10 +90,24 @@
     transition: background-color var(--bl-ease), color var(--bl-ease);
 }
 
-#options_button:hover,
-#leftSendForm .interactable:hover {
-    background-color: var(--bl-bg-3);
+@media (hover: hover) and (pointer: fine) {
+    #options_button:hover,
+    #leftSendForm .interactable:hover {
+        background-color: var(--bl-bg-3);
+        color: var(--bl-pink);
+    }
+}
+
+#options_button:active,
+#leftSendForm .interactable:active {
+    background-color: var(--bl-line-soft);
     color: var(--bl-pink);
+}
+
+#options_button:focus-visible,
+#leftSendForm .interactable:focus-visible {
+    outline: 2px solid var(--bl-blue);
+    outline-offset: -2px;
 }
 
 /* 发送按钮：粉色胶囊 */
@@ -161,7 +175,7 @@
     border-radius: var(--bl-radius-pill);
     background-color: var(--bl-pink);
     color: #FFFFFF;
-    overflow: hidden;
+    overflow: clip;
     cursor: pointer;
     box-shadow: none;
     transition: background-color var(--bl-ease), transform var(--bl-ease), filter var(--bl-ease);
@@ -185,15 +199,38 @@
     background-color: #FFFFFF;
 }
 
-#send_but:not(.displayNone):hover,
-#mes_stop:not(.displayNone):hover,
-#mes_continue:not(.displayNone):hover,
-#mes_impersonate:not(.displayNone):hover,
-#stscript_stop:not(.displayNone):hover,
-#stscript_continue:not(.displayNone):hover,
-#stscript_pause:not(.displayNone):hover {
-    background-color: var(--bl-pink-hover);
-    transform: translateY(-1px);
+@media (hover: hover) and (pointer: fine) {
+    #send_but:not(.displayNone):hover,
+    #mes_stop:not(.displayNone):hover,
+    #mes_continue:not(.displayNone):hover,
+    #mes_impersonate:not(.displayNone):hover,
+    #stscript_stop:not(.displayNone):hover,
+    #stscript_continue:not(.displayNone):hover,
+    #stscript_pause:not(.displayNone):hover {
+        background-color: var(--bl-pink-hover);
+        transform: translateY(-1px);
+    }
+}
+
+#send_but:not(.displayNone):active,
+#mes_stop:not(.displayNone):active,
+#mes_continue:not(.displayNone):active,
+#mes_impersonate:not(.displayNone):active,
+#stscript_stop:not(.displayNone):active,
+#stscript_continue:not(.displayNone):active,
+#stscript_pause:not(.displayNone):active {
+    transform: scale(0.96);
+}
+
+#send_but:not(.displayNone):focus-visible,
+#mes_stop:not(.displayNone):focus-visible,
+#mes_continue:not(.displayNone):focus-visible,
+#mes_impersonate:not(.displayNone):focus-visible,
+#stscript_stop:not(.displayNone):focus-visible,
+#stscript_continue:not(.displayNone):focus-visible,
+#stscript_pause:not(.displayNone):focus-visible {
+    outline: 2px solid var(--bl-blue);
+    outline-offset: 2px;
 }
 
 /* 停止按钮只在生成期间出现，用深一档的粉色与发送按钮区分 */
@@ -202,8 +239,10 @@
     animation: bl-pulse 1.6s ease-in-out infinite;
 }
 
-#mes_stop:hover {
-    background-color: #E85B85;
+@media (hover: hover) and (pointer: fine) {
+    #mes_stop:hover {
+        background-color: #E85B85;
+    }
 }
 
 /* 发送按钮用原版「播放」图标的感觉：纸飞机保留 FA，颜色统一粉色 */
@@ -257,7 +296,15 @@
     transition: border-color var(--bl-ease), color var(--bl-ease), background-color var(--bl-ease);
 }
 
-#form_sheld #qr--bar > .qr--buttons .qr--button:hover {
+@media (hover: hover) and (pointer: fine) {
+    #form_sheld #qr--bar > .qr--buttons .qr--button:hover {
+        border-color: var(--bl-pink);
+        background-color: var(--bl-pink-soft);
+        color: var(--bl-pink);
+    }
+}
+
+#form_sheld #qr--bar > .qr--buttons .qr--button:active {
     border-color: var(--bl-pink);
     background-color: var(--bl-pink-soft);
     color: var(--bl-pink);
@@ -282,7 +329,15 @@ body #qr--popout > .qr--body > .qr--buttons .qr--button {
     text-overflow: ellipsis;
 }
 
-body #qr--popout > .qr--body > .qr--buttons .qr--button:hover {
+@media (hover: hover) and (pointer: fine) {
+    body #qr--popout > .qr--body > .qr--buttons .qr--button:hover {
+        background-color: var(--bl-pink-soft);
+        border-color: var(--bl-pink);
+        color: var(--bl-pink);
+    }
+}
+
+body #qr--popout > .qr--body > .qr--buttons .qr--button:active {
     background-color: var(--bl-pink-soft);
     border-color: var(--bl-pink);
     color: var(--bl-pink);

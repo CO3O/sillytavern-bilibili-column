@@ -56,10 +56,23 @@
     transition: background-color var(--bl-ease), color var(--bl-ease), opacity var(--bl-ease);
 }
 
-.welcomePanel .welcomeHeaderTitle .mes_button:hover {
+@media (hover: hover) and (pointer: fine) {
+    .welcomePanel .welcomeHeaderTitle .mes_button:hover {
+        background-color: var(--bl-pink-soft);
+        color: var(--bl-pink);
+        opacity: 1;
+    }
+}
+
+.welcomePanel .welcomeHeaderTitle .mes_button:active {
     background-color: var(--bl-pink-soft);
     color: var(--bl-pink);
     opacity: 1;
+}
+
+.welcomePanel .welcomeHeaderTitle .mes_button:focus-visible {
+    outline: 2px solid var(--bl-blue);
+    outline-offset: 2px;
 }
 
 /* ---------- 分类标签行 ---------- */
@@ -103,7 +116,14 @@
     transition: background-color var(--bl-ease), color var(--bl-ease);
 }
 
-.welcomePanel .welcomeShortcuts .menu_button:hover {
+@media (hover: hover) and (pointer: fine) {
+    .welcomePanel .welcomeShortcuts .menu_button:hover {
+        background-color: var(--bl-pink-soft);
+        color: var(--bl-pink);
+    }
+}
+
+.welcomePanel .welcomeShortcuts .menu_button:active {
     background-color: var(--bl-pink-soft);
     color: var(--bl-pink);
 }
@@ -141,11 +161,13 @@
     display: none;
 }
 
-.welcomePanel .welcomeRecent .recentChatList .recentChat:hover {
-    background-color: var(--bl-bg-1);
-    border-color: var(--bl-pink);
-    box-shadow: 0 4px 14px rgba(251, 114, 153, 0.16);
-    transform: translateY(-1px);
+@media (hover: hover) and (pointer: fine) {
+    .welcomePanel .welcomeRecent .recentChatList .recentChat:hover {
+        background-color: var(--bl-bg-1);
+        border-color: var(--bl-pink);
+        box-shadow: 0 4px 14px rgba(251, 114, 153, 0.16);
+        transform: translateY(-1px);
+    }
 }
 
 .welcomePanel .welcomeRecent .recentChatList .recentChat:focus-within {
@@ -161,7 +183,7 @@
     height: 56px;
     margin: 0;
     border-radius: 8px;
-    overflow: hidden;
+    overflow: clip;
 }
 
 .welcomePanel .welcomeRecent .recentChatList .recentChat .avatar img {
@@ -276,9 +298,14 @@
     transition: opacity var(--bl-ease);
 }
 
-.welcomePanel .welcomeRecent .recentChatList .recentChat:hover .chatActions,
 .welcomePanel .welcomeRecent .recentChatList .recentChat:focus-within .chatActions {
     opacity: 1;
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .welcomePanel .welcomeRecent .recentChatList .recentChat:hover .chatActions {
+        opacity: 1;
+    }
 }
 
 .welcomePanel .welcomeRecent .recentChatList .recentChat .chatActions button {
@@ -297,9 +324,21 @@
     transition: background-color var(--bl-ease), color var(--bl-ease);
 }
 
-.welcomePanel .welcomeRecent .recentChatList .recentChat .chatActions button:hover {
+@media (hover: hover) and (pointer: fine) {
+    .welcomePanel .welcomeRecent .recentChatList .recentChat .chatActions button:hover {
+        background-color: var(--bl-pink-soft);
+        color: var(--bl-pink);
+    }
+}
+
+.welcomePanel .welcomeRecent .recentChatList .recentChat .chatActions button:active {
     background-color: var(--bl-pink-soft);
     color: var(--bl-pink);
+}
+
+.welcomePanel .welcomeRecent .recentChatList .recentChat .chatActions button:focus-visible {
+    outline: 2px solid var(--bl-blue);
+    outline-offset: 2px;
 }
 
 /* 「显示更多」：做成一个居中的圆形小按钮，紧贴最后一张卡片 */
@@ -319,9 +358,21 @@
     transition: background-color var(--bl-ease), color var(--bl-ease);
 }
 
-.welcomePanel .welcomeRecent .recentChatList .showMoreChats:hover {
+@media (hover: hover) and (pointer: fine) {
+    .welcomePanel .welcomeRecent .recentChatList .showMoreChats:hover {
+        background-color: var(--bl-pink-soft);
+        color: var(--bl-pink);
+    }
+}
+
+.welcomePanel .welcomeRecent .recentChatList .showMoreChats:active {
     background-color: var(--bl-pink-soft);
     color: var(--bl-pink);
+}
+
+.welcomePanel .welcomeRecent .recentChatList .showMoreChats:focus-visible {
+    outline: 2px solid var(--bl-blue);
+    outline-offset: 2px;
 }
 
 /* 置顶标记换成粉色小三角 */

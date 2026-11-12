@@ -106,7 +106,7 @@
     box-shadow: 0 18px 48px rgba(0, 161, 214, 0.14), 0 4px 12px rgba(24, 25, 28, 0.05);
     color: var(--bl-text-1);
     font-family: var(--bl-font);
-    overflow: hidden;
+    overflow: clip;
 }
 
 /* 酒馆自带的 SillyTavern logo 不要 */

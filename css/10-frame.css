@@ -94,7 +94,7 @@ code,
     box-shadow: 0 1px 4px rgba(251, 114, 153, 0.3);
     cursor: pointer;
     user-select: none;
-    transition: background-color 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
+    transition: background-color var(--bl-ease), transform var(--bl-ease), box-shadow var(--bl-ease);
 }
 
 /* 去掉 FontAwesome 的角色卡片字形，换成「投稿」两个字 */
@@ -110,15 +110,22 @@ code,
     letter-spacing: 1px;
 }
 
-#rightNavDrawerIcon:hover {
-    background-color: var(--bl-pink-hover);
-    color: #FFFFFF;
-    opacity: 1;
+@media (hover: hover) and (pointer: fine) {
+    #rightNavDrawerIcon:hover {
+        background-color: var(--bl-pink-hover);
+        color: #FFFFFF;
+        opacity: 1;
+    }
 }
 
 #rightNavDrawerIcon:active {
     transform: scale(0.96);
     box-shadow: 0 1px 2px rgba(251, 114, 153, 0.25);
+}
+
+#rightNavDrawerIcon:focus-visible {
+    outline: 2px solid var(--bl-blue);
+    outline-offset: 2px;
 }
 
 /* 顶栏图标：默认 0.3 透明度在浅色底上几乎看不见，这里提到 0.8 */
@@ -130,10 +137,17 @@ code,
     transition: background-color var(--bl-ease), color var(--bl-ease), opacity var(--bl-ease);
 }
 
-.drawer-icon.closedIcon:hover {
-    color: var(--bl-text-1);
-    opacity: 1;
-    background-color: var(--bl-bg-3);
+@media (hover: hover) and (pointer: fine) {
+    .drawer-icon.closedIcon:hover {
+        color: var(--bl-text-1);
+        opacity: 1;
+        background-color: var(--bl-bg-3);
+    }
+}
+
+.drawer-icon:focus-visible {
+    outline: 2px solid var(--bl-blue);
+    outline-offset: -2px;
 }
 
 .drawer-icon.openIcon {
@@ -149,9 +163,11 @@ code,
     opacity: 0.8;
 }
 
-.hotswap:hover {
-    color: var(--bl-pink);
-    opacity: 1;
+@media (hover: hover) and (pointer: fine) {
+    .hotswap:hover {
+        color: var(--bl-pink);
+        opacity: 1;
+    }
 }
 
 /* ---------- 左右侧栏 / 抽屉 ---------- */
@@ -211,10 +227,12 @@ code,
     transition: background-color var(--bl-ease);
 }
 
-.inline-drawer-header:hover,
-.inline-drawer-toggle.inline-drawer-header:hover {
-    background-color: var(--bl-pink-soft);
-    color: var(--bl-pink);
+@media (hover: hover) and (pointer: fine) {
+    .inline-drawer-header:hover,
+    .inline-drawer-toggle.inline-drawer-header:hover {
+        background-color: var(--bl-pink-soft);
+        color: var(--bl-pink);
+    }
 }
 
 .inline-drawer-icon {
@@ -236,8 +254,10 @@ code,
     border-radius: var(--bl-radius-pill);
 }
 
-::-webkit-scrollbar-thumb:hover {
-    background-color: #C4C8CD;
+@media (hover: hover) and (pointer: fine) {
+    ::-webkit-scrollbar-thumb:hover {
+        background-color: #C4C8CD;
+    }
 }
 
 /* ---------- 聊天区容器 ---------- */

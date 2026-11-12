@@ -28,15 +28,17 @@
     width: var(--bl-avatar-size);
     height: var(--bl-avatar-size);
     border-radius: 50%;
-    overflow: hidden;
+    overflow: clip;
     border: none;
     box-shadow: none;
     cursor: pointer;
     transition: transform var(--bl-ease);
 }
 
-#chat .mes[is_user="false"] .mesAvatarWrapper .avatar:hover {
-    transform: scale(1.04);
+@media (hover: hover) and (pointer: fine) {
+    #chat .mes[is_user="false"] .mesAvatarWrapper .avatar:hover {
+        transform: scale(1.04);
+    }
 }
 
 /*
@@ -140,9 +142,11 @@
     transition: color var(--bl-ease), border-color var(--bl-ease);
 }
 
-#chat .mes_text a:hover {
-    color: var(--bl-blue);
-    border-bottom-color: var(--bl-blue);
+@media (hover: hover) and (pointer: fine) {
+    #chat .mes_text a:hover {
+        color: var(--bl-blue);
+        border-bottom-color: var(--bl-blue);
+    }
 }
 
 /* 标题层级：像专栏里的小标题 */
@@ -259,9 +263,21 @@
     border-radius: var(--bl-radius-sm);
 }
 
-#chat .mes .mes_button:hover {
+@media (hover: hover) and (pointer: fine) {
+    #chat .mes .mes_button:hover {
+        color: var(--bl-pink);
+        background-color: var(--bl-pink-soft);
+    }
+}
+
+#chat .mes .mes_button:active {
     color: var(--bl-pink);
     background-color: var(--bl-pink-soft);
+}
+
+#chat .mes .mes_button:focus-visible {
+    outline: 2px solid var(--bl-blue);
+    outline-offset: -2px;
 }
 
 #chat .mes .mes_buttons {
@@ -269,8 +285,16 @@
     transition: opacity var(--bl-ease);
 }
 
-#chat .mes:hover .mes_buttons {
-    opacity: 1;
+@media (hover: hover) and (pointer: fine) {
+    #chat .mes:hover .mes_buttons {
+        opacity: 1;
+    }
+}
+
+@media (hover: none) {
+    #chat .mes .mes_buttons {
+        opacity: 1;
+    }
 }
 
 /* ---------- 底部三连操作行（官网 vanfont 图标：赞 / 币 / 藏 / 分享） ---------- */

@@ -18,9 +18,11 @@
     transition: background-color var(--bl-ease), border-color var(--bl-ease);
 }
 
-#chat .mes[is_user="true"]:hover {
-    background-color: #EDEFF1;
-    border-color: var(--bl-line);
+@media (hover: hover) and (pointer: fine) {
+    #chat .mes[is_user="true"]:hover {
+        background-color: #EDEFF1;
+        border-color: var(--bl-line);
+    }
 }
 
 /* 评论者头像 */
@@ -33,7 +35,7 @@
     width: 36px;
     height: 36px;
     border-radius: 50%;
-    overflow: hidden;
+    overflow: clip;
     border: none;
     box-shadow: none;
 }
@@ -128,8 +130,10 @@
     text-decoration: none;
 }
 
-#chat .mes[is_user="true"] .mes_text a:hover {
-    color: var(--bl-blue);
+@media (hover: hover) and (pointer: fine) {
+    #chat .mes[is_user="true"] .mes_text a:hover {
+        color: var(--bl-blue);
+    }
 }
 
 /* 评论底部：点赞 / 回复（原版图标，纯装饰） */
@@ -156,9 +160,22 @@
     transition: color var(--bl-ease);
 }
 
-#chat .mes .swipe_left:hover,
-#chat .mes .swipe_right:hover {
-    color: var(--bl-pink);
+@media (hover: hover) and (pointer: fine) {
+    #chat .mes .swipe_left:hover,
+    #chat .mes .swipe_right:hover {
+        color: var(--bl-pink);
+    }
+}
+
+#chat .mes .swipe_left:active,
+#chat .mes .swipe_right:active {
+    opacity: 0.75;
+}
+
+#chat .mes .swipe_left:focus-visible,
+#chat .mes .swipe_right:focus-visible {
+    outline: 2px solid var(--bl-blue);
+    outline-offset: -2px;
 }
 
 #chat .mes .swipes-counter {

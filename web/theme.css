@@ -356,7 +356,7 @@ code,
     box-shadow: 0 1px 4px rgba(251, 114, 153, 0.3);
     cursor: pointer;
     user-select: none;
-    transition: background-color 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
+    transition: background-color var(--bl-ease), transform var(--bl-ease), box-shadow var(--bl-ease);
 }
 
 /* 去掉 FontAwesome 的角色卡片字形，换成「投稿」两个字 */
@@ -372,15 +372,22 @@ code,
     letter-spacing: 1px;
 }
 
-#rightNavDrawerIcon:hover {
-    background-color: var(--bl-pink-hover);
-    color: #FFFFFF;
-    opacity: 1;
+@media (hover: hover) and (pointer: fine) {
+    #rightNavDrawerIcon:hover {
+        background-color: var(--bl-pink-hover);
+        color: #FFFFFF;
+        opacity: 1;
+    }
 }
 
 #rightNavDrawerIcon:active {
     transform: scale(0.96);
     box-shadow: 0 1px 2px rgba(251, 114, 153, 0.25);
+}
+
+#rightNavDrawerIcon:focus-visible {
+    outline: 2px solid var(--bl-blue);
+    outline-offset: 2px;
 }
 
 /* 顶栏图标：默认 0.3 透明度在浅色底上几乎看不见，这里提到 0.8 */
@@ -392,10 +399,17 @@ code,
     transition: background-color var(--bl-ease), color var(--bl-ease), opacity var(--bl-ease);
 }
 
-.drawer-icon.closedIcon:hover {
-    color: var(--bl-text-1);
-    opacity: 1;
-    background-color: var(--bl-bg-3);
+@media (hover: hover) and (pointer: fine) {
+    .drawer-icon.closedIcon:hover {
+        color: var(--bl-text-1);
+        opacity: 1;
+        background-color: var(--bl-bg-3);
+    }
+}
+
+.drawer-icon:focus-visible {
+    outline: 2px solid var(--bl-blue);
+    outline-offset: -2px;
 }
 
 .drawer-icon.openIcon {
@@ -411,9 +425,11 @@ code,
     opacity: 0.8;
 }
 
-.hotswap:hover {
-    color: var(--bl-pink);
-    opacity: 1;
+@media (hover: hover) and (pointer: fine) {
+    .hotswap:hover {
+        color: var(--bl-pink);
+        opacity: 1;
+    }
 }
 
 /* ---------- 左右侧栏 / 抽屉 ---------- */
@@ -473,10 +489,12 @@ code,
     transition: background-color var(--bl-ease);
 }
 
-.inline-drawer-header:hover,
-.inline-drawer-toggle.inline-drawer-header:hover {
-    background-color: var(--bl-pink-soft);
-    color: var(--bl-pink);
+@media (hover: hover) and (pointer: fine) {
+    .inline-drawer-header:hover,
+    .inline-drawer-toggle.inline-drawer-header:hover {
+        background-color: var(--bl-pink-soft);
+        color: var(--bl-pink);
+    }
 }
 
 .inline-drawer-icon {
@@ -498,8 +516,10 @@ code,
     border-radius: var(--bl-radius-pill);
 }
 
-::-webkit-scrollbar-thumb:hover {
-    background-color: #C4C8CD;
+@media (hover: hover) and (pointer: fine) {
+    ::-webkit-scrollbar-thumb:hover {
+        background-color: #C4C8CD;
+    }
 }
 
 /* ---------- 聊天区容器 ---------- */
@@ -540,15 +560,17 @@ code,
     width: var(--bl-avatar-size);
     height: var(--bl-avatar-size);
     border-radius: 50%;
-    overflow: hidden;
+    overflow: clip;
     border: none;
     box-shadow: none;
     cursor: pointer;
     transition: transform var(--bl-ease);
 }
 
-#chat .mes[is_user="false"] .mesAvatarWrapper .avatar:hover {
-    transform: scale(1.04);
+@media (hover: hover) and (pointer: fine) {
+    #chat .mes[is_user="false"] .mesAvatarWrapper .avatar:hover {
+        transform: scale(1.04);
+    }
 }
 
 /*
@@ -652,9 +674,11 @@ code,
     transition: color var(--bl-ease), border-color var(--bl-ease);
 }
 
-#chat .mes_text a:hover {
-    color: var(--bl-blue);
-    border-bottom-color: var(--bl-blue);
+@media (hover: hover) and (pointer: fine) {
+    #chat .mes_text a:hover {
+        color: var(--bl-blue);
+        border-bottom-color: var(--bl-blue);
+    }
 }
 
 /* 标题层级：像专栏里的小标题 */
@@ -771,9 +795,21 @@ code,
     border-radius: var(--bl-radius-sm);
 }
 
-#chat .mes .mes_button:hover {
+@media (hover: hover) and (pointer: fine) {
+    #chat .mes .mes_button:hover {
+        color: var(--bl-pink);
+        background-color: var(--bl-pink-soft);
+    }
+}
+
+#chat .mes .mes_button:active {
     color: var(--bl-pink);
     background-color: var(--bl-pink-soft);
+}
+
+#chat .mes .mes_button:focus-visible {
+    outline: 2px solid var(--bl-blue);
+    outline-offset: -2px;
 }
 
 #chat .mes .mes_buttons {
@@ -781,8 +817,16 @@ code,
     transition: opacity var(--bl-ease);
 }
 
-#chat .mes:hover .mes_buttons {
-    opacity: 1;
+@media (hover: hover) and (pointer: fine) {
+    #chat .mes:hover .mes_buttons {
+        opacity: 1;
+    }
+}
+
+@media (hover: none) {
+    #chat .mes .mes_buttons {
+        opacity: 1;
+    }
 }
 
 /* ---------- 底部三连操作行（官网 vanfont 图标：赞 / 币 / 藏 / 分享） ---------- */
@@ -842,9 +886,11 @@ code,
     transition: background-color var(--bl-ease), border-color var(--bl-ease);
 }
 
-#chat .mes[is_user="true"]:hover {
-    background-color: #EDEFF1;
-    border-color: var(--bl-line);
+@media (hover: hover) and (pointer: fine) {
+    #chat .mes[is_user="true"]:hover {
+        background-color: #EDEFF1;
+        border-color: var(--bl-line);
+    }
 }
 
 /* 评论者头像 */
@@ -857,7 +903,7 @@ code,
     width: 36px;
     height: 36px;
     border-radius: 50%;
-    overflow: hidden;
+    overflow: clip;
     border: none;
     box-shadow: none;
 }
@@ -952,8 +998,10 @@ code,
     text-decoration: none;
 }
 
-#chat .mes[is_user="true"] .mes_text a:hover {
-    color: var(--bl-blue);
+@media (hover: hover) and (pointer: fine) {
+    #chat .mes[is_user="true"] .mes_text a:hover {
+        color: var(--bl-blue);
+    }
 }
 
 /* 评论底部：点赞 / 回复（原版图标，纯装饰） */
@@ -980,9 +1028,22 @@ code,
     transition: color var(--bl-ease);
 }
 
-#chat .mes .swipe_left:hover,
-#chat .mes .swipe_right:hover {
-    color: var(--bl-pink);
+@media (hover: hover) and (pointer: fine) {
+    #chat .mes .swipe_left:hover,
+    #chat .mes .swipe_right:hover {
+        color: var(--bl-pink);
+    }
+}
+
+#chat .mes .swipe_left:active,
+#chat .mes .swipe_right:active {
+    opacity: 0.75;
+}
+
+#chat .mes .swipe_left:focus-visible,
+#chat .mes .swipe_right:focus-visible {
+    outline: 2px solid var(--bl-blue);
+    outline-offset: -2px;
 }
 
 #chat .mes .swipes-counter {
@@ -1045,7 +1106,7 @@ code,
     line-height: 20px;
     text-align: left;
     resize: none;
-    outline: none;
+    outline: 2px solid transparent;
 }
 
 #send_textarea::placeholder {
@@ -1089,10 +1150,24 @@ code,
     transition: background-color var(--bl-ease), color var(--bl-ease);
 }
 
-#options_button:hover,
-#leftSendForm .interactable:hover {
-    background-color: var(--bl-bg-3);
+@media (hover: hover) and (pointer: fine) {
+    #options_button:hover,
+    #leftSendForm .interactable:hover {
+        background-color: var(--bl-bg-3);
+        color: var(--bl-pink);
+    }
+}
+
+#options_button:active,
+#leftSendForm .interactable:active {
+    background-color: var(--bl-line-soft);
     color: var(--bl-pink);
+}
+
+#options_button:focus-visible,
+#leftSendForm .interactable:focus-visible {
+    outline: 2px solid var(--bl-blue);
+    outline-offset: -2px;
 }
 
 /* 发送按钮：粉色胶囊 */
@@ -1160,7 +1235,7 @@ code,
     border-radius: var(--bl-radius-pill);
     background-color: var(--bl-pink);
     color: #FFFFFF;
-    overflow: hidden;
+    overflow: clip;
     cursor: pointer;
     box-shadow: none;
     transition: background-color var(--bl-ease), transform var(--bl-ease), filter var(--bl-ease);
@@ -1184,15 +1259,38 @@ code,
     background-color: #FFFFFF;
 }
 
-#send_but:not(.displayNone):hover,
-#mes_stop:not(.displayNone):hover,
-#mes_continue:not(.displayNone):hover,
-#mes_impersonate:not(.displayNone):hover,
-#stscript_stop:not(.displayNone):hover,
-#stscript_continue:not(.displayNone):hover,
-#stscript_pause:not(.displayNone):hover {
-    background-color: var(--bl-pink-hover);
-    transform: translateY(-1px);
+@media (hover: hover) and (pointer: fine) {
+    #send_but:not(.displayNone):hover,
+    #mes_stop:not(.displayNone):hover,
+    #mes_continue:not(.displayNone):hover,
+    #mes_impersonate:not(.displayNone):hover,
+    #stscript_stop:not(.displayNone):hover,
+    #stscript_continue:not(.displayNone):hover,
+    #stscript_pause:not(.displayNone):hover {
+        background-color: var(--bl-pink-hover);
+        transform: translateY(-1px);
+    }
+}
+
+#send_but:not(.displayNone):active,
+#mes_stop:not(.displayNone):active,
+#mes_continue:not(.displayNone):active,
+#mes_impersonate:not(.displayNone):active,
+#stscript_stop:not(.displayNone):active,
+#stscript_continue:not(.displayNone):active,
+#stscript_pause:not(.displayNone):active {
+    transform: scale(0.96);
+}
+
+#send_but:not(.displayNone):focus-visible,
+#mes_stop:not(.displayNone):focus-visible,
+#mes_continue:not(.displayNone):focus-visible,
+#mes_impersonate:not(.displayNone):focus-visible,
+#stscript_stop:not(.displayNone):focus-visible,
+#stscript_continue:not(.displayNone):focus-visible,
+#stscript_pause:not(.displayNone):focus-visible {
+    outline: 2px solid var(--bl-blue);
+    outline-offset: 2px;
 }
 
 /* 停止按钮只在生成期间出现，用深一档的粉色与发送按钮区分 */
@@ -1201,8 +1299,10 @@ code,
     animation: bl-pulse 1.6s ease-in-out infinite;
 }
 
-#mes_stop:hover {
-    background-color: #E85B85;
+@media (hover: hover) and (pointer: fine) {
+    #mes_stop:hover {
+        background-color: #E85B85;
+    }
 }
 
 /* 发送按钮用原版「播放」图标的感觉：纸飞机保留 FA，颜色统一粉色 */
@@ -1256,7 +1356,15 @@ code,
     transition: border-color var(--bl-ease), color var(--bl-ease), background-color var(--bl-ease);
 }
 
-#form_sheld #qr--bar > .qr--buttons .qr--button:hover {
+@media (hover: hover) and (pointer: fine) {
+    #form_sheld #qr--bar > .qr--buttons .qr--button:hover {
+        border-color: var(--bl-pink);
+        background-color: var(--bl-pink-soft);
+        color: var(--bl-pink);
+    }
+}
+
+#form_sheld #qr--bar > .qr--buttons .qr--button:active {
     border-color: var(--bl-pink);
     background-color: var(--bl-pink-soft);
     color: var(--bl-pink);
@@ -1281,7 +1389,15 @@ body #qr--popout > .qr--body > .qr--buttons .qr--button {
     text-overflow: ellipsis;
 }
 
-body #qr--popout > .qr--body > .qr--buttons .qr--button:hover {
+@media (hover: hover) and (pointer: fine) {
+    body #qr--popout > .qr--body > .qr--buttons .qr--button:hover {
+        background-color: var(--bl-pink-soft);
+        border-color: var(--bl-pink);
+        color: var(--bl-pink);
+    }
+}
+
+body #qr--popout > .qr--body > .qr--buttons .qr--button:active {
     background-color: var(--bl-pink-soft);
     border-color: var(--bl-pink);
     color: var(--bl-pink);
@@ -1371,7 +1487,7 @@ input[type="text"]:focus,
 input[type="search"]:focus,
 input[type="number"]:focus,
 input[type="password"]:focus {
-    outline: none;
+    outline: 2px solid transparent;
     border-color: var(--bl-blue);
     box-shadow: 0 0 0 2px rgba(0, 174, 236, 0.13);
 }
@@ -1447,11 +1563,26 @@ input[type="range"] {
     transition: background-color var(--bl-ease), border-color var(--bl-ease), color var(--bl-ease);
 }
 
-.menu_button:hover,
-.menu_button_icon:hover {
+@media (hover: hover) and (pointer: fine) {
+    .menu_button:hover,
+    .menu_button_icon:hover {
+        background-color: var(--bl-pink-soft);
+        border-color: var(--bl-pink);
+        color: var(--bl-pink);
+    }
+}
+
+.menu_button:active,
+.menu_button_icon:active {
     background-color: var(--bl-pink-soft);
     border-color: var(--bl-pink);
     color: var(--bl-pink);
+}
+
+.menu_button:focus-visible,
+.menu_button_icon:focus-visible {
+    outline: 2px solid var(--bl-blue);
+    outline-offset: 2px;
 }
 
 .menu_button.selected,
@@ -1462,10 +1593,15 @@ input[type="range"] {
 }
 
 /* 危险操作按钮保持红色语义 */
-.menu_button.danger,
-#delete_button:hover,
-#reset_button:hover {
+.menu_button.danger {
     color: #F56C6C;
+}
+
+@media (hover: hover) and (pointer: fine) {
+    #delete_button:hover,
+    #reset_button:hover {
+        color: #F56C6C;
+    }
 }
 
 /* ---------- 角色列表 / 卡片条目 ---------- */
@@ -1477,9 +1613,22 @@ input[type="range"] {
     transition: background-color var(--bl-ease);
 }
 
-.character_select:hover,
-.group_select:hover {
+@media (hover: hover) and (pointer: fine) {
+    .character_select:hover,
+    .group_select:hover {
+        background-color: var(--bl-bg-2);
+    }
+}
+
+.character_select:active,
+.group_select:active {
     background-color: var(--bl-bg-2);
+}
+
+.character_select:focus-visible,
+.group_select:focus-visible {
+    outline: 2px solid var(--bl-blue);
+    outline-offset: -2px;
 }
 
 .character_name_block .ch_name,
@@ -1518,8 +1667,16 @@ input[type="range"] {
     transition: background-color var(--bl-ease), color var(--bl-ease);
 }
 
-#options .options-content a:hover,
-#options .options-content .interactable:hover {
+@media (hover: hover) and (pointer: fine) {
+    #options .options-content a:hover,
+    #options .options-content .interactable:hover {
+        background-color: var(--bl-pink-soft);
+        color: var(--bl-pink);
+    }
+}
+
+#options .options-content a:active,
+#options .options-content .interactable:active {
     background-color: var(--bl-pink-soft);
     color: var(--bl-pink);
 }
@@ -1594,13 +1751,15 @@ body #toast-container > div.toast.toast-info {
     color: var(--bl-text-1);
 }
 
-#user-settings-block h4:hover,
-.standoutHeader:hover,
-#extensions_settings .inline-drawer-toggle.inline-drawer-header:hover,
-#extensions_settings2 .inline-drawer-toggle.inline-drawer-header:hover {
-    filter: none;
-    background-color: var(--bl-pink-soft);
-    color: var(--bl-text-1);
+@media (hover: hover) and (pointer: fine) {
+    #user-settings-block h4:hover,
+    .standoutHeader:hover,
+    #extensions_settings .inline-drawer-toggle.inline-drawer-header:hover,
+    #extensions_settings2 .inline-drawer-toggle.inline-drawer-header:hover {
+        filter: none;
+        background-color: var(--bl-pink-soft);
+        color: var(--bl-text-1);
+    }
 }
 
 /*
@@ -1663,8 +1822,16 @@ body #toast-container > div.toast.toast-info {
     border: none;
 }
 
-.tag:hover,
-.character_tag:hover {
+@media (hover: hover) and (pointer: fine) {
+    .tag:hover,
+    .character_tag:hover {
+        background-color: var(--bl-pink-soft);
+        color: var(--bl-pink);
+    }
+}
+
+.tag:active,
+.character_tag:active {
     background-color: var(--bl-pink-soft);
     color: var(--bl-pink);
 }
@@ -1728,10 +1895,23 @@ body #toast-container > div.toast.toast-info {
     transition: background-color var(--bl-ease), color var(--bl-ease), opacity var(--bl-ease);
 }
 
-.welcomePanel .welcomeHeaderTitle .mes_button:hover {
+@media (hover: hover) and (pointer: fine) {
+    .welcomePanel .welcomeHeaderTitle .mes_button:hover {
+        background-color: var(--bl-pink-soft);
+        color: var(--bl-pink);
+        opacity: 1;
+    }
+}
+
+.welcomePanel .welcomeHeaderTitle .mes_button:active {
     background-color: var(--bl-pink-soft);
     color: var(--bl-pink);
     opacity: 1;
+}
+
+.welcomePanel .welcomeHeaderTitle .mes_button:focus-visible {
+    outline: 2px solid var(--bl-blue);
+    outline-offset: 2px;
 }
 
 /* ---------- 分类标签行 ---------- */
@@ -1775,7 +1955,14 @@ body #toast-container > div.toast.toast-info {
     transition: background-color var(--bl-ease), color var(--bl-ease);
 }
 
-.welcomePanel .welcomeShortcuts .menu_button:hover {
+@media (hover: hover) and (pointer: fine) {
+    .welcomePanel .welcomeShortcuts .menu_button:hover {
+        background-color: var(--bl-pink-soft);
+        color: var(--bl-pink);
+    }
+}
+
+.welcomePanel .welcomeShortcuts .menu_button:active {
     background-color: var(--bl-pink-soft);
     color: var(--bl-pink);
 }
@@ -1813,11 +2000,13 @@ body #toast-container > div.toast.toast-info {
     display: none;
 }
 
-.welcomePanel .welcomeRecent .recentChatList .recentChat:hover {
-    background-color: var(--bl-bg-1);
-    border-color: var(--bl-pink);
-    box-shadow: 0 4px 14px rgba(251, 114, 153, 0.16);
-    transform: translateY(-1px);
+@media (hover: hover) and (pointer: fine) {
+    .welcomePanel .welcomeRecent .recentChatList .recentChat:hover {
+        background-color: var(--bl-bg-1);
+        border-color: var(--bl-pink);
+        box-shadow: 0 4px 14px rgba(251, 114, 153, 0.16);
+        transform: translateY(-1px);
+    }
 }
 
 .welcomePanel .welcomeRecent .recentChatList .recentChat:focus-within {
@@ -1833,7 +2022,7 @@ body #toast-container > div.toast.toast-info {
     height: 56px;
     margin: 0;
     border-radius: 8px;
-    overflow: hidden;
+    overflow: clip;
 }
 
 .welcomePanel .welcomeRecent .recentChatList .recentChat .avatar img {
@@ -1948,9 +2137,14 @@ body #toast-container > div.toast.toast-info {
     transition: opacity var(--bl-ease);
 }
 
-.welcomePanel .welcomeRecent .recentChatList .recentChat:hover .chatActions,
 .welcomePanel .welcomeRecent .recentChatList .recentChat:focus-within .chatActions {
     opacity: 1;
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .welcomePanel .welcomeRecent .recentChatList .recentChat:hover .chatActions {
+        opacity: 1;
+    }
 }
 
 .welcomePanel .welcomeRecent .recentChatList .recentChat .chatActions button {
@@ -1969,9 +2163,21 @@ body #toast-container > div.toast.toast-info {
     transition: background-color var(--bl-ease), color var(--bl-ease);
 }
 
-.welcomePanel .welcomeRecent .recentChatList .recentChat .chatActions button:hover {
+@media (hover: hover) and (pointer: fine) {
+    .welcomePanel .welcomeRecent .recentChatList .recentChat .chatActions button:hover {
+        background-color: var(--bl-pink-soft);
+        color: var(--bl-pink);
+    }
+}
+
+.welcomePanel .welcomeRecent .recentChatList .recentChat .chatActions button:active {
     background-color: var(--bl-pink-soft);
     color: var(--bl-pink);
+}
+
+.welcomePanel .welcomeRecent .recentChatList .recentChat .chatActions button:focus-visible {
+    outline: 2px solid var(--bl-blue);
+    outline-offset: 2px;
 }
 
 /* 「显示更多」：做成一个居中的圆形小按钮，紧贴最后一张卡片 */
@@ -1991,9 +2197,21 @@ body #toast-container > div.toast.toast-info {
     transition: background-color var(--bl-ease), color var(--bl-ease);
 }
 
-.welcomePanel .welcomeRecent .recentChatList .showMoreChats:hover {
+@media (hover: hover) and (pointer: fine) {
+    .welcomePanel .welcomeRecent .recentChatList .showMoreChats:hover {
+        background-color: var(--bl-pink-soft);
+        color: var(--bl-pink);
+    }
+}
+
+.welcomePanel .welcomeRecent .recentChatList .showMoreChats:active {
     background-color: var(--bl-pink-soft);
     color: var(--bl-pink);
+}
+
+.welcomePanel .welcomeRecent .recentChatList .showMoreChats:focus-visible {
+    outline: 2px solid var(--bl-blue);
+    outline-offset: 2px;
 }
 
 /* 置顶标记换成粉色小三角 */
@@ -2154,7 +2372,7 @@ body #toast-container > div.toast.toast-info {
     box-shadow: 0 18px 48px rgba(0, 161, 214, 0.14), 0 4px 12px rgba(24, 25, 28, 0.05);
     color: var(--bl-text-1);
     font-family: var(--bl-font);
-    overflow: hidden;
+    overflow: clip;
 }
 
 /* 酒馆自带的 SillyTavern logo 不要 */

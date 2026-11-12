@@ -5,7 +5,7 @@
 
 #chat .mes[is_user="true"] {
     /* 卡片保持全宽，文字左右留白按容器宽度动态伸缩 */
-    --bl-card-pad-x: clamp(16px, 4%, 40px);
+    --bl-card-pad-x: clamp(20px, 5%, 56px);
     position: relative;
     display: block;
     width: 100%;

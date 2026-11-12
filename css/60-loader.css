@@ -1,0 +1,217 @@
+/*
+ * 加载页：完全接管 SillyTavern 的加载遮罩
+ *
+ * 两条链路都要覆盖，否则切换时会闪一下默认样式：
+ *   1. HTML 首屏的 <div id="preloader">（JS 还没跑起来时）
+ *   2. 初始化后由 action-loader.js 创建的
+ *      <dialog class="popup transparent_dialogue_popup"> 内的 #loader.splash-screen
+ *
+ * 方法参考「Word 文档 V2.1」主题的「13 / 加载页」：遮罩铺满全屏、隐藏原生
+ * SillyTavern logo、把 #loader 重排成居中卡片，::before 写标题、::after 做进度条，
+ * 副文案沿用酒馆自带的 .splash-message（保留多语言）。
+ */
+
+/*
+ * 品牌标识尺寸：盒子宽度按「小电视 + 间距 + 字标」精确计算，
+ * 这样 flex 居中时视觉内容才真正居中（背景图左对齐拼在过宽的盒子里会偏左）。
+ * 2.1876 = wordmark.svg 的宽高比 2186.86 / 999.65。
+ */
+#preloader::before,
+#loader #load-spinner {
+    --bl-brand-tv: 40px;
+    --bl-brand-mark-h: 34px;
+    --bl-brand-gap: 10px;
+    --bl-brand-mark-w: calc(var(--bl-brand-mark-h) * 2.1876);
+    --bl-brand-w: calc(var(--bl-brand-tv) + var(--bl-brand-gap) + var(--bl-brand-mark-w));
+}
+
+/* ---------- 全屏遮罩 ---------- */
+#preloader,
+.popup.transparent_dialogue_popup:has(#loader) {
+    background-color: var(--bl-bg-2);
+    background-image:
+        radial-gradient(circle at 50% 34%, rgba(251, 114, 153, 0.16), transparent 58%),
+        radial-gradient(circle at 50% 66%, rgba(0, 174, 236, 0.12), transparent 52%);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+}
+
+/* 首屏还没创建 #loader 时，至少先给出品牌标识 */
+#preloader::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: var(--bl-brand-w);
+    height: var(--bl-brand-tv);
+    transform: translate(-50%, -50%);
+    background-image: var(--bl-tv), var(--bl-wordmark);
+    background-repeat: no-repeat, no-repeat;
+    background-position: left center, calc(var(--bl-brand-tv) + var(--bl-brand-gap)) center;
+    background-size: auto var(--bl-brand-tv), auto var(--bl-brand-mark-h);
+    filter: drop-shadow(0 4px 10px rgba(0, 174, 236, 0.18));
+}
+
+/* 加载 Popup 本身：铺满视口、去掉弹窗边框与内边距 */
+.popup.transparent_dialogue_popup:has(#loader) {
+    position: fixed !important;
+    inset: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    width: 100dvw !important;
+    height: 100dvh !important;
+    max-width: none !important;
+    max-height: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    overflow: hidden !important;
+}
+
+.popup:has(#loader) :is(.popup-body, .popup-content) {
+    width: 100%;
+    height: 100%;
+    max-height: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+/* ---------- 居中卡片 ---------- */
+#loader {
+    position: fixed !important;
+    inset: auto !important;
+    left: 50% !important;
+    top: 50% !important;
+    transform: translate(-50%, -50%);
+    /* loader.css 的 #loader.splash-screen 有 width:100%，特异性更高，必须压过去 */
+    width: min(400px, 88vw) !important;
+    height: auto !important;
+    max-height: none !important;
+    margin: 0 !important;
+    padding: 38px 28px 34px;
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* loader.css 里 #loader.splash-screen 有 gap: 4rem，必须压掉 */
+    gap: 0 !important;
+    border: 1px solid var(--bl-line);
+    border-radius: 16px;
+    background:
+        linear-gradient(90deg, var(--bl-pink), var(--bl-blue)) top left / 100% 3px no-repeat,
+        var(--bl-bg-1);
+    box-shadow: 0 18px 48px rgba(0, 161, 214, 0.14), 0 4px 12px rgba(24, 25, 28, 0.05);
+    color: var(--bl-text-1);
+    font-family: var(--bl-font);
+    overflow: hidden;
+}
+
+/* 酒馆自带的 SillyTavern logo 不要 */
+#loader .splash-logo {
+    display: none !important;
+}
+
+/* 小电视 + bilibili 字标，沿用顶栏那套矢量素材 */
+#loader #load-spinner {
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    order: 1;
+    width: var(--bl-brand-w) !important;
+    height: var(--bl-brand-tv) !important;
+    margin: 0 0 22px;
+    /* 关掉 Font Awesome 齿轮字形与自带旋转 */
+    font-size: 0 !important;
+    color: transparent !important;
+    animation: bl-loader-float 2.4s ease-in-out infinite;
+    background-image: var(--bl-tv), var(--bl-wordmark);
+    background-repeat: no-repeat, no-repeat;
+    background-position: left center, calc(var(--bl-brand-tv) + var(--bl-brand-gap)) center;
+    background-size: auto var(--bl-brand-tv), auto var(--bl-brand-mark-h);
+    filter: drop-shadow(0 4px 10px rgba(0, 174, 236, 0.18));
+}
+
+#loader #load-spinner::before,
+#loader #load-spinner::after {
+    content: none !important;
+}
+
+/* 主标题 */
+#loader::before {
+    content: "bilibili 专栏";
+    order: 2;
+    color: var(--bl-text-1);
+    font: 600 20px/1.4 var(--bl-font);
+    letter-spacing: 0.02em;
+}
+
+/* 加载文案：沿用酒馆原生文案，只统一字体与颜色 */
+#loader .splash-message {
+    order: 3;
+    margin: 8px 0 0;
+    color: var(--bl-text-3);
+    font: 400 13px/1.6 var(--bl-font) !important;
+    letter-spacing: 0.04em;
+    opacity: 1;
+}
+
+/* 粉蓝流动进度条 */
+#loader::after {
+    content: "";
+    order: 4;
+    width: 168px;
+    height: 4px;
+    margin-top: 24px;
+    border-radius: var(--bl-radius-pill);
+    background: linear-gradient(90deg, var(--bl-pink), var(--bl-blue), var(--bl-pink));
+    background-size: 200% 100%;
+    animation: bl-loader-bar 1.6s linear infinite;
+}
+
+@keyframes bl-loader-bar {
+    from {
+        background-position: 200% 0;
+    }
+    to {
+        background-position: -200% 0;
+    }
+}
+
+@keyframes bl-loader-float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-5px);
+    }
+}
+
+/* 尊重系统「减少动态效果」 */
+@media (prefers-reduced-motion: reduce) {
+    #loader #load-spinner,
+    #loader::after {
+        animation: none !important;
+    }
+}
+
+/* 窄屏下收一圈 */
+@media (max-width: 640px) {
+    #loader {
+        width: min(340px, 88vw) !important;
+        padding: 30px 22px 28px;
+    }
+
+    /* 只需要改两个尺寸，盒子宽度会按同一组变量自动重算 */
+    #loader #load-spinner,
+    #preloader::before {
+        --bl-brand-tv: 36px;
+        --bl-brand-mark-h: 30px;
+    }
+
+    #loader::after {
+        width: 148px;
+    }
+}

@@ -1,0 +1,19 @@
+/*
+ * 默认头像：酒馆在「角色未设头像」时使用 img/ai4.png（用户用 user-default.png），
+ * 那是一张黑色剪影加问号。这里用 content 把 <img> 的显示内容换成主题自带的图，
+ * 不改酒馆本体文件，也不影响任何已经设了自定义头像的角色。
+ *
+ * src 用包含匹配，覆盖 img/ai4.png、/img/ai4.png、缩略图 404 后回退等各种写法。
+ */
+img[src*="ai4.png"],
+img[src*="user-default.png"] {
+    content: var(--bl-avatar-default);
+}
+
+/* 少数地方把默认头像写成容器的内联背景图，一并覆盖 */
+.avatar[style*="ai4.png"],
+.avatar[style*="user-default.png"] {
+    background-image: var(--bl-avatar-default) !important;
+    background-size: cover;
+    background-position: center;
+}

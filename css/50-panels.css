@@ -1,0 +1,334 @@
+/*
+ * 交互层（二）：抽屉、设置面板、表单控件、菜单、提示
+ * 统一成 bilibili 组件风：白底、1px 细线、6-8px 圆角、粉色强调。
+ */
+
+/* ---------- 面板与抽屉 ---------- */
+.drawer-content,
+#top-settings-holder .drawer-content,
+#left-nav-panel .drawer-content,
+#right-nav-panel .drawer-content {
+    background-color: var(--bl-bg-1);
+    border-color: var(--bl-line);
+    color: var(--bl-text-1);
+}
+
+.drawer-content .scrollableInner,
+#left-nav-panel .scrollableInner,
+#right-nav-panel .scrollableInner {
+    scrollbar-width: thin;
+}
+
+/* 面板内部分隔 */
+#left-nav-panel hr,
+#right-nav-panel hr,
+.drawer-content hr {
+    border: none;
+    border-top: 1px solid var(--bl-line);
+    margin: 10px 0;
+}
+
+/* ---------- 文本输入 ---------- */
+.text_pole,
+textarea.text_pole,
+input.text_pole,
+input[type="text"],
+input[type="search"],
+input[type="number"],
+input[type="password"] {
+    background-color: var(--bl-bg-1);
+    border: 1px solid var(--bl-line);
+    border-radius: var(--bl-radius-sm);
+    color: var(--bl-text-1);
+    transition: border-color var(--bl-ease), box-shadow var(--bl-ease);
+}
+
+.text_pole:focus,
+textarea.text_pole:focus,
+input[type="text"]:focus,
+input[type="search"]:focus,
+input[type="number"]:focus,
+input[type="password"]:focus {
+    outline: none;
+    border-color: var(--bl-blue);
+    box-shadow: 0 0 0 2px rgba(0, 174, 236, 0.13);
+}
+
+.text_pole::placeholder {
+    color: var(--bl-text-3);
+}
+
+/* 下拉框 */
+select,
+.text_pole.select,
+.select2-container--default .select2-selection--single,
+.select2-container--default .select2-selection--multiple {
+    background-color: var(--bl-bg-1);
+    border: 1px solid var(--bl-line);
+    border-radius: var(--bl-radius-sm);
+    color: var(--bl-text-1);
+}
+
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+    color: var(--bl-text-1);
+}
+
+/* 原生下拉的选项默认是黑底白字（深色主题专用），白底主题里会突然黑一片 */
+select option {
+    background-color: var(--bl-bg-1);
+    color: var(--bl-text-1);
+}
+
+select option:not(:checked) {
+    background-color: var(--bl-bg-1);
+    color: var(--bl-text-1);
+}
+
+select option:checked {
+    background-color: var(--bl-pink-soft);
+    color: var(--bl-text-1);
+}
+
+select option[disabled]:not(:checked) {
+    color: var(--bl-text-3);
+}
+
+.select2-dropdown {
+    background-color: var(--bl-bg-1);
+    border: 1px solid var(--bl-line);
+    border-radius: var(--bl-radius-sm);
+    box-shadow: var(--bl-shadow-float);
+}
+
+.select2-container--default .select2-results__option--highlighted[aria-selected] {
+    background-color: var(--bl-pink-soft);
+    color: var(--bl-pink);
+}
+
+/* 勾选框 / 滑块 / 单选 */
+input[type="checkbox"],
+input[type="radio"] {
+    accent-color: var(--bl-pink);
+}
+
+input[type="range"] {
+    accent-color: var(--bl-pink);
+}
+
+/* ---------- 按钮 ---------- */
+.menu_button,
+.menu_button_icon {
+    background-color: var(--bl-bg-1);
+    border: 1px solid var(--bl-line);
+    border-radius: var(--bl-radius-sm);
+    color: var(--bl-text-2);
+    transition: background-color var(--bl-ease), border-color var(--bl-ease), color var(--bl-ease);
+}
+
+.menu_button:hover,
+.menu_button_icon:hover {
+    background-color: var(--bl-pink-soft);
+    border-color: var(--bl-pink);
+    color: var(--bl-pink);
+}
+
+.menu_button.selected,
+.menu_button.toggleEnabled {
+    background-color: var(--bl-pink);
+    border-color: var(--bl-pink);
+    color: #FFFFFF;
+}
+
+/* 危险操作按钮保持红色语义 */
+.menu_button.danger,
+#delete_button:hover,
+#reset_button:hover {
+    color: #F56C6C;
+}
+
+/* ---------- 角色列表 / 卡片条目 ---------- */
+.character_select,
+.group_select,
+.character_select_container,
+.entity_block {
+    border-radius: var(--bl-radius-sm);
+    transition: background-color var(--bl-ease);
+}
+
+.character_select:hover,
+.group_select:hover {
+    background-color: var(--bl-bg-2);
+}
+
+.character_name_block .ch_name,
+.character_name_block .character_name {
+    color: var(--bl-text-1);
+    font-weight: 600;
+}
+
+.character_name_block .character_file,
+.character_name_block .group_file {
+    color: var(--bl-text-3);
+}
+
+/* 当前选中角色 */
+.character_select.is_selected,
+.group_select.is_selected {
+    background-color: var(--bl-pink-soft);
+}
+
+/* ---------- 弹出菜单 / 弹层 ---------- */
+#options,
+.options-content,
+.popup,
+.dialogs,
+#dialogue_popup {
+    background-color: var(--bl-bg-1);
+    border: 1px solid var(--bl-line);
+    border-radius: var(--bl-radius);
+    box-shadow: var(--bl-shadow-float);
+    color: var(--bl-text-1);
+}
+
+#options .options-content a,
+#options .options-content .interactable {
+    border-radius: var(--bl-radius-sm);
+    transition: background-color var(--bl-ease), color var(--bl-ease);
+}
+
+#options .options-content a:hover,
+#options .options-content .interactable:hover {
+    background-color: var(--bl-pink-soft);
+    color: var(--bl-pink);
+}
+
+/* 弹窗标题 */
+.dialogue_popup_text h2,
+.popup_title,
+.dialogue_popup_controls h3 {
+    color: var(--bl-text-1);
+}
+
+/* ---------- 提示消息 ---------- */
+#toast-container > div {
+    background-color: var(--bl-bg-1);
+    border: 1px solid var(--bl-line);
+    border-left: 3px solid var(--bl-blue);
+    border-radius: var(--bl-radius-sm);
+    box-shadow: var(--bl-shadow-float);
+    color: var(--bl-text-1);
+    opacity: 1;
+}
+
+#toast-container > .toast-success {
+    border-left-color: var(--bl-pink);
+}
+
+#toast-container > .toast-error {
+    border-left-color: #F56C6C;
+}
+
+#toast-container > .toast-warning {
+    border-left-color: #FFB800;
+}
+
+/* ---------- 加载与欢迎页 ---------- */
+#loading_mes,
+#loader {
+    color: var(--bl-text-2);
+}
+
+#welcomePanel,
+.welcomePanel {
+    background-color: var(--bl-bg-1);
+    border-radius: var(--bl-radius);
+}
+
+/* ---------- 酒馆的深色默认值（浅色主题下会糊成一片） ---------- */
+
+/* 设置面板的分组标题：默认拿 SmartThemeQuoteColor 做深灰渐变，白底上像一条黑带 */
+#user-settings-block h4,
+.standoutHeader,
+#extensions_settings .inline-drawer-toggle.inline-drawer-header,
+#extensions_settings2 .inline-drawer-toggle.inline-drawer-header {
+    background-image: none;
+    background-color: var(--bl-bg-2);
+    border: 1px solid var(--bl-line);
+    border-radius: var(--bl-radius-sm);
+    color: var(--bl-text-1);
+}
+
+#user-settings-block h4:hover,
+.standoutHeader:hover,
+#extensions_settings .inline-drawer-toggle.inline-drawer-header:hover,
+#extensions_settings2 .inline-drawer-toggle.inline-drawer-header:hover {
+    filter: none;
+    background-color: var(--bl-pink-soft);
+    color: var(--bl-text-1);
+}
+
+/*
+ * 提示词管理器：类名带 completion_ 前缀（聊天补全）和不带前缀（文本补全）两套，
+ * 用 [class*=] 一次覆盖；酒馆自己的规则是 #id #id 级别，这里必须 !important 才压得住。
+ */
+[class*="prompt_manager_prompt"] [class*="prompt_manager_prompt_name"],
+[class*="prompt_manager_prompt_name"] .prompt-manager-inspect-action {
+    color: var(--bl-text-1) !important;
+}
+
+/* 启用中的开关用品牌粉 */
+[class*="prompt_manager_prompt"]:not([class*="prompt_manager_prompt_disabled"]) .prompt-manager-toggle-action {
+    color: var(--bl-pink) !important;
+}
+
+/* 禁用项名称酒馆默认用 white30a（深色主题专用），白底上等于隐形 */
+[class*="prompt_manager_prompt_disabled"] {
+    border-color: var(--bl-line) !important;
+    background-color: var(--bl-bg-2);
+}
+
+[class*="prompt_manager_prompt_disabled"] [class*="prompt_manager_prompt_name"],
+[class*="prompt_manager_prompt_disabled"] [class*="prompt_manager_prompt_name"] .prompt-manager-inspect-action {
+    color: var(--bl-text-3) !important;
+}
+
+/* 表头「名称 / Token」那行同样是 white50a */
+[class*="prompt_manager_header"] {
+    color: var(--bl-text-3) !important;
+}
+
+/* 图标上的黑色投影是给深色底做的，浅底上去掉更干净 */
+[class*="prompt_manager_prompt"] span span span,
+[class*="prompt_manager_header_advanced"] span {
+    filter: none;
+}
+
+/* 选中态：酒馆默认拿 SmartThemeQuoteColor 铺深色块（连着浮点数还用深红），统一改粉色浅底 */
+.macroBrowser .macro-sort-btn.active,
+.macroBrowser .macro-item.selected,
+#rm_print_characters_block.group_overlay_mode_select .character_select.character_selected,
+#bg_tabs .bg_tabs_list .bg_tab_button.ui-tabs-active {
+    background-color: var(--bl-pink-soft);
+    color: var(--bl-text-1);
+}
+
+#chat .mes.selected {
+    background-color: var(--bl-pink-soft);
+}
+
+/* ---------- 标签 / 徽章 ---------- */
+.tag,
+.tag_name,
+.character_version,
+.character_tag {
+    border-radius: var(--bl-radius-pill);
+    background-color: var(--bl-bg-3);
+    color: var(--bl-text-2);
+    border: none;
+}
+
+.tag:hover,
+.character_tag:hover {
+    background-color: var(--bl-pink-soft);
+    color: var(--bl-pink);
+}

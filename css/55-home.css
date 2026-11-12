@@ -1,0 +1,374 @@
+/*
+ * 主页（欢迎面板）：按 B 站专栏首页的思路重排——
+ * 页头（logo + 版本 + 工具按钮）→ 分类标签行（最近聊天 + 快捷入口）→ 卡片流。
+ *
+ * 卡片用酒馆 1.19 的「最近聊天」组件：
+ *   .recentChat > .avatar + .recentChatInfo
+ *   .recentChatInfo > .chatNameContainer(.chatName/.chatDate/.chatActions)
+ *                   + .chatMessageContainer(.chatMessage/.chatStats)
+ * 用 display: contents 把两个容器摊平到同一网格，凑出「标题 / 摘要 / 元信息」三层。
+ *
+ * 注意：酒馆自带的 welcome.css 用的是 `.welcomeRecent .recentChatList .recentChat …`（三到四级类），
+ * 所以这里统一加 `.welcomePanel` 前缀压过它，不要简化选择器。
+ */
+
+/* ---------- 页头 ---------- */
+.welcomePanel {
+    background-color: transparent;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    padding: 0;
+}
+
+.welcomePanel .welcomeHeaderTitle {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 2px 12px;
+    border-bottom: 1px solid var(--bl-line);
+}
+
+.welcomePanel .welcomeHeaderLogo {
+    width: 26px;
+    height: 26px;
+    border-radius: 6px;
+    flex: 0 0 auto;
+}
+
+.welcomePanel .welcomeHeaderVersionDisplay {
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--bl-text-1);
+    letter-spacing: 0;
+}
+
+.welcomePanel .welcomeHeaderTitle .mes_button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    margin-left: 2px;
+    border-radius: 50%;
+    color: var(--bl-text-3);
+    opacity: 0.75;
+    transition: background-color var(--bl-ease), color var(--bl-ease), opacity var(--bl-ease);
+}
+
+.welcomePanel .welcomeHeaderTitle .mes_button:hover {
+    background-color: var(--bl-pink-soft);
+    color: var(--bl-pink);
+    opacity: 1;
+}
+
+/* ---------- 分类标签行 ---------- */
+.welcomePanel .welcomeHeader {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 2px 10px;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--bl-text-1);
+}
+
+/* 「最近的聊天」前面的粉色小竖条 */
+.welcomePanel .welcomeHeader::before {
+    content: "";
+    flex: 0 0 auto;
+    width: 3px;
+    height: 15px;
+    border-radius: 2px;
+    background-color: var(--bl-pink);
+}
+
+.welcomePanel .welcomeShortcuts {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-left: auto;
+}
+
+.welcomePanel .welcomeShortcuts .menu_button {
+    height: 26px;
+    padding: 0 11px;
+    border: none;
+    border-radius: var(--bl-radius-pill);
+    background-color: var(--bl-bg-2);
+    color: var(--bl-text-2);
+    font-size: 12px;
+    font-weight: 500;
+    transition: background-color var(--bl-ease), color var(--bl-ease);
+}
+
+.welcomePanel .welcomeShortcuts .menu_button:hover {
+    background-color: var(--bl-pink-soft);
+    color: var(--bl-pink);
+}
+
+.welcomePanel .welcomeShortcutsSeparator {
+    display: none;
+}
+
+/* ---------- 卡片流 ---------- */
+.welcomePanel .welcomeRecent {
+    padding: 2px 0 6px;
+}
+
+.welcomePanel .welcomeRecent .recentChatList {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.welcomePanel .welcomeRecent .recentChatList .recentChat {
+    position: relative;
+    display: grid;
+    grid-template-columns: 56px minmax(0, 1fr);
+    column-gap: 12px;
+    align-items: start;
+    padding: 12px 14px;
+    border: 1px solid var(--bl-line);
+    border-radius: var(--bl-radius);
+    background-color: var(--bl-bg-1);
+    transition: border-color var(--bl-ease), box-shadow var(--bl-ease), transform var(--bl-ease);
+}
+
+/* 折叠的卡片必须真的不占位，否则「更多」按钮前会留一大片空白 */
+.welcomePanel .welcomeRecent .recentChatList .recentChat.hidden {
+    display: none;
+}
+
+.welcomePanel .welcomeRecent .recentChatList .recentChat:hover {
+    background-color: var(--bl-bg-1);
+    border-color: var(--bl-pink);
+    box-shadow: 0 4px 14px rgba(251, 114, 153, 0.16);
+    transform: translateY(-1px);
+}
+
+.welcomePanel .welcomeRecent .recentChatList .recentChat:focus-within {
+    border-color: var(--bl-pink);
+    box-shadow: 0 0 0 2px rgba(251, 114, 153, 0.16);
+}
+
+/* 封面 = 角色头像，裁成圆角方块 */
+.welcomePanel .welcomeRecent .recentChatList .recentChat .avatar {
+    flex: 0 0 auto;
+    align-self: start;
+    width: 56px;
+    height: 56px;
+    margin: 0;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.welcomePanel .welcomeRecent .recentChatList .recentChat .avatar img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+/* 右侧内容摊平成三层：标题 / 摘要 / 元信息 */
+.welcomePanel .welcomeRecent .recentChatList .recentChat .recentChatInfo {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-areas:
+        "name name"
+        "preview preview"
+        "date stats";
+    align-items: center;
+    align-self: start;
+    gap: 3px 10px;
+    min-width: 0;
+    overflow: visible;
+}
+
+.welcomePanel .welcomeRecent .recentChatList .recentChat .chatNameContainer,
+.welcomePanel .welcomeRecent .recentChatList .recentChat .chatMessageContainer {
+    display: contents;
+}
+
+.welcomePanel .welcomeRecent .recentChatList .recentChat .chatName {
+    grid-area: name;
+    flex: none;
+    min-width: 0;
+    padding-right: 84px; /* 给右上角的置顶/重命名/删除让位 */
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1.45;
+    color: var(--bl-text-1);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.welcomePanel .welcomeRecent .recentChatList .recentChat .chatName .characterName {
+    font-weight: 700;
+    color: var(--bl-text-1);
+}
+
+.welcomePanel .welcomeRecent .recentChatList .recentChat .chatName > span {
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--bl-text-3);
+}
+
+/* 摘要，两行截断 */
+.welcomePanel .welcomeRecent .recentChatList .recentChat .chatMessage {
+    grid-area: preview;
+    font-size: 13px;
+    line-height: 1.55;
+    color: var(--bl-text-3);
+    word-break: break-word;
+}
+
+/* 元信息行：左时间、右数据 */
+.welcomePanel .welcomeRecent .recentChatList .recentChat .chatDate {
+    grid-area: date;
+    justify-self: start;
+    margin: 0;
+    font-size: 12px;
+    color: var(--bl-text-3);
+    white-space: nowrap;
+}
+
+.welcomePanel .welcomeRecent .recentChatList .recentChat .chatStats {
+    grid-area: stats;
+    justify-self: end;
+    align-self: center;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    color: var(--bl-text-3);
+}
+
+.welcomePanel .welcomeRecent .recentChatList .recentChat .chatStats .counterBlock {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+
+/* 酒馆在条数和大小之间插了个竖线，这里换成分隔点 */
+.welcomePanel .welcomeRecent .recentChatList .recentChat .chatStats .counterBlock::after {
+    content: "·";
+    margin-left: 4px;
+    color: var(--bl-text-3);
+}
+
+.welcomePanel .welcomeRecent .recentChatList .recentChat .chatStats small {
+    font-size: 12px;
+    color: var(--bl-text-3);
+}
+
+/* 操作按钮：平时隐形，悬停/聚焦才出现 */
+.welcomePanel .welcomeRecent .recentChatList .recentChat .chatActions {
+    position: absolute;
+    top: 9px;
+    right: 10px;
+    display: flex;
+    gap: 4px;
+    opacity: 0;
+    transition: opacity var(--bl-ease);
+}
+
+.welcomePanel .welcomeRecent .recentChatList .recentChat:hover .chatActions,
+.welcomePanel .welcomeRecent .recentChatList .recentChat:focus-within .chatActions {
+    opacity: 1;
+}
+
+.welcomePanel .welcomeRecent .recentChatList .recentChat .chatActions button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    margin: 0;
+    padding: 0;
+    border: none;
+    border-radius: 50%;
+    background-color: transparent;
+    color: var(--bl-text-3);
+    font-size: 12px;
+    transition: background-color var(--bl-ease), color var(--bl-ease);
+}
+
+.welcomePanel .welcomeRecent .recentChatList .recentChat .chatActions button:hover {
+    background-color: var(--bl-pink-soft);
+    color: var(--bl-pink);
+}
+
+/* 「显示更多」：做成一个居中的圆形小按钮，紧贴最后一张卡片 */
+.welcomePanel .welcomeRecent .recentChatList .showMoreChats {
+    align-self: center;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    margin: 0;
+    padding: 0;
+    border: 1px solid transparent;
+    border-radius: 50%;
+    background-color: var(--bl-bg-2);
+    color: var(--bl-text-3);
+    transition: background-color var(--bl-ease), color var(--bl-ease);
+}
+
+.welcomePanel .welcomeRecent .recentChatList .showMoreChats:hover {
+    background-color: var(--bl-pink-soft);
+    color: var(--bl-pink);
+}
+
+/* 置顶标记换成粉色小三角 */
+.welcomePanel .welcomeRecent .recentChatList .recentChat .recentChatPinned {
+    top: 2px;
+    left: 2px;
+    color: var(--bl-pink);
+    opacity: 1;
+}
+
+/* 触屏没有 hover，按钮常显 */
+@media (hover: none) {
+    .welcomePanel .welcomeRecent .recentChatList .recentChat .chatActions {
+        opacity: 1;
+    }
+}
+
+/* ---------- 小屏 ---------- */
+@media (max-width: 640px) {
+    .welcomePanel .welcomeRecent .recentChatList .recentChat {
+        grid-template-columns: 46px minmax(0, 1fr);
+        column-gap: 10px;
+        padding: 10px 12px;
+    }
+
+    .welcomePanel .welcomeRecent .recentChatList .recentChat .avatar {
+        width: 46px;
+        height: 46px;
+        border-radius: 7px;
+    }
+
+    .welcomePanel .welcomeRecent .recentChatList .recentChat .avatar img {
+        border-radius: 7px;
+    }
+
+    .welcomePanel .welcomeRecent .recentChatList .recentChat .chatName {
+        font-size: 14px;
+        padding-right: 0;
+    }
+
+    .welcomePanel .welcomeHeader {
+        font-size: 14px;
+    }
+
+    .welcomePanel .welcomeShortcuts .menu_button {
+        height: 24px;
+        padding: 0 9px;
+        font-size: 11px;
+    }
+}

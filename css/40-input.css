@@ -1,0 +1,277 @@
+/*
+ * 交互层（一）：输入区 = bilibili 评论区输入框
+ * 白底圆角框 + 聚焦蓝描边 + 粉色圆形发送按钮。
+ */
+
+#form_sheld {
+    background-color: var(--bl-bg-2);
+    border-top: 1px solid var(--bl-line);
+    padding: 6px var(--bl-gutter) 8px;
+    /* 面板底部两角，和顶栏的圆角呼应 */
+    border-radius: 0 0 12px 12px;
+}
+
+#nonQRFormItems {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 3px 6px;
+    background-color: var(--bl-bg-1);
+    border: 1px solid var(--bl-line);
+    border-radius: var(--bl-radius);
+    transition: border-color var(--bl-ease), box-shadow var(--bl-ease);
+}
+
+#nonQRFormItems:focus-within {
+    border-color: var(--bl-blue);
+    box-shadow: 0 0 0 2px rgba(0, 174, 236, 0.14);
+}
+
+/* 输入框本体：默认只占一行，输入多行时由酒馆脚本自动撑高 */
+#send_textarea {
+    flex: 1 1 auto;
+    min-width: 0;
+    height: 24px;
+    min-height: 24px;
+    max-height: 40vh;
+    padding: 2px 4px;
+    margin: 0;
+    background-color: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    color: var(--bl-text-1);
+    font-size: 14.5px;
+    line-height: 20px;
+    text-align: left;
+    resize: none;
+    outline: none;
+}
+
+#send_textarea::placeholder {
+    color: var(--bl-text-3);
+}
+
+/* 酒馆内建的输入框文字/占位符居中被后续样式表覆盖，这里提高特异性改回左对齐 */
+#form_sheld #send_textarea,
+#form_sheld #send_textarea::placeholder {
+    text-align: left;
+}
+
+/* 左侧多功能按钮 */
+/* 左右按钮组横向排列，避免两个圆形按钮上下叠把输入框撑成两行高 */
+#leftSendForm,
+#rightSendForm {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    flex: 0 0 auto;
+    width: max-content;
+    min-width: 0;
+    align-items: center;
+    gap: 3px;
+}
+
+#options_button,
+#leftSendForm .interactable {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    width: 27px;
+    height: 27px;
+    min-width: 27px;
+    padding: 0;
+    border-radius: var(--bl-radius-sm);
+    color: var(--bl-text-3);
+    font-size: 14px;
+    line-height: 1;
+    transition: background-color var(--bl-ease), color var(--bl-ease);
+}
+
+#options_button:hover,
+#leftSendForm .interactable:hover {
+    background-color: var(--bl-bg-3);
+    color: var(--bl-pink);
+}
+
+/* 发送按钮：粉色胶囊 */
+#send_but:not(.displayNone) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    width: 28px;
+    height: 28px;
+    min-width: 28px;
+    padding: 0;
+    border: none;
+    border-radius: var(--bl-radius-pill);
+    background-color: var(--bl-pink);
+    color: #FFFFFF;
+    font-size: 12px;
+    line-height: 1;
+    cursor: pointer;
+    box-shadow: none;
+    transition: background-color var(--bl-ease), transform var(--bl-ease), filter var(--bl-ease);
+}
+
+/* 停止 / 继续 / 扮演：只改外观，不碰 display —— 显隐由酒馆自己控制，
+   停止按钮只在生成回复时顶替发送按钮出现 */
+#mes_stop,
+#mes_continue,
+#mes_impersonate,
+#stscript_stop,
+#stscript_continue,
+#stscript_pause {
+    box-sizing: border-box;
+    width: 28px;
+    height: 28px;
+    min-width: 28px;
+    padding: 0;
+    border: none;
+    border-radius: var(--bl-radius-pill);
+    background-color: var(--bl-pink);
+    color: #FFFFFF;
+    font-size: 12px;
+    line-height: 1;
+    cursor: pointer;
+    box-shadow: none;
+    transition: background-color var(--bl-ease), transform var(--bl-ease), filter var(--bl-ease);
+}
+
+#send_but:not(.displayNone):hover,
+#mes_stop:not(.displayNone):hover,
+#mes_continue:not(.displayNone):hover,
+#mes_impersonate:not(.displayNone):hover,
+#stscript_stop:not(.displayNone):hover,
+#stscript_continue:not(.displayNone):hover,
+#stscript_pause:not(.displayNone):hover {
+    background-color: var(--bl-pink-hover);
+    transform: translateY(-1px);
+}
+
+/* 停止按钮只在生成期间出现，用深一档的粉色与发送按钮区分 */
+#mes_stop {
+    background-color: var(--bl-pink);
+    animation: bl-pulse 1.6s ease-in-out infinite;
+}
+
+#mes_stop:hover {
+    background-color: #E85B85;
+}
+
+/* 发送按钮用原版「播放」图标的感觉：纸飞机保留 FA，颜色统一粉色 */
+#send_but::before {
+    font-size: 14px;
+}
+
+/* ---------- 快捷回复（QR） ---------- */
+#qr--bar {
+    margin: 0 auto 6px;
+    padding: 0;
+    background: transparent;
+    color: var(--bl-text-2);
+}
+
+/* quick-reply 扩展样式在本主题之后加载，统一用 #send_form 前缀提高特异性 */
+/* 每个 QR 分组各自是一个 .qr--buttons，只让分组宽度自适应，标签才能横向排开 */
+#send_form #qr--bar {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+}
+
+#form_sheld #qr--bar > .qr--buttons {
+    flex: 0 0 auto;
+    width: auto;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+    padding: 0;
+}
+
+/* 注意：quick-reply 扩展的样式表在本主题之后加载，这里用 #form_sheld 提高特异性 */
+#form_sheld #qr--bar > .qr--buttons .qr--button {
+    max-width: 210px;
+    padding: 3px 10px;
+    background-color: var(--bl-bg-1);
+    border: 1px solid var(--bl-line);
+    border-radius: var(--bl-radius-pill);
+    color: var(--bl-text-2);
+    font-size: 12px;
+    line-height: 1.5;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    transition: border-color var(--bl-ease), color var(--bl-ease), background-color var(--bl-ease);
+}
+
+#form_sheld #qr--bar > .qr--buttons .qr--button:hover {
+    border-color: var(--bl-pink);
+    background-color: var(--bl-pink-soft);
+    color: var(--bl-pink);
+}
+
+body #qr--popout > .qr--body {
+    background-color: var(--bl-bg-1);
+    border: 1px solid var(--bl-line);
+    border-radius: var(--bl-radius);
+    box-shadow: var(--bl-shadow-float);
+}
+
+body #qr--popout > .qr--body > .qr--buttons .qr--button {
+    max-width: 260px;
+    padding: 4px 10px;
+    background-color: var(--bl-bg-1);
+    border: 1px solid var(--bl-line);
+    border-radius: var(--bl-radius-sm);
+    color: var(--bl-text-2);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+body #qr--popout > .qr--body > .qr--buttons .qr--button:hover {
+    background-color: var(--bl-pink-soft);
+    border-color: var(--bl-pink);
+    color: var(--bl-pink);
+}
+
+/* 附件预览条 */
+#file_form .file_attached {
+    border-radius: var(--bl-radius-sm);
+    background-color: var(--bl-bg-3);
+    border: 1px solid var(--bl-line);
+}
+
+/* 打字指示器 / 加载提示 */
+#typing_indicator {
+    color: var(--bl-text-3);
+    font-size: 12.5px;
+}
+
+#typing_indicator::before {
+    content: "\e691";
+    font-family: "bcc-iconfont" !important;
+    margin-right: 4px;
+    color: var(--bl-pink);
+    font-size: 13px;
+}
+
+@keyframes bl-pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.6; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    #mes_stop:not(.displayNone) {
+        animation: none;
+    }
+}

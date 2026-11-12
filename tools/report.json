@@ -1,0 +1,1070 @@
+{
+  "uniq": [
+    {
+      "id": 58,
+      "first": 202,
+      "count": 1,
+      "viewBox": "0 0 12 12",
+      "len": 387,
+      "hint": "to-top-btn hidden to-top | float-button static-btn | float-button__icon | text:10.37357 11.99845z\" fill=\"currentColor\">",
+      "fp": "M10.1982 6.417925C10.828175 7.0479 10.382025 8.12505 9.4911 "
+    },
+    {
+      "id": 60,
+      "first": 204,
+      "count": 1,
+      "viewBox": "0 0 24 24",
+      "len": 486,
+      "hint": "text:0 24 24\" data-testid=\"CloseRoundedIcon\">",
+      "fp": "m12.87 15.07-2.54-2.51.03-.03c1.74-1.94 2.98-4.17 3.71-6.53H"
+    },
+    {
+      "id": 59,
+      "first": 203,
+      "count": 1,
+      "viewBox": "0 0 24 24",
+      "len": 489,
+      "hint": "翻译 | MuiSpeedDialIcon-root kiss-translator-fab-1og6e21 | text:con-size: 24px; --kt-fab-radius: 16px;\">",
+      "fp": "M18.3 5.71a.9959.9959 0 0 0-1.41 0L12 10.59 7.11 5.7a.9959.9"
+    },
+    {
+      "id": 39,
+      "first": 62,
+      "count": 1,
+      "viewBox": "0 0 24 24",
+      "len": 565,
+      "hint": "text:7 15.4571 3.04289z\" fill=\"currentColor\">",
+      "fp": "M8.5429 3.04289C8.15237 3.43342 8.15237 4.06658 8.5429 4.457"
+    },
+    {
+      "id": 38,
+      "first": 61,
+      "count": 1,
+      "viewBox": "0 0 24 24",
+      "len": 572,
+      "hint": "before | after | carousel-arrows | text:=\"carousel-dots-dot\" data-v-019bb25f=\"\">",
+      "fp": "M15.4571 3.04289C15.8476 3.43342 15.8476 4.06658 15.4571 4.4"
+    },
+    {
+      "id": 10,
+      "first": 12,
+      "count": 1,
+      "viewBox": "0 0 16 16",
+      "len": 594,
+      "hint": "v-popover-wrap | single-link-item | link-title | text:8L7.15233 3.75978Z\" fill=\"currentColor\">",
+      "fp": "M15.1478 8.9988C15.2456 8.31955 14.6907 7.81591 14.1113 7.81"
+    },
+    {
+      "id": 24,
+      "first": 46,
+      "count": 1,
+      "viewBox": "0 0 18 18",
+      "len": 764,
+      "hint": "trigger-text | v-popover-wrap upload-entry is-zh right-entry__item right-upload-entry | upload-entry__trigger | text:\"1.7\"> 创作中心",
+      "fp": "M12.0824 10H14.1412C15.0508 10 15.7882 10.7374 15.7882 11.64"
+    },
+    {
+      "id": 3,
+      "first": 3,
+      "count": 1,
+      "viewBox": "0 0 17 17",
+      "len": 782,
+      "hint": "nav-search-btn | text:.29294L9.64999 5.64303Z\" fill=\"#C9CCD0\">",
+      "fp": "M16.3451 15.2003C16.6377 15.4915 16.4752 15.772 16.1934 16.0"
+    },
+    {
+      "id": 22,
+      "first": 44,
+      "count": 1,
+      "viewBox": "0 0 20 21",
+      "len": 784,
+      "hint": "content-scroll | v-popover-wrap history-entry right-entry__item | right-entry__item-trigger | text:class=\"favorite-panel-popover__content\">",
+      "fp": "M10 1.74286C5.02955 1.74286 1 5.7724 1 10.7429C1 15.7133 5.0"
+    },
+    {
+      "id": 57,
+      "first": 201,
+      "count": 1,
+      "viewBox": "0 0 24 24",
+      "len": 837,
+      "hint": "float-button__text | float-button three-dots | float-button__icon | text:11.5L18.5 11.5z\" fill=\"currentColor\"> 客服",
+      "fp": "M18.50005 13.62185C17.6035 13.62185 16.87675 12.89505 16.876"
+    },
+    {
+      "id": 2,
+      "first": 2,
+      "count": 1,
+      "viewBox": "0 0 16 16",
+      "len": 850,
+      "hint": "nav-search-content | nav-search-input | nav-search-clean | text:ter\" data-v-3380389d=\"\">",
+      "fp": "M8 14.75C11.7279 14.75 14.75 11.7279 14.75 8C14.75 4.27208 1"
+    },
+    {
+      "id": 45,
+      "first": 68,
+      "count": 18,
+      "viewBox": "0 0 24 24",
+      "len": 869,
+      "hint": "bili-video-card__info | bili-video-card__info--right | bili-video-card__info--no-interest | text:.375 14z\" fill=\"currentColor\"> 418 03:38",
+      "fp": "M13.62335 5.49835C13.62335 6.3949 12.8966 7.12171 12 7.12171"
+    },
+    {
+      "id": 20,
+      "first": 42,
+      "count": 1,
+      "viewBox": "0 0 12 12",
+      "len": 890,
+      "hint": "wnd_bottom video | r-l | text:2 11.13405z\" fill=\"currentColor\"> 查看全部动态",
+      "fp": "M3.9179099999999973 1.167885C3.527364999999997 1.55840999999"
+    },
+    {
+      "id": 41,
+      "first": 64,
+      "count": 18,
+      "viewBox": "0 0 24 24",
+      "len": 901,
+      "hint": "no-interest-desc | bili-video-card__no-interest--right | revert-btn | text:35z\" fill=\"currentColor\"> 不感兴趣 将减少此类内容推荐",
+      "fp": "M8.28032 2.46967C8.57321 2.76257 8.57321 3.23744 8.28032 3.5"
+    },
+    {
+      "id": 50,
+      "first": 177,
+      "count": 1,
+      "viewBox": "0 0 1024 1024",
+      "len": 924,
+      "hint": "badge | text:on' &amp;&amp; window.imgOnError(this)\">",
+      "fp": "M873.472 321.792c-46.08-46.592-102.4-73.472-161.536-40.192a1"
+    },
+    {
+      "id": 6,
+      "first": 6,
+      "count": 1,
+      "viewBox": "0 0 18 18",
+      "len": 955,
+      "hint": "links-item | single-link-item | link-title | text:or: rgb(97, 102, 109);\">续费解锁线下专属权益 大会员中心",
+      "fp": "M12.1146 9.48983C13.2763 8.63331 14.0299 7.2548 14.0299 5.70"
+    },
+    {
+      "id": 47,
+      "first": 117,
+      "count": 1,
+      "viewBox": "0 0 1024 1024",
+      "len": 958,
+      "hint": "badge | text:on' &amp;&amp; window.imgOnError(this)\">",
+      "fp": "M392.448 275.911111a92.416 92.416 0 1 1-184.832 0 92.416 92."
+    },
+    {
+      "id": 37,
+      "first": 60,
+      "count": 1,
+      "viewBox": "0 0 10 10",
+      "len": 978,
+      "hint": "channel-item | channel-item | header-channel-fixed-arrow | text:style=\"letter-spacing: 2px;\">公益 超高清 视频播客",
+      "fp": "M4.838 6.184808333333335C4.927425 6.095383333333334 5.072575"
+    },
+    {
+      "id": 17,
+      "first": 20,
+      "count": 1,
+      "viewBox": "0 0 20 20",
+      "len": 1068,
+      "hint": "v-popover-wrap message-entry right-entry__item | right-entry__item-trigger | trigger-icon-wrap | text:class=\"renew-btn\">拿下福利",
+      "fp": "M15.435 17.7717H4.567C2.60143 17.7717 1 16.1723 1 14.2047V5."
+    },
+    {
+      "id": 18,
+      "first": 21,
+      "count": 1,
+      "viewBox": "0 0 20 21",
+      "len": 1078,
+      "hint": "right-entry__item-trigger | trigger-icon-wrap | red-num | text:ync.html\" title=\"headermessagesync\"> 99+",
+      "fp": "M10 10.743C7.69883 10.743 5.83333 8.87747 5.83333 6.5763C5.8"
+    },
+    {
+      "id": 34,
+      "first": 57,
+      "count": 1,
+      "viewBox": "0 0 24 24",
+      "len": 1095,
+      "hint": "side-text | channel-link__right | text:0.73827 10.4769z\" fill=\"#61666Dff\"> 社区中心",
+      "fp": "M18.16229 5.52378C19.36731 5.52378 20.3544 6.45621 20.44171 "
+    },
+    {
+      "id": 49,
+      "first": 147,
+      "count": 1,
+      "viewBox": "0 0 1024 1024",
+      "len": 1110,
+      "hint": "badge | text:on' &amp;&amp; window.imgOnError(this)\">",
+      "fp": "M588.8 359.68l-12.032-7.424 150.272-206.592a30.976 30.976 0 "
+    },
+    {
+      "id": 55,
+      "first": 199,
+      "count": 1,
+      "viewBox": "0 0 24 24",
+      "len": 1137,
+      "hint": "text | flexible-roll-btn hidden refresh | flexible-roll-btn-inner | text:4 2.021815 2.0232z\" fill=\"currentColor\">",
+      "fp": "M12 4.5C7.85786 4.5 4.5 7.85786 4.5 12C4.5 16.1421 7.85786 1"
+    },
+    {
+      "id": 32,
+      "first": 55,
+      "count": 1,
+      "viewBox": "0 0 24 24",
+      "len": 1154,
+      "hint": "side-text | channel-link__right | text:5L6.19111 7.81225z\" fill=\"#61666Dff\"> 活动",
+      "fp": "M19.33943 4.80001L16.25371 4.80001C14.42514 4.80001 13.39657"
+    },
+    {
+      "id": 21,
+      "first": 43,
+      "count": 1,
+      "viewBox": "0 0 20 21",
+      "len": 1155,
+      "hint": "v-popover-wrap favorite-entry right-entry__item | right-entry__item-trigger | trigger-icon-wrap | text:999973 1.167885z\" fill=\"currentColor\">",
+      "fp": "M11.0505 3.16759L12.7915 6.69573C12.954 7.02647 13.2702 7.25"
+    },
+    {
+      "id": 54,
+      "first": 198,
+      "count": 1,
+      "viewBox": "0 0 12 12",
+      "len": 1163,
+      "hint": "btn-tips | entry-toast | close | text:' &amp;&amp; window.imgOnError(this)\"> 0",
+      "fp": "M2.021815 2.0232C2.4123549999999985 1.632674999999999 3.0455"
+    },
+    {
+      "id": 1,
+      "first": 1,
+      "count": 1,
+      "viewBox": "0 0 16 16",
+      "len": 1250,
+      "hint": "loc-mc-box__text loc-mc-box__text--down | v-popover-wrap left-entry__item | left-entry__item-trigger | text:p class=\"loc-mc-box__pic\"> S16",
+      "fp": "M7.23181 8.65895V1.75796C7.23181 1.33935 7.57582 1 8.00018 1"
+    },
+    {
+      "id": 0,
+      "first": 0,
+      "count": 1,
+      "viewBox": "0 0 18 18",
+      "len": 1305,
+      "hint": "left-entry-main | v-popover-wrap left-entry__item home-page-entry | left-entry__item-trigger | text:li-header--large\">",
+      "fp": "M3.73252 2.67094C3.33229 2.28484 3.33229 1.64373 3.73252 1.2"
+    },
+    {
+      "id": 11,
+      "first": 14,
+      "count": 1,
+      "viewBox": "0 0 18 18",
+      "len": 1324,
+      "hint": "split-line | logout-item | text:8L7.15233 3.75978Z\" fill=\"currentColor\">",
+      "fp": "M17.6137 9.30115C17.6932 9.10837 17.6932 8.89282 17.6137 8.7"
+    },
+    {
+      "id": 53,
+      "first": 197,
+      "count": 1,
+      "viewBox": "0 0 24 24",
+      "len": 1430,
+      "hint": "watchlater-pip-button-inner-wrap | watchlater-pip-button-inner | btn-icon | text:lette-feed4\">",
+      "fp": "M12 3.99976C7.58172 3.99976 4 7.58148 4 11.9998C4 16.418 7.5"
+    },
+    {
+      "id": 19,
+      "first": 22,
+      "count": 20,
+      "viewBox": "0 0 24 24",
+      "len": 1512,
+      "hint": "watch-later | text:handleImgEvent('error', img) }, 200) }\">",
+      "fp": "M12 3.74976C7.44366 3.74976 3.75001 7.44341 3.75001 11.9998C"
+    },
+    {
+      "id": 9,
+      "first": 10,
+      "count": 1,
+      "viewBox": "0 0 18 18",
+      "len": 1527,
+      "hint": "v-popover-wrap | single-link-item | link-title | text:8L7.15233 3.75978Z\" fill=\"currentColor\">",
+      "fp": "M7.76269 1.80538C8.3585 0.936022 9.6415 0.936021 10.2373 1.8"
+    },
+    {
+      "id": 48,
+      "first": 118,
+      "count": 1,
+      "viewBox": "0 0 18 18",
+      "len": 1560,
+      "hint": "bili-video-card__stats | bili-video-card__stats--left | bili-video-card__stats--item | text:6 0 0 1 37.12-21.504\" fill=\"#FDDE80\"> 直播",
+      "fp": "M8.905125 4.21875C5.3084925 4.21875 2.91858 7.0112925 1.9141"
+    },
+    {
+      "id": 8,
+      "first": 8,
+      "count": 1,
+      "viewBox": "0 0 18 18",
+      "len": 1569,
+      "hint": "single-link-item | link-title | text:8L7.15233 3.75978Z\" fill=\"currentColor\">",
+      "fp": "M3.375 1.875H10.875C12.739 1.875 14.25 3.38604 14.25 5.25V7."
+    },
+    {
+      "id": 43,
+      "first": 66,
+      "count": 21,
+      "viewBox": "0 0 24 24",
+      "len": 1579,
+      "hint": "bili-video-card__stats | bili-video-card__stats--left | bili-video-card__stats--item | text:on' &amp;&amp; window.imgOnError(this)\">",
+      "fp": "M12 4.99805C9.48178 4.99805 7.283 5.12616 5.73089 5.25202C4."
+    },
+    {
+      "id": 23,
+      "first": 45,
+      "count": 1,
+      "viewBox": "0 0 20 21",
+      "len": 1670,
+      "hint": "header-tabs-panel__content | right-entry__item | right-entry__item-trigger | text:\"\" class=\"header-tabs-panel__item\">直播 专栏",
+      "fp": "M2.5 1.74286H17.5V20.0762H2.5V1.74286Z|M9.99999 1.74286C9.92"
+    },
+    {
+      "id": 29,
+      "first": 52,
+      "count": 1,
+      "viewBox": "0 0 24 24",
+      "len": 1683,
+      "hint": "channel-items__right | channel-link__right | text:8L7.15233 3.75978Z\" fill=\"currentColor\">",
+      "fp": "M0 0L24 0L24 24L0 24L0 0z|M18 4.8L6 4.8C5.33726 4.8 4.8 5.33"
+    },
+    {
+      "id": 25,
+      "first": 47,
+      "count": 1,
+      "viewBox": "0 0 26 26",
+      "len": 1803,
+      "hint": "upload-panel-popover | upload-item-row | upload-item | text:a5981f1=\"\" class=\"trigger-text\">投稿",
+      "fp": "M5.5 3.5H15.5C17.9853 3.5 20 5.51472 20 8V12.5C20 13.0523 20"
+    },
+    {
+      "id": 27,
+      "first": 49,
+      "count": 1,
+      "viewBox": "0 0 26 26",
+      "len": 1819,
+      "hint": "item-title | upload-item | text:.3617 12.134Z\" fill=\"var(--text2)\"> 视频投稿",
+      "fp": "M16 3.5H6C5.72386 3.5 5.5 3.72386 5.5 4V21C5.5 21.2761 5.723"
+    },
+    {
+      "id": 31,
+      "first": 54,
+      "count": 1,
+      "viewBox": "0 0 24 24",
+      "len": 1896,
+      "hint": "side-text | channel-link__right | text:12.63456 12.93084z\" fill=\"#ffffffff\"> 直播",
+      "fp": "M0.89371 0.57143L23.75086 0.57143L23.75086 23.42857L0.89371 "
+    },
+    {
+      "id": 56,
+      "first": 200,
+      "count": 1,
+      "viewBox": "0 0 24 24",
+      "len": 1956,
+      "hint": "customer-service-btn customer-service | float-button static-btn | float-button__icon | text:le-items\" style=\"display: none;\"> 新版反馈",
+      "fp": "M3.75 10.5C3.75 5.94365 7.44365 2.25 12 2.25C16.55635 2.25 2"
+    },
+    {
+      "id": 30,
+      "first": 53,
+      "count": 1,
+      "viewBox": "0 0 24 24",
+      "len": 2019,
+      "hint": "side-text | channel-link__right | text:82 14.4 11.2 14.4z\" fill=\"#ffffffff\"> 专栏",
+      "fp": "M0 0L24 0L24 24L0 24L0 0z|M3.99984 6.40068C3.99984 5.95885 4"
+    },
+    {
+      "id": 26,
+      "first": 48,
+      "count": 1,
+      "viewBox": "0 0 26 26",
+      "len": 2022,
+      "hint": "item-title | upload-item | text:9895 14.9758Z\" fill=\"var(--text2)\"> 专栏投稿",
+      "fp": "M21.556 10.1866C21.0037 10.1866 20.556 10.6343 20.556 11.186"
+    },
+    {
+      "id": 40,
+      "first": 63,
+      "count": 18,
+      "viewBox": "0 0 36 36",
+      "len": 2069,
+      "hint": "bili-video-card__no-interest | bili-video-card__no-interest--inner | bili-video-card__no-interest--left | text:--[-->",
+      "fp": "M3 18C3 9.715724999999999 9.715724999999999 3 18 3C26.284274"
+    },
+    {
+      "id": 4,
+      "first": 4,
+      "count": 1,
+      "viewBox": "0 0 1901 1024",
+      "len": 2144,
+      "hint": "v-popover-wrap level-item | level-item__bar | level-item__bar--tag level-item__bar--now | text:pan> 0",
+      "fp": "M154.916571 169.691429h1609.142858v707.364571h-1609.142858z|"
+    },
+    {
+      "id": 7,
+      "first": 7,
+      "count": 5,
+      "viewBox": "0 0 9 9",
+      "len": 2246,
+      "hint": "text:09144 5.7035Z\" fill=\"var(--text2)\"> 个人中心",
+      "fp": "M7.50588 3.40623C7.40825 3.3086 7.24996 3.3086 7.15232 3.406"
+    },
+    {
+      "id": 44,
+      "first": 67,
+      "count": 18,
+      "viewBox": "0 0 24 24",
+      "len": 2248,
+      "hint": "bili-video-card__stats--text | bili-video-card__stats--item | text:=\"currentColor\"> 31.5万",
+      "fp": "M12 4.99805C9.48178 4.99805 7.283 5.12616 5.73089 5.25202C4."
+    },
+    {
+      "id": 12,
+      "first": 15,
+      "count": 1,
+      "viewBox": "0 0 20 20",
+      "len": 2258,
+      "hint": "v-popover-wrap | right-entry__item-trigger | trigger-icon-wrap | text:fill=\"var(--text2)\"> 退出登录",
+      "fp": "M10 1C5.02955 1 1 5.02955 1 10C1 14.9705 5.02955 19 10 19C14"
+    },
+    {
+      "id": 33,
+      "first": 56,
+      "count": 1,
+      "viewBox": "0 0 24 24",
+      "len": 2262,
+      "hint": "side-text | channel-link__right | text:6L16.368 14.28571z\" fill=\"#61666Dff\"> 课堂",
+      "fp": "M19.11943 4.38093L8.53291 4.38093C8.11213 4.38093 7.77102 4."
+    },
+    {
+      "id": 46,
+      "first": 75,
+      "count": 17,
+      "viewBox": "0 0 24 24",
+      "len": 2282,
+      "hint": "bili-video-card__info--bottom | bili-video-card__info--owner | text:2\" data-idx=\"click\">新人签约作品VS未签约作品，差距有多大？",
+      "fp": "M6.15 8.24805C6.5642 8.24805 6.9 8.58383 6.9 8.99805L6.9 12."
+    },
+    {
+      "id": 5,
+      "first": 5,
+      "count": 1,
+      "viewBox": "0 0 1901 1024",
+      "len": 2332,
+      "hint": "level-progress | level-progress__inner | level-item__bar--tag level-item__bar--next | text:-37.010286z\" fill=\"#EE672A\" p-id=\"3187\">",
+      "fp": "M154.916571 184.758857h1609.142858v707.364572h-1609.142858z|"
+    },
+    {
+      "id": 42,
+      "first": 65,
+      "count": 18,
+      "viewBox": "0 0 20 20",
+      "len": 2762,
+      "hint": "bili-video-card__image--wrap | bili-watch-later--wrap | bili-watch-later bili-watch-later--pip | text:ata-mod=\"tianma.1-1-1\" data-idx=\"click\">",
+      "fp": "M10 3.1248000000000005C6.20305 3.1248000000000005 3.12500833"
+    },
+    {
+      "id": 52,
+      "first": 196,
+      "count": 1,
+      "viewBox": "0 0 16 16",
+      "len": 3140,
+      "hint": "layer tiny | feed-roll-btn | roll-btn | text:ver skeleton-item\" data-v-5add9af1=\"\">",
+      "fp": "M8.624933333333333 13.666666666666666C8.624933333333333 14.0"
+    },
+    {
+      "id": 13,
+      "first": 16,
+      "count": 1,
+      "viewBox": "0 0 32 32",
+      "len": 3334,
+      "hint": "big-vip-title | privilege-list | privilege-item | text:r', img) }, 200) }\"> 大会员特权",
+      "fp": "M26.24 6.23975C27.698 6.23975 28.8881 7.38695 28.9568 8.8279"
+    },
+    {
+      "id": 51,
+      "first": 194,
+      "count": 1,
+      "viewBox": "0 0 1024 1024",
+      "len": 3653,
+      "hint": "badge | text:on' &amp;&amp; window.imgOnError(this)\">",
+      "fp": "M25.114599 625.014634c127.000976-67.633951 201.653073-43.032"
+    },
+    {
+      "id": 28,
+      "first": 50,
+      "count": 1,
+      "viewBox": "0 0 22 22",
+      "len": 3658,
+      "hint": "icon-title | channel-icons__item | icon-bg icon-bg__popular | text:dleImgEvent('error', img) }, 200) }\"> 动态",
+      "fp": "M4.89054 17.272L4.89277 17.2742C6.49674 18.8782 8.66472 19.7"
+    },
+    {
+      "id": 36,
+      "first": 59,
+      "count": 1,
+      "viewBox": "0 0 22 22",
+      "len": 3852,
+      "hint": "left-fixed-channel-text | left-fixed-channel | text:89183333333332z\" fill=\"currentColor\"> 动态",
+      "fp": "M8.642126666666666 2.61996C8.853809166666666 1.830765 9.9021"
+    },
+    {
+      "id": 35,
+      "first": 58,
+      "count": 1,
+      "viewBox": "0 0 22 22",
+      "len": 4232,
+      "hint": "header-channel-fixed is-zh | header-channel-fixed-left | left-fixed-channel | text: frameborder=\"0\" style=\"display: none;\">",
+      "fp": "M11.880283333333333 10.084116666666667C11.845791666666667 10"
+    },
+    {
+      "id": 16,
+      "first": 19,
+      "count": 1,
+      "viewBox": "0 0 32 32",
+      "len": 5060,
+      "hint": "text-wrap | privilege-item | text:7 23.04H27.5197Z\" fill=\"#FB7199\"> 4K超清画质",
+      "fp": "M3.04004 16C3.04004 8.84243 8.84243 3.04004 16 3.04004C23.15"
+    },
+    {
+      "id": 15,
+      "first": 18,
+      "count": 1,
+      "viewBox": "0 0 32 32",
+      "len": 5511,
+      "hint": "text-wrap | privilege-item | text: 25.7583 12.5689Z\" fill=\"#FB7199\"> 会员免费看",
+      "fp": "M5.75969 4.95996H26.2397C27.3884 4.95996 28.3197 5.89121 28."
+    },
+    {
+      "id": 14,
+      "first": 17,
+      "count": 1,
+      "viewBox": "0 0 32 32",
+      "len": 11006,
+      "hint": "text-wrap | privilege-item | text: 23.3599H23.6643Z\" fill=\"#FB7199\"> 热剧抢先看",
+      "fp": "M3.83977 4.95996H23.0398C24.1885 4.95996 25.1198 5.89121 25."
+    }
+  ],
+  "icons": [
+    {
+      "cls": "bcc-icon-shanchugaojian",
+      "code": "e6aa",
+      "char": ""
+    },
+    {
+      "cls": "bcc-icon-danmuguanli",
+      "code": "e6ab",
+      "char": ""
+    },
+    {
+      "cls": "bcc-icon-pinglunguanli",
+      "code": "e6ac",
+      "char": ""
+    },
+    {
+      "cls": "bcc-icon-bianjijilu",
+      "code": "e6ad",
+      "char": ""
+    },
+    {
+      "cls": "bcc-icon-shoucang",
+      "code": "e6ae",
+      "char": ""
+    },
+    {
+      "cls": "bcc-icon-fenxiangtougao",
+      "code": "e6af",
+      "char": ""
+    },
+    {
+      "cls": "bcc-icon-bianjigaojian",
+      "code": "e6b0",
+      "char": ""
+    },
+    {
+      "cls": "bcc-icon-gexinghuapeizhi2x",
+      "code": "e6a9",
+      "char": ""
+    },
+    {
+      "cls": "bcc-icon-ic_General_announcement2x",
+      "code": "e6a8",
+      "char": ""
+    },
+    {
+      "cls": "bcc-icon-photo__upload2x",
+      "code": "e6a7",
+      "char": ""
+    },
+    {
+      "cls": "bcc-icon-music__upload2x",
+      "code": "e6a6",
+      "char": ""
+    },
+    {
+      "cls": "bcc-icon-interactive_upload2x",
+      "code": "e6a5",
+      "char": ""
+    },
+    {
+      "cls": "bcc-icon-video_upload2x",
+      "code": "e6a3",
+      "char": ""
+    },
+    {
+      "cls": "bcc-icon-column__upload2x",
+      "code": "e6a4",
+      "char": ""
+    },
+    {
+      "cls": "bcc-icon-icon_change_",
+      "code": "e6a2",
+      "char": ""
+    },
+    {
+      "cls": "bcc-icon-ic_audit",
+      "code": "e6a1",
+      "char": ""
+    },
+    {
+      "cls": "bcc-icon-icon_time",
+      "code": "e6a0",
+      "char": ""
+    },
+    {
+      "cls": "bcc-icon-ic_warning",
+      "code": "e69f",
+      "char": ""
+    },
+    {
+      "cls": "bcc-icon-ic_Playbackx",
+      "code": "e690",
+      "char": ""
+    },
+    {
+      "cls": "bcc-icon-ic_Barragex",
+      "code": "e691",
+      "char": ""
+    },
+    {
+      "cls": "bcc-icon-ic_Likesx",
+      "code": "e692",
+      "char": ""
+    },
+    {
+      "cls": "bcc-icon-ic_contributionx",
+      "code": "e693",
+      "char": ""
+    },
+    {
+      "cls": "bcc-icon-ic_Warningx",
+      "code": "e694",
+      "char": ""
+    },
+    {
+      "cls": "bcc-icon-icon_action_share_n_x",
+      "code": "e695",
+      "char": ""
+    },
+    {
+      "cls": "bcc-icon-icon_commentx",
+      "code": "e696",
+      "char": ""
+    },
+    {
+      "cls": "bcc-icon-icon_action_collection_n_x",
+      "code": "e697",
+      "char": ""
+    },
+    {
+      "cls": "bcc-icon-icon_list_more_x",
+      "code": "e698",
+      "char": ""
+    },
+    {
+      "cls": "bcc-icon-icon_list_player_x1",
+      "code": "e699",
+      "char": ""
+    },
+    {
+      "cls": "bcc-icon-icon_list_ranking_x1",
+      "code": "e69a",
+      "char": ""
+    },
+    {
+      "cls": "bcc-icon-Mediumx",
+      "code": "e69b",
+      "char": ""
+    },
+    {
+      "cls": "bcc-icon-Mediumx1",
+      "code": "e69c",
+      "char": ""
+    },
+    {
+      "cls": "bcc-icon-Mediumbeifenx",
+      "code": "e69d",
+      "char": ""
+    },
+    {
+      "cls": "bcc-icon-icon_action_reward_n_x",
+      "code": "e69e",
+      "char": ""
+    },
+    {
+      "cls": "bcc-icon-x1",
+      "code": "e687",
+      "char": ""
+    },
+    {
+      "cls": "bcc-icon-x2",
+      "code": "e688",
+      "char": ""
+    },
+    {
+      "cls": "bcc-icon-x3",
+      "code": "e689",
+      "char": ""
+    },
+    {
+      "cls": "bcc-icon-x4",
+      "code": "e68a",
+      "char": ""
+    },
+    {
+      "cls": "bcc-icon-x5",
+      "code": "e68b",
+      "char": ""
+    },
+    {
+      "cls": "bcc-icon-x6",
+      "code": "e68c",
+      "char": ""
+    },
+    {
+      "cls": "bcc-icon-x7",
+      "code": "e68d",
+      "char": ""
+    },
+    {
+      "cls": "bcc-icon-x8",
+      "code": "e68e",
+      "char": ""
+    },
+    {
+      "cls": "bcc-icon-x9",
+      "code": "e68f",
+      "char": ""
+    },
+    {
+      "cls": "bcc-icon-x",
+      "code": "e686",
+      "char": ""
+    },
+    {
+      "cls": "bcc-icon-icon_list_player_x",
+      "code": "e684",
+      "char": ""
+    },
+    {
+      "cls": "bcc-icon-icon_list_ranking_x",
+      "code": "e685",
+      "char": ""
+    },
+    {
+      "cls": "bcc-icon-ic_sortin_un",
+      "code": "e682",
+      "char": ""
+    },
+    {
+      "cls": "bcc-icon-ic_sortin_on",
+      "code": "e683",
+      "char": ""
+    },
+    {
+      "cls": "bcc-icon-combinedshape",
+      "code": "e681",
+      "char": ""
+    },
+    {
+      "cls": "bcc-icon-ic_mall__oldx",
+      "code": "e680",
+      "char": ""
+    },
+    {
+      "cls": "bcc-icon-ic_mall_",
+      "code": "e67f",
+      "char": ""
+    },
+    {
+      "cls": "bcc-icon-ic_course_",
+      "code": "e67e",
+      "char": ""
+    },
+    {
+      "cls": "bcc-icon-ic_Systemerror",
+      "code": "e67b",
+      "char": ""
+    },
+    {
+      "cls": "bcc-icon-ic_systemprompt",
+      "code": "e67c",
+      "char": ""
+    },
+    {
+      "cls": "bcc-icon-ic_successful",
+      "code": "e67d",
+      "char": ""
+    },
+    {
+      "cls": "bcc-icon-bubaohux",
+      "code": "e67a",
+      "char": ""
+    },
+    {
+      "cls": "bcc-icon-icon_tasklist_delete_",
+      "code": "e678",
+      "char": ""
+    },
+    {
+      "cls": "bcc-icon-baohux",
+      "code": "e679",
+      "char": ""
+    },
+    {
+      "cls": "bcc-icon-ic_exit",
+      "code": "e671",
+      "char": ""
+    },
+    {
+      "cls": "bcc-icon-ic_Ishop",
+      "code": "e672",
+      "char": ""
+    },
+    {
+      "cls": "bcc-icon-ic_management",
+      "code": "e673",
+      "char": ""
+    },
+    {
+      "cls": "bcc-icon-ic_Livecenter",
+      "code": "e674",
+      "char": ""
+    },
+    {
+      "cls": "bcc-icon-ic_moneypocket",
+      "code": "e675",
+      "char": ""
+    },
+    {
+      "cls": "bcc-icon-ic_ordercenter",
+      "code": "e676",
+      "char": ""
+    },
+    {
+      "cls": "bcc-icon-ic_Personalcenter",
+      "code": "e677",
+      "char": ""
+    },
+    {
+      "cls": "bcc-icon-ic_MenuButton-tick",
+      "code": "e670",
+      "char": ""
+    },
+    {
+      "cls": "bcc-icon-Defaultx",
+      "code": "e66f",
+      "char": ""
+    },
+    {
+      "cls": "bcc-icon-Selectedx",
+      "code": "e66e",
+      "char": ""
+    },
+    {
+      "cls": "bcc-icon-ic_search_",
+      "code": "e66d",
+      "char": ""
+    },
+    {
+      "cls": "bcc-icon-ic_contribute",
+      "code": "e66c",
+      "char": ""
+    },
+    {
+      "cls": "bcc-icon-ic_message_",
+      "code": "e66b",
+      "char": ""
+    },
+    {
+      "cls": "bcc-icon-ic_set_1",
+      "code": "e66a",
+      "char": ""
+    },
+    {
+      "cls": "bcc-icon-ic_experiment",
+      "code": "e669",
+      "char": ""
+    },
+    {
+      "cls": "bcc-icon-ic_college_",
+      "code": "e668",
+      "char": ""
+    },
+    {
+      "cls": "bcc-icon-ic_earnings_",
+      "code": "e667",
+      "char": ""
+    },
+    {
+      "cls": "bcc-icon-ic_data_",
+      "code": "e666",
+      "char": ""
+    },
+    {
+      "cls": "bcc-icon-ic_Content_",
+      "code": "e665",
+      "char": ""
+    },
+    {
+      "cls": "bcc-icon-ic_home_",
+      "code": "e650",
+      "char": ""
+    },
+    {
+      "cls": "bcc-icon-btn-more",
+      "code": "e643",
+      "char": ""
+    },
+    {
+      "cls": "bcc-icon-ic_delete_",
+      "code": "e645",
+      "char": ""
+    },
+    {
+      "cls": "bcc-icon-ic_growth",
+      "code": "e649",
+      "char": ""
+    },
+    {
+      "cls": "bcc-icon-ic_enter",
+      "code": "e64a",
+      "char": ""
+    },
+    {
+      "cls": "bcc-icon-ic_drop-down",
+      "code": "e64b",
+      "char": ""
+    },
+    {
+      "cls": "bcc-icon-ic_fans_",
+      "code": "e64d",
+      "char": ""
+    },
+    {
+      "cls": "bcc-icon-kefu",
+      "code": "e64e",
+      "char": ""
+    },
+    {
+      "cls": "bcc-icon-ic_info-circle",
+      "code": "e64f",
+      "char": ""
+    },
+    {
+      "cls": "bcc-icon-ic_download_",
+      "code": "e651",
+      "char": ""
+    },
+    {
+      "cls": "bcc-icon-ic_pull",
+      "code": "e654",
+      "char": ""
+    },
+    {
+      "cls": "bcc-icon-ic_Placed",
+      "code": "e655",
+      "char": ""
+    },
+    {
+      "cls": "bcc-icon-ic_help",
+      "code": "e656",
+      "char": ""
+    },
+    {
+      "cls": "bcc-icon-ic_laboratory_",
+      "code": "e657",
+      "char": ""
+    },
+    {
+      "cls": "bcc-icon-icon_action_recommend_p_",
+      "code": "e658",
+      "char": ""
+    },
+    {
+      "cls": "bcc-icon-icon_into_history_gray_",
+      "code": "e659",
+      "char": ""
+    },
+    {
+      "cls": "bcc-icon-icon_control_comment_",
+      "code": "e65a",
+      "char": ""
+    },
+    {
+      "cls": "bcc-icon-icon_tasklist_about_",
+      "code": "e65b",
+      "char": ""
+    },
+    {
+      "cls": "bcc-icon-icon_action_recommend_line_n_",
+      "code": "e65c",
+      "char": ""
+    },
+    {
+      "cls": "bcc-icon-icon_close_x",
+      "code": "e65d",
+      "char": ""
+    },
+    {
+      "cls": "bcc-icon-icon_dingdao_zhuzhan",
+      "code": "e65e",
+      "char": ""
+    },
+    {
+      "cls": "bcc-icon-icon_tasklist_feedback_",
+      "code": "e65f",
+      "char": ""
+    },
+    {
+      "cls": "bcc-icon-tag_",
+      "code": "e660",
+      "char": ""
+    },
+    {
+      "cls": "bcc-icon-logo",
+      "code": "e661",
+      "char": ""
+    },
+    {
+      "cls": "bcc-icon-ic_interactive_",
+      "code": "e662",
+      "char": ""
+    },
+    {
+      "cls": "bcc-icon-tag_1",
+      "code": "e663",
+      "char": ""
+    },
+    {
+      "cls": "bcc-icon-tag_2",
+      "code": "e664",
+      "char": ""
+    }
+  ]
+}

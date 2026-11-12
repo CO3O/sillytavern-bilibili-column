@@ -1,0 +1,248 @@
+/*
+ * 框架层：全局底色与字体、顶栏、左右侧栏、分区标题、滚动条
+ * 目标观感：白色顶栏 + 1px 细线 + 浅灰页面底，纯平面、零毛玻璃。
+ */
+
+/* ---------- 全局 ---------- */
+body {
+    font-family: var(--bl-font) !important;
+    background-color: var(--bl-bg-sky) !important;
+    background-image: none !important;
+    color: var(--bl-text-1);
+    letter-spacing: 0;
+    -webkit-font-smoothing: antialiased;
+}
+
+textarea,
+input,
+select,
+pre,
+code,
+.edit_textarea {
+    font-family: var(--bl-font);
+}
+
+::selection {
+    background: var(--bl-pink-soft);
+    color: var(--bl-pink);
+}
+
+/* ---------- 顶栏 ---------- */
+#top-bar,
+#top-settings-holder {
+    background-color: var(--bl-bg-1);
+    border-bottom: 1px solid var(--bl-line);
+    box-shadow: none;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    color: var(--bl-text-2);
+}
+
+/* 顶栏宽度交回酒馆的「页面宽度」设置，不再额外夹窄 */
+#top-bar,
+#top-settings-holder {
+    /* 面板顶部两角跟中间列一起收圆，底部两角由输入区收口 */
+    border-radius: 12px 12px 0 0;
+}
+
+#top-settings-holder {
+    position: relative;
+    align-items: center;
+    /* 左侧给 logo 让位，右侧给「投稿」按钮让位，否则会压住顶栏图标 */
+    padding: 0 118px 0 132px;
+}
+
+/* 左上角：矢量小电视（代码绘制）+ bilibili 字标（矢量），两者都改品牌粉 */
+#top-settings-holder::before {
+    content: "";
+    position: absolute;
+    left: 18px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 96px;
+    height: 32px;
+    background-image: var(--bl-tv), var(--bl-wordmark);
+    background-repeat: no-repeat, no-repeat;
+    background-position: left center, 38px center;
+    background-size: auto 28px, auto 24px;
+    pointer-events: none;
+}
+
+/*
+ * 右上角「投稿」：直接复用酒馆原生的「角色管理」按钮（#rightNavDrawerIcon），
+ * 只把它换个皮。这样整块都能点，且点了就是原来的打开角色管理面板，功能不丢。
+ */
+#rightNavHolder > .drawer-toggle {
+    position: absolute;
+    right: 18px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: block;
+}
+
+#rightNavDrawerIcon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: auto;
+    height: 32px;
+    padding: 0 18px;
+    background-color: var(--bl-pink);
+    color: #FFFFFF;
+    opacity: 1;
+    border-radius: var(--bl-radius);
+    box-shadow: 0 1px 4px rgba(251, 114, 153, 0.3);
+    cursor: pointer;
+    user-select: none;
+    transition: background-color 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+/* 去掉 FontAwesome 的角色卡片字形，换成「投稿」两个字 */
+#rightNavDrawerIcon::before {
+    content: none;
+}
+
+#rightNavDrawerIcon::after {
+    content: "投稿";
+    font-family: var(--bl-font);
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+
+#rightNavDrawerIcon:hover {
+    background-color: var(--bl-pink-hover);
+    color: #FFFFFF;
+    opacity: 1;
+}
+
+#rightNavDrawerIcon:active {
+    transform: scale(0.96);
+    box-shadow: 0 1px 2px rgba(251, 114, 153, 0.25);
+}
+
+/* 顶栏图标：默认 0.3 透明度在浅色底上几乎看不见，这里提到 0.8 */
+.drawer-icon.closedIcon,
+.drawer-icon.openIcon {
+    color: var(--bl-text-2);
+    opacity: 0.8;
+    border-radius: var(--bl-radius-sm);
+    transition: background-color var(--bl-ease), color var(--bl-ease), opacity var(--bl-ease);
+}
+
+.drawer-icon.closedIcon:hover {
+    color: var(--bl-text-1);
+    opacity: 1;
+    background-color: var(--bl-bg-3);
+}
+
+.drawer-icon.openIcon {
+    color: var(--bl-pink);
+    opacity: 1;
+    background-color: var(--bl-pink-soft);
+}
+
+/* 顶栏右侧的角色快捷切换条 */
+.hotswap,
+.hotswap.closedIcon {
+    color: var(--bl-text-2);
+    opacity: 0.8;
+}
+
+.hotswap:hover {
+    color: var(--bl-pink);
+    opacity: 1;
+}
+
+/* ---------- 左右侧栏 / 抽屉 ---------- */
+#left-nav-panel,
+#right-nav-panel {
+    background-color: var(--bl-bg-1);
+    border-color: var(--bl-line);
+    box-shadow: var(--bl-shadow-float);
+}
+
+#left-nav-panel .drawer-content,
+#right-nav-panel .drawer-content {
+    background-color: var(--bl-bg-1);
+}
+
+/* 聊天主列：宽度、位置全部交给酒馆的「页面宽度」参数，主题不再插手 */
+#sheld {
+    background-color: transparent;
+    border: none;
+}
+
+.drawer-content {
+    background-color: var(--bl-bg-1);
+    border-color: var(--bl-line);
+    color: var(--bl-text-1);
+    /* 宽度不覆盖：跟随酒馆「页面宽度」参数（--sheldWidth），与主体天然同宽 */
+}
+
+/* B 站侧栏分组标题：粉色竖条 + 深色加粗 */
+.standoutHeader {
+    position: relative;
+    color: var(--bl-text-1);
+    font-weight: 600;
+    border-bottom: none;
+    padding-left: 10px;
+    margin-bottom: 6px;
+}
+
+.standoutHeader::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 3px;
+    height: 0.95em;
+    transform: translateY(-50%);
+    background-color: var(--bl-pink);
+    border-radius: 2px;
+}
+
+/* 折叠抽屉标题 */
+.inline-drawer-header,
+.inline-drawer-toggle.inline-drawer-header {
+    color: var(--bl-text-1);
+    font-weight: 600;
+    border-radius: var(--bl-radius-sm);
+    transition: background-color var(--bl-ease);
+}
+
+.inline-drawer-header:hover,
+.inline-drawer-toggle.inline-drawer-header:hover {
+    background-color: var(--bl-pink-soft);
+    color: var(--bl-pink);
+}
+
+.inline-drawer-icon {
+    color: var(--bl-text-3);
+}
+
+/* ---------- 滚动条 ---------- */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #D8DBDF;
+    border-radius: var(--bl-radius-pill);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: #C4C8CD;
+}
+
+/* ---------- 聊天区容器 ---------- */
+#chat {
+    background-color: var(--bl-bg-2);
+    /* 左右不留白：卡片宽度 = 页面宽度参数，和顶栏、抽屉、输入区完全等宽 */
+    padding: 6px 0 8px;
+}

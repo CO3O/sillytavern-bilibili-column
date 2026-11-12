@@ -1,0 +1,138 @@
+/*
+ * 适配层：窄屏与移动端
+ * 收边距、降字号、保证触摸目标，正文不撑破布局。
+ */
+
+@media (max-width: 640px) {
+    :root {
+        --bl-title-size: 19px;
+        --bl-body-size: 15.5px;
+        --bl-body-line: 1.8;
+        --bl-comment-size: 14.5px;
+        --bl-avatar-size: 38px;
+        --bl-chat-gap: 10px;
+    }
+
+    #chat .mes[is_user="false"] {
+        padding: 16px 16px 8px;
+        border-radius: var(--bl-radius-sm);
+        gap: 10px;
+    }
+
+    #chat .mes[is_user="true"] {
+        padding: 12px 14px 8px;
+        border-radius: var(--bl-radius-sm);
+    }
+
+    #chat .mes[is_user="true"] .mesAvatarWrapper {
+        flex-basis: 32px;
+        width: 32px;
+    }
+
+    #chat .mes[is_user="true"] .mesAvatarWrapper .avatar {
+        width: 32px;
+        height: 32px;
+    }
+
+    /* 右侧镜像占位跟着头像一起缩小，保持左右对称 */
+    #chat .mes[is_user="true"]::after {
+        flex-basis: 46px;
+    }
+
+    #form_sheld {
+        padding: 8px 8px 10px;
+    }
+
+    #nonQRFormItems {
+        padding: 4px 6px;
+    }
+
+    /* 触摸目标放大到 40px 以上 */
+    #send_but:not(.displayNone),
+    #mes_stop:not(.displayNone),
+    #mes_continue:not(.displayNone) {
+        width: 32px;
+        height: 32px;
+    }
+
+    #options_button,
+    #leftSendForm .interactable {
+        width: 32px;
+        height: 32px;
+    }
+}
+
+@media (max-width: 500px) {
+    #chat .mes_text,
+    #chat .mes[is_user="false"] .mes_text {
+        --bl-body-line: 1.75;
+    }
+
+    /* 专栏底部三连行缩一号，避免换行 */
+    #chat .mes[is_user="false"] .mes_block::after {
+        font-size: 15px;
+        letter-spacing: 0;
+        margin-top: 10px;
+        padding-top: 8px;
+    }
+
+    #chat .mes .swipes-counter {
+        font-size: 10px;
+    }
+
+    /* 小屏用紧凑版标识，给顶栏图标让位 */
+    #top-settings-holder {
+        padding: 0 64px 0 84px;
+    }
+
+    #top-settings-holder::before {
+        left: 10px;
+        width: 74px;
+        height: 26px;
+        background-position: left center, 30px center;
+        background-size: auto 22px, auto 19px;
+    }
+
+    #rightNavHolder > .drawer-toggle {
+        right: 10px;
+    }
+
+    #rightNavDrawerIcon {
+        height: 26px;
+        padding: 0 10px;
+    }
+
+    #rightNavDrawerIcon::after {
+        font-size: 12px;
+        letter-spacing: 0;
+    }
+}
+
+/* 中等宽度：「投稿」按钮缩一号，右侧留白同步收窄 */
+@media (min-width: 501px) and (max-width: 900px) {
+    #top-settings-holder {
+        padding: 0 78px 0 116px;
+    }
+
+    #rightNavHolder > .drawer-toggle {
+        right: 12px;
+    }
+
+    #rightNavDrawerIcon {
+        height: 28px;
+        padding: 0 12px;
+    }
+
+    #rightNavDrawerIcon::after {
+        font-size: 13px;
+    }
+}
+
+/* 尊重系统「减少动态效果」 */
+@media (prefers-reduced-motion: reduce) {
+    #chat .mes[is_user="false"] .mesAvatarWrapper .avatar:hover,
+    #send_but:not(.displayNone):hover,
+    #mes_stop:not(.displayNone):hover {
+        transform: none;
+    }
+}

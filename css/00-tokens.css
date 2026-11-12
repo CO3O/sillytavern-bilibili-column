@@ -1,0 +1,95 @@
+/*
+ * ============================================================
+ *  Bilibili 专栏 —— SillyTavern 主题
+ *  视觉参考：bilibili 网页版（浅色）· 专栏文章 + 评论区
+ *  配色与图标取自本地保存的 bilibili 页面快照：
+ *    · 色板   → 官网 index.css 的 --Ga* / --Lb* / --Pi* 设计 token
+ *    · 图标   → bcc-iconfont 官方图标字体（css/05-iconfont.css）
+ *    · 标识   → 官网 logo 位图（assets/logo.svg）
+ *  本文件只放变量，不放具体样式；想调观感优先改这里的「可调参数」。
+ * ============================================================
+ */
+
+:root {
+    /* ---------- 品牌色 ---------- */
+    --bl-pink: #FB7299;              /* 品牌粉：强调、发送按钮、选中态 */
+    --bl-pink-hover: #FF8CAD;
+    --bl-pink-soft: #FFECF1;         /* 粉色浅底 */
+    --bl-blue: #00AEEC;              /* 品牌蓝：交互、聚焦描边 */
+    --bl-blue-deep: #00699D;         /* 深蓝：链接文字、昵称 */
+    --bl-blue-soft: #E5F6FD;         /* 蓝色浅底 */
+
+    /* ---------- 中性色（--Ga* 映射） ---------- */
+    --bl-text-1: #18191C;            /* 标题、正文 */
+    --bl-text-2: #61666D;            /* 次要文字 */
+    --bl-text-3: #9499A0;            /* 弱化文字、图标 */
+    --bl-line: #E3E5E7;              /* 分隔线、边框 */
+    --bl-line-soft: #F1F2F3;
+    --bl-bg-1: #FFFFFF;              /* 卡片、顶栏 */
+    --bl-bg-2: #F6F7F8;              /* 页面底 */
+    --bl-bg-3: #F1F2F3;              /* 输入框、评论块、悬停底 */
+
+    /* ---------- 排版 ---------- */
+    --bl-font: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Arial,
+        "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans SC", sans-serif;
+    --bl-font-mono: "SFMono-Regular", Consolas, "Liberation Mono", "Courier New", monospace;
+
+    /* ---------- 圆角 / 阴影 / 动效 ---------- */
+    --bl-radius: 8px;
+    --bl-radius-sm: 6px;
+    --bl-radius-pill: 999px;
+    --bl-shadow-card: 0 1px 2px rgba(0, 0, 0, 0.03);
+    --bl-shadow-float: 0 4px 16px rgba(0, 0, 0, 0.08);
+    --bl-ease: 140ms cubic-bezier(0.4, 0, 0.2, 1);
+
+    /* ---------- 可调参数 ---------- */
+    /* 宽度不设任何值：卡片、输入框、快捷回复都直接跟随酒馆的「页面宽度」参数 */
+    /* 专栏标题 / 正文字号与行高 */
+    --bl-title-size: 21px;
+    --bl-body-size: 16px;
+    --bl-body-line: 1.85;
+    /* 评论（用户消息）字号 */
+    --bl-comment-size: 14.5px;
+    /* 头像尺寸 */
+    --bl-avatar-size: 44px;
+    /* 聊天区上下的留白 */
+    --bl-chat-gap: 14px;
+    /* 主体左右留白：聊天卡片、输入区、抽屉面板统一用它，保证三者左右对齐 */
+    --bl-gutter: 14px;
+    /* 顶栏：高度与左上角官方 logo 的显示尺寸（原图 108x40，2x） */
+    --bl-topbar-height: 54px;
+    --bl-logo-width: 74px;
+    --bl-logo-height: 28px;
+
+    /* ---------- 原版素材 ---------- */
+    --bl-logo: {{svg:logo.svg}};
+    --bl-tv: {{svg:tv.svg}};
+    --bl-wordmark: {{svg:wordmark.svg}};
+    --bl-ic-search: {{svg:search.svg}};
+    --bl-ic-close: {{svg:close.svg}};
+    --bl-ic-more: {{svg:more.svg}};
+    --bl-ic-arrow-right: {{svg:arrow-right.svg}};
+    --bl-ic-arrow-left: {{svg:arrow-left.svg}};
+    --bl-ic-totop: {{svg:totop.svg}};
+    /* 角色 / 用户未设头像时的替代图（替换酒馆自带的问号剪影） */
+    --bl-avatar-default: {{svg:default-avatar.svg}};
+
+    /* ---------- 覆盖 SillyTavern 内建中性色，让内建组件自动变浅 ---------- */
+    --black30a: #F1F2F3;
+    --black50a: rgba(0, 0, 0, 0.06);
+    --black60a: rgba(0, 0, 0, 0.12);
+    --white30a: #FFFFFF;
+    --white50a: #FFFFFF;
+    --grey10: #F6F7F8;
+    --grey30: #F1F2F3;
+    --grey50: #E3E5E7;
+    --grey7070a: rgba(148, 153, 160, 0.45);
+    --avatar-base-border-radius-round: 50%;
+
+    /* 顶栏图标尺寸对齐官网导航（原版 24px 实心图标偏大） */
+    --topBarIconSize: 18px;
+    --topBarBlockPadding: 5px;
+    /* 顶栏整体高度：酒馆用它计算 #sheld 的 top，必须和实际顶栏高度一致，
+       否则内容会钻到顶栏下面去（之前重叠就是这里对不上） */
+    --topBarBlockSize: var(--bl-topbar-height);
+}

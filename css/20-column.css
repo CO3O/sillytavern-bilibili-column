@@ -1,0 +1,310 @@
+/*
+ * 内容层（上）：AI 消息 = bilibili 专栏文章
+ * 白卡 + 1px 细边框，大号标题、作者行、17px 正文，底部一排原版三连图标。
+ */
+
+/* ---------- 专栏卡片 ---------- */
+#chat .mes[is_user="false"] {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    width: 100%;
+    align-self: center;
+    margin: 0 auto var(--bl-chat-gap);
+    padding: 22px 26px 10px;
+    background-color: var(--bl-bg-1);
+    border: 1px solid var(--bl-line);
+    border-radius: var(--bl-radius);
+    box-shadow: var(--bl-shadow-card);
+}
+
+/* 左侧作者头像 */
+#chat .mes[is_user="false"] .mesAvatarWrapper {
+    flex: 0 0 var(--bl-avatar-size);
+    width: var(--bl-avatar-size);
+}
+
+#chat .mes[is_user="false"] .mesAvatarWrapper .avatar {
+    width: var(--bl-avatar-size);
+    height: var(--bl-avatar-size);
+    border-radius: 50%;
+    overflow: hidden;
+    border: none;
+    box-shadow: none;
+    cursor: pointer;
+    transition: transform var(--bl-ease);
+}
+
+#chat .mes[is_user="false"] .mesAvatarWrapper .avatar:hover {
+    transform: scale(1.04);
+}
+
+/*
+ * 酒馆默认把 .avatar img 写死成 50×50，还自带边框、投影和 50% 圆角；
+ * 主题把容器缩成 44px / 36px 后，那张 50px 的圆图被容器裁掉一角，
+ * 头像看起来就成了「不圆的圆」。这里让图片填满容器，裁切统一交给 .avatar。
+ */
+#chat .mes .mesAvatarWrapper .avatar img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: 50%;
+    box-shadow: none;
+    object-fit: cover;
+    object-position: center;
+}
+
+#chat .mes[is_user="false"] .mes_block {
+    flex: 1 1 auto;
+    min-width: 0;
+    /* 抵消酒馆 .mes_block 自带的 padding-left: 10px，让正文左右对称 */
+    padding-right: 10px;
+}
+
+/*
+ * 左侧有「头像 + 间距」一整列，右侧原本什么都没有，正文看着就偏右。
+ * 用一个透明伪元素在右侧补等宽占位，正文便在卡片内左右居中。
+ */
+#chat .mes[is_user="false"]::after {
+    content: "";
+    /* +14px：酒馆在头像前还塞了一个 0 宽的消息复选框，会多吃一份 flex gap */
+    flex: 0 0 calc(var(--bl-avatar-size) + 14px);
+    align-self: flex-start;
+}
+
+/* ---------- 标题行（角色名 = 专栏标题） ---------- */
+#chat .mes[is_user="false"] .ch_name {
+    align-items: flex-start;
+    gap: 8px;
+    margin-bottom: 6px;
+    border-bottom: none;
+}
+
+#chat .mes[is_user="false"] .name_text {
+    font-size: var(--bl-title-size);
+    font-weight: 600;
+    line-height: 1.35;
+    color: var(--bl-text-1);
+    letter-spacing: 0.2px;
+    word-break: break-word;
+}
+
+#chat .mes .timestamp {
+    margin-left: 8px;
+    font-size: 12.5px;
+    color: var(--bl-text-3);
+    font-variant-numeric: tabular-nums;
+}
+
+#chat .mes .mesIDDisplay,
+#chat .mes .tokenCounterDisplay,
+#chat .mes .mes_timer {
+    color: var(--bl-text-3);
+    font-size: 11px;
+}
+
+/* ---------- 正文排版 ---------- */
+#chat .mes[is_user="false"] .mes_text {
+    font-size: var(--bl-body-size);
+    line-height: var(--bl-body-line);
+    color: var(--bl-text-1);
+    padding: 2px 0 4px;
+    word-break: break-word;
+    overflow-wrap: anywhere;
+}
+
+#chat .mes_text p {
+    margin: 0 0 0.85em;
+}
+
+#chat .mes_text p:last-child {
+    margin-bottom: 0;
+}
+
+#chat .mes_text strong,
+#chat .mes_text b {
+    font-weight: 600;
+    color: var(--bl-text-1);
+}
+
+#chat .mes_text em,
+#chat .mes_text i {
+    color: var(--bl-text-2);
+}
+
+#chat .mes_text a {
+    color: var(--bl-blue-deep);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(0, 105, 157, 0.3);
+    transition: color var(--bl-ease), border-color var(--bl-ease);
+}
+
+#chat .mes_text a:hover {
+    color: var(--bl-blue);
+    border-bottom-color: var(--bl-blue);
+}
+
+/* 标题层级：像专栏里的小标题 */
+#chat .mes_text h1,
+#chat .mes_text h2,
+#chat .mes_text h3,
+#chat .mes_text h4 {
+    color: var(--bl-text-1);
+    font-weight: 600;
+    line-height: 1.5;
+    margin: 1.4em 0 0.6em;
+}
+
+#chat .mes_text h1 { font-size: 1.35em; }
+#chat .mes_text h2 { font-size: 1.2em; }
+#chat .mes_text h3 { font-size: 1.08em; }
+
+#chat .mes_text h1:first-child,
+#chat .mes_text h2:first-child,
+#chat .mes_text h3:first-child {
+    margin-top: 0;
+}
+
+/* 引用：粉色左竖线 + 浅灰底 */
+#chat .mes_text blockquote {
+    margin: 0 0 0.9em;
+    padding: 10px 14px;
+    background-color: var(--bl-bg-2);
+    border-left: 3px solid var(--bl-pink);
+    border-radius: 0 var(--bl-radius-sm) var(--bl-radius-sm) 0;
+    color: var(--bl-text-2);
+}
+
+#chat .mes_text blockquote p:last-child {
+    margin-bottom: 0;
+}
+
+/* 列表 */
+#chat .mes_text ul,
+#chat .mes_text ol {
+    margin: 0 0 0.9em;
+    padding-left: 1.4em;
+}
+
+#chat .mes_text li {
+    margin-bottom: 0.3em;
+}
+
+#chat .mes_text li::marker {
+    color: var(--bl-pink);
+}
+
+/* 行内代码 */
+#chat .mes_text code {
+    padding: 2px 5px;
+    border-radius: 4px;
+    background-color: var(--bl-bg-3);
+    color: #D14F79;
+    font-family: var(--bl-font-mono);
+    font-size: 0.9em;
+}
+
+/* 代码块：浅灰卡片，标题栏感 */
+#chat .mes_text pre {
+    margin: 0 0 0.9em;
+    padding: 12px 14px;
+    background-color: var(--bl-bg-2);
+    border: 1px solid var(--bl-line);
+    border-radius: var(--bl-radius-sm);
+    overflow-x: auto;
+}
+
+#chat .mes_text pre code {
+    padding: 0;
+    background: transparent;
+    color: var(--bl-text-1);
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+/* 分割线 */
+#chat .mes_text hr {
+    height: 1px;
+    border: none;
+    background-color: var(--bl-line);
+    margin: 1.2em 0;
+}
+
+/* 表格 */
+#chat .mes_text table {
+    width: 100%;
+    margin: 0 0 0.9em;
+    border-collapse: collapse;
+    font-size: 0.94em;
+}
+
+#chat .mes_text th,
+#chat .mes_text td {
+    padding: 8px 10px;
+    border: 1px solid var(--bl-line);
+    text-align: left;
+}
+
+#chat .mes_text th {
+    background-color: var(--bl-bg-2);
+    font-weight: 600;
+}
+
+/* ---------- 消息按钮（专栏右上角操作） ---------- */
+#chat .mes .mes_button {
+    color: var(--bl-text-3);
+    opacity: 1;
+    transition: color var(--bl-ease), background-color var(--bl-ease);
+    border-radius: var(--bl-radius-sm);
+}
+
+#chat .mes .mes_button:hover {
+    color: var(--bl-pink);
+    background-color: var(--bl-pink-soft);
+}
+
+#chat .mes .mes_buttons {
+    opacity: 0.45;
+    transition: opacity var(--bl-ease);
+}
+
+#chat .mes:hover .mes_buttons {
+    opacity: 1;
+}
+
+/* ---------- 底部三连操作行（官网 vanfont 图标：赞 / 币 / 藏 / 分享） ---------- */
+#chat .mes[is_user="false"] .mes_block::after {
+    content: "\e6e0\00a0\00a0\00a0\e6e4\00a0\00a0\00a0\e6e1\00a0\00a0\00a0\e70f";
+    display: block;
+    margin-top: 12px;
+    padding-top: 10px;
+    border-top: 1px solid var(--bl-line-soft);
+    font-family: "bl-vanfont" !important;
+    font-size: 17px;
+    line-height: 1;
+    color: var(--bl-text-3);
+    letter-spacing: 1px;
+    user-select: none;
+}
+
+/* ---------- 推理块（思考过程） ---------- */
+#chat .mes_reasoning_details {
+    margin: 0 0 10px;
+    padding: 8px 12px;
+    background-color: var(--bl-bg-2);
+    border: 1px solid var(--bl-line);
+    border-radius: var(--bl-radius-sm);
+}
+
+#chat .mes_reasoning_header,
+#chat .mes_reasoning_header_title {
+    color: var(--bl-text-2);
+    font-size: 13px;
+}
+
+#chat .mes_reasoning {
+    color: var(--bl-text-2);
+    font-size: 14px;
+    line-height: 1.8;
+}

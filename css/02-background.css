@@ -1,0 +1,88 @@
+/*
+ * 背景层：官方「泳池 / 沙滩」浅蓝插画。
+ *
+ * 这是一张竖版插画（520×886），直接 cover 会在宽屏上把人物裁没，
+ * 所以按「高度铺满 + 左对齐贴底」来放，宽屏右侧由同色底延展；
+ * 视口比插画更瘦（手机竖屏）时才切换成 cover 裁切。
+ * 另叠一层很慢的水光，做成轻微动态，尊重系统「减少动态效果」。
+ */
+
+:root {
+    --bl-bg-photo: {{svg:bg-ocean.svg}};
+    --bl-bg-sky: #e2f2f5;
+}
+
+/* 顶掉酒馆自带的背景（#bg_custom 是用户自己设的图，一并统一，避免两张图打架） */
+#bg1,
+#bg_custom {
+    position: fixed;
+    inset: 0;
+    width: 100% !important;
+    height: 100% !important;
+    background-color: var(--bl-bg-sky) !important;
+    background-image: var(--bl-bg-photo) !important;
+    background-repeat: no-repeat !important;
+    background-position: left bottom !important;
+    background-size: auto 100% !important;
+    background-attachment: scroll !important;
+    filter: none !important;
+}
+
+/* 视口比插画更瘦（手机竖屏）：改成裁切铺满，保住左边的人物和沙滩 */
+@media (max-aspect-ratio: 59/100) {
+    #bg1,
+    #bg_custom {
+        background-size: cover !important;
+        background-position: left bottom !important;
+    }
+}
+
+/* 超宽屏：插画略微放大，不然只剩细细一条 */
+@media (min-width: 1600px) and (min-aspect-ratio: 16/10) {
+    #bg1,
+    #bg_custom {
+        background-size: auto 125% !important;
+    }
+}
+
+/* 宽屏时让插画右缘淡出到同色底，避免一条生硬的分界线 */
+@media (min-width: 900px) {
+    #bg1::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image: linear-gradient(90deg, transparent 55%, var(--bl-bg-sky) 92%);
+        pointer-events: none;
+    }
+}
+
+/* 水光：很慢的漂移，给静态插画一点呼吸感 */
+#bg1::after {
+    content: "";
+    position: absolute;
+    inset: -15%;
+    background-image:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.55), rgba(255, 255, 255, 0) 42%),
+        radial-gradient(38% 32% at 26% 28%, rgba(255, 255, 255, 0.5), transparent 70%),
+        radial-gradient(30% 26% at 70% 62%, rgba(186, 232, 255, 0.3), transparent 72%);
+    animation: bl-bg-shine 28s ease-in-out infinite alternate;
+    pointer-events: none;
+}
+
+@keyframes bl-bg-shine {
+    from {
+        transform: translate3d(-2%, -1%, 0) scale(1.02);
+        opacity: 0.5;
+    }
+
+    to {
+        transform: translate3d(3%, 2%, 0) scale(1.06);
+        opacity: 0.85;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    #bg1::after {
+        animation: none;
+    }
+}

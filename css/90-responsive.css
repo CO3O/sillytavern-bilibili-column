@@ -25,14 +25,14 @@
 
     /* 头像统一挪到标题 / 昵称行左侧，正文占满整行 */
     #chat .mes[is_user="false"] .mesAvatarWrapper {
-        top: 10px;
+        top: 12px;
         left: 12px;
         width: var(--bl-avatar-size);
         height: var(--bl-avatar-size);
     }
 
     #chat .mes[is_user="false"] .ch_name {
-        min-height: calc(var(--bl-avatar-size) + 2px);
+        min-height: var(--bl-avatar-size);
         padding-left: calc(var(--bl-avatar-size) + 8px);
         margin-bottom: 8px;
     }

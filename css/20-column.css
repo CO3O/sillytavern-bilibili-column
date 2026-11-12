@@ -78,7 +78,7 @@
 #chat .mes[is_user="false"] .ch_name {
     align-items: center;
     gap: 8px;
-    min-height: calc(var(--bl-avatar-size) + 4px);
+    min-height: var(--bl-avatar-size);
     /* 给绝对定位的头像让位，标题与头像同一行 */
     padding-left: calc(var(--bl-avatar-size) + 12px);
     margin-bottom: 10px;

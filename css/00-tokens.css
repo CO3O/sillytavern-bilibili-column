@@ -71,8 +71,8 @@
     --bl-ic-arrow-right: {{svg:arrow-right.svg}};
     --bl-ic-arrow-left: {{svg:arrow-left.svg}};
     --bl-ic-totop: {{svg:totop.svg}};
-    /* 角色 / 用户未设头像时的替代图（替换酒馆自带的问号剪影） */
-    --bl-avatar-default: {{svg:default-avatar.svg}};
+    /* 角色 / 用户未设头像时的替代图（替换酒馆自带的问号剪影），托管在 jsDelivr */
+    --bl-avatar-default: url("https://cdn.jsdelivr.net/gh/CO3O/sillytavern-bilibili-column@v1/cdn/akkarin.jpg");
 
     /* ---------- 覆盖 SillyTavern 内建中性色，让内建组件自动变浅 ---------- */
     --black30a: #F1F2F3;

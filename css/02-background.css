@@ -8,7 +8,8 @@
  */
 
 :root {
-    --bl-bg-photo: {{svg:bg-ocean.svg}};
+    /* 原图托管在 jsDelivr，避免把 208KB 的 PNG 以 base64 塞进主题 JSON */
+    --bl-bg-photo: url("https://cdn.jsdelivr.net/gh/CO3O/sillytavern-bilibili-column@v1/cdn/bg-ocean.png");
     --bl-bg-sky: #e2f2f5;
 }
 

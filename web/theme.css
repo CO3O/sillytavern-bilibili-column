@@ -2495,19 +2495,31 @@ body #toast-container > div.toast.toast-info {
         --bl-body-size: 15.5px;
         --bl-body-line: 1.8;
         --bl-comment-size: 14.5px;
-        --bl-avatar-size: 38px;
+        --bl-avatar-size: 34px;
         --bl-chat-gap: 10px;
     }
 
     #chat .mes[is_user="false"] {
-        padding: 16px 16px 8px;
+        padding: 14px 12px 8px;
         border-radius: var(--bl-radius-sm);
-        gap: 10px;
+        gap: 8px;
     }
 
     #chat .mes[is_user="true"] {
-        padding: 12px 14px 8px;
+        padding: 12px 12px 8px;
         border-radius: var(--bl-radius-sm);
+        gap: 8px;
+    }
+
+    /* 移动端不再保留右侧透明占位，把宽度还给正文 */
+    #chat .mes[is_user="false"]::after,
+    #chat .mes[is_user="true"]::after {
+        display: none;
+    }
+
+    #chat .mes[is_user="false"] .mes_block,
+    #chat .mes[is_user="true"] .mes_block {
+        padding-right: 0;
     }
 
     #chat .mes[is_user="true"] .mesAvatarWrapper {

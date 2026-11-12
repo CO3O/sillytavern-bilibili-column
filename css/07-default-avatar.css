@@ -17,3 +17,16 @@ img[src*="user-default.png"] {
     background-size: cover;
     background-position: center;
 }
+
+/*
+ * persona / 角色列表：默认头像在创建时被复制成 {时间戳}-.png 副本，
+ * 渲染走 /thumbnail?type=persona|avatar&file=...-.png，无法按原图名匹配。
+ * 这里用「文件名以 -.png 结尾」做启发式覆盖；中文名 persona 的自定义头像
+ * 也可能命中，属于已知取舍。
+ */
+#user_avatar_block .avatar img[src*="type=persona"][src$="-.png"],
+#rm_print_characters_block .avatar img[src*="type=avatar"][src$="-.png"] {
+    content: var(--bl-avatar-default);
+    object-fit: cover;
+    object-position: center;
+}

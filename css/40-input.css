@@ -117,14 +117,17 @@
     transition: background-color var(--bl-ease), transform var(--bl-ease), filter var(--bl-ease);
 }
 
-/* 停止 / 继续 / 扮演：只改外观，不碰 display —— 显隐由酒馆自己控制，
-   停止按钮只在生成回复时顶替发送按钮出现 */
+/* 停止 / 继续 / 扮演：显隐仍由酒馆的 .displayNone（带 !important）控制。
+   这里用 flex 把图标居中，否则 12px 的 FA 字形会缩在粉圆左上角变成一个小点 */
 #mes_stop,
 #mes_continue,
 #mes_impersonate,
 #stscript_stop,
 #stscript_continue,
 #stscript_pause {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     box-sizing: border-box;
     width: 28px;
     height: 28px;
@@ -134,11 +137,24 @@
     border-radius: var(--bl-radius-pill);
     background-color: var(--bl-pink);
     color: #FFFFFF;
-    font-size: 12px;
+    font-size: 14px;
     line-height: 1;
     cursor: pointer;
     box-shadow: none;
     transition: background-color var(--bl-ease), transform var(--bl-ease), filter var(--bl-ease);
+}
+
+/* fa-circle-stop 在 28px 圆里看起来只是个白点，换成清晰的白色停止方块 */
+#mes_stop i {
+    display: none;
+}
+
+#mes_stop::after {
+    content: "";
+    width: 10px;
+    height: 10px;
+    border-radius: 2px;
+    background-color: #FFFFFF;
 }
 
 #send_but:not(.displayNone):hover,

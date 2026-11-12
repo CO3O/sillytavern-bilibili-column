@@ -263,6 +263,14 @@ code,
 /* ---------- 聊天区容器 ---------- */
 #chat {
     background-color: var(--bl-bg-2);
-    /* 左右不留白：卡片宽度 = 页面宽度参数，和顶栏、抽屉、输入区完全等宽 */
+    /* 左右留白由容器宽度动态决定：窄屏贴边，宽屏逐渐增加 */
     padding: 6px 0 8px;
+}
+
+@media (min-width: 641px) {
+    #chat {
+        /* 按容器宽度取 5%，16–40px 之间自动伸缩 */
+        padding-left: clamp(16px, 5%, 40px);
+        padding-right: clamp(16px, 5%, 40px);
+    }
 }

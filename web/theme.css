@@ -538,23 +538,28 @@ code,
 
 /* ---------- 专栏卡片 ---------- */
 #chat .mes[is_user="false"] {
-    display: flex;
-    align-items: flex-start;
-    gap: 14px;
+    position: relative;
+    display: block;
     width: 100%;
     align-self: center;
     margin: 0 auto var(--bl-chat-gap);
-    padding: 22px 26px 10px;
+    padding: 20px 24px 12px;
     background-color: var(--bl-bg-1);
     border: 1px solid var(--bl-line);
     border-radius: var(--bl-radius);
     box-shadow: var(--bl-shadow-card);
 }
 
-/* 左侧作者头像 */
+/* 作者头像：绝对定位到标题行左侧，正文不再被头像列挤窄 */
 #chat .mes[is_user="false"] .mesAvatarWrapper {
-    flex: 0 0 var(--bl-avatar-size);
+    position: absolute;
+    top: 20px;
+    left: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: var(--bl-avatar-size);
+    height: var(--bl-avatar-size);
 }
 
 #chat .mes[is_user="false"] .mesAvatarWrapper .avatar {
@@ -591,28 +596,25 @@ code,
 }
 
 #chat .mes[is_user="false"] .mes_block {
-    flex: 1 1 auto;
     min-width: 0;
-    /* 抵消酒馆 .mes_block 自带的 padding-left: 10px，让正文左右对称 */
-    padding-right: 10px;
+    /* 头像已移到标题行，正文占用整行宽度 */
+    padding-left: 0;
+    padding-right: 0;
 }
 
-/*
- * 左侧有「头像 + 间距」一整列，右侧原本什么都没有，正文看着就偏右。
- * 用一个透明伪元素在右侧补等宽占位，正文便在卡片内左右居中。
- */
+/* 头像已移到标题行，右侧不再需要对称占位 */
 #chat .mes[is_user="false"]::after {
-    content: "";
-    /* +14px：酒馆在头像前还塞了一个 0 宽的消息复选框，会多吃一份 flex gap */
-    flex: 0 0 calc(var(--bl-avatar-size) + 14px);
-    align-self: flex-start;
+    content: none;
 }
 
 /* ---------- 标题行（角色名 = 专栏标题） ---------- */
 #chat .mes[is_user="false"] .ch_name {
-    align-items: flex-start;
+    align-items: center;
     gap: 8px;
-    margin-bottom: 6px;
+    min-height: calc(var(--bl-avatar-size) + 4px);
+    /* 给绝对定位的头像让位，标题与头像同一行 */
+    padding-left: calc(var(--bl-avatar-size) + 12px);
+    margin-bottom: 10px;
     border-bottom: none;
 }
 
@@ -873,13 +875,12 @@ code,
  */
 
 #chat .mes[is_user="true"] {
-    display: flex;
-    align-items: flex-start;
-    gap: 12px;
+    position: relative;
+    display: block;
     width: 100%;
     align-self: center;
     margin: 0 auto 10px;
-    padding: 14px 18px 10px;
+    padding: 12px 16px 10px;
     background-color: var(--bl-bg-3);
     border: 1px solid transparent;
     border-radius: var(--bl-radius);
@@ -894,10 +895,16 @@ code,
     }
 }
 
-/* 评论者头像 */
+/* 评论者头像：绝对定位到昵称行左侧 */
 #chat .mes[is_user="true"] .mesAvatarWrapper {
-    flex: 0 0 36px;
+    position: absolute;
+    top: 12px;
+    left: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 36px;
+    height: 36px;
 }
 
 #chat .mes[is_user="true"] .mesAvatarWrapper .avatar {
@@ -910,24 +917,24 @@ code,
 }
 
 #chat .mes[is_user="true"] .mes_block {
-    flex: 1 1 auto;
     min-width: 0;
-    /* 抵消酒馆 .mes_block 自带的 padding-left: 10px，让正文左右对称 */
-    padding-right: 10px;
+    /* 头像已移到昵称行，正文占用整行宽度 */
+    padding-left: 0;
+    padding-right: 0;
 }
 
-/* 与 AI 消息同理：右侧补一列和头像等宽的透明占位 */
+/* 头像已移到昵称行，右侧不再需要对称占位 */
 #chat .mes[is_user="true"]::after {
-    content: "";
-    /* 36px 头像 + 14px：抵消左侧消息复选框多吃的一份 flex gap */
-    flex: 0 0 50px;
-    align-self: flex-start;
+    content: none;
 }
 
 /* 昵称 + 时间 */
 #chat .mes[is_user="true"] .ch_name {
     align-items: center;
-    margin-bottom: 2px;
+    min-height: 36px;
+    /* 给绝对定位的头像让位，昵称与头像同一行 */
+    padding-left: 48px;
+    margin-bottom: 4px;
 }
 
 #chat .mes[is_user="true"] .name_text {
@@ -2500,31 +2507,34 @@ body #toast-container > div.toast.toast-info {
     }
 
     #chat .mes[is_user="false"] {
-        padding: 14px 12px 8px;
+        padding: 12px 12px 8px;
         border-radius: var(--bl-radius-sm);
-        gap: 8px;
     }
 
     #chat .mes[is_user="true"] {
-        padding: 12px 12px 8px;
+        padding: 10px 12px 8px;
         border-radius: var(--bl-radius-sm);
-        gap: 8px;
     }
 
-    /* 移动端不再保留右侧透明占位，把宽度还给正文 */
-    #chat .mes[is_user="false"]::after,
-    #chat .mes[is_user="true"]::after {
-        display: none;
+    /* 头像统一挪到标题 / 昵称行左侧，正文占满整行 */
+    #chat .mes[is_user="false"] .mesAvatarWrapper {
+        top: 10px;
+        left: 12px;
+        width: var(--bl-avatar-size);
+        height: var(--bl-avatar-size);
     }
 
-    #chat .mes[is_user="false"] .mes_block,
-    #chat .mes[is_user="true"] .mes_block {
-        padding-right: 0;
+    #chat .mes[is_user="false"] .ch_name {
+        min-height: calc(var(--bl-avatar-size) + 2px);
+        padding-left: calc(var(--bl-avatar-size) + 8px);
+        margin-bottom: 8px;
     }
 
     #chat .mes[is_user="true"] .mesAvatarWrapper {
-        flex-basis: 32px;
+        top: 10px;
+        left: 12px;
         width: 32px;
+        height: 32px;
     }
 
     #chat .mes[is_user="true"] .mesAvatarWrapper .avatar {
@@ -2532,9 +2542,15 @@ body #toast-container > div.toast.toast-info {
         height: 32px;
     }
 
-    /* 右侧镜像占位跟着头像一起缩小，保持左右对称 */
-    #chat .mes[is_user="true"]::after {
-        flex-basis: 46px;
+    #chat .mes[is_user="true"] .ch_name {
+        min-height: 32px;
+        padding-left: 40px;
+    }
+
+    #chat .mes[is_user="false"] .mes_block,
+    #chat .mes[is_user="true"] .mes_block {
+        padding-left: 0;
+        padding-right: 0;
     }
 
     #form_sheld {

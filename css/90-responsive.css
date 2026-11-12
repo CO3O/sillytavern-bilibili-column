@@ -14,31 +14,34 @@
     }
 
     #chat .mes[is_user="false"] {
-        padding: 14px 12px 8px;
+        padding: 12px 12px 8px;
         border-radius: var(--bl-radius-sm);
-        gap: 8px;
     }
 
     #chat .mes[is_user="true"] {
-        padding: 12px 12px 8px;
+        padding: 10px 12px 8px;
         border-radius: var(--bl-radius-sm);
-        gap: 8px;
     }
 
-    /* 移动端不再保留右侧透明占位，把宽度还给正文 */
-    #chat .mes[is_user="false"]::after,
-    #chat .mes[is_user="true"]::after {
-        display: none;
+    /* 头像统一挪到标题 / 昵称行左侧，正文占满整行 */
+    #chat .mes[is_user="false"] .mesAvatarWrapper {
+        top: 10px;
+        left: 12px;
+        width: var(--bl-avatar-size);
+        height: var(--bl-avatar-size);
     }
 
-    #chat .mes[is_user="false"] .mes_block,
-    #chat .mes[is_user="true"] .mes_block {
-        padding-right: 0;
+    #chat .mes[is_user="false"] .ch_name {
+        min-height: calc(var(--bl-avatar-size) + 2px);
+        padding-left: calc(var(--bl-avatar-size) + 8px);
+        margin-bottom: 8px;
     }
 
     #chat .mes[is_user="true"] .mesAvatarWrapper {
-        flex-basis: 32px;
+        top: 10px;
+        left: 12px;
         width: 32px;
+        height: 32px;
     }
 
     #chat .mes[is_user="true"] .mesAvatarWrapper .avatar {
@@ -46,9 +49,15 @@
         height: 32px;
     }
 
-    /* 右侧镜像占位跟着头像一起缩小，保持左右对称 */
-    #chat .mes[is_user="true"]::after {
-        flex-basis: 46px;
+    #chat .mes[is_user="true"] .ch_name {
+        min-height: 32px;
+        padding-left: 40px;
+    }
+
+    #chat .mes[is_user="false"] .mes_block,
+    #chat .mes[is_user="true"] .mes_block {
+        padding-left: 0;
+        padding-right: 0;
     }
 
     #form_sheld {

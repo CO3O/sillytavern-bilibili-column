@@ -142,6 +142,11 @@
     color: var(--bl-text-2);
 }
 
+/* 对话引号内文字：Markdown 会把 “…” 渲染成 <q>，这里统一上色 */
+#chat .mes_text q {
+    color: var(--bl-dialogue);
+}
+
 #chat .mes_text a {
     color: var(--bl-blue-deep);
     text-decoration: none;

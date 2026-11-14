@@ -1,0 +1,9 @@
+/*
+ * Bilibili 专栏 · 蓝 Web —— 纯网络版
+ * 样式托管在 jsDelivr，本主题 JSON 只负责引入；断网时不会有自定义样式。
+ * 离线版（Bilibili 专栏 蓝 V2.3）把样式全部内嵌，两者互不影响。
+ *
+ * 缓存策略：jsDelivr 按「ref + 路径」不可变缓存，?v= 只骗浏览器、不会让 CDN 换内容。
+ * 更新样式请打新 tag 并同步修改下面的 @ref，或换文件路径；切勿移动已有 tag。
+ */
+@import url("https://cdn.jsdelivr.net/gh/CO3O/sillytavern-bilibili-column@v2.3BLUE/bluev2/web/theme.css");

@@ -1,0 +1,200 @@
+/*
+ * 内容层（下）：用户消息 = bilibili 评论区的一条评论
+ * 浅灰块 + 圆形头像 + 蓝色昵称 + 灰色时间，正文 15px，底部点赞/回复图标行。
+ */
+
+#chat .mes[is_user="true"] {
+    /* 卡片保持全宽，文字左右留白按容器宽度动态伸缩 */
+    --bl-card-pad-x: clamp(20px, 5%, 56px);
+    position: relative;
+    display: block;
+    width: 100%;
+    align-self: center;
+    margin: 0 auto 10px;
+    padding: 12px var(--bl-card-pad-x) 10px;
+    background-color: var(--bl-bg-3);
+    border: 1px solid transparent;
+    border-radius: var(--bl-radius);
+    box-shadow: none;
+    transition: background-color var(--bl-ease), border-color var(--bl-ease);
+}
+
+@media (hover: hover) and (pointer: fine) {
+    #chat .mes[is_user="true"]:hover {
+        background-color: #EDEFF1;
+        border-color: var(--bl-line);
+    }
+}
+
+/* 评论者头像：绝对定位到昵称行左侧 */
+#chat .mes[is_user="true"] .mesAvatarWrapper {
+    position: absolute;
+    top: 12px;
+    left: var(--bl-card-pad-x);
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    /* 抵消酒馆给头像容器预留的底部 padding */
+    padding: 0;
+    box-sizing: content-box;
+}
+
+#chat .mes[is_user="true"] .mesAvatarWrapper .avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    overflow: clip;
+    border: none;
+    box-shadow: none;
+}
+
+#chat .mes[is_user="true"] .mes_block {
+    min-width: 0;
+    /* 头像已移到昵称行，正文占用整行宽度 */
+    padding-left: 0;
+    padding-right: 0;
+}
+
+/* 头像已移到昵称行，右侧不再需要对称占位 */
+#chat .mes[is_user="true"]::after {
+    content: none;
+}
+
+/* 昵称 + 时间 */
+#chat .mes[is_user="true"] .ch_name {
+    align-items: center;
+    min-height: 36px;
+    /* 给绝对定位的头像让位，昵称与头像同一行 */
+    padding-left: 48px;
+    margin-bottom: 4px;
+}
+
+#chat .mes[is_user="true"] .name_text {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--bl-blue-deep);
+    line-height: 1.5;
+}
+
+#chat .mes[is_user="true"] .timestamp {
+    font-size: 12px;
+    color: var(--bl-text-3);
+    margin-left: 8px;
+}
+
+/* 评论正文 */
+#chat .mes[is_user="true"] .mes_text {
+    font-size: var(--bl-comment-size);
+    line-height: 1.75;
+    color: var(--bl-text-1);
+    padding: 2px 0 0;
+    word-break: break-word;
+    overflow-wrap: anywhere;
+}
+
+#chat .mes[is_user="true"] .mes_text p {
+    margin: 0 0 0.6em;
+}
+
+#chat .mes[is_user="true"] .mes_text p:last-child {
+    margin-bottom: 0;
+}
+
+#chat .mes[is_user="true"] .mes_text blockquote {
+    margin: 0 0 0.6em;
+    padding: 6px 10px;
+    background-color: rgba(255, 255, 255, 0.75);
+    border-left: 3px solid var(--bl-blue);
+    border-radius: 0 4px 4px 0;
+    color: var(--bl-text-2);
+}
+
+#chat .mes[is_user="true"] .mes_text code {
+    padding: 1px 4px;
+    border-radius: 4px;
+    background-color: rgba(0, 0, 0, 0.05);
+    color: #D14F79;
+    font-family: var(--bl-font-mono);
+    font-size: 0.9em;
+}
+
+#chat .mes[is_user="true"] .mes_text pre {
+    margin: 0 0 0.6em;
+    padding: 10px 12px;
+    background-color: var(--bl-bg-1);
+    border: 1px solid var(--bl-line);
+    border-radius: var(--bl-radius-sm);
+    overflow-x: auto;
+}
+
+#chat .mes[is_user="true"] .mes_text pre code {
+    background: transparent;
+    padding: 0;
+    color: var(--bl-text-1);
+}
+
+#chat .mes[is_user="true"] .mes_text a {
+    color: var(--bl-blue-deep);
+    text-decoration: none;
+}
+
+@media (hover: hover) and (pointer: fine) {
+    #chat .mes[is_user="true"] .mes_text a:hover {
+        color: var(--bl-blue);
+    }
+}
+
+/* 评论底部：点赞 / 回复（原版图标，纯装饰） */
+#chat .mes[is_user="true"] .mes_block::after {
+    content: "\e692\00a0\00a0\00a0\e696";
+    display: block;
+    margin-top: 8px;
+    font-family: "bcc-iconfont" !important;
+    font-size: 14px;
+    line-height: 1;
+    color: var(--bl-text-3);
+    letter-spacing: 1px;
+    user-select: none;
+}
+
+/* 右侧滑动切换块 */
+#chat .mes .swipeRightBlock {
+    color: var(--bl-text-3);
+}
+
+#chat .mes .swipe_left,
+#chat .mes .swipe_right {
+    color: var(--bl-text-3);
+    transition: color var(--bl-ease);
+}
+
+@media (hover: hover) and (pointer: fine) {
+    #chat .mes .swipe_left:hover,
+    #chat .mes .swipe_right:hover {
+        color: var(--bl-pink);
+    }
+}
+
+#chat .mes .swipe_left:active,
+#chat .mes .swipe_right:active {
+    opacity: 0.75;
+}
+
+#chat .mes .swipe_left:focus-visible,
+#chat .mes .swipe_right:focus-visible {
+    outline: 2px solid var(--bl-blue);
+    outline-offset: -2px;
+}
+
+#chat .mes .swipes-counter {
+    color: var(--bl-text-3);
+    font-size: 11px;
+}
+
+/* 楼层里插入的图片 / 附件圆角化 */
+#chat .mes_media_wrapper img,
+#chat .mes_file_wrapper img {
+    border-radius: var(--bl-radius-sm);
+}

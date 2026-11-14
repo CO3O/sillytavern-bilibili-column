@@ -1,0 +1,11 @@
+/*
+ * bilibili 官网图标字体 vanfont（三连图标专用）
+ * 来源：github.com/dashuchufang/bili_icon_pack 的 vanfont.woff（直接提取自 bilibili 网页）
+ * 码点：赞 \e6e0 / 收藏 \e6e1 / 投币 \e6e4 / 分享 \e70f
+ */
+
+@font-face {
+    font-family: "bl-vanfont";
+    src: url("https://cdn.jsdelivr.net/gh/CO3O/sillytavern-bilibili-column@v1/cdn/vanfont.woff") format("woff");
+    font-display: block;
+}

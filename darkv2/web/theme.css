@@ -130,7 +130,7 @@
 :root {
     /* 大图按项目约定托管在 jsDelivr，不把 106KB 的 PNG 以 base64 塞进主题 JSON。
        全新 tag + 全新路径，jsDelivr 从未缓存过该路径，不会拿到旧内容。 */
-    --bl-bg-photo: url("https://cdn.jsdelivr.net/gh/CO3O/sillytavern-bilibili-column@v2.4.2DARK/darkv2/cdn/bg_dark.png");
+    --bl-bg-photo: url("https://cdn.jsdelivr.net/gh/CO3O/sillytavern-bilibili-column@v2.4.3DARK/darkv2/cdn/bg_dark.png");
     --bl-bg-base: #101011;   /* --Ga0 官方暗色页面底，图片未加载时的兜底 */
 }
 
@@ -2646,7 +2646,7 @@ body #toast-container > div.toast.toast-info {
 
 
 /*
- * 暗底兜底：切主题 / 变量未就绪时，酒馆内建会把输入区露成白条与白框线。
+ * 暗底兜底：切主题 / 变量未就绪时，酒馆内建会把输入区露成白条与灰白框线。
  *
  * 内建规则（见 style.css）：
  *   #send_form, #show_more_messages { background-color: var(--SmartThemeBlurTintColor); }
@@ -2656,18 +2656,18 @@ body #toast-container > div.toast.toast-info {
  * --SmartThemeBlurTintColor 由主题 JSON 的 blur_tint_color 写入，但主题刚切换、
  * 热重载或从别的主题继承时可能仍是上一个主题的白色，且 no-blur 那条带 !important。
  *
- * 这里镜像内建的选择器形状并同样加 !important，把这几块表面钉在官方色板上，
- * 不依赖运行时变量，彻底消除白底与白框线。
+ * 框线同理：#send_form 四边用 --SmartThemeBorderColor，浅色主题下是 #E3E5E7 的
+ * 灰白线，在暗底上像一圈亮边。这里镜像内建的选择器形状并同样加 !important，
+ * 把表面与框线都钉在官方色板上，不依赖运行时变量。
  *
- * 另外内建给 #send_form 四边都描了 1px 的 --SmartThemeBorderColor（浅色主题下
- * 是 #E3E5E7 的灰白线），#top-bar 自己又带一条底边，接缝处叠成双线；
- * 两块圆角半径也不一致（12px / 10px），拼起来会错开。
- * 按 good-css 的「相邻元素只由一方的边缘决定间距」与同心圆角思路，
- * 把顶栏与输入区当成同一张卡片：共用一个半径，接缝只留顶栏那条底边。
+ * 圆角按 good-css 的同心圆角（R_outer = R_inner + gap）：
+ * 外层 #send_form 12px、内层 #nonQRFormItems 8px，间距 4px，四边完整闭合。
+ * #top-bar 位于页面顶部，与输入区并不相邻，不参与拼接，只统一底色与框线。
  */
 :root {
-    --bl-composer-bg: #242628;      /* --Ga11 官方 bg1_float，比纯黑偏灰 */
-    --bl-composer-radius: 12px;     /* 顶栏与输入区共用，接缝不再错位 */
+    --bl-composer-bg: #242628;       /* --Ga11 官方 bg1_float，比纯黑偏灰 */
+    --bl-composer-radius: 12px;      /* 输入区外壳圆角 */
+    --bl-composer-inner-radius: 8px; /* 内层输入框圆角，12 - 4 = 8 */
 }
 
 body #top-bar,
@@ -2684,14 +2684,23 @@ body #show_more_messages {
     outline-color: var(--bl-line) !important;
 }
 
-/* 一张卡片的上半：只保留与输入区相接的那条底边 */
-body #top-bar {
-    border-radius: var(--bl-composer-radius) var(--bl-composer-radius) 0 0 !important;
-    border-block-end: 1px solid var(--bl-line) !important;
+/* 输入区外壳：四边完整闭合，不再缺顶边；边框用官方 --Ga2 偏灰暗色 */
+body #send_form {
+    border: 1px solid var(--bl-line) !important;
+    border-radius: var(--bl-composer-radius) !important;
 }
 
-/* 一张卡片的下半：去掉顶边避免双线，其余三边用同一个偏灰暗色 */
-body #send_form {
-    border-radius: 0 0 var(--bl-composer-radius) var(--bl-composer-radius) !important;
+/* 内层输入框：同心圆角，与外壳之间靠 padding 形成均匀的 4px 间隙 */
+body #form_sheld {
     border-block-start: 0 !important;
+}
+
+body #nonQRFormItems {
+    border: 1px solid var(--bl-line) !important;
+    border-radius: var(--bl-composer-inner-radius) !important;
+    background-color: var(--bl-bg-1) !important;
+}
+
+body #nonQRFormItems:focus-within {
+    border-color: var(--bl-blue) !important;
 }

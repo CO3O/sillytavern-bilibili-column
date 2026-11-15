@@ -130,7 +130,7 @@
 :root {
     /* 大图按项目约定托管在 jsDelivr，不把 106KB 的 PNG 以 base64 塞进主题 JSON。
        全新 tag + 全新路径，jsDelivr 从未缓存过该路径，不会拿到旧内容。 */
-    --bl-bg-photo: url("https://cdn.jsdelivr.net/gh/CO3O/sillytavern-bilibili-column@v2.4DARK/darkv2/cdn/bg_dark.png");
+    --bl-bg-photo: url("https://cdn.jsdelivr.net/gh/CO3O/sillytavern-bilibili-column@v2.4.1DARK/darkv2/cdn/bg_dark.png");
     --bl-bg-base: #101011;   /* --Ga0 官方暗色页面底，图片未加载时的兜底 */
 }
 
@@ -2642,4 +2642,28 @@ body #toast-container > div.toast.toast-info {
     #mes_stop:not(.displayNone):hover {
         transform: none;
     }
+}
+
+
+/*
+ * 暗底兜底：切主题 / 变量未就绪时，酒馆内建会把输入区露成白条。
+ *
+ * 内建规则（见 style.css）：
+ *   #send_form, #show_more_messages { background-color: var(--SmartThemeBlurTintColor); }
+ *   body.no-blur #top-bar, body.no-blur #send_form {
+ *       background-color: var(--SmartThemeBlurTintColor) !important;
+ *   }
+ * --SmartThemeBlurTintColor 由主题 JSON 的 blur_tint_color 写入，但主题刚切换、
+ * 热重载或从别的主题继承时可能仍是上一个主题的白色，且 no-blur 那条带 !important。
+ *
+ * 这里镜像内建的选择器形状并同样加 !important，把这几块表面钉在官方 --bg1
+ * （dark.css 的 --Wh0 / #17181A）上，不依赖运行时变量，彻底消除白底。
+ */
+body #top-bar,
+body #send_form,
+body #show_more_messages,
+body.no-blur #top-bar,
+body.no-blur #send_form,
+body.no-blur #show_more_messages {
+    background-color: var(--bl-bg-1) !important;
 }

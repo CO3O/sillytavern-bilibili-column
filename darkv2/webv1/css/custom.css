@@ -6,4 +6,4 @@
  * 缓存策略：jsDelivr 按「ref + 路径」不可变缓存，?v= 只骗浏览器、不会让 CDN 换内容。
  * 更新样式请打新 tag 并同步修改下面的 @ref，或换文件路径；切勿移动已有 tag。
  */
-@import url("https://cdn.jsdelivr.net/gh/CO3O/sillytavern-bilibili-column@v2.4.1DARK/darkv2/web/theme.css");
+@import url("https://cdn.jsdelivr.net/gh/CO3O/sillytavern-bilibili-column@v2.4.2DARK/darkv2/web/theme.css");

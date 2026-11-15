@@ -130,7 +130,7 @@
 :root {
     /* 大图按项目约定托管在 jsDelivr，不把 106KB 的 PNG 以 base64 塞进主题 JSON。
        全新 tag + 全新路径，jsDelivr 从未缓存过该路径，不会拿到旧内容。 */
-    --bl-bg-photo: url("https://cdn.jsdelivr.net/gh/CO3O/sillytavern-bilibili-column@v2.4.3DARK/darkv2/cdn/bg_dark.png");
+    --bl-bg-photo: url("https://cdn.jsdelivr.net/gh/CO3O/sillytavern-bilibili-column@v2.4.4DARK/darkv2/cdn/bg_dark.png");
     --bl-bg-base: #101011;   /* --Ga0 官方暗色页面底，图片未加载时的兜底 */
 }
 
@@ -2294,9 +2294,9 @@ body #toast-container > div.toast.toast-info {
 #preloader,
 .popup.transparent_dialogue_popup:has(#loader) {
     background-color: var(--bl-bg-2);
-    background-image:
-        radial-gradient(circle at 50% 34%, rgba(0, 135, 189, 0.16), transparent 58%),
-        radial-gradient(circle at 50% 66%, rgba(0, 135, 189, 0.12), transparent 52%);
+    /* 暗色版不再叠青蓝雾：用官方中性灰阶做一层极淡的中心提亮，
+       与加载完成后的主界面底色连续，不会闪出突兀的蓝绿色。 */
+    background-image: radial-gradient(circle at 50% 44%, var(--bl-bg-1), var(--bl-bg-2) 62%);
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
 }
@@ -2314,7 +2314,7 @@ body #toast-container > div.toast.toast-info {
     background-repeat: no-repeat, no-repeat;
     background-position: left center, calc(var(--bl-brand-tv) + var(--bl-brand-gap)) center;
     background-size: auto var(--bl-brand-tv), auto var(--bl-brand-mark-h);
-    filter: drop-shadow(0 4px 10px rgba(0, 135, 189, 0.18));
+    filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.45));
 }
 
 /* 加载 Popup 本身：铺满视口、去掉弹窗边框与内边距 */
@@ -2366,9 +2366,9 @@ body #toast-container > div.toast.toast-info {
     border: 1px solid var(--bl-line);
     border-radius: 16px;
     background:
-        linear-gradient(90deg, var(--bl-pink), var(--bl-blue)) top left / 100% 3px no-repeat,
+        linear-gradient(90deg, var(--bl-brand), var(--bl-brand-hover)) top left / 100% 3px no-repeat,
         var(--bl-bg-1);
-    box-shadow: 0 18px 48px rgba(44, 156, 200, 0.14), 0 4px 12px rgba(0, 0, 0, 0.45);
+    box-shadow: 0 18px 48px rgba(0, 0, 0, 0.5), 0 4px 12px rgba(0, 0, 0, 0.4);
     color: var(--bl-text-1);
     font-family: var(--bl-font);
     overflow: clip;
@@ -2396,7 +2396,7 @@ body #toast-container > div.toast.toast-info {
     background-repeat: no-repeat, no-repeat;
     background-position: left center, calc(var(--bl-brand-tv) + var(--bl-brand-gap)) center;
     background-size: auto var(--bl-brand-tv), auto var(--bl-brand-mark-h);
-    filter: drop-shadow(0 4px 10px rgba(0, 135, 189, 0.18));
+    filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.45));
 }
 
 #loader #load-spinner::before,
@@ -2423,7 +2423,8 @@ body #toast-container > div.toast.toast-info {
     opacity: 1;
 }
 
-/* 粉蓝流动进度条 */
+/* 流动进度条：暗色版用官方 --Lb5 → --Lb6 → --Lb5 同色阶，
+   不再像 --bl-pink/--bl-blue 那样拼出浑浊的深浅蓝 */
 #loader::after {
     content: "";
     order: 4;
@@ -2431,7 +2432,7 @@ body #toast-container > div.toast.toast-info {
     height: 4px;
     margin-top: 24px;
     border-radius: var(--bl-radius-pill);
-    background: linear-gradient(90deg, var(--bl-pink), var(--bl-blue), var(--bl-pink));
+    background: linear-gradient(90deg, var(--bl-brand), var(--bl-brand-hover), var(--bl-brand));
     background-size: 200% 100%;
     animation: bl-loader-bar 1.6s linear infinite;
 }

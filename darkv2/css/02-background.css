@@ -14,7 +14,7 @@
 :root {
     /* 大图按项目约定托管在 jsDelivr，不把 106KB 的 PNG 以 base64 塞进主题 JSON。
        全新 tag + 全新路径，jsDelivr 从未缓存过该路径，不会拿到旧内容。 */
-    --bl-bg-photo: url("https://cdn.jsdelivr.net/gh/CO3O/sillytavern-bilibili-column@v2.4.3DARK/darkv2/cdn/bg_dark.png");
+    --bl-bg-photo: url("https://cdn.jsdelivr.net/gh/CO3O/sillytavern-bilibili-column@v2.4.4DARK/darkv2/cdn/bg_dark.png");
     --bl-bg-base: #101011;   /* --Ga0 官方暗色页面底，图片未加载时的兜底 */
 }
 

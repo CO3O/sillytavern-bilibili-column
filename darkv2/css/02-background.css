@@ -1,0 +1,46 @@
+/*
+ * 背景层：B 站官网暗色模式横版背景（2560×1440）。
+ *
+ * 来源：「你给 - 哔哩哔哩.mhtml」内嵌资源
+ *   https://i0.hdslb.com/bfs/static/jinkela/long/images/dynamic/bg_dark.png
+ * 官网以 <html class="bili_dark"> + #app.dark_mode .bg 引用该图，
+ * 这里按 50% center / cover 铺满视口（与官网规则一致），字节与官网一致。
+ *
+ * 原浅色版基于 520×886 竖版插画的「左对齐贴底 + 窄屏裁切 + 宽屏淡出」
+ * 与白色水光动画全部移除；改为横版居中 cover，并叠一层极轻的暗色渐变，
+ * 避免背景亮部压低正文对比度。
+ */
+
+:root {
+    /* 大图按项目约定托管在 jsDelivr，不把 106KB 的 PNG 以 base64 塞进主题 JSON。
+       全新 tag + 全新路径，jsDelivr 从未缓存过该路径，不会拿到旧内容。 */
+    --bl-bg-photo: url("https://cdn.jsdelivr.net/gh/CO3O/sillytavern-bilibili-column@v2.4DARK/darkv2/cdn/bg_dark.png");
+    --bl-bg-base: #101011;   /* --Ga0 官方暗色页面底，图片未加载时的兜底 */
+}
+
+/* 顶掉酒馆自带的背景（#bg_custom 是用户自己设的图，一并统一，避免两张图打架） */
+#bg1,
+#bg_custom {
+    position: fixed;
+    inset: 0;
+    width: 100% !important;
+    height: 100% !important;
+    background-color: var(--bl-bg-base) !important;
+    background-image: var(--bl-bg-photo) !important;
+    background-repeat: no-repeat !important;
+    background-position: 50% center !important;
+    background-size: cover !important;
+    background-attachment: scroll !important;
+    filter: none !important;
+}
+
+/* 暗色渐变：压住背景亮部，保证聊天卡片与输入区始终清晰 */
+#bg1::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(180deg, rgba(10, 11, 12, 0.25), rgba(10, 11, 12, 0.45)),
+        linear-gradient(90deg, rgba(10, 11, 12, 0.12), transparent 35%, transparent 65%, rgba(10, 11, 12, 0.12));
+    pointer-events: none;
+}

@@ -1,0 +1,38 @@
+/*
+ * bilibili 官方图标字体 bcc-iconfont（旧版专栏 / 评论区专用字形）
+ * 数据来源：本地保存的 bilibili 页面快照 iconfont.css 中内嵌的 woff2。
+ * 字体托管在 jsDelivr，避免把 woff2 以 base64 塞进主题 JSON。
+ */
+
+@font-face {
+    font-family: "bcc-iconfont";
+    src: url("https://cdn.jsdelivr.net/gh/CO3O/sillytavern-bilibili-column@v1/cdn/bcc-iconfont.woff2") format("woff2");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* 用法：给元素加 .bl-ic 与 .bl-ic--xxx，伪元素即显示对应图标 */
+.bl-ic::before {
+    font-family: "bcc-iconfont" !important;
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.bl-ic--play::before { content: "\e690"; } /* 播放 */
+.bl-ic--danmaku::before { content: "\e691"; } /* 弹幕 */
+.bl-ic--like::before { content: "\e692"; } /* 点赞 */
+.bl-ic--coin::before { content: "\e693"; } /* 投币 */
+.bl-ic--share::before { content: "\e695"; } /* 分享 */
+.bl-ic--comment::before { content: "\e696"; } /* 评论 */
+.bl-ic--fav::before { content: "\e697"; } /* 收藏 */
+.bl-ic--reward::before { content: "\e69e"; } /* 打赏 */
+.bl-ic--time::before { content: "\e6a0"; } /* 时间 */
+.bl-ic--warning::before { content: "\e69f"; } /* 警告 */
+.bl-ic--success::before { content: "\e67d"; } /* 成功 */
+.bl-ic--info::before { content: "\e67c"; } /* 提示 */
+.bl-ic--more::before { content: "\e698"; } /* 更多 */
+.bl-ic--sort::before { content: "\e682"; } /* 排序 */

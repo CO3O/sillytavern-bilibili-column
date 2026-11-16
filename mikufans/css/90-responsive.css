@@ -114,21 +114,26 @@
         letter-spacing: 0;
     }
 
-    /* 欢迎页列表紧凑一档：图位收到 84px（图 80×60） */
+    /* 欢迎页图格：小屏一行三个（图 98×76） */
     .welcomePanel .welcomeRecent .recentChatList .recentChat {
-        grid-template-columns: 84px minmax(0, 1fr);
-        column-gap: 8px;
-        padding: 8px 6px;
+        flex: 0 0 33.3333%;
+        max-width: 33.3333%;
+        padding: 0 3px;
     }
 
     .welcomePanel .welcomeRecent .recentChatList .recentChat .avatar {
-        width: 84px;
-        height: 64px;
+        width: 98px;
+        height: 76px;
     }
 
     .welcomePanel .welcomeRecent .recentChatList .recentChat .chatName {
-        font-size: 13px;
-        line-height: 21px;
+        font-size: 12px;
+        line-height: 18px;
+    }
+
+    .welcomePanel .welcomeRecent .recentChatList .recentChat .chatDate {
+        font-size: 10.5px;
+        line-height: 15px;
     }
 
     .welcomePanel .welcomeRecent .recentChatList .recentChat .chatName {

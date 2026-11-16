@@ -2154,7 +2154,8 @@ body #chat .mes.selected {
     border: none;
     border-radius: 0;
     box-shadow: none;
-    padding: 0;
+    /* 顶部留一点呼吸：贴到 #chat 上沿会和顶栏图标挤成两层工具栏 */
+    padding: 8px 0 0;
 }
 
 .welcomePanel .welcomeHeaderTitle {
@@ -2396,13 +2397,20 @@ body #chat .mes.selected {
     }
 }
 
-/* 摘要 */
+/* 摘要：固定两行，否则某些聊天开头的 HTML 片段会把条目撑成三四行、行高乱跳 */
 .welcomePanel .welcomeRecent .recentChatList .recentChat .chatMessage {
     grid-area: preview;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    overflow: hidden;
+    max-height: 3em;
     font-size: 12px;
     line-height: 1.5;
     color: var(--mf-ink-3);
     word-break: break-word;
+    overflow-wrap: anywhere;
 }
 
 /* 元信息行：左时间、右数据 */

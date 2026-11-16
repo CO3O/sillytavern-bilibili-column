@@ -27,6 +27,88 @@
  * （三到四级类），这里必须保持同样的层级深度才压得住，不要简化选择器。
  */
 
+/*
+ * 首页双栏：原站是 .pleft（692 左主区）+ .pright（260 右栏）的定宽版面。
+ * 酒馆的 DOM 是「欢迎面板 + 若干消息」平铺在 #chat 里，
+ * 所以用网格把欢迎面板钉在左列、消息块全部落到右列竖直堆叠，
+ * 高度仍由内容决定（align-items: start），不做等高拉伸。
+ *
+ * 只在欢迎页存在时生效：一旦开始聊天，welcomePanel 消失，#chat 自动回到单栏。
+ */
+#chat:has(.welcomePanel) {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 320px;
+    align-content: start;
+    align-items: start;
+    column-gap: 8px;
+}
+
+#chat:has(.welcomePanel) > .welcomePanel {
+    grid-column: 1;
+    /* 隐式网格没有行数上界，给一个足够大的 span 让左列不被消息挤断 */
+    grid-row: 1 / span 999;
+    margin: 0;
+}
+
+#chat:has(.welcomePanel) > .mes {
+    grid-column: 2;
+    width: 100%;
+    margin: 0 0 6px;
+}
+
+/* 双栏后左列只剩 ~600px，图格从五等分改成四等分（150px 列宽刚好容下 124px 画框） */
+#chat:has(.welcomePanel) .welcomeRecent .recentChatList .recentChat {
+    flex: 0 0 25%;
+    max-width: 25%;
+}
+
+/* 右栏只有 264px：消息块按侧栏密度收紧，否则标题会把时间挤到第二行 */
+#chat:has(.welcomePanel) > .mes[is_user="false"] .ch_name,
+#chat:has(.welcomePanel) > .mes[is_user="true"] .ch_name {
+    min-height: 26px;
+    padding-left: 32px;
+    gap: 4px;
+}
+
+#chat:has(.welcomePanel) > .mes .mesAvatarWrapper {
+    top: 3px;
+    left: 6px;
+    width: 20px;
+    height: 20px;
+}
+
+#chat:has(.welcomePanel) > .mes .mesAvatarWrapper .avatar {
+    width: 20px;
+    height: 20px;
+}
+
+#chat:has(.welcomePanel) > .mes[is_user="false"] .name_text {
+    font-size: 12px;
+    letter-spacing: 0;
+}
+
+#chat:has(.welcomePanel) > .mes .timestamp {
+    margin-left: 4px;
+    font-size: 10.5px;
+}
+
+#chat:has(.welcomePanel) > .mes[is_user="false"] .mes_text {
+    padding: 6px 8px 7px;
+    font-size: 12.5px;
+    line-height: 1.65;
+}
+
+#chat:has(.welcomePanel) > .mes[is_user="true"] .mes_text {
+    padding: 1px 0 0 14px;
+    font-size: 12.5px;
+}
+
+#chat:has(.welcomePanel) > .mes[is_user="false"] .mes_block::after {
+    margin: 0 8px 6px;
+    font-size: 10.5px;
+    line-height: 1.5;
+}
+
 /* ---------- 面板底板：白纸 + 1px 实线 ---------- */
 .welcomePanel {
     background-color: var(--mf-paper);
@@ -174,24 +256,20 @@
 }
 
 /*
- * 「动画专区」长条：复刻原站首页 .pleft 顶部那张 663×31 的栏目图（mad.png）。
- * 原图是位图（含角色剪影），这里用渐变 + 左端色块 + 文字还原它的形态。
+ * 顶部频道横幅：直接用原站首页 .pleft 顶部那张 mad.png（663×31）。
+ * 「动画/音乐/游戏_動画/音楽/ゲーム_Animation/Music/Game」是原图里的手写体，
+ * 文字用 CSS 复刻不出来，所以按原样内联位图（见 tools/make-assets-css.cjs）。
  */
 .welcomePanel .welcomeRecent::before {
-    content: "动画专区";
+    content: "";
     display: block;
     height: 31px;
-    line-height: 29px;
-    margin: 6px 8px 6px;
-    padding-left: 12px;
-    background-color: var(--mf-titlebar-b);
-    background-image: linear-gradient(180deg, var(--mf-titlebar-t) 0%, var(--mf-titlebar-b) 62%, #D2E3C2 100%);
-    border: 1px solid var(--mf-line);
-    border-left: 5px solid var(--mf-title);
-    color: var(--mf-title);
-    font-size: 14px;
-    font-weight: 700;
-    letter-spacing: 3px;
+    margin: 8px 8px 8px;
+    background-image: var(--mf-banner);
+    background-repeat: no-repeat;
+    background-position: left center;
+    background-size: 100% 100%;
+    border: none;
 }
 
 /* ---------- 列表：.picnews .e1 横向图格 ---------- */
@@ -200,7 +278,7 @@
     flex-direction: row;
     flex-wrap: wrap;
     align-items: flex-start;
-    gap: 14px 0;
+    gap: 18px 0;
     padding: 0 2px;
 }
 

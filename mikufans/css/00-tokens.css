@@ -17,10 +17,10 @@ html:root {
     /* ---------- 纸与绿（页面底 / 块底） ---------- */
     --mf-paper: #FFFFFF;             /* 内容块、正文底 */
     --mf-paper-2: #FAFCF6;           /* 次级块、表格斑马 */
-    --mf-green-bg: #EDF4E2;          /* 门户块底（原站 .place / 搜索条） */
-    --mf-green-bg-2: #F1F7E3;        /* 列表悬停、浅绿高亮 */
-    --mf-titlebar-t: #F0F7E7;        /* 标题条渐变起 */
-    --mf-titlebar-b: #DEEBD0;        /* 标题条渐变止 */
+    --mf-green-bg: #F5F9EF;          /* 门户块底（原站 .place / 搜索条） */
+    --mf-green-bg-2: #F8FBF2;        /* 列表悬停、浅绿高亮 */
+    --mf-titlebar-t: #F4F9EC;        /* 标题条渐变起 */
+    --mf-titlebar-b: #E4EEDA;        /* 标题条渐变止 */
 
     /* ---------- 线 ---------- */
     --mf-line: #B5D2A4;              /* 主边框（tbox 外框） */

@@ -90,9 +90,9 @@ html:root {
     --mf-radius: 0;                  /* 门户零圆角 */
     --mf-chat-gap: 8px;
     --mf-gutter: 10px;
-    --mf-avatar: 24px;               /* 文章块标题条内的小方头像 */
-    --mf-avatar-comment: 26px;       /* 评论项方头像 */
-    --mf-titlebar-h: 30px;           /* tbox 标题条高度（原站 25px，字号放大后略高） */
+    --mf-avatar: 40px;               /* 文章块标题条内的方头像 */
+    --mf-avatar-comment: 48px;       /* 评论项方头像（对齐原站评论区 48×48） */
+    --mf-titlebar-h: 46px;           /* tbox 标题条高度：要容下 40px 头像 */
     --mf-topbar-height: 46px;        /* 顶栏工具条：参照 pink 的 54px，留够字标高度与下方间距 */
 
     /* ---------- 内嵌素材 ----------

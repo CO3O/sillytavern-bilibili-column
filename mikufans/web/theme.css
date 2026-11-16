@@ -90,9 +90,9 @@ html:root {
     --mf-radius: 0;                  /* 门户零圆角 */
     --mf-chat-gap: 8px;
     --mf-gutter: 10px;
-    --mf-avatar: 24px;               /* 文章块标题条内的小方头像 */
-    --mf-avatar-comment: 26px;       /* 评论项方头像 */
-    --mf-titlebar-h: 30px;           /* tbox 标题条高度（原站 25px，字号放大后略高） */
+    --mf-avatar: 40px;               /* 文章块标题条内的方头像 */
+    --mf-avatar-comment: 48px;       /* 评论项方头像（对齐原站评论区 48×48） */
+    --mf-titlebar-h: 46px;           /* tbox 标题条高度：要容下 40px 头像 */
     --mf-topbar-height: 46px;        /* 顶栏工具条：参照 pink 的 54px，留够字标高度与下方间距 */
 
     /* ---------- 内嵌素材 ----------
@@ -656,8 +656,8 @@ body .standoutHeader {
     align-items: center;
     gap: 6px;
     min-height: var(--mf-titlebar-h);
-    /* 左 42px 给绝对定位的小方头像，右侧留给操作按钮 */
-    padding: 2px 6px 2px 42px;
+    /* 左 52px 给绝对定位的方头像（40px + 边距），右侧留给操作按钮 */
+    padding: 3px 8px 3px 52px;
     margin: 0;
     background-color: var(--mf-titlebar-b);
     background-image: linear-gradient(180deg, var(--mf-titlebar-t) 0%, var(--mf-titlebar-b) 100%);
@@ -1169,7 +1169,7 @@ body .standoutHeader {
     align-items: center;
     gap: 6px;
     min-height: var(--mf-avatar-comment);
-    padding-left: 36px;
+    padding-left: 60px;
     margin-bottom: 2px;
     border-bottom: none;
 }
@@ -1502,6 +1502,11 @@ body .standoutHeader {
  */
 #mes_stop {
     position: relative;
+    /* 用 flex 居中「停止」二字：酒馆原本靠里面的 FA 图标排布，
+     * 图标被隐藏后只剩伪元素文字，不一居中就会偏到左边 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
     box-sizing: border-box;
     width: 70px !important;
     height: 25px !important;
@@ -1526,13 +1531,17 @@ body .standoutHeader {
     content: "停止";
     position: static;
     transform: none;
+    display: block;
     width: auto;
     height: auto;
+    margin: 0;
     border-radius: 0;
     background: transparent;
     color: #FFFFFF;
     font-size: 12px;
+    line-height: 1;
     letter-spacing: 1px;
+    text-align: center;
 }
 
 @media (hover: hover) and (pointer: fine) {
@@ -2275,8 +2284,8 @@ body #chat .mes.selected {
 /* 右栏只有 260px：标题条给足高度，让「角色名 + 时间」能排成两行而不溢出 */
 #chat:has(.welcomePanel) > .mes[is_user="false"] .ch_name,
 #chat:has(.welcomePanel) > .mes[is_user="true"] .ch_name {
-    min-height: 42px;
-    padding: 3px 6px 3px 34px;
+    min-height: 46px;
+    padding: 3px 6px 3px 50px;
     gap: 0 4px;
     flex-wrap: wrap;
     align-content: center;
@@ -2285,13 +2294,13 @@ body #chat .mes.selected {
 #chat:has(.welcomePanel) > .mes .mesAvatarWrapper {
     top: 3px;
     left: 6px;
-    width: 20px;
-    height: 20px;
+    width: 40px;
+    height: 40px;
 }
 
 #chat:has(.welcomePanel) > .mes .mesAvatarWrapper .avatar {
-    width: 20px;
-    height: 20px;
+    width: 40px;
+    height: 40px;
 }
 
 #chat:has(.welcomePanel) > .mes[is_user="false"] .name_text {

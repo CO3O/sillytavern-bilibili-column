@@ -77,7 +77,7 @@
     align-items: center;
     gap: 6px;
     min-height: var(--mf-avatar-comment);
-    padding-left: 36px;
+    padding-left: 60px;
     margin-bottom: 2px;
     border-bottom: none;
 }

@@ -28,8 +28,8 @@
     align-items: center;
     gap: 6px;
     min-height: var(--mf-titlebar-h);
-    /* 左 42px 给绝对定位的小方头像，右侧留给操作按钮 */
-    padding: 2px 6px 2px 42px;
+    /* 左 52px 给绝对定位的方头像（40px + 边距），右侧留给操作按钮 */
+    padding: 3px 8px 3px 52px;
     margin: 0;
     background-color: var(--mf-titlebar-b);
     background-image: linear-gradient(180deg, var(--mf-titlebar-t) 0%, var(--mf-titlebar-b) 100%);

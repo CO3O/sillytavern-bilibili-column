@@ -181,6 +181,11 @@
  */
 #mes_stop {
     position: relative;
+    /* 用 flex 居中「停止」二字：酒馆原本靠里面的 FA 图标排布，
+     * 图标被隐藏后只剩伪元素文字，不一居中就会偏到左边 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
     box-sizing: border-box;
     width: 70px !important;
     height: 25px !important;
@@ -205,13 +210,17 @@
     content: "停止";
     position: static;
     transform: none;
+    display: block;
     width: auto;
     height: auto;
+    margin: 0;
     border-radius: 0;
     background: transparent;
     color: #FFFFFF;
     font-size: 12px;
+    line-height: 1;
     letter-spacing: 1px;
+    text-align: center;
 }
 
 @media (hover: hover) and (pointer: fine) {

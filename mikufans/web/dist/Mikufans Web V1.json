@@ -37,5 +37,5 @@
     "show_swipe_num_all_messages": false,
     "click_to_edit": false,
     "media_display": "list",
-    "custom_css": "/*\r\n * Mikufans · Web v1 —— 纯网络版\r\n * 全部样式托管在 jsDelivr，本主题 JSON 只负责引入；断网时不会有自定义样式。\r\n * 离线版（Mikufans V1）是内嵌 CSS 的那份，两者互不影响。\r\n */\r\n\r\n/*\r\n * ref 用 commit 短 hash（与 pink 的 @379aaa5 同一策略）而不是标签名：\r\n * 新推送的标签在 jsDelivr 侧要等索引，实测 v1MIKUFANS 刚发布时是 404，\r\n * 而同一份文件用 @6077f5c 立刻 200。commit 与标签一样不可变，不会漂移。\r\n * 样式迭代：改 ref 指向新的 commit（或等标签索引好之后换回标签名），\r\n * 光改 ?v= 只对浏览器缓存生效，CDN 可能还是旧文件。\r\n */\r\n@import url(\"https://cdn.jsdelivr.net/gh/CO3O/sillytavern-bilibili-column@237267a/mikufans/web/theme.css?v=8\");\r\n"
+    "custom_css": "/*\r\n * Mikufans · Web v1 —— 纯网络版\r\n * 全部样式托管在 jsDelivr，本主题 JSON 只负责引入；断网时不会有自定义样式。\r\n * 离线版（Mikufans V1）是内嵌 CSS 的那份，两者互不影响。\r\n */\r\n\r\n/*\r\n * ref 用 commit 短 hash（与 pink 的 @379aaa5 同一策略）而不是标签名：\r\n * 新推送的标签在 jsDelivr 侧要等索引，实测 v1MIKUFANS 刚发布时是 404，\r\n * 而同一份文件用 @6077f5c 立刻 200。commit 与标签一样不可变，不会漂移。\r\n * 样式迭代：改 ref 指向新的 commit（或等标签索引好之后换回标签名），\r\n * 光改 ?v= 只对浏览器缓存生效，CDN 可能还是旧文件。\r\n */\r\n@import url(\"https://cdn.jsdelivr.net/gh/CO3O/sillytavern-bilibili-column@f77b5fd/mikufans/web/theme.css?v=9\");\r\n"
 }

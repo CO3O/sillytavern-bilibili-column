@@ -59,12 +59,14 @@
 
 
 
-/* 右栏只有 264px：消息块按侧栏密度收紧，否则标题会把时间挤到第二行 */
+/* 右栏只有 260px：标题条给足高度，让「角色名 + 时间」能排成两行而不溢出 */
 #chat:has(.welcomePanel) > .mes[is_user="false"] .ch_name,
 #chat:has(.welcomePanel) > .mes[is_user="true"] .ch_name {
-    min-height: 26px;
-    padding-left: 32px;
-    gap: 4px;
+    min-height: 42px;
+    padding: 3px 6px 3px 34px;
+    gap: 0 4px;
+    flex-wrap: wrap;
+    align-content: center;
 }
 
 #chat:has(.welcomePanel) > .mes .mesAvatarWrapper {

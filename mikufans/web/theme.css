@@ -1071,20 +1071,24 @@ body .standoutHeader {
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
-    align-items: flex-end;
+    align-items: stretch;
     justify-content: flex-start;
-    gap: 3px;
-    width: max-content;
-    margin: 6px 0 4px auto;
+    gap: 4px;
+    width: 100%;
+    margin: 6px 0 4px;
 }
 
+/* 三个按钮拉成等宽、文字居中，像原站侧栏那种整行按钮 */
 #chat .mes_text .custom-flex-container:has(> button.drawer-opener) > button {
-    width: auto;
-    min-width: 88px;
-    height: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    width: 100%;
+    min-width: 0;
+    height: 24px;
     padding: 0 8px;
-    justify-content: flex-start;
-    font-size: 12px;
+    font-size: 12.5px;
 }
 
 /* 底部操作行插槽：由 05-portal-glyphs.css 填充内容 */
@@ -2283,12 +2287,14 @@ body #chat .mes.selected {
 
 
 
-/* 右栏只有 264px：消息块按侧栏密度收紧，否则标题会把时间挤到第二行 */
+/* 右栏只有 260px：标题条给足高度，让「角色名 + 时间」能排成两行而不溢出 */
 #chat:has(.welcomePanel) > .mes[is_user="false"] .ch_name,
 #chat:has(.welcomePanel) > .mes[is_user="true"] .ch_name {
-    min-height: 26px;
-    padding-left: 32px;
-    gap: 4px;
+    min-height: 42px;
+    padding: 3px 6px 3px 34px;
+    gap: 0 4px;
+    flex-wrap: wrap;
+    align-content: center;
 }
 
 #chat:has(.welcomePanel) > .mes .mesAvatarWrapper {

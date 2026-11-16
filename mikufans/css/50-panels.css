@@ -403,3 +403,81 @@ body #toast-container > div.toast.toast-info {
     background-color: var(--mf-line-2);
     color: var(--mf-green-deep);
 }
+
+/* ---------- 内建深色残留：把拿 quote color / 灰阶当底的地方拉回浅色 ----------
+ * 酒馆这套组件是按「深色半透明底」写的，浅色门户上会变成一块块深灰巧克力：
+ *   · #user-settings-block h4 与主题同特异性、且酒馆样式表在后生效 → 加 body 前缀
+ *   · select2 多选标签（世界书「已启用条目」）底色固定 rgba(0,0,0,.5)
+ *   · .world_entry / .wi-card-entry 的边框取 currentColor，正文深色就成了黑框
+ */
+
+body #user-settings-block h4 {
+    background-image: linear-gradient(180deg, var(--mf-titlebar-t) 0%, var(--mf-titlebar-b) 100%);
+    background-color: var(--mf-titlebar-b);
+    border: 1px solid var(--mf-line);
+    border-radius: 0;
+    color: var(--mf-title);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+@media (hover: hover) and (pointer: fine) {
+    body #user-settings-block h4:hover {
+        background-image: none;
+        background-color: var(--mf-green-bg-2);
+        color: var(--mf-green-deep);
+    }
+}
+
+/* select2 多选标签：世界书「已启用条目」、角色标签都在这里。
+ * 酒馆用 `.select2-container … .select2-selection__choice`(0,3,0) 铺 var(--black30a)，
+ * 且它的样式表晚于 #custom-style 生效，所以这里加 body 提到 (0,3,1) 才压得住。 */
+body .select2-container .select2-selection--multiple .select2-selection__choice,
+body .select2-selection__choice {
+    background-color: var(--mf-green-bg);
+    border: 1px solid var(--mf-line);
+    border-radius: 0;
+    color: var(--mf-ink);
+}
+
+body .select2-container .select2-selection__choice__display {
+    color: var(--mf-ink) !important;
+    padding-left: 2px;
+    padding-right: 2px;
+}
+
+body .select2-container .select2-selection__choice__remove {
+    color: var(--mf-ink-3);
+    background-color: transparent;
+    border-right: 1px solid var(--mf-line-2);
+}
+
+@media (hover: hover) and (pointer: fine) {
+    body .select2-container .select2-selection__choice__remove:hover {
+        background-color: var(--mf-line-2);
+        color: var(--mf-red);
+    }
+}
+
+/* 世界书条目卡片：黑框改绿框，白底 */
+.wi-card-entry {
+    border-color: var(--mf-line);
+    background-color: var(--mf-paper);
+    border-radius: 0;
+}
+
+body .world_entry {
+    border-color: var(--mf-line);
+}
+
+/* 世界书条目的启用开关 */
+.world_entry .killSwitch.fa-toggle-on {
+    color: var(--mf-green);
+}
+
+/* 酒馆内建的「已选中」行底色写死成深红 rgb(102,0,0) */
+body #chat .mes.selected {
+    background-color: var(--mf-green-bg);
+    outline: 1px solid var(--mf-line);
+}

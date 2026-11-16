@@ -363,22 +363,31 @@
     outline-offset: 1px;
 }
 
-/* 「显示更多」：居中的小方块按钮，紧贴最后一条 */
+/* 「显示更多」：做成一条全宽绿条，别缩成小方块——
+ * 缩太小会让人以为「最近聊天只有三条」，看起来像列表被砍了。 */
 .welcomePanel .welcomeRecent .recentChatList .showMoreChats {
-    align-self: center;
-    display: inline-flex;
+    align-self: stretch;
+    display: flex;
     align-items: center;
     justify-content: center;
-    width: 26px;
-    height: 22px;
+    width: 100%;
+    height: 24px;
     margin: 6px 0 0;
     padding: 0;
     border: 1px solid var(--mf-line);
     border-radius: 0;
     background-color: var(--mf-green-bg);
     color: var(--mf-ink-2);
-    font-size: 11px;
+    font-size: 11.5px;
+    letter-spacing: 1px;
     transition: none;
+}
+
+/* 原生是 FontAwesome 图标，补一行文字提示这是「展开」而不是装饰 */
+.welcomePanel .welcomeRecent .recentChatList .showMoreChats::after {
+    content: "更多聊天";
+    margin-left: 4px;
+    font-size: 11px;
 }
 
 @media (hover: hover) and (pointer: fine) {

@@ -8,11 +8,11 @@
  *      <dialog class="popup transparent_dialogue_popup"> 内的 #loader.splash-screen
  */
 
-/* 站名字标：logo.svg 宽高比 152 / 42 ≈ 3.619 */
+/* 站名字标：位图宽高比由 01-logo.css 的 --mf-logo-ratio 提供（297 / 90 = 3.3） */
 #preloader::before,
 #loader #load-spinner {
-    --mf-brand-h: 26px;
-    --mf-brand-w: calc(var(--mf-brand-h) * 3.619);
+    --mf-brand-h: 40px;
+    --mf-brand-w: calc(var(--mf-brand-h) * var(--mf-logo-ratio));
 }
 
 /* ---------- 全屏遮罩 ---------- */

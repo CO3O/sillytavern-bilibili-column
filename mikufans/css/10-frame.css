@@ -30,7 +30,7 @@ code,
 }
 
 /* 全站零圆角、零阴影：从根上掐掉酒馆内建的圆角与投影 */
-:root {
+html:root {
     --SmartThemeShadowColor: transparent;
     --SmartThemeBlurStrength: 0;
 }
@@ -69,22 +69,22 @@ code,
     border-radius: 0;
     color: var(--mf-ink-2);
     /* 左侧给字标让位，右侧给红色按钮让位，否则会压住顶栏图标 */
-    padding: 0 88px 0 96px;
+    padding: 0 88px 0 112px;
 }
 
-/* 左上角站名：MiKuFans 三色字标（矢量内嵌，随字号缩放） */
+/* 左上角站名：原站 top-logo[无水印].png（内联在 css/01-logo.css），高度贴着工具条 */
 #top-settings-holder::before {
     content: "";
     position: absolute;
-    left: 8px;
+    left: 7px;
     top: 50%;
-    width: 80px;
-    height: 22px;
+    width: 100px;
+    height: 30px;
     transform: translateY(-50%);
     background-image: var(--mf-logo);
     background-repeat: no-repeat;
     background-position: left center;
-    background-size: auto 22px;
+    background-size: auto 30px;
     pointer-events: none;
 }
 

@@ -10,7 +10,10 @@
  * ============================================================
  */
 
-:root {
+/* 用 html:root 而不是 :root：酒馆把 #custom-style 插在 <head> 靠前的位置，
+ * 与 style.css 的 :root 同特异性时会输，导致下面的灰阶覆盖全部失效
+ * （症状：世界书标签、多选块、菜单底色仍是深灰）。加一个元素选择器就压过去了。 */
+html:root {
     /* ---------- 纸与绿（页面底 / 块底） ---------- */
     --mf-paper: #FFFFFF;             /* 内容块、正文底 */
     --mf-paper-2: #FCFDFA;           /* 次级块、表格斑马 */
@@ -73,8 +76,10 @@
     --mf-titlebar-h: 30px;           /* tbox 标题条高度（原站 25px，字号放大后略高） */
     --mf-topbar-height: 34px;        /* 顶栏工具条 */
 
-    /* ---------- 内嵌素材 ---------- */
-    --mf-logo: {{svg:logo.svg}};
+    /* ---------- 内嵌素材 ----------
+     * --mf-logo 由 css/01-logo.css（node tools/make-logo-css.cjs 生成）提供，
+     * 因为原站字标是位图，走不了 {{svg:}} 占位符。
+     */
     --mf-wordmark: {{svg:wordmark.svg}};
     --mf-avatar-default: {{svg:avatar-default.svg}};
     --mf-ic-bullet: {{svg:bullet.svg}};
@@ -91,14 +96,28 @@
      * 这里把灰度值改到各自的对应档位，内建组件就会自动变浅。
      */
     --black30a: #F4F8EE;
-    --black50a: rgba(197, 221, 188, 0.5);
-    --black60a: rgba(197, 221, 188, 0.7);
+    --black50a: rgba(197, 221, 188, 0.55);
+    --black60a: rgba(197, 221, 188, 0.75);
+    --black70a: rgba(175, 205, 162, 0.85);
+    --black90a: #EAF2DE;
+    --black100: #C5DDBC;
+    --white20a: #FFFFFF;
     --white30a: #FFFFFF;
     --white50a: #FFFFFF;
+    --white60a: #FFFFFF;
+    --white70a: #FFFFFF;
     --grey10: #FCFDFA;
     --grey30: #F4F8EE;
     --grey50: #C5DDBC;
+    --grey5020a: rgba(197, 221, 188, 0.2);
+    --grey5050a: rgba(197, 221, 188, 0.5);
+    --grey70: #DCEBD7;
+    --grey75: #EAF2DE;
+    --grey30a: rgba(234, 242, 222, 0.9);
     --grey7070a: rgba(153, 153, 153, 0.45);
+    /* 内建焦点描边默认是纯白，浅底上等于没有，改成深绿 */
+    --interactable-outline-color: #006900;
+    --interactable-outline-color-faint: rgba(0, 105, 0, 0.3);
     /* 头像一律方角：原站所有头像是 52×52 的 1px 边框方块 */
     --avatar-base-border-radius-round: 0;
 

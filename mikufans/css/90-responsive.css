@@ -4,7 +4,7 @@
  */
 
 @media (max-width: 640px) {
-    :root {
+    html:root {
         --mf-title-size: 12.5px;
         --mf-body-size: 12.5px;
         --mf-comment-size: 12.5px;
@@ -81,14 +81,14 @@
 
     /* 顶栏：字标缩小，给图标让位 */
     #top-settings-holder {
-        padding: 0 66px 0 76px;
+        padding: 0 66px 0 88px;
     }
 
     #top-settings-holder::before {
         left: 6px;
-        width: 64px;
-        height: 18px;
-        background-size: auto 18px;
+        width: 78px;
+        height: 22px;
+        background-size: auto 22px;
     }
 
     #rightNavHolder > .drawer-toggle {
@@ -146,13 +146,13 @@
 
     /* 小屏顶栏只留字标与红按钮 */
     #top-settings-holder {
-        padding: 0 60px 0 68px;
+        padding: 0 60px 0 80px;
     }
 
     #top-settings-holder::before {
-        width: 56px;
-        height: 16px;
-        background-size: auto 16px;
+        width: 70px;
+        height: 20px;
+        background-size: auto 20px;
     }
 }
 

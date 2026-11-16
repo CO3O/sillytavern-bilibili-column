@@ -21,6 +21,8 @@ for (const f of files) {
     all += text + '\n';
     text.split(/\r?\n/).forEach((line, i) => {
         const trimmed = line.trim();
+        // 内联的 base64 数据行不参与注释检查（`//` 会出现在编码串里，属于误报）
+        if (trimmed.length > 400 || trimmed.includes('data:image')) return;
         if (trimmed.startsWith('//') || /[^:]\/\/[^/]/.test(trimmed.replace(/https?:\/\/[^\s]*/g, ''))) {
             problems.push(`非标准注释 ${f}:${i + 1} → ${trimmed}`);
         }

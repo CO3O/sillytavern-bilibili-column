@@ -40,6 +40,8 @@ html:root {
     --mf-brand-green: #4CAF50;       /* 字标 Mi */
     --mf-brand-cyan: #00B0D8;        /* 字标 ku */
     --mf-brand-pink: #FF0080;        /* 字标 Fans / 列表强调 */
+    /* 对话引号内文字：miku 绿（rgb 63,207,142）再淡一档，白底上更柔和 */
+    --mf-miku: #5FD6A6;
 
     /* ---------- 字 ---------- */
     --mf-ink: #333333;

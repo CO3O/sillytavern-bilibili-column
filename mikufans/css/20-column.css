@@ -152,9 +152,10 @@
     color: var(--mf-ink-2);
 }
 
-/* 对话引号内文字：原站正文里的强调用深粉 */
-#chat .mes_text q {
-    color: var(--mf-brand-pink);
+/* 对话引号内文字：miku 绿（比原站强调粉更贴合品牌色，也和白底更协调） */
+#chat .mes_text q,
+#chat .mes_reasoning q {
+    color: var(--mf-miku);
 }
 
 /* 链接：原站蓝链接，悬停转红并加下划线 */
@@ -368,23 +369,41 @@
     }
 }
 
-/* ---------- 推理块（思考过程）：折叠的注释小框 ---------- */
+/* ---------- 推理块（思考过程）：贴在标题条下的注释带 ----------
+ * 之前是「四周虚线的小框 + 左右缩进」，在白身里像贴了一块补丁；
+ * 改成满宽的浅绿条，只用左侧绿竖线 + 底部虚线收边，和 dl.tbox 的语言一致。
+ */
 #chat .mes_reasoning_details {
-    margin: 0 12px 8px;
-    padding: 6px 8px;
+    margin: 0;
+    padding: 0;
     background-color: var(--mf-green-bg);
-    border: 1px dashed var(--mf-dash);
+    border: none;
+    border-bottom: 1px dashed var(--mf-dash);
+    border-left: 3px solid var(--mf-title-2);
     border-radius: 0;
 }
 
 #chat .mes_reasoning_header,
 #chat .mes_reasoning_header_title {
-    color: var(--mf-title-2);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 10px 4px 9px;
+    color: var(--mf-title);
     font-size: 12px;
     font-weight: 700;
+    letter-spacing: 1px;
+}
+
+/* 折叠箭头：默认是灰色 FA 图标，压到同一基线上更整齐 */
+#chat .mes_reasoning_header .fa-solid,
+#chat .mes_reasoning_header i {
+    color: var(--mf-title-2);
+    font-size: 10px;
 }
 
 #chat .mes_reasoning {
+    padding: 0 10px 6px 9px;
     color: var(--mf-ink-2);
     font-size: 12.5px;
     line-height: 1.7;

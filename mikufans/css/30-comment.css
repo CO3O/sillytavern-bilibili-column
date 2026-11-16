@@ -155,6 +155,11 @@
     color: var(--mf-ink);
 }
 
+/* 用户评论里的引号内文字，与 AI 侧统一用 miku 绿 */
+#chat .mes[is_user="true"] .mes_text q {
+    color: var(--mf-miku);
+}
+
 #chat .mes[is_user="true"] .mes_text a {
     color: var(--mf-link);
     text-decoration: none;

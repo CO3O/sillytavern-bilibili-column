@@ -74,7 +74,7 @@ html:root {
     --mf-avatar: 24px;               /* 文章块标题条内的小方头像 */
     --mf-avatar-comment: 26px;       /* 评论项方头像 */
     --mf-titlebar-h: 30px;           /* tbox 标题条高度（原站 25px，字号放大后略高） */
-    --mf-topbar-height: 34px;        /* 顶栏工具条 */
+    --mf-topbar-height: 46px;        /* 顶栏工具条：参照 pink 的 54px，留够字标高度与下方间距 */
 
     /* ---------- 内嵌素材 ----------
      * --mf-logo 由 css/01-logo.css（node tools/make-logo-css.cjs 生成）提供，
@@ -122,8 +122,8 @@ html:root {
     --avatar-base-border-radius-round: 0;
 
     /* ---------- 顶栏尺寸 ---------- */
-    --topBarIconSize: 15px;
-    --topBarBlockPadding: 4px;
+    --topBarIconSize: 17px;
+    --topBarBlockPadding: 5px;
     /* 酒馆用它算 #sheld 的 top，必须与实际顶栏高度一致，否则内容会钻到顶栏下面 */
     --topBarBlockSize: var(--mf-topbar-height);
 
@@ -332,10 +332,16 @@ html:root {
     --SmartThemeBlurStrength: 0;
 }
 
-/* ---------- 顶栏（工具条） ---------- */
+/* ---------- 顶栏（工具条） ----------
+ * 一定要保持酒馆默认的 position: absolute —— 它是「背景层」，不参与文档流；
+ * 改成 relative/static 会占掉自身高度，把 #top-settings-holder（图标层）
+ * 整个顶下去，症状是顶栏图标与欢迎页标题行叠在一起。
+ * 图标层 #top-settings-holder 与 #sheld 都按 --topBarBlockSize 对齐，
+ * 所以两层高度取同一个值即可严丝合缝。
+ */
 #top-bar {
-    position: relative;
-    /* 酒馆用 --bottomFormBlockSize 算顶栏高度，这里统一到门户工具条高度 */
+    position: absolute;
+    /* 酒馆默认用 --bottomFormBlockSize 算高度，这里统一到门户工具条高度 */
     height: var(--mf-topbar-height) !important;
     background-color: var(--mf-paper);
     background-image: linear-gradient(180deg, #FFFFFF 0%, #F9FCF5 100%);
@@ -2155,7 +2161,7 @@ body #chat .mes.selected {
     border-radius: 0;
     box-shadow: none;
     /* 顶部留一点呼吸：贴到 #chat 上沿会和顶栏图标挤成两层工具栏 */
-    padding: 8px 0 0;
+    padding: 4px 0 0;
 }
 
 .welcomePanel .welcomeHeaderTitle {

@@ -74,7 +74,7 @@ html:root {
     --mf-avatar: 24px;               /* 文章块标题条内的小方头像 */
     --mf-avatar-comment: 26px;       /* 评论项方头像 */
     --mf-titlebar-h: 30px;           /* tbox 标题条高度（原站 25px，字号放大后略高） */
-    --mf-topbar-height: 34px;        /* 顶栏工具条 */
+    --mf-topbar-height: 46px;        /* 顶栏工具条：参照 pink 的 54px，留够字标高度与下方间距 */
 
     /* ---------- 内嵌素材 ----------
      * --mf-logo 由 css/01-logo.css（node tools/make-logo-css.cjs 生成）提供，
@@ -122,8 +122,8 @@ html:root {
     --avatar-base-border-radius-round: 0;
 
     /* ---------- 顶栏尺寸 ---------- */
-    --topBarIconSize: 15px;
-    --topBarBlockPadding: 4px;
+    --topBarIconSize: 17px;
+    --topBarBlockPadding: 5px;
     /* 酒馆用它算 #sheld 的 top，必须与实际顶栏高度一致，否则内容会钻到顶栏下面 */
     --topBarBlockSize: var(--mf-topbar-height);
 

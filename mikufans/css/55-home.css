@@ -19,7 +19,7 @@
     border-radius: 0;
     box-shadow: none;
     /* 顶部留一点呼吸：贴到 #chat 上沿会和顶栏图标挤成两层工具栏 */
-    padding: 8px 0 0;
+    padding: 4px 0 0;
 }
 
 .welcomePanel .welcomeHeaderTitle {

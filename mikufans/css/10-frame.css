@@ -35,10 +35,16 @@ html:root {
     --SmartThemeBlurStrength: 0;
 }
 
-/* ---------- 顶栏（工具条） ---------- */
+/* ---------- 顶栏（工具条） ----------
+ * 一定要保持酒馆默认的 position: absolute —— 它是「背景层」，不参与文档流；
+ * 改成 relative/static 会占掉自身高度，把 #top-settings-holder（图标层）
+ * 整个顶下去，症状是顶栏图标与欢迎页标题行叠在一起。
+ * 图标层 #top-settings-holder 与 #sheld 都按 --topBarBlockSize 对齐，
+ * 所以两层高度取同一个值即可严丝合缝。
+ */
 #top-bar {
-    position: relative;
-    /* 酒馆用 --bottomFormBlockSize 算顶栏高度，这里统一到门户工具条高度 */
+    position: absolute;
+    /* 酒馆默认用 --bottomFormBlockSize 算高度，这里统一到门户工具条高度 */
     height: var(--mf-topbar-height) !important;
     background-color: var(--mf-paper);
     background-image: linear-gradient(180deg, #FFFFFF 0%, #F9FCF5 100%);

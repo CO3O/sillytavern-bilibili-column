@@ -5,11 +5,12 @@
  * 这里把输入区整条复刻成那个样子，左右按钮做成同高的方角小方块。
  */
 
+/* 照 1.html 的 .dede_comment_post：白底区块 + 5px 内边距，框线只留上沿 */
 #form_sheld {
-    background-color: var(--mf-green-bg);
-    border-top: 1px solid var(--mf-line-2);
+    background-color: var(--mf-paper);
+    border-top: 1px solid var(--mf-line);
     border-radius: 0;
-    padding: 6px var(--mf-gutter) 8px;
+    padding: 5px var(--mf-gutter) 6px;
 }
 
 #nonQRFormItems {
@@ -117,21 +118,22 @@
     outline-offset: 0;
 }
 
-/* ---------- 发送按钮：原站红色搜索按钮 ---------- */
+/* ---------- 发送按钮：照 1.html 的 .dcmp-submit button（btn-bg2 浅灰渐变，70×25） ---------- */
 #send_but:not(.displayNone) {
     display: flex;
     align-items: center;
     justify-content: center;
     box-sizing: border-box;
-    width: 40px;
-    height: 24px;
-    min-width: 40px;
+    width: 70px;
+    height: 25px;
+    min-width: 70px;
     padding: 0;
-    border: 1px solid #9E0000;
+    border: 1px solid var(--mf-btn-edge);
+    border-color: var(--mf-btn-edge);
     border-radius: 0;
-    background-color: var(--mf-red);
-    background-image: linear-gradient(180deg, #D82020 0%, var(--mf-red) 55%, #A80000 100%);
-    color: #FFFFFF;
+    background-color: var(--mf-btn-face-b);
+    background-image: linear-gradient(180deg, var(--mf-btn-face-t) 0%, var(--mf-btn-face-b) 100%);
+    color: #444444;
     font-size: 12px;
     line-height: 1;
     cursor: pointer;
@@ -139,7 +141,13 @@
     transition: none;
 }
 
-/* 停止 / 继续 / 扮演：同一套红块，显隐仍由酒馆的 .displayNone 控制 */
+/* 原站按钮只有文字，把纸飞机字形换成「发表评论」 */
+#send_but > i,
+#send_but > .fa-solid {
+    display: none;
+}
+
+/* 继续 / 扮演 / 脚本控制：与「发表评论」同高的 25px 小方块，浅灰面 */
 #mes_continue,
 #mes_impersonate,
 #stscript_stop,
@@ -149,15 +157,15 @@
     align-items: center;
     justify-content: center;
     box-sizing: border-box;
-    width: 40px;
-    height: 24px;
-    min-width: 40px;
+    width: 25px;
+    height: 25px;
+    min-width: 25px;
     padding: 0;
-    border: 1px solid #9E0000;
+    border: 1px solid var(--mf-btn-edge);
     border-radius: 0;
-    background-color: var(--mf-red);
-    background-image: linear-gradient(180deg, #D82020 0%, var(--mf-red) 55%, #A80000 100%);
-    color: #FFFFFF;
+    background-color: var(--mf-btn-face-b);
+    background-image: linear-gradient(180deg, var(--mf-btn-face-t) 0%, var(--mf-btn-face-b) 100%);
+    color: #444444;
     font-size: 12px;
     line-height: 1;
     cursor: pointer;
@@ -166,21 +174,21 @@
 }
 
 /*
- * 停止按钮：尺寸与发送按钮对齐。酒馆用 --bottomFormBlockSize 定它的大小，
- * 这里直接锁同一组宽高，并去掉酒馆自带的 fa-circle-stop 字形，
- * 用绝对定位的白方块做「停止」符号。
+ * 停止按钮：与发送键同宽的实心红块，字面写「停止」。
+ * 原站没有这个按钮，但内容页的按钮都是「实心块 + 文字」，
+ * 这里沿用同一套语言，而不是画一个白方块。
  */
 #mes_stop {
     position: relative;
     box-sizing: border-box;
-    width: 40px !important;
-    height: 24px !important;
+    width: 70px !important;
+    height: 25px !important;
     min-width: 0;
     padding: 0 !important;
-    border: 1px solid #9E0000;
+    border: 1px solid #A00000;
     border-radius: 0;
-    background-color: var(--mf-red);
-    background-image: linear-gradient(180deg, #D82020 0%, var(--mf-red) 55%, #A80000 100%);
+    background-color: var(--mf-btn-red);
+    background-image: none;
     color: #FFFFFF;
     overflow: clip;
     cursor: pointer;
@@ -193,39 +201,48 @@
 }
 
 #mes_stop::after {
-    content: "";
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    width: 9px;
-    height: 9px;
+    content: "停止";
+    position: static;
+    transform: none;
+    width: auto;
+    height: auto;
     border-radius: 0;
-    background-color: #FFFFFF;
+    background: transparent;
+    color: #FFFFFF;
+    font-size: 12px;
+    letter-spacing: 1px;
 }
 
 @media (hover: hover) and (pointer: fine) {
     #send_but:not(.displayNone):hover,
-    #mes_stop:not(.displayNone):hover,
     #mes_continue:not(.displayNone):hover,
     #mes_impersonate:not(.displayNone):hover,
     #stscript_stop:not(.displayNone):hover,
     #stscript_continue:not(.displayNone):hover,
     #stscript_pause:not(.displayNone):hover {
-        background-image: linear-gradient(180deg, #EC3A3A 0%, var(--mf-red-hover) 55%, #B80000 100%);
+        background-image: linear-gradient(180deg, #FFFFFF 0%, #EFEFEF 100%);
+        color: #2B2B2B;
+    }
+
+    #mes_stop:not(.displayNone):hover {
+        background-color: var(--mf-btn-red-hover);
     }
 }
 
 #send_but:not(.displayNone):active,
-#mes_stop:not(.displayNone):active,
 #mes_continue:not(.displayNone):active,
 #mes_impersonate:not(.displayNone):active,
 #stscript_stop:not(.displayNone):active,
 #stscript_continue:not(.displayNone):active,
 #stscript_pause:not(.displayNone):active {
     background-image: none;
-    background-color: #A80000;
-    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.45);
+    background-color: #D8D8D8;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.22);
+}
+
+#mes_stop:not(.displayNone):active {
+    background-color: #B80000;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.35);
 }
 
 #send_but:not(.displayNone):focus-visible,
@@ -239,27 +256,13 @@
     outline-offset: 2px;
 }
 
-/* 生成中：停止按钮用更深的红区分，并保留极轻微的明暗呼吸 */
-#mes_stop {
-    animation: mf-stop-blink 1.4s steps(2, end) infinite;
-}
-
-@keyframes mf-stop-blink {
-    0%, 100% { background-image: linear-gradient(180deg, #D82020 0%, var(--mf-red) 55%, #A80000 100%); }
-    50% { background-image: none; background-color: #A00000; }
-}
-
-@media (prefers-reduced-motion: reduce) {
-    #mes_stop:not(.displayNone) {
-        animation: none;
-    }
-}
+/* 原站是静态页面，没有呼吸/闪烁动效：停止键只靠实心红与「停止」二字区分 */
 
 /*
  * 尺寸加固：酒馆的 `#rightSendForm>div:not(.mes_stop)` 带一个 class，
- * 特异性 (1,1,1) 高于单 id 的 (1,1,0)，会把上面的红块重新撑成 --bottomFormBlockSize
+ * 特异性 (1,1,1) 高于单 id 的 (1,1,0)，会把按钮重新撑成 --bottomFormBlockSize
  * （实测被拉回到 34.5px 高，整条输入栏跟着变高）。
- * 这里用 id + 元素 + 容器把特异性提到 (2,1,0)，把右侧所有红块锁在同一组尺寸上。
+ * 这里只锁「尺寸与不透明度」，不碰背景色/颜色 —— 否则 (2,0,1) 会把 hover 态一起盖掉。
  */
 #rightSendForm > div#send_but,
 #rightSendForm > div#mes_continue,
@@ -268,25 +271,32 @@
 #rightSendForm > div#stscript_continue,
 #rightSendForm > div#stscript_pause {
     box-sizing: border-box;
-    width: 40px;
-    height: 24px;
-    min-width: 40px;
+    height: 25px;
     margin: 0;
     padding: 0;
-    border: 1px solid #9E0000;
-    border-radius: 0;
-    background-color: var(--mf-red);
-    background-image: linear-gradient(180deg, #D82020 0%, var(--mf-red) 55%, #A80000 100%);
-    color: #FFFFFF;
-    font-size: 12px;
-    line-height: 1;
-    /* 酒馆给右侧按钮 0.7 透明度，门户里实心红块更清楚 */
+    /* 酒馆给右侧按钮 0.7 透明度，这里要实心 */
     opacity: 1;
     box-shadow: none;
 }
 
+#rightSendForm > div#send_but {
+    width: 70px;
+    min-width: 70px;
+}
+
+#rightSendForm > div#mes_continue,
+#rightSendForm > div#mes_impersonate,
+#rightSendForm > div#stscript_stop,
+#rightSendForm > div#stscript_continue,
+#rightSendForm > div#stscript_pause {
+    width: 25px;
+    min-width: 25px;
+}
+
 #send_but::before {
+    content: "发表评论";
     font-size: 12px;
+    letter-spacing: 1px;
 }
 
 /* ---------- 快捷回复：一排小方按钮 ---------- */

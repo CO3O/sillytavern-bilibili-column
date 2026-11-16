@@ -53,24 +53,32 @@
 
     /* 输入区整条收窄，按钮仍保持可点 */
     #form_sheld {
-        padding: 5px 6px 6px;
+        padding: 4px 6px 5px;
     }
 
     #nonQRFormItems {
         padding: 2px 3px;
     }
 
+    /* 发表评论按钮缩到 56px，给 textarea 留位置 */
     #send_but:not(.displayNone),
-    #mes_stop:not(.displayNone),
-    #mes_continue:not(.displayNone),
-    #mes_impersonate:not(.displayNone) {
-        width: 34px;
-        height: 26px;
+    #mes_stop:not(.displayNone) {
+        width: 56px;
+        height: 24px;
     }
 
     #mes_stop {
-        width: 34px !important;
-        height: 26px !important;
+        width: 56px !important;
+        height: 24px !important;
+    }
+
+    #rightSendForm > div#send_but {
+        width: 56px;
+        min-width: 56px;
+    }
+
+    #send_but::before {
+        letter-spacing: 0;
     }
 
     #options_button,
@@ -96,8 +104,9 @@
     }
 
     #rightNavDrawerIcon {
+        width: 56px;
         height: 20px;
-        padding: 0 8px;
+        padding: 0;
     }
 
     #rightNavDrawerIcon::after {
@@ -105,16 +114,21 @@
         letter-spacing: 0;
     }
 
-    /* 欢迎页列表紧凑一档 */
+    /* 欢迎页列表紧凑一档：图位收到 84px（图 80×60） */
     .welcomePanel .welcomeRecent .recentChatList .recentChat {
-        grid-template-columns: 42px minmax(0, 1fr);
+        grid-template-columns: 84px minmax(0, 1fr);
         column-gap: 8px;
-        padding: 6px;
+        padding: 8px 6px;
     }
 
     .welcomePanel .welcomeRecent .recentChatList .recentChat .avatar {
-        width: 42px;
-        height: 42px;
+        width: 84px;
+        height: 64px;
+    }
+
+    .welcomePanel .welcomeRecent .recentChatList .recentChat .chatName {
+        font-size: 13px;
+        line-height: 21px;
     }
 
     .welcomePanel .welcomeRecent .recentChatList .recentChat .chatName {
@@ -167,8 +181,9 @@
     }
 
     #rightNavDrawerIcon {
-        height: 20px;
-        padding: 0 10px;
+        width: 60px;
+        height: 22px;
+        padding: 0;
     }
 
     #rightNavDrawerIcon::after {

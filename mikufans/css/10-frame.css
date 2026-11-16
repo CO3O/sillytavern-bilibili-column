@@ -156,13 +156,14 @@ html:root {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: auto;
-    height: 22px;
-    padding: 0 12px;
-    border: 1px solid #9E0000;
+    /* 照原站 .search-submit：68×22 的纯红块。顶栏 46px，抬到 24px 更稳 */
+    width: 68px;
+    height: 24px;
+    padding: 0;
+    border: 1px solid #A00000;
     border-radius: 0;
-    background-color: var(--mf-red);
-    background-image: linear-gradient(180deg, #D82020 0%, var(--mf-red) 55%, #A80000 100%);
+    background-color: var(--mf-btn-red);
+    background-image: none;
     color: #FFFFFF;
     opacity: 1;
     box-shadow: none;
@@ -186,8 +187,8 @@ html:root {
 
 @media (hover: hover) and (pointer: fine) {
     #rightNavDrawerIcon:hover {
-        background-color: var(--mf-red-hover);
-        background-image: linear-gradient(180deg, #EC3A3A 0%, var(--mf-red-hover) 55%, #B80000 100%);
+        background-color: var(--mf-btn-red-hover);
+        background-image: none;
         color: #FFFFFF;
         opacity: 1;
     }
@@ -195,9 +196,8 @@ html:root {
 
 /* 按下：用 1px 内阴影压出「陷进去」的旧网页手感 */
 #rightNavDrawerIcon:active {
-    background-image: none;
-    background-color: #A80000;
-    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.45);
+    background-color: #B80000;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.35);
 }
 
 #rightNavDrawerIcon:focus-visible {

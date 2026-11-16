@@ -22,6 +22,28 @@
     padding: 4px 0 0;
 }
 
+/*
+ * 「动画专区」长条：复刻原站首页那张 663×31 的栏目图（mad.png）。
+ * 原图是位图（含角色剪影），这里用渐变 + 左端色块 + 文字还原它的形态。
+ * 挂在 .welcomeRecent 上，位置落在分类行与列表之间，与原站 banner 在主内容区顶部一致。
+ */
+.welcomePanel .welcomeRecent::before {
+    content: "动画专区";
+    display: block;
+    height: 31px;
+    line-height: 29px;
+    margin: 6px 0 4px;
+    padding-left: 12px;
+    background-color: var(--mf-titlebar-b);
+    background-image: linear-gradient(180deg, var(--mf-titlebar-t) 0%, var(--mf-titlebar-b) 62%, #D2E3C2 100%);
+    border: 1px solid var(--mf-line);
+    border-left: 5px solid var(--mf-title);
+    color: var(--mf-title);
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 3px;
+}
+
 .welcomePanel .welcomeHeaderTitle {
     display: flex;
     align-items: center;
@@ -150,15 +172,16 @@
     gap: 0;
 }
 
+/* 原站 .e2 图文混排：左侧 124px 图位 + 右侧标题/信息，条目间 1px 实线 */
 .welcomePanel .welcomeRecent .recentChatList .recentChat {
     position: relative;
     display: grid;
-    grid-template-columns: 52px minmax(0, 1fr);
+    grid-template-columns: 124px minmax(0, 1fr);
     column-gap: 10px;
     align-items: start;
-    padding: 7px 8px;
+    padding: 10px 8px;
     border: none;
-    border-bottom: 1px dashed var(--mf-dash);
+    border-bottom: 1px solid var(--mf-line-2);
     border-radius: 0;
     background-color: transparent;
     transition: none;
@@ -182,12 +205,12 @@
     outline-offset: -1px;
 }
 
-/* 封面 = 角色头像，裁成 1px 白衬的方图（原站 .e1 img 的画框） */
+/* 封面 = 角色头像，按原站 .e2 li a.preview img 的画框：120×90 内容 + 1px 白衬 + 1px 边框 */
 .welcomePanel .welcomeRecent .recentChatList .recentChat .avatar {
     flex: 0 0 auto;
     align-self: start;
-    width: 52px;
-    height: 52px;
+    width: 124px;
+    height: 94px;
     margin: 0;
     box-sizing: border-box;
     padding: 1px;
@@ -195,6 +218,12 @@
     border: 1px solid var(--mf-frame);
     border-radius: 0;
     overflow: hidden;
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .welcomePanel .welcomeRecent .recentChatList .recentChat:hover .avatar {
+        border-color: var(--mf-line);
+    }
 }
 
 .welcomePanel .welcomeRecent .recentChatList .recentChat .avatar img {
@@ -225,15 +254,15 @@
     display: contents;
 }
 
-/* 标题：原站列表链接的蓝转红 */
+/* 标题：原站 .e2 li a.title 的 14px 粗体 + 25px 行高，hover 转红 */
 .welcomePanel .welcomeRecent .recentChatList .recentChat .chatName {
     grid-area: name;
     flex: none;
     min-width: 0;
     padding-right: 76px; /* 给右上角的置顶/重命名/删除让位 */
-    font-size: 12.5px;
+    font-size: 14px;
     font-weight: 700;
-    line-height: 1.45;
+    line-height: 25px;
     color: var(--mf-ink);
     white-space: nowrap;
     overflow: hidden;
@@ -277,13 +306,14 @@
     overflow-wrap: anywhere;
 }
 
-/* 元信息行：左时间、右数据 */
+/* 元信息行：左时间、右数据（原站 span.info 的 12px / 23px 行高） */
 .welcomePanel .welcomeRecent .recentChatList .recentChat .chatDate {
     grid-area: date;
     justify-self: start;
     margin: 0;
-    font-size: 11px;
-    color: var(--mf-ink-4);
+    font-size: 12px;
+    line-height: 23px;
+    color: var(--mf-ink-3);
     white-space: nowrap;
     font-variant-numeric: tabular-nums;
 }
@@ -295,8 +325,9 @@
     display: flex;
     align-items: center;
     gap: 6px;
-    font-size: 11px;
-    color: var(--mf-ink-4);
+    font-size: 12px;
+    line-height: 23px;
+    color: var(--mf-ink-3);
 }
 
 .welcomePanel .welcomeRecent .recentChatList .recentChat .chatStats .counterBlock {

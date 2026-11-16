@@ -57,6 +57,13 @@ html:root {
     --mf-accent-2: #FF6633;
     --mf-red: #C00000;               /* 按钮红 */
     --mf-red-hover: #E00000;
+    /* 原站搜索按钮的纯红（#F00 太刺眼，压一档），用于顶栏「角色」按钮 */
+    --mf-btn-red: #D40000;
+    --mf-btn-red-hover: #E80000;
+    /* 原站 btn-bg2 的浅灰渐变（发表评论按钮） */
+    --mf-btn-face-t: #FAFAFA;
+    --mf-btn-face-b: #DCDCDC;
+    --mf-btn-edge: #767676;
     --mf-announce: #FF0000;          /* 公告红字 */
     --mf-nav-hover: #8A0808;         /* 导航悬停深红 */
 
@@ -455,13 +462,14 @@ html:root {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: auto;
-    height: 22px;
-    padding: 0 12px;
-    border: 1px solid #9E0000;
+    /* 照原站 .search-submit：68×22 的纯红块。顶栏 46px，抬到 24px 更稳 */
+    width: 68px;
+    height: 24px;
+    padding: 0;
+    border: 1px solid #A00000;
     border-radius: 0;
-    background-color: var(--mf-red);
-    background-image: linear-gradient(180deg, #D82020 0%, var(--mf-red) 55%, #A80000 100%);
+    background-color: var(--mf-btn-red);
+    background-image: none;
     color: #FFFFFF;
     opacity: 1;
     box-shadow: none;
@@ -485,8 +493,8 @@ html:root {
 
 @media (hover: hover) and (pointer: fine) {
     #rightNavDrawerIcon:hover {
-        background-color: var(--mf-red-hover);
-        background-image: linear-gradient(180deg, #EC3A3A 0%, var(--mf-red-hover) 55%, #B80000 100%);
+        background-color: var(--mf-btn-red-hover);
+        background-image: none;
         color: #FFFFFF;
         opacity: 1;
     }
@@ -494,9 +502,8 @@ html:root {
 
 /* 按下：用 1px 内阴影压出「陷进去」的旧网页手感 */
 #rightNavDrawerIcon:active {
-    background-image: none;
-    background-color: #A80000;
-    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.45);
+    background-color: #B80000;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.35);
 }
 
 #rightNavDrawerIcon:focus-visible {
@@ -1292,11 +1299,12 @@ body .standoutHeader {
  * 这里把输入区整条复刻成那个样子，左右按钮做成同高的方角小方块。
  */
 
+/* 照 1.html 的 .dede_comment_post：白底区块 + 5px 内边距，框线只留上沿 */
 #form_sheld {
-    background-color: var(--mf-green-bg);
-    border-top: 1px solid var(--mf-line-2);
+    background-color: var(--mf-paper);
+    border-top: 1px solid var(--mf-line);
     border-radius: 0;
-    padding: 6px var(--mf-gutter) 8px;
+    padding: 5px var(--mf-gutter) 6px;
 }
 
 #nonQRFormItems {
@@ -1404,21 +1412,22 @@ body .standoutHeader {
     outline-offset: 0;
 }
 
-/* ---------- 发送按钮：原站红色搜索按钮 ---------- */
+/* ---------- 发送按钮：照 1.html 的 .dcmp-submit button（btn-bg2 浅灰渐变，70×25） ---------- */
 #send_but:not(.displayNone) {
     display: flex;
     align-items: center;
     justify-content: center;
     box-sizing: border-box;
-    width: 40px;
-    height: 24px;
-    min-width: 40px;
+    width: 70px;
+    height: 25px;
+    min-width: 70px;
     padding: 0;
-    border: 1px solid #9E0000;
+    border: 1px solid var(--mf-btn-edge);
+    border-color: var(--mf-btn-edge);
     border-radius: 0;
-    background-color: var(--mf-red);
-    background-image: linear-gradient(180deg, #D82020 0%, var(--mf-red) 55%, #A80000 100%);
-    color: #FFFFFF;
+    background-color: var(--mf-btn-face-b);
+    background-image: linear-gradient(180deg, var(--mf-btn-face-t) 0%, var(--mf-btn-face-b) 100%);
+    color: #444444;
     font-size: 12px;
     line-height: 1;
     cursor: pointer;
@@ -1426,7 +1435,13 @@ body .standoutHeader {
     transition: none;
 }
 
-/* 停止 / 继续 / 扮演：同一套红块，显隐仍由酒馆的 .displayNone 控制 */
+/* 原站按钮只有文字，把纸飞机字形换成「发表评论」 */
+#send_but > i,
+#send_but > .fa-solid {
+    display: none;
+}
+
+/* 继续 / 扮演 / 脚本控制：与「发表评论」同高的 25px 小方块，浅灰面 */
 #mes_continue,
 #mes_impersonate,
 #stscript_stop,
@@ -1436,15 +1451,15 @@ body .standoutHeader {
     align-items: center;
     justify-content: center;
     box-sizing: border-box;
-    width: 40px;
-    height: 24px;
-    min-width: 40px;
+    width: 25px;
+    height: 25px;
+    min-width: 25px;
     padding: 0;
-    border: 1px solid #9E0000;
+    border: 1px solid var(--mf-btn-edge);
     border-radius: 0;
-    background-color: var(--mf-red);
-    background-image: linear-gradient(180deg, #D82020 0%, var(--mf-red) 55%, #A80000 100%);
-    color: #FFFFFF;
+    background-color: var(--mf-btn-face-b);
+    background-image: linear-gradient(180deg, var(--mf-btn-face-t) 0%, var(--mf-btn-face-b) 100%);
+    color: #444444;
     font-size: 12px;
     line-height: 1;
     cursor: pointer;
@@ -1453,21 +1468,21 @@ body .standoutHeader {
 }
 
 /*
- * 停止按钮：尺寸与发送按钮对齐。酒馆用 --bottomFormBlockSize 定它的大小，
- * 这里直接锁同一组宽高，并去掉酒馆自带的 fa-circle-stop 字形，
- * 用绝对定位的白方块做「停止」符号。
+ * 停止按钮：与发送键同宽的实心红块，字面写「停止」。
+ * 原站没有这个按钮，但内容页的按钮都是「实心块 + 文字」，
+ * 这里沿用同一套语言，而不是画一个白方块。
  */
 #mes_stop {
     position: relative;
     box-sizing: border-box;
-    width: 40px !important;
-    height: 24px !important;
+    width: 70px !important;
+    height: 25px !important;
     min-width: 0;
     padding: 0 !important;
-    border: 1px solid #9E0000;
+    border: 1px solid #A00000;
     border-radius: 0;
-    background-color: var(--mf-red);
-    background-image: linear-gradient(180deg, #D82020 0%, var(--mf-red) 55%, #A80000 100%);
+    background-color: var(--mf-btn-red);
+    background-image: none;
     color: #FFFFFF;
     overflow: clip;
     cursor: pointer;
@@ -1480,39 +1495,48 @@ body .standoutHeader {
 }
 
 #mes_stop::after {
-    content: "";
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    width: 9px;
-    height: 9px;
+    content: "停止";
+    position: static;
+    transform: none;
+    width: auto;
+    height: auto;
     border-radius: 0;
-    background-color: #FFFFFF;
+    background: transparent;
+    color: #FFFFFF;
+    font-size: 12px;
+    letter-spacing: 1px;
 }
 
 @media (hover: hover) and (pointer: fine) {
     #send_but:not(.displayNone):hover,
-    #mes_stop:not(.displayNone):hover,
     #mes_continue:not(.displayNone):hover,
     #mes_impersonate:not(.displayNone):hover,
     #stscript_stop:not(.displayNone):hover,
     #stscript_continue:not(.displayNone):hover,
     #stscript_pause:not(.displayNone):hover {
-        background-image: linear-gradient(180deg, #EC3A3A 0%, var(--mf-red-hover) 55%, #B80000 100%);
+        background-image: linear-gradient(180deg, #FFFFFF 0%, #EFEFEF 100%);
+        color: #2B2B2B;
+    }
+
+    #mes_stop:not(.displayNone):hover {
+        background-color: var(--mf-btn-red-hover);
     }
 }
 
 #send_but:not(.displayNone):active,
-#mes_stop:not(.displayNone):active,
 #mes_continue:not(.displayNone):active,
 #mes_impersonate:not(.displayNone):active,
 #stscript_stop:not(.displayNone):active,
 #stscript_continue:not(.displayNone):active,
 #stscript_pause:not(.displayNone):active {
     background-image: none;
-    background-color: #A80000;
-    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.45);
+    background-color: #D8D8D8;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.22);
+}
+
+#mes_stop:not(.displayNone):active {
+    background-color: #B80000;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.35);
 }
 
 #send_but:not(.displayNone):focus-visible,
@@ -1526,27 +1550,13 @@ body .standoutHeader {
     outline-offset: 2px;
 }
 
-/* 生成中：停止按钮用更深的红区分，并保留极轻微的明暗呼吸 */
-#mes_stop {
-    animation: mf-stop-blink 1.4s steps(2, end) infinite;
-}
-
-@keyframes mf-stop-blink {
-    0%, 100% { background-image: linear-gradient(180deg, #D82020 0%, var(--mf-red) 55%, #A80000 100%); }
-    50% { background-image: none; background-color: #A00000; }
-}
-
-@media (prefers-reduced-motion: reduce) {
-    #mes_stop:not(.displayNone) {
-        animation: none;
-    }
-}
+/* 原站是静态页面，没有呼吸/闪烁动效：停止键只靠实心红与「停止」二字区分 */
 
 /*
  * 尺寸加固：酒馆的 `#rightSendForm>div:not(.mes_stop)` 带一个 class，
- * 特异性 (1,1,1) 高于单 id 的 (1,1,0)，会把上面的红块重新撑成 --bottomFormBlockSize
+ * 特异性 (1,1,1) 高于单 id 的 (1,1,0)，会把按钮重新撑成 --bottomFormBlockSize
  * （实测被拉回到 34.5px 高，整条输入栏跟着变高）。
- * 这里用 id + 元素 + 容器把特异性提到 (2,1,0)，把右侧所有红块锁在同一组尺寸上。
+ * 这里只锁「尺寸与不透明度」，不碰背景色/颜色 —— 否则 (2,0,1) 会把 hover 态一起盖掉。
  */
 #rightSendForm > div#send_but,
 #rightSendForm > div#mes_continue,
@@ -1555,25 +1565,32 @@ body .standoutHeader {
 #rightSendForm > div#stscript_continue,
 #rightSendForm > div#stscript_pause {
     box-sizing: border-box;
-    width: 40px;
-    height: 24px;
-    min-width: 40px;
+    height: 25px;
     margin: 0;
     padding: 0;
-    border: 1px solid #9E0000;
-    border-radius: 0;
-    background-color: var(--mf-red);
-    background-image: linear-gradient(180deg, #D82020 0%, var(--mf-red) 55%, #A80000 100%);
-    color: #FFFFFF;
-    font-size: 12px;
-    line-height: 1;
-    /* 酒馆给右侧按钮 0.7 透明度，门户里实心红块更清楚 */
+    /* 酒馆给右侧按钮 0.7 透明度，这里要实心 */
     opacity: 1;
     box-shadow: none;
 }
 
+#rightSendForm > div#send_but {
+    width: 70px;
+    min-width: 70px;
+}
+
+#rightSendForm > div#mes_continue,
+#rightSendForm > div#mes_impersonate,
+#rightSendForm > div#stscript_stop,
+#rightSendForm > div#stscript_continue,
+#rightSendForm > div#stscript_pause {
+    width: 25px;
+    min-width: 25px;
+}
+
 #send_but::before {
+    content: "发表评论";
     font-size: 12px;
+    letter-spacing: 1px;
 }
 
 /* ---------- 快捷回复：一排小方按钮 ---------- */
@@ -2190,6 +2207,28 @@ body #chat .mes.selected {
     padding: 4px 0 0;
 }
 
+/*
+ * 「动画专区」长条：复刻原站首页那张 663×31 的栏目图（mad.png）。
+ * 原图是位图（含角色剪影），这里用渐变 + 左端色块 + 文字还原它的形态。
+ * 挂在 .welcomeRecent 上，位置落在分类行与列表之间，与原站 banner 在主内容区顶部一致。
+ */
+.welcomePanel .welcomeRecent::before {
+    content: "动画专区";
+    display: block;
+    height: 31px;
+    line-height: 29px;
+    margin: 6px 0 4px;
+    padding-left: 12px;
+    background-color: var(--mf-titlebar-b);
+    background-image: linear-gradient(180deg, var(--mf-titlebar-t) 0%, var(--mf-titlebar-b) 62%, #D2E3C2 100%);
+    border: 1px solid var(--mf-line);
+    border-left: 5px solid var(--mf-title);
+    color: var(--mf-title);
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 3px;
+}
+
 .welcomePanel .welcomeHeaderTitle {
     display: flex;
     align-items: center;
@@ -2318,15 +2357,16 @@ body #chat .mes.selected {
     gap: 0;
 }
 
+/* 原站 .e2 图文混排：左侧 124px 图位 + 右侧标题/信息，条目间 1px 实线 */
 .welcomePanel .welcomeRecent .recentChatList .recentChat {
     position: relative;
     display: grid;
-    grid-template-columns: 52px minmax(0, 1fr);
+    grid-template-columns: 124px minmax(0, 1fr);
     column-gap: 10px;
     align-items: start;
-    padding: 7px 8px;
+    padding: 10px 8px;
     border: none;
-    border-bottom: 1px dashed var(--mf-dash);
+    border-bottom: 1px solid var(--mf-line-2);
     border-radius: 0;
     background-color: transparent;
     transition: none;
@@ -2350,12 +2390,12 @@ body #chat .mes.selected {
     outline-offset: -1px;
 }
 
-/* 封面 = 角色头像，裁成 1px 白衬的方图（原站 .e1 img 的画框） */
+/* 封面 = 角色头像，按原站 .e2 li a.preview img 的画框：120×90 内容 + 1px 白衬 + 1px 边框 */
 .welcomePanel .welcomeRecent .recentChatList .recentChat .avatar {
     flex: 0 0 auto;
     align-self: start;
-    width: 52px;
-    height: 52px;
+    width: 124px;
+    height: 94px;
     margin: 0;
     box-sizing: border-box;
     padding: 1px;
@@ -2363,6 +2403,12 @@ body #chat .mes.selected {
     border: 1px solid var(--mf-frame);
     border-radius: 0;
     overflow: hidden;
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .welcomePanel .welcomeRecent .recentChatList .recentChat:hover .avatar {
+        border-color: var(--mf-line);
+    }
 }
 
 .welcomePanel .welcomeRecent .recentChatList .recentChat .avatar img {
@@ -2393,15 +2439,15 @@ body #chat .mes.selected {
     display: contents;
 }
 
-/* 标题：原站列表链接的蓝转红 */
+/* 标题：原站 .e2 li a.title 的 14px 粗体 + 25px 行高，hover 转红 */
 .welcomePanel .welcomeRecent .recentChatList .recentChat .chatName {
     grid-area: name;
     flex: none;
     min-width: 0;
     padding-right: 76px; /* 给右上角的置顶/重命名/删除让位 */
-    font-size: 12.5px;
+    font-size: 14px;
     font-weight: 700;
-    line-height: 1.45;
+    line-height: 25px;
     color: var(--mf-ink);
     white-space: nowrap;
     overflow: hidden;
@@ -2445,13 +2491,14 @@ body #chat .mes.selected {
     overflow-wrap: anywhere;
 }
 
-/* 元信息行：左时间、右数据 */
+/* 元信息行：左时间、右数据（原站 span.info 的 12px / 23px 行高） */
 .welcomePanel .welcomeRecent .recentChatList .recentChat .chatDate {
     grid-area: date;
     justify-self: start;
     margin: 0;
-    font-size: 11px;
-    color: var(--mf-ink-4);
+    font-size: 12px;
+    line-height: 23px;
+    color: var(--mf-ink-3);
     white-space: nowrap;
     font-variant-numeric: tabular-nums;
 }
@@ -2463,8 +2510,9 @@ body #chat .mes.selected {
     display: flex;
     align-items: center;
     gap: 6px;
-    font-size: 11px;
-    color: var(--mf-ink-4);
+    font-size: 12px;
+    line-height: 23px;
+    color: var(--mf-ink-3);
 }
 
 .welcomePanel .welcomeRecent .recentChatList .recentChat .chatStats .counterBlock {
@@ -2843,24 +2891,32 @@ body #chat .mes.selected {
 
     /* 输入区整条收窄，按钮仍保持可点 */
     #form_sheld {
-        padding: 5px 6px 6px;
+        padding: 4px 6px 5px;
     }
 
     #nonQRFormItems {
         padding: 2px 3px;
     }
 
+    /* 发表评论按钮缩到 56px，给 textarea 留位置 */
     #send_but:not(.displayNone),
-    #mes_stop:not(.displayNone),
-    #mes_continue:not(.displayNone),
-    #mes_impersonate:not(.displayNone) {
-        width: 34px;
-        height: 26px;
+    #mes_stop:not(.displayNone) {
+        width: 56px;
+        height: 24px;
     }
 
     #mes_stop {
-        width: 34px !important;
-        height: 26px !important;
+        width: 56px !important;
+        height: 24px !important;
+    }
+
+    #rightSendForm > div#send_but {
+        width: 56px;
+        min-width: 56px;
+    }
+
+    #send_but::before {
+        letter-spacing: 0;
     }
 
     #options_button,
@@ -2886,8 +2942,9 @@ body #chat .mes.selected {
     }
 
     #rightNavDrawerIcon {
+        width: 56px;
         height: 20px;
-        padding: 0 8px;
+        padding: 0;
     }
 
     #rightNavDrawerIcon::after {
@@ -2895,16 +2952,21 @@ body #chat .mes.selected {
         letter-spacing: 0;
     }
 
-    /* 欢迎页列表紧凑一档 */
+    /* 欢迎页列表紧凑一档：图位收到 84px（图 80×60） */
     .welcomePanel .welcomeRecent .recentChatList .recentChat {
-        grid-template-columns: 42px minmax(0, 1fr);
+        grid-template-columns: 84px minmax(0, 1fr);
         column-gap: 8px;
-        padding: 6px;
+        padding: 8px 6px;
     }
 
     .welcomePanel .welcomeRecent .recentChatList .recentChat .avatar {
-        width: 42px;
-        height: 42px;
+        width: 84px;
+        height: 64px;
+    }
+
+    .welcomePanel .welcomeRecent .recentChatList .recentChat .chatName {
+        font-size: 13px;
+        line-height: 21px;
     }
 
     .welcomePanel .welcomeRecent .recentChatList .recentChat .chatName {
@@ -2957,8 +3019,9 @@ body #chat .mes.selected {
     }
 
     #rightNavDrawerIcon {
-        height: 20px;
-        padding: 0 10px;
+        width: 60px;
+        height: 22px;
+        padding: 0;
     }
 
     #rightNavDrawerIcon::after {

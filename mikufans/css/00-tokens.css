@@ -57,6 +57,13 @@ html:root {
     --mf-accent-2: #FF6633;
     --mf-red: #C00000;               /* 按钮红 */
     --mf-red-hover: #E00000;
+    /* 原站搜索按钮的纯红（#F00 太刺眼，压一档），用于顶栏「角色」按钮 */
+    --mf-btn-red: #D40000;
+    --mf-btn-red-hover: #E80000;
+    /* 原站 btn-bg2 的浅灰渐变（发表评论按钮） */
+    --mf-btn-face-t: #FAFAFA;
+    --mf-btn-face-b: #DCDCDC;
+    --mf-btn-edge: #767676;
     --mf-announce: #FF0000;          /* 公告红字 */
     --mf-nav-hover: #8A0808;         /* 导航悬停深红 */
 

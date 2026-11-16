@@ -16,39 +16,39 @@
 html:root {
     /* ---------- 纸与绿（页面底 / 块底） ---------- */
     --mf-paper: #FFFFFF;             /* 内容块、正文底 */
-    --mf-paper-2: #FCFDFA;           /* 次级块、表格斑马 */
-    --mf-green-bg: #F4F8EE;          /* 门户块底（原站 .place / 搜索条） */
-    --mf-green-bg-2: #F8FAEB;        /* 列表悬停、浅绿高亮 */
-    --mf-titlebar-t: #F7FBF3;        /* 标题条渐变起 */
-    --mf-titlebar-b: #EAF2E2;        /* 标题条渐变止 */
+    --mf-paper-2: #FAFCF6;           /* 次级块、表格斑马 */
+    --mf-green-bg: #EDF4E2;          /* 门户块底（原站 .place / 搜索条） */
+    --mf-green-bg-2: #F1F7E3;        /* 列表悬停、浅绿高亮 */
+    --mf-titlebar-t: #F0F7E7;        /* 标题条渐变起 */
+    --mf-titlebar-b: #DEEBD0;        /* 标题条渐变止 */
 
     /* ---------- 线 ---------- */
-    --mf-line: #C5DDBC;              /* 主边框（tbox 外框） */
-    --mf-line-2: #EAF2DE;            /* 浅边框（面包屑上下线） */
-    --mf-line-3: #E5EFD6;            /* 更浅的分隔 */
-    --mf-dash: #DCEBD7;              /* 虚线列表分隔 */
-    --mf-frame: #E3E3E3;             /* 图片框 */
-    --mf-frame-2: #DDDDDD;           /* 头像框 */
-    --mf-inset-t: #666666;           /* 内凹框：上/左暗边 */
-    --mf-inset-b: #BBBBBB;           /* 内凹框：下/右亮边 */
+    --mf-line: #B5D2A4;              /* 主边框（tbox 外框） */
+    --mf-line-2: #DCEACE;            /* 浅边框（面包屑上下线） */
+    --mf-line-3: #D6E4C6;            /* 更浅的分隔 */
+    --mf-dash: #CBDDC0;              /* 虚线列表分隔 */
+    --mf-frame: #D8D8D8;             /* 图片框 */
+    --mf-frame-2: #D2D2D2;           /* 头像框 */
+    --mf-inset-t: #5A5A5A;           /* 内凹框：上/左暗边 */
+    --mf-inset-b: #C2C2C2;           /* 内凹框：下/右亮边 */
 
     /* ---------- 绿（标题与品牌） ---------- */
-    --mf-title: #4A7749;             /* dl.tbox dt strong 标题绿 */
-    --mf-title-2: #709C5A;           /* 面包屑 / 副标题绿 */
-    --mf-green: #006900;             /* 链接式绿、选中 */
+    --mf-title: #3D6B3C;             /* dl.tbox dt strong 标题绿 */
+    --mf-title-2: #5D8A47;           /* 面包屑 / 副标题绿 */
+    --mf-green: #006200;             /* 链接式绿、选中 */
     --mf-green-deep: #003300;        /* 深绿 */
     --mf-brand-green: #4CAF50;       /* 字标 Mi */
     --mf-brand-cyan: #00B0D8;        /* 字标 ku */
     --mf-brand-pink: #FF0080;        /* 字标 Fans / 列表强调 */
-    /* 对话引号内文字：miku 绿（rgb 63,207,142）再淡一档，白底上更柔和 */
-    --mf-miku: #5FD6A6;
+    /* 对话引号内文字：miku 绿，比纯白底更耐看又不抢正文 */
+    --mf-miku: #4FD19C;
 
     /* ---------- 字 ---------- */
-    --mf-ink: #333333;
-    --mf-ink-2: #666666;
-    --mf-ink-3: #888888;
-    --mf-ink-4: #999999;
-    --mf-ink-5: #AAAAAA;
+    --mf-ink: #2B2B2B;
+    --mf-ink-2: #575757;
+    --mf-ink-3: #7A7A7A;
+    --mf-ink-4: #8B8B8B;
+    --mf-ink-5: #9C9C9C;
 
     /* ---------- 链接与强调 ---------- */
     --mf-link: #3366CC;              /* 原站 a */
@@ -63,11 +63,11 @@ html:root {
     /* ---------- 排版 ---------- */
     --mf-font: Verdana, Tahoma, "MS Sans Serif", SimSun, "宋体", Arial, sans-serif;
     --mf-font-mono: Consolas, "Courier New", Courier, monospace;
-    --mf-title-size: 13px;
-    --mf-body-size: 13px;
-    --mf-body-line: 1.75;
-    --mf-meta-size: 11.5px;
-    --mf-comment-size: 13px;
+    --mf-title-size: 13.5px;
+    --mf-body-size: 13.5px;
+    --mf-body-line: 1.72;
+    --mf-meta-size: 12px;
+    --mf-comment-size: 13.5px;
 
     /* ---------- 尺寸（原站 960 时代的信息密度） ---------- */
     --mf-radius: 0;                  /* 门户零圆角 */

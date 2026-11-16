@@ -21,7 +21,7 @@
 
 @media (hover: hover) and (pointer: fine) {
     #chat .mes[is_user="true"]:hover {
-        background-color: #F5F8E6;
+        background-color: var(--mf-green-bg-2);
     }
 }
 

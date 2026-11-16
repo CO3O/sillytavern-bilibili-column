@@ -47,7 +47,7 @@ html:root {
     /* 酒馆默认用 --bottomFormBlockSize 算高度，这里统一到门户工具条高度 */
     height: var(--mf-topbar-height) !important;
     background-color: var(--mf-paper);
-    background-image: linear-gradient(180deg, #FFFFFF 0%, #F9FCF5 100%);
+    background-image: linear-gradient(180deg, #FFFFFF 0%, var(--mf-titlebar-t) 100%);
     border-bottom: 1px solid var(--mf-line);
     border-radius: 0;
     box-shadow: none;

@@ -1,35 +1,20 @@
 /*
- * 背景层：2009 年的白纸底。
+ * 背景层：交还给酒馆原生的「背景」设置。
  *
- * 原站是纯白页面 + 顶部一条浅绿装饰带，没有任何插画。
- * 这里保留纯白，只在极低对比度上叠一层 1px 横向参考线（间距 26px），
- * 模拟旧网页那种「表格辅助线」的印刷感——几乎看不见，但密度上更像门户。
+ * 主题不再给 #bg1 / #bg_custom 铺任何底色、渐变或纹理，
+ * 只做两件事：清掉可能残留的滤镜与暗角，保证用户选的背景图原样呈现。
+ * （原站是白纸站点，但背景属于用户个人设置，主题不该覆盖它。）
  */
 
 #bg1,
 #bg_custom {
-    position: fixed;
-    inset: 0;
-    width: 100% !important;
-    height: 100% !important;
-    background-color: var(--mf-paper) !important;
-    background-image:
-        /* 顶部装饰带：与原站 header 下方那条浅绿渐变对应 */
-        linear-gradient(180deg, var(--mf-bg-soft) 0%, rgba(244, 248, 238, 0) 120px),
-        /* 1px 横向参考线 */
-        repeating-linear-gradient(
-            180deg,
-            rgba(197, 221, 188, 0.22) 0 1px,
-            transparent 1px 26px
-        ) !important;
-    background-repeat: no-repeat, repeat !important;
-    background-position: left top, left top !important;
-    background-size: 100% 120px, 100% 26px !important;
-    background-attachment: scroll !important;
     filter: none !important;
+    -webkit-filter: none !important;
+    opacity: 1 !important;
+    mix-blend-mode: normal !important;
 }
 
-/* 不用伪元素叠动画：原站是静态页面，动效全部收掉 */
+/* 不用伪元素叠装饰：原站是静态页面，也没有额外背景层 */
 #bg1::before,
 #bg1::after,
 #bg_custom::before,

@@ -6,8 +6,8 @@
 /* ---------- 全局 ---------- */
 body {
     font-family: var(--mf-font) !important;
+    /* 只兜一层白底，不接管背景图：酒馆原生背景仍然生效 */
     background-color: var(--mf-paper) !important;
-    background-image: none !important;
     color: var(--mf-ink);
     /* 旧网页没有字间距，字号小、行距紧 */
     letter-spacing: 0;

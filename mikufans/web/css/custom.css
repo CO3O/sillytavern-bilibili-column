@@ -11,4 +11,4 @@
  * 样式迭代：改 ref 指向新的 commit（或等标签索引好之后换回标签名），
  * 光改 ?v= 只对浏览器缓存生效，CDN 可能还是旧文件。
  */
-@import url("https://cdn.jsdelivr.net/gh/CO3O/sillytavern-bilibili-column@382ef7c/mikufans/web/theme.css?v=7");
+@import url("https://cdn.jsdelivr.net/gh/CO3O/sillytavern-bilibili-column@237267a/mikufans/web/theme.css?v=8");

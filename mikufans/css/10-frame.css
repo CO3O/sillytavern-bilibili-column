@@ -25,7 +25,7 @@ code,
 }
 
 ::selection {
-    background-color: var(--mf-green-bg-2);
+    background-color: var(--mf-bg-hover);
     color: var(--mf-green-deep);
 }
 
@@ -108,7 +108,7 @@ html:root {
     .drawer-icon.closedIcon:hover {
         color: var(--mf-green);
         opacity: 1;
-        background-color: var(--mf-green-bg-2);
+        background-color: var(--mf-bg-hover);
         border-color: var(--mf-line-2);
     }
 }
@@ -121,7 +121,7 @@ html:root {
 .drawer-icon.openIcon {
     color: var(--mf-green);
     opacity: 1;
-    background-color: var(--mf-green-bg);
+    background-color: var(--mf-bg-soft);
     border-color: var(--mf-line);
 }
 
@@ -209,7 +209,7 @@ html:root {
 #left-nav-panel,
 #right-nav-panel {
     background-color: var(--mf-paper);
-    border: 1px solid var(--mf-line);
+    border: 1px solid var(--mf-line-box);
     box-shadow: 2px 2px 0 rgba(197, 221, 188, 0.55);
 }
 
@@ -249,7 +249,7 @@ body .standoutHeader {
     margin-bottom: 6px;
     background-color: var(--mf-titlebar-b);
     background-image: linear-gradient(180deg, var(--mf-titlebar-t) 0%, var(--mf-titlebar-b) 100%);
-    border: 1px solid var(--mf-line);
+    border: 1px solid var(--mf-line-box);
     border-bottom-color: #B9D4AF;
     border-radius: 0;
 }
@@ -272,7 +272,7 @@ body .standoutHeader {
     font-weight: 700;
     font-size: 12px;
     letter-spacing: 1px;
-    border: 1px solid var(--mf-line);
+    border: 1px solid var(--mf-line-box);
     border-radius: 0;
     background-color: var(--mf-titlebar-b);
     background-image: linear-gradient(180deg, var(--mf-titlebar-t) 0%, var(--mf-titlebar-b) 100%);
@@ -283,7 +283,7 @@ body .standoutHeader {
     .inline-drawer-header:hover,
     .inline-drawer-toggle.inline-drawer-header:hover {
         background-image: none;
-        background-color: var(--mf-green-bg-2);
+        background-color: var(--mf-bg-hover);
         color: var(--mf-green-deep);
     }
 }
@@ -299,7 +299,7 @@ body .standoutHeader {
 }
 
 ::-webkit-scrollbar-track {
-    background: var(--mf-green-bg);
+    background: var(--mf-bg-soft);
     border-left: 1px solid var(--mf-line-2);
 }
 
@@ -317,7 +317,8 @@ body .standoutHeader {
 
 /* ---------- 聊天区容器 ---------- */
 #chat {
-    background-color: var(--mf-green-bg);
+    /* 原站是白纸底，聊天区不铺绿 */
+    background-color: var(--mf-paper);
     /* 卡片保持全宽，左右留白放在卡片内部 */
     padding: 6px 0 8px;
 }

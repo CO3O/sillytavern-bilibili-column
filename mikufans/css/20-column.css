@@ -15,7 +15,8 @@
     margin: 0 auto var(--mf-chat-gap);
     padding: 0;
     background-color: var(--mf-paper);
-    border: 1px solid var(--mf-line);
+    /* 全站唯一的绿框：dl.tbox 的外框（原站 #c5ddbc，共 7 处） */
+    border: 1px solid var(--mf-line-box);
     border-radius: 0;
     box-shadow: none;
 }
@@ -32,7 +33,7 @@
     margin: 0;
     background-color: var(--mf-titlebar-b);
     background-image: linear-gradient(180deg, var(--mf-titlebar-t) 0%, var(--mf-titlebar-b) 100%);
-    border-bottom: 1px solid var(--mf-line);
+    border-bottom: 1px solid var(--mf-line-box);
     /* 左端深绿竖条：原站标题条左侧的实心色块 */
     border-left: 3px solid var(--mf-title);
     border-top: none;
@@ -212,7 +213,7 @@
 #chat .mes_text blockquote {
     margin: 0 0 0.8em;
     padding: 6px 10px 6px 26px;
-    background-color: var(--mf-green-bg);
+    background-color: var(--mf-bg-soft);
     border: 1px solid var(--mf-line-2);
     border-left: 3px solid var(--mf-title-2);
     border-radius: 0;
@@ -268,7 +269,7 @@
 #chat .mes_text code {
     padding: 1px 4px;
     border: 1px solid var(--mf-line-2);
-    background-color: var(--mf-green-bg);
+    background-color: var(--mf-bg-soft);
     color: var(--mf-red);
     border-radius: 0;
     font-family: var(--mf-font-mono);
@@ -298,7 +299,7 @@
 #chat .mes_text hr {
     height: 0;
     border: none;
-    border-top: 1px dashed var(--mf-dash);
+    border-top: 1px dashed var(--mf-dash-box);
     margin: 1em 0;
 }
 
@@ -318,7 +319,7 @@
 }
 
 #chat .mes_text th {
-    background-color: var(--mf-green-bg);
+    background-color: var(--mf-bg-soft);
     color: var(--mf-title);
     font-weight: 700;
 }
@@ -376,7 +377,7 @@
 #chat .mes_reasoning_details {
     margin: 0;
     padding: 0;
-    background-color: var(--mf-green-bg);
+    background-color: var(--mf-bg-soft);
     border: none;
     border-bottom: 1px dashed var(--mf-dash);
     border-left: 3px solid var(--mf-title-2);
@@ -448,7 +449,7 @@
     display: block;
     margin: 0 12px 8px;
     padding-top: 6px;
-    border-top: 1px dashed var(--mf-dash);
+    border-top: 1px dashed var(--mf-dash-box);
     font-size: 11px;
     line-height: 1.6;
     color: var(--mf-ink-4);

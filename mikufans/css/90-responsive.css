@@ -114,11 +114,16 @@
         letter-spacing: 0;
     }
 
-    /* 欢迎页图格：小屏一行三个（图 98×76） */
+    /* 欢迎页图格：小屏按 96×72 图框等比缩小，仍保持原站 126:136 的格子比例 */
+    .welcomePanel .welcomeRecent .recentChatList {
+        padding: 6px 0;
+    }
+
     .welcomePanel .welcomeRecent .recentChatList .recentChat {
-        flex: 0 0 33.3333%;
-        max-width: 33.3333%;
-        padding: 0 3px;
+        flex: 0 0 102px;
+        max-width: 102px;
+        height: 112px;
+        padding: 0 0 0 4px;
     }
 
     .welcomePanel .welcomeRecent .recentChatList .recentChat .avatar {
@@ -127,13 +132,9 @@
     }
 
     .welcomePanel .welcomeRecent .recentChatList .recentChat .chatName {
-        font-size: 12px;
-        line-height: 18px;
-    }
-
-    .welcomePanel .welcomeRecent .recentChatList .recentChat .chatDate {
-        font-size: 10.5px;
-        line-height: 15px;
+        padding-top: 4px;
+        font-size: 11.5px;
+        line-height: 16px;
     }
 
     .welcomePanel .welcomeRecent .recentChatList .recentChat .chatName {

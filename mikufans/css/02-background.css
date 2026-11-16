@@ -15,7 +15,7 @@
     background-color: var(--mf-paper) !important;
     background-image:
         /* 顶部装饰带：与原站 header 下方那条浅绿渐变对应 */
-        linear-gradient(180deg, var(--mf-green-bg) 0%, rgba(244, 248, 238, 0) 120px),
+        linear-gradient(180deg, var(--mf-bg-soft) 0%, rgba(244, 248, 238, 0) 120px),
         /* 1px 横向参考线 */
         repeating-linear-gradient(
             180deg,

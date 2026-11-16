@@ -11,7 +11,7 @@
     align-self: center;
     margin: 0 auto 4px;
     padding: 6px 12px 8px;
-    background-color: var(--mf-green-bg-2);
+    background-color: var(--mf-bg-hover);
     border: none;
     border-top: 1px dashed var(--mf-dash);
     border-bottom: 1px dashed var(--mf-dash);
@@ -21,7 +21,7 @@
 
 @media (hover: hover) and (pointer: fine) {
     #chat .mes[is_user="true"]:hover {
-        background-color: var(--mf-green-bg-2);
+        background-color: var(--mf-bg-hover);
     }
 }
 
@@ -222,6 +222,6 @@
 
 /* 选中的楼层：原站行高亮用浅绿 */
 #chat .mes.selected {
-    background-color: var(--mf-green-bg);
+    background-color: var(--mf-bg-soft);
     outline: 1px solid var(--mf-line);
 }

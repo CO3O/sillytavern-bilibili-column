@@ -90,7 +90,7 @@ select option:not(:checked) {
 }
 
 select option:checked {
-    background-color: var(--mf-green-bg-2);
+    background-color: var(--mf-bg-hover);
     color: var(--mf-green-deep);
 }
 
@@ -106,7 +106,7 @@ select option[disabled]:not(:checked) {
 }
 
 .select2-container--default .select2-results__option--highlighted[aria-selected] {
-    background-color: var(--mf-green-bg-2);
+    background-color: var(--mf-bg-hover);
     color: var(--mf-green);
 }
 
@@ -124,7 +124,7 @@ input[type="range"] {
 /* ---------- 按钮：原站 .btn-1 / .btn-2 的方块感 ---------- */
 .menu_button,
 .menu_button_icon {
-    background-color: var(--mf-green-bg);
+    background-color: var(--mf-bg-soft);
     border: 1px solid var(--mf-line);
     border-radius: 0;
     color: var(--mf-ink-2);
@@ -135,7 +135,7 @@ input[type="range"] {
 @media (hover: hover) and (pointer: fine) {
     .menu_button:hover,
     .menu_button_icon:hover {
-        background-color: var(--mf-green-bg-2);
+        background-color: var(--mf-bg-hover);
         border-color: var(--mf-green);
         color: var(--mf-green);
     }
@@ -196,7 +196,7 @@ input[type="range"] {
 @media (hover: hover) and (pointer: fine) {
     .character_select:hover,
     .group_select:hover {
-        background-color: var(--mf-green-bg-2);
+        background-color: var(--mf-bg-hover);
     }
 }
 
@@ -227,7 +227,7 @@ input[type="range"] {
 /* 当前选中角色：浅绿条 + 左侧绿竖线 */
 .character_select.is_selected,
 .group_select.is_selected {
-    background-color: var(--mf-green-bg);
+    background-color: var(--mf-bg-soft);
     box-shadow: inset 3px 0 0 var(--mf-title);
 }
 
@@ -253,7 +253,7 @@ input[type="range"] {
 @media (hover: hover) and (pointer: fine) {
     #options .options-content a:hover,
     #options .options-content .interactable:hover {
-        background-color: var(--mf-green-bg-2);
+        background-color: var(--mf-bg-hover);
         color: var(--mf-green);
     }
 }
@@ -326,7 +326,7 @@ body #toast-container > div.toast.toast-info {
     #extensions_settings2 .inline-drawer-toggle.inline-drawer-header:hover {
         filter: none;
         background-image: none;
-        background-color: var(--mf-green-bg-2);
+        background-color: var(--mf-bg-hover);
         color: var(--mf-green-deep);
     }
 }
@@ -372,7 +372,7 @@ body #toast-container > div.toast.toast-info {
 .macroBrowser .macro-item.selected,
 #rm_print_characters_block.group_overlay_mode_select .character_select.character_selected,
 #bg_tabs .bg_tabs_list .bg_tab_button.ui-tabs-active {
-    background-color: var(--mf-green-bg);
+    background-color: var(--mf-bg-soft);
     border-color: var(--mf-line);
     color: var(--mf-ink);
 }
@@ -383,7 +383,7 @@ body #toast-container > div.toast.toast-info {
 .character_version,
 .character_tag {
     border-radius: 0;
-    background-color: var(--mf-green-bg);
+    background-color: var(--mf-bg-soft);
     border: 1px solid var(--mf-line-2);
     color: var(--mf-ink-2);
     font-size: 11px;
@@ -392,7 +392,7 @@ body #toast-container > div.toast.toast-info {
 @media (hover: hover) and (pointer: fine) {
     .tag:hover,
     .character_tag:hover {
-        background-color: var(--mf-green-bg-2);
+        background-color: var(--mf-bg-hover);
         border-color: var(--mf-line);
         color: var(--mf-green);
     }
@@ -425,7 +425,7 @@ body #user-settings-block h4 {
 @media (hover: hover) and (pointer: fine) {
     body #user-settings-block h4:hover {
         background-image: none;
-        background-color: var(--mf-green-bg-2);
+        background-color: var(--mf-bg-hover);
         color: var(--mf-green-deep);
     }
 }
@@ -435,7 +435,7 @@ body #user-settings-block h4 {
  * 且它的样式表晚于 #custom-style 生效，所以这里加 body 提到 (0,3,1) 才压得住。 */
 body .select2-container .select2-selection--multiple .select2-selection__choice,
 body .select2-selection__choice {
-    background-color: var(--mf-green-bg);
+    background-color: var(--mf-bg-soft);
     border: 1px solid var(--mf-line);
     border-radius: 0;
     color: var(--mf-ink);
@@ -478,6 +478,6 @@ body .world_entry {
 
 /* 酒馆内建的「已选中」行底色写死成深红 rgb(102,0,0) */
 body #chat .mes.selected {
-    background-color: var(--mf-green-bg);
+    background-color: var(--mf-bg-soft);
     outline: 1px solid var(--mf-line);
 }

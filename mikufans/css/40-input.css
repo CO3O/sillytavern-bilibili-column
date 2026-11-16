@@ -7,7 +7,8 @@
 
 /* 照 1.html 的 .dede_comment_post：白底区块 + 5px 内边距，框线只留上沿 */
 #form_sheld {
-    background-color: var(--mf-paper);
+    /* 原站搜索条是全站唯一用 #f4f8ee 铺底的区块 */
+    background-color: var(--mf-green-bg);
     border-top: 1px solid var(--mf-line);
     border-radius: 0;
     padding: 5px var(--mf-gutter) 6px;
@@ -89,7 +90,7 @@
     padding: 0;
     border: 1px solid var(--mf-line-2);
     border-radius: 0;
-    background-color: var(--mf-green-bg);
+    background-color: var(--mf-bg-soft);
     color: var(--mf-ink-2);
     font-size: 12px;
     line-height: 1;
@@ -99,7 +100,7 @@
 @media (hover: hover) and (pointer: fine) {
     #options_button:hover,
     #leftSendForm .interactable:hover {
-        background-color: var(--mf-green-bg-2);
+        background-color: var(--mf-bg-hover);
         border-color: var(--mf-line);
         color: var(--mf-green);
     }
@@ -346,7 +347,7 @@
 @media (hover: hover) and (pointer: fine) {
     #form_sheld #qr--bar > .qr--buttons .qr--button:hover {
         border-color: var(--mf-green);
-        background-color: var(--mf-green-bg-2);
+        background-color: var(--mf-bg-hover);
         color: var(--mf-green);
     }
 }
@@ -378,7 +379,7 @@ body #qr--popout > .qr--body > .qr--buttons .qr--button {
 
 @media (hover: hover) and (pointer: fine) {
     body #qr--popout > .qr--body > .qr--buttons .qr--button:hover {
-        background-color: var(--mf-green-bg-2);
+        background-color: var(--mf-bg-hover);
         border-color: var(--mf-green);
         color: var(--mf-green);
     }

@@ -18,7 +18,7 @@
 /* ---------- 全屏遮罩 ---------- */
 #preloader,
 .popup.transparent_dialogue_popup:has(#loader) {
-    background-color: var(--mf-green-bg);
+    background-color: var(--mf-bg-soft);
     background-image: none;
     backdrop-filter: none;
     -webkit-backdrop-filter: none;

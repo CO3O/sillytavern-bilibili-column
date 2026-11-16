@@ -14,41 +14,51 @@
  * 与 style.css 的 :root 同特异性时会输，导致下面的灰阶覆盖全部失效
  * （症状：世界书标签、多选块、菜单底色仍是深灰）。加一个元素选择器就压过去了。 */
 html:root {
-    /* ---------- 纸与绿（页面底 / 块底） ---------- */
-    --mf-paper: #FFFFFF;             /* 内容块、正文底 */
-    --mf-paper-2: #FAFCF6;           /* 次级块、表格斑马 */
-    --mf-green-bg: #F5F9EF;          /* 门户块底（原站 .place / 搜索条） */
-    --mf-green-bg-2: #F8FBF2;        /* 列表悬停、浅绿高亮 */
-    --mf-titlebar-t: #F4F9EC;        /* 标题条渐变起 */
-    --mf-titlebar-b: #E4EEDA;        /* 标题条渐变止 */
+    /* ---------- 纸（页面底 / 块底） ----------
+     * 原站是白纸站点：背景色统计里 #fff 出现 5 次、#f5f5f5 2 次，
+     * 而浅绿 #f4f8ee / #f8faeb 各只出现 1 次。所以这里白与灰才是主色。
+     */
+    --mf-paper: #FFFFFF;             /* 页面、内容块、输入区 */
+    --mf-paper-2: #FAFAFA;           /* 次级块、表格斑马 */
+    --mf-bg-soft: #FAFAFA;           /* 次级块底 */
+    --mf-bg-hover: #F5F5F5;          /* 悬停、选中 */
+    /* 浅绿只留给原站真正用到它的两处：搜索条/面包屑、列表悬停 */
+    --mf-green-bg: #F4F8EE;
+    --mf-green-bg-2: #F8FAEB;
+    /* 标题条渐变：dl.tbox 的 dt 背景，是全站唯一成片使用绿色的地方 */
+    --mf-titlebar-t: #F7FBF3;
+    --mf-titlebar-b: #EAF2E2;
 
-    /* ---------- 线 ---------- */
-    --mf-line: #B5D2A4;              /* 主边框（tbox 外框） */
-    --mf-line-2: #DCEACE;            /* 浅边框（面包屑上下线） */
-    --mf-line-3: #D6E4C6;            /* 更浅的分隔 */
-    --mf-dash: #CBDDC0;              /* 虚线列表分隔 */
-    --mf-frame: #D8D8D8;             /* 图片框 */
-    --mf-frame-2: #D2D2D2;           /* 头像框 */
-    --mf-inset-t: #5A5A5A;           /* 内凹框：上/左暗边 */
-    --mf-inset-b: #C2C2C2;           /* 内凹框：下/右亮边 */
+    /* ---------- 线（灰阶为主） ---------- */
+    --mf-line: #DDDDDD;              /* 常规边框 */
+    --mf-line-2: #EEEEEE;            /* 浅边框、行分隔 */
+    --mf-line-3: #F5F5F5;            /* 更浅的分隔 */
+    --mf-dash: #E5E5E5;              /* 虚线列表分隔 */
+    --mf-frame: #E3E3E3;             /* 图片框（原站 .e1 img） */
+    --mf-frame-2: #DDDDDD;           /* 头像框 */
+    --mf-inset-t: #666666;           /* 内凹框：上/左暗边（原站 .ipt-txt） */
+    --mf-inset-b: #BBBBBB;           /* 内凹框：下/右亮边 */
+    /* 绿边框只给 dl.tbox：外框 #c5ddbc、内部虚线 #dcebd7（原站仅这两个值） */
+    --mf-line-box: #C5DDBC;
+    --mf-dash-box: #DCEBD7;
 
-    /* ---------- 绿（标题与品牌） ---------- */
-    --mf-title: #3D6B3C;             /* dl.tbox dt strong 标题绿 */
-    --mf-title-2: #5D8A47;           /* 面包屑 / 副标题绿 */
-    --mf-green: #006200;             /* 链接式绿、选中 */
+    /* ---------- 绿（仅标题与链接文字，不成片铺底） ---------- */
+    --mf-title: #4A7749;             /* dl.tbox dt strong 标题绿 */
+    --mf-title-2: #709C5A;           /* 面包屑 / 副标题绿 */
+    --mf-green: #006900;             /* 列表链接绿 */
     --mf-green-deep: #003300;        /* 深绿 */
     --mf-brand-green: #4CAF50;       /* 字标 Mi */
     --mf-brand-cyan: #00B0D8;        /* 字标 ku */
-    --mf-brand-pink: #FF0080;        /* 字标 Fans / 列表强调 */
-    /* 对话引号内文字：miku 绿，比纯白底更耐看又不抢正文 */
+    --mf-brand-pink: #FF0080;        /* 字标 Fans / 图格标题悬停 */
+    /* 对话引号内文字：miku 绿 */
     --mf-miku: #4FD19C;
 
-    /* ---------- 字 ---------- */
-    --mf-ink: #2B2B2B;
-    --mf-ink-2: #575757;
-    --mf-ink-3: #7A7A7A;
-    --mf-ink-4: #8B8B8B;
-    --mf-ink-5: #9C9C9C;
+    /* ---------- 字（灰阶，原站文字色全是灰阶） ---------- */
+    --mf-ink: #333333;
+    --mf-ink-2: #666666;
+    --mf-ink-3: #777777;
+    --mf-ink-4: #999999;
+    --mf-ink-5: #AAAAAA;
 
     /* ---------- 链接与强调 ---------- */
     --mf-link: #3366CC;              /* 原站 a */
@@ -104,25 +114,25 @@ html:root {
      * 酒馆默认按深色底写了一批半透明黑/白与灰阶，浅色门户上会糊成一片灰带，
      * 这里把灰度值改到各自的对应档位，内建组件就会自动变浅。
      */
-    --black30a: #F4F8EE;
-    --black50a: rgba(197, 221, 188, 0.55);
-    --black60a: rgba(197, 221, 188, 0.75);
-    --black70a: rgba(175, 205, 162, 0.85);
-    --black90a: #EAF2DE;
-    --black100: #C5DDBC;
+    --black30a: #F5F5F5;
+    --black50a: rgba(0, 0, 0, 0.06);
+    --black60a: rgba(0, 0, 0, 0.08);
+    --black70a: rgba(0, 0, 0, 0.1);
+    --black90a: #EEEEEE;
+    --black100: #DDDDDD;
     --white20a: #FFFFFF;
     --white30a: #FFFFFF;
     --white50a: #FFFFFF;
     --white60a: #FFFFFF;
     --white70a: #FFFFFF;
-    --grey10: #FCFDFA;
-    --grey30: #F4F8EE;
-    --grey50: #C5DDBC;
-    --grey5020a: rgba(197, 221, 188, 0.2);
-    --grey5050a: rgba(197, 221, 188, 0.5);
-    --grey70: #DCEBD7;
-    --grey75: #EAF2DE;
-    --grey30a: rgba(234, 242, 222, 0.9);
+    --grey10: #FAFAFA;
+    --grey30: #F5F5F5;
+    --grey50: #DDDDDD;
+    --grey5020a: rgba(0, 0, 0, 0.04);
+    --grey5050a: rgba(0, 0, 0, 0.08);
+    --grey70: #E5E5E5;
+    --grey75: #EEEEEE;
+    --grey30a: rgba(0, 0, 0, 0.05);
     --grey7070a: rgba(153, 153, 153, 0.45);
     /* 内建焦点描边默认是纯白，浅底上等于没有，改成深绿 */
     --interactable-outline-color: #006900;
@@ -142,10 +152,10 @@ html:root {
      */
     --bl-pink: var(--mf-green);
     --bl-pink-hover: var(--mf-green);
-    --bl-pink-soft: var(--mf-green-bg-2);
+    --bl-pink-soft: var(--mf-bg-hover);
     --bl-blue: var(--mf-link);
     --bl-blue-deep: var(--mf-link);
-    --bl-blue-soft: var(--mf-green-bg);
+    --bl-blue-soft: var(--mf-bg-soft);
     --bl-dialogue: var(--mf-brand-pink);
     --bl-text-1: var(--mf-ink);
     --bl-text-2: var(--mf-ink-2);
@@ -153,7 +163,7 @@ html:root {
     --bl-line: var(--mf-line);
     --bl-line-soft: var(--mf-line-2);
     --bl-bg-1: var(--mf-paper);
-    --bl-bg-2: var(--mf-green-bg);
+    --bl-bg-2: var(--mf-bg-soft);
     --bl-bg-3: var(--mf-paper-2);
     --bl-bg-sky: var(--mf-paper);
     --bl-font: var(--mf-font);

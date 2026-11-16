@@ -14,41 +14,51 @@
  * 与 style.css 的 :root 同特异性时会输，导致下面的灰阶覆盖全部失效
  * （症状：世界书标签、多选块、菜单底色仍是深灰）。加一个元素选择器就压过去了。 */
 html:root {
-    /* ---------- 纸与绿（页面底 / 块底） ---------- */
-    --mf-paper: #FFFFFF;             /* 内容块、正文底 */
-    --mf-paper-2: #FAFCF6;           /* 次级块、表格斑马 */
-    --mf-green-bg: #F5F9EF;          /* 门户块底（原站 .place / 搜索条） */
-    --mf-green-bg-2: #F8FBF2;        /* 列表悬停、浅绿高亮 */
-    --mf-titlebar-t: #F4F9EC;        /* 标题条渐变起 */
-    --mf-titlebar-b: #E4EEDA;        /* 标题条渐变止 */
+    /* ---------- 纸（页面底 / 块底） ----------
+     * 原站是白纸站点：背景色统计里 #fff 出现 5 次、#f5f5f5 2 次，
+     * 而浅绿 #f4f8ee / #f8faeb 各只出现 1 次。所以这里白与灰才是主色。
+     */
+    --mf-paper: #FFFFFF;             /* 页面、内容块、输入区 */
+    --mf-paper-2: #FAFAFA;           /* 次级块、表格斑马 */
+    --mf-bg-soft: #FAFAFA;           /* 次级块底 */
+    --mf-bg-hover: #F5F5F5;          /* 悬停、选中 */
+    /* 浅绿只留给原站真正用到它的两处：搜索条/面包屑、列表悬停 */
+    --mf-green-bg: #F4F8EE;
+    --mf-green-bg-2: #F8FAEB;
+    /* 标题条渐变：dl.tbox 的 dt 背景，是全站唯一成片使用绿色的地方 */
+    --mf-titlebar-t: #F7FBF3;
+    --mf-titlebar-b: #EAF2E2;
 
-    /* ---------- 线 ---------- */
-    --mf-line: #B5D2A4;              /* 主边框（tbox 外框） */
-    --mf-line-2: #DCEACE;            /* 浅边框（面包屑上下线） */
-    --mf-line-3: #D6E4C6;            /* 更浅的分隔 */
-    --mf-dash: #CBDDC0;              /* 虚线列表分隔 */
-    --mf-frame: #D8D8D8;             /* 图片框 */
-    --mf-frame-2: #D2D2D2;           /* 头像框 */
-    --mf-inset-t: #5A5A5A;           /* 内凹框：上/左暗边 */
-    --mf-inset-b: #C2C2C2;           /* 内凹框：下/右亮边 */
+    /* ---------- 线（灰阶为主） ---------- */
+    --mf-line: #DDDDDD;              /* 常规边框 */
+    --mf-line-2: #EEEEEE;            /* 浅边框、行分隔 */
+    --mf-line-3: #F5F5F5;            /* 更浅的分隔 */
+    --mf-dash: #E5E5E5;              /* 虚线列表分隔 */
+    --mf-frame: #E3E3E3;             /* 图片框（原站 .e1 img） */
+    --mf-frame-2: #DDDDDD;           /* 头像框 */
+    --mf-inset-t: #666666;           /* 内凹框：上/左暗边（原站 .ipt-txt） */
+    --mf-inset-b: #BBBBBB;           /* 内凹框：下/右亮边 */
+    /* 绿边框只给 dl.tbox：外框 #c5ddbc、内部虚线 #dcebd7（原站仅这两个值） */
+    --mf-line-box: #C5DDBC;
+    --mf-dash-box: #DCEBD7;
 
-    /* ---------- 绿（标题与品牌） ---------- */
-    --mf-title: #3D6B3C;             /* dl.tbox dt strong 标题绿 */
-    --mf-title-2: #5D8A47;           /* 面包屑 / 副标题绿 */
-    --mf-green: #006200;             /* 链接式绿、选中 */
+    /* ---------- 绿（仅标题与链接文字，不成片铺底） ---------- */
+    --mf-title: #4A7749;             /* dl.tbox dt strong 标题绿 */
+    --mf-title-2: #709C5A;           /* 面包屑 / 副标题绿 */
+    --mf-green: #006900;             /* 列表链接绿 */
     --mf-green-deep: #003300;        /* 深绿 */
     --mf-brand-green: #4CAF50;       /* 字标 Mi */
     --mf-brand-cyan: #00B0D8;        /* 字标 ku */
-    --mf-brand-pink: #FF0080;        /* 字标 Fans / 列表强调 */
-    /* 对话引号内文字：miku 绿，比纯白底更耐看又不抢正文 */
+    --mf-brand-pink: #FF0080;        /* 字标 Fans / 图格标题悬停 */
+    /* 对话引号内文字：miku 绿 */
     --mf-miku: #4FD19C;
 
-    /* ---------- 字 ---------- */
-    --mf-ink: #2B2B2B;
-    --mf-ink-2: #575757;
-    --mf-ink-3: #7A7A7A;
-    --mf-ink-4: #8B8B8B;
-    --mf-ink-5: #9C9C9C;
+    /* ---------- 字（灰阶，原站文字色全是灰阶） ---------- */
+    --mf-ink: #333333;
+    --mf-ink-2: #666666;
+    --mf-ink-3: #777777;
+    --mf-ink-4: #999999;
+    --mf-ink-5: #AAAAAA;
 
     /* ---------- 链接与强调 ---------- */
     --mf-link: #3366CC;              /* 原站 a */
@@ -104,25 +114,25 @@ html:root {
      * 酒馆默认按深色底写了一批半透明黑/白与灰阶，浅色门户上会糊成一片灰带，
      * 这里把灰度值改到各自的对应档位，内建组件就会自动变浅。
      */
-    --black30a: #F4F8EE;
-    --black50a: rgba(197, 221, 188, 0.55);
-    --black60a: rgba(197, 221, 188, 0.75);
-    --black70a: rgba(175, 205, 162, 0.85);
-    --black90a: #EAF2DE;
-    --black100: #C5DDBC;
+    --black30a: #F5F5F5;
+    --black50a: rgba(0, 0, 0, 0.06);
+    --black60a: rgba(0, 0, 0, 0.08);
+    --black70a: rgba(0, 0, 0, 0.1);
+    --black90a: #EEEEEE;
+    --black100: #DDDDDD;
     --white20a: #FFFFFF;
     --white30a: #FFFFFF;
     --white50a: #FFFFFF;
     --white60a: #FFFFFF;
     --white70a: #FFFFFF;
-    --grey10: #FCFDFA;
-    --grey30: #F4F8EE;
-    --grey50: #C5DDBC;
-    --grey5020a: rgba(197, 221, 188, 0.2);
-    --grey5050a: rgba(197, 221, 188, 0.5);
-    --grey70: #DCEBD7;
-    --grey75: #EAF2DE;
-    --grey30a: rgba(234, 242, 222, 0.9);
+    --grey10: #FAFAFA;
+    --grey30: #F5F5F5;
+    --grey50: #DDDDDD;
+    --grey5020a: rgba(0, 0, 0, 0.04);
+    --grey5050a: rgba(0, 0, 0, 0.08);
+    --grey70: #E5E5E5;
+    --grey75: #EEEEEE;
+    --grey30a: rgba(0, 0, 0, 0.05);
     --grey7070a: rgba(153, 153, 153, 0.45);
     /* 内建焦点描边默认是纯白，浅底上等于没有，改成深绿 */
     --interactable-outline-color: #006900;
@@ -142,10 +152,10 @@ html:root {
      */
     --bl-pink: var(--mf-green);
     --bl-pink-hover: var(--mf-green);
-    --bl-pink-soft: var(--mf-green-bg-2);
+    --bl-pink-soft: var(--mf-bg-hover);
     --bl-blue: var(--mf-link);
     --bl-blue-deep: var(--mf-link);
-    --bl-blue-soft: var(--mf-green-bg);
+    --bl-blue-soft: var(--mf-bg-soft);
     --bl-dialogue: var(--mf-brand-pink);
     --bl-text-1: var(--mf-ink);
     --bl-text-2: var(--mf-ink-2);
@@ -153,7 +163,7 @@ html:root {
     --bl-line: var(--mf-line);
     --bl-line-soft: var(--mf-line-2);
     --bl-bg-1: var(--mf-paper);
-    --bl-bg-2: var(--mf-green-bg);
+    --bl-bg-2: var(--mf-bg-soft);
     --bl-bg-3: var(--mf-paper-2);
     --bl-bg-sky: var(--mf-paper);
     --bl-font: var(--mf-font);
@@ -201,7 +211,7 @@ html:root {
     background-color: var(--mf-paper) !important;
     background-image:
         /* 顶部装饰带：与原站 header 下方那条浅绿渐变对应 */
-        linear-gradient(180deg, var(--mf-green-bg) 0%, rgba(244, 248, 238, 0) 120px),
+        linear-gradient(180deg, var(--mf-bg-soft) 0%, rgba(244, 248, 238, 0) 120px),
         /* 1px 横向参考线 */
         repeating-linear-gradient(
             180deg,
@@ -332,7 +342,7 @@ code,
 }
 
 ::selection {
-    background-color: var(--mf-green-bg-2);
+    background-color: var(--mf-bg-hover);
     color: var(--mf-green-deep);
 }
 
@@ -415,7 +425,7 @@ html:root {
     .drawer-icon.closedIcon:hover {
         color: var(--mf-green);
         opacity: 1;
-        background-color: var(--mf-green-bg-2);
+        background-color: var(--mf-bg-hover);
         border-color: var(--mf-line-2);
     }
 }
@@ -428,7 +438,7 @@ html:root {
 .drawer-icon.openIcon {
     color: var(--mf-green);
     opacity: 1;
-    background-color: var(--mf-green-bg);
+    background-color: var(--mf-bg-soft);
     border-color: var(--mf-line);
 }
 
@@ -516,7 +526,7 @@ html:root {
 #left-nav-panel,
 #right-nav-panel {
     background-color: var(--mf-paper);
-    border: 1px solid var(--mf-line);
+    border: 1px solid var(--mf-line-box);
     box-shadow: 2px 2px 0 rgba(197, 221, 188, 0.55);
 }
 
@@ -556,7 +566,7 @@ body .standoutHeader {
     margin-bottom: 6px;
     background-color: var(--mf-titlebar-b);
     background-image: linear-gradient(180deg, var(--mf-titlebar-t) 0%, var(--mf-titlebar-b) 100%);
-    border: 1px solid var(--mf-line);
+    border: 1px solid var(--mf-line-box);
     border-bottom-color: #B9D4AF;
     border-radius: 0;
 }
@@ -579,7 +589,7 @@ body .standoutHeader {
     font-weight: 700;
     font-size: 12px;
     letter-spacing: 1px;
-    border: 1px solid var(--mf-line);
+    border: 1px solid var(--mf-line-box);
     border-radius: 0;
     background-color: var(--mf-titlebar-b);
     background-image: linear-gradient(180deg, var(--mf-titlebar-t) 0%, var(--mf-titlebar-b) 100%);
@@ -590,7 +600,7 @@ body .standoutHeader {
     .inline-drawer-header:hover,
     .inline-drawer-toggle.inline-drawer-header:hover {
         background-image: none;
-        background-color: var(--mf-green-bg-2);
+        background-color: var(--mf-bg-hover);
         color: var(--mf-green-deep);
     }
 }
@@ -606,7 +616,7 @@ body .standoutHeader {
 }
 
 ::-webkit-scrollbar-track {
-    background: var(--mf-green-bg);
+    background: var(--mf-bg-soft);
     border-left: 1px solid var(--mf-line-2);
 }
 
@@ -624,7 +634,8 @@ body .standoutHeader {
 
 /* ---------- 聊天区容器 ---------- */
 #chat {
-    background-color: var(--mf-green-bg);
+    /* 原站是白纸底，聊天区不铺绿 */
+    background-color: var(--mf-paper);
     /* 卡片保持全宽，左右留白放在卡片内部 */
     padding: 6px 0 8px;
 }
@@ -647,7 +658,8 @@ body .standoutHeader {
     margin: 0 auto var(--mf-chat-gap);
     padding: 0;
     background-color: var(--mf-paper);
-    border: 1px solid var(--mf-line);
+    /* 全站唯一的绿框：dl.tbox 的外框（原站 #c5ddbc，共 7 处） */
+    border: 1px solid var(--mf-line-box);
     border-radius: 0;
     box-shadow: none;
 }
@@ -664,7 +676,7 @@ body .standoutHeader {
     margin: 0;
     background-color: var(--mf-titlebar-b);
     background-image: linear-gradient(180deg, var(--mf-titlebar-t) 0%, var(--mf-titlebar-b) 100%);
-    border-bottom: 1px solid var(--mf-line);
+    border-bottom: 1px solid var(--mf-line-box);
     /* 左端深绿竖条：原站标题条左侧的实心色块 */
     border-left: 3px solid var(--mf-title);
     border-top: none;
@@ -844,7 +856,7 @@ body .standoutHeader {
 #chat .mes_text blockquote {
     margin: 0 0 0.8em;
     padding: 6px 10px 6px 26px;
-    background-color: var(--mf-green-bg);
+    background-color: var(--mf-bg-soft);
     border: 1px solid var(--mf-line-2);
     border-left: 3px solid var(--mf-title-2);
     border-radius: 0;
@@ -900,7 +912,7 @@ body .standoutHeader {
 #chat .mes_text code {
     padding: 1px 4px;
     border: 1px solid var(--mf-line-2);
-    background-color: var(--mf-green-bg);
+    background-color: var(--mf-bg-soft);
     color: var(--mf-red);
     border-radius: 0;
     font-family: var(--mf-font-mono);
@@ -930,7 +942,7 @@ body .standoutHeader {
 #chat .mes_text hr {
     height: 0;
     border: none;
-    border-top: 1px dashed var(--mf-dash);
+    border-top: 1px dashed var(--mf-dash-box);
     margin: 1em 0;
 }
 
@@ -950,7 +962,7 @@ body .standoutHeader {
 }
 
 #chat .mes_text th {
-    background-color: var(--mf-green-bg);
+    background-color: var(--mf-bg-soft);
     color: var(--mf-title);
     font-weight: 700;
 }
@@ -1008,7 +1020,7 @@ body .standoutHeader {
 #chat .mes_reasoning_details {
     margin: 0;
     padding: 0;
-    background-color: var(--mf-green-bg);
+    background-color: var(--mf-bg-soft);
     border: none;
     border-bottom: 1px dashed var(--mf-dash);
     border-left: 3px solid var(--mf-title-2);
@@ -1080,7 +1092,7 @@ body .standoutHeader {
     display: block;
     margin: 0 12px 8px;
     padding-top: 6px;
-    border-top: 1px dashed var(--mf-dash);
+    border-top: 1px dashed var(--mf-dash-box);
     font-size: 11px;
     line-height: 1.6;
     color: var(--mf-ink-4);
@@ -1102,7 +1114,7 @@ body .standoutHeader {
     align-self: center;
     margin: 0 auto 4px;
     padding: 6px 12px 8px;
-    background-color: var(--mf-green-bg-2);
+    background-color: var(--mf-bg-hover);
     border: none;
     border-top: 1px dashed var(--mf-dash);
     border-bottom: 1px dashed var(--mf-dash);
@@ -1112,7 +1124,7 @@ body .standoutHeader {
 
 @media (hover: hover) and (pointer: fine) {
     #chat .mes[is_user="true"]:hover {
-        background-color: var(--mf-green-bg-2);
+        background-color: var(--mf-bg-hover);
     }
 }
 
@@ -1313,7 +1325,7 @@ body .standoutHeader {
 
 /* 选中的楼层：原站行高亮用浅绿 */
 #chat .mes.selected {
-    background-color: var(--mf-green-bg);
+    background-color: var(--mf-bg-soft);
     outline: 1px solid var(--mf-line);
 }
 
@@ -1327,7 +1339,8 @@ body .standoutHeader {
 
 /* 照 1.html 的 .dede_comment_post：白底区块 + 5px 内边距，框线只留上沿 */
 #form_sheld {
-    background-color: var(--mf-paper);
+    /* 原站搜索条是全站唯一用 #f4f8ee 铺底的区块 */
+    background-color: var(--mf-green-bg);
     border-top: 1px solid var(--mf-line);
     border-radius: 0;
     padding: 5px var(--mf-gutter) 6px;
@@ -1409,7 +1422,7 @@ body .standoutHeader {
     padding: 0;
     border: 1px solid var(--mf-line-2);
     border-radius: 0;
-    background-color: var(--mf-green-bg);
+    background-color: var(--mf-bg-soft);
     color: var(--mf-ink-2);
     font-size: 12px;
     line-height: 1;
@@ -1419,7 +1432,7 @@ body .standoutHeader {
 @media (hover: hover) and (pointer: fine) {
     #options_button:hover,
     #leftSendForm .interactable:hover {
-        background-color: var(--mf-green-bg-2);
+        background-color: var(--mf-bg-hover);
         border-color: var(--mf-line);
         color: var(--mf-green);
     }
@@ -1666,7 +1679,7 @@ body .standoutHeader {
 @media (hover: hover) and (pointer: fine) {
     #form_sheld #qr--bar > .qr--buttons .qr--button:hover {
         border-color: var(--mf-green);
-        background-color: var(--mf-green-bg-2);
+        background-color: var(--mf-bg-hover);
         color: var(--mf-green);
     }
 }
@@ -1698,7 +1711,7 @@ body #qr--popout > .qr--body > .qr--buttons .qr--button {
 
 @media (hover: hover) and (pointer: fine) {
     body #qr--popout > .qr--body > .qr--buttons .qr--button:hover {
-        background-color: var(--mf-green-bg-2);
+        background-color: var(--mf-bg-hover);
         border-color: var(--mf-green);
         color: var(--mf-green);
     }
@@ -1816,7 +1829,7 @@ select option:not(:checked) {
 }
 
 select option:checked {
-    background-color: var(--mf-green-bg-2);
+    background-color: var(--mf-bg-hover);
     color: var(--mf-green-deep);
 }
 
@@ -1832,7 +1845,7 @@ select option[disabled]:not(:checked) {
 }
 
 .select2-container--default .select2-results__option--highlighted[aria-selected] {
-    background-color: var(--mf-green-bg-2);
+    background-color: var(--mf-bg-hover);
     color: var(--mf-green);
 }
 
@@ -1850,7 +1863,7 @@ input[type="range"] {
 /* ---------- 按钮：原站 .btn-1 / .btn-2 的方块感 ---------- */
 .menu_button,
 .menu_button_icon {
-    background-color: var(--mf-green-bg);
+    background-color: var(--mf-bg-soft);
     border: 1px solid var(--mf-line);
     border-radius: 0;
     color: var(--mf-ink-2);
@@ -1861,7 +1874,7 @@ input[type="range"] {
 @media (hover: hover) and (pointer: fine) {
     .menu_button:hover,
     .menu_button_icon:hover {
-        background-color: var(--mf-green-bg-2);
+        background-color: var(--mf-bg-hover);
         border-color: var(--mf-green);
         color: var(--mf-green);
     }
@@ -1922,7 +1935,7 @@ input[type="range"] {
 @media (hover: hover) and (pointer: fine) {
     .character_select:hover,
     .group_select:hover {
-        background-color: var(--mf-green-bg-2);
+        background-color: var(--mf-bg-hover);
     }
 }
 
@@ -1953,7 +1966,7 @@ input[type="range"] {
 /* 当前选中角色：浅绿条 + 左侧绿竖线 */
 .character_select.is_selected,
 .group_select.is_selected {
-    background-color: var(--mf-green-bg);
+    background-color: var(--mf-bg-soft);
     box-shadow: inset 3px 0 0 var(--mf-title);
 }
 
@@ -1979,7 +1992,7 @@ input[type="range"] {
 @media (hover: hover) and (pointer: fine) {
     #options .options-content a:hover,
     #options .options-content .interactable:hover {
-        background-color: var(--mf-green-bg-2);
+        background-color: var(--mf-bg-hover);
         color: var(--mf-green);
     }
 }
@@ -2052,7 +2065,7 @@ body #toast-container > div.toast.toast-info {
     #extensions_settings2 .inline-drawer-toggle.inline-drawer-header:hover {
         filter: none;
         background-image: none;
-        background-color: var(--mf-green-bg-2);
+        background-color: var(--mf-bg-hover);
         color: var(--mf-green-deep);
     }
 }
@@ -2098,7 +2111,7 @@ body #toast-container > div.toast.toast-info {
 .macroBrowser .macro-item.selected,
 #rm_print_characters_block.group_overlay_mode_select .character_select.character_selected,
 #bg_tabs .bg_tabs_list .bg_tab_button.ui-tabs-active {
-    background-color: var(--mf-green-bg);
+    background-color: var(--mf-bg-soft);
     border-color: var(--mf-line);
     color: var(--mf-ink);
 }
@@ -2109,7 +2122,7 @@ body #toast-container > div.toast.toast-info {
 .character_version,
 .character_tag {
     border-radius: 0;
-    background-color: var(--mf-green-bg);
+    background-color: var(--mf-bg-soft);
     border: 1px solid var(--mf-line-2);
     color: var(--mf-ink-2);
     font-size: 11px;
@@ -2118,7 +2131,7 @@ body #toast-container > div.toast.toast-info {
 @media (hover: hover) and (pointer: fine) {
     .tag:hover,
     .character_tag:hover {
-        background-color: var(--mf-green-bg-2);
+        background-color: var(--mf-bg-hover);
         border-color: var(--mf-line);
         color: var(--mf-green);
     }
@@ -2151,7 +2164,7 @@ body #user-settings-block h4 {
 @media (hover: hover) and (pointer: fine) {
     body #user-settings-block h4:hover {
         background-image: none;
-        background-color: var(--mf-green-bg-2);
+        background-color: var(--mf-bg-hover);
         color: var(--mf-green-deep);
     }
 }
@@ -2161,7 +2174,7 @@ body #user-settings-block h4 {
  * 且它的样式表晚于 #custom-style 生效，所以这里加 body 提到 (0,3,1) 才压得住。 */
 body .select2-container .select2-selection--multiple .select2-selection__choice,
 body .select2-selection__choice {
-    background-color: var(--mf-green-bg);
+    background-color: var(--mf-bg-soft);
     border: 1px solid var(--mf-line);
     border-radius: 0;
     color: var(--mf-ink);
@@ -2204,7 +2217,7 @@ body .world_entry {
 
 /* 酒馆内建的「已选中」行底色写死成深红 rgb(102,0,0) */
 body #chat .mes.selected {
-    background-color: var(--mf-green-bg);
+    background-color: var(--mf-bg-soft);
     outline: 1px solid var(--mf-line);
 }
 
@@ -2248,7 +2261,8 @@ body #chat .mes.selected {
  */
 #chat:has(.welcomePanel) {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) 320px;
+    /* 原站 .pleft 692 + .pright 260；928 - 260 - 8 = 660，正好放 5 个 126px 图格 */
+    grid-template-columns: minmax(0, 1fr) 260px;
     align-content: start;
     align-items: start;
     column-gap: 8px;
@@ -2267,11 +2281,7 @@ body #chat .mes.selected {
     margin: 0 0 6px;
 }
 
-/* 双栏后左列只剩 ~600px，图格从五等分改成四等分（150px 列宽刚好容下 124px 画框） */
-#chat:has(.welcomePanel) .welcomeRecent .recentChatList .recentChat {
-    flex: 0 0 25%;
-    max-width: 25%;
-}
+
 
 /* 右栏只有 264px：消息块按侧栏密度收紧，否则标题会把时间挤到第二行 */
 #chat:has(.welcomePanel) > .mes[is_user="false"] .ch_name,
@@ -2365,7 +2375,7 @@ body #chat .mes.selected {
     padding: 0;
     border: 1px solid var(--mf-line);
     border-radius: 0;
-    background-color: var(--mf-green-bg);
+    background-color: var(--mf-bg-soft);
     background-image: linear-gradient(180deg, #FBFCF8 0%, #EDF2E6 100%);
     color: #777777;
     font-size: 11px;
@@ -2404,8 +2414,9 @@ body #chat .mes.selected {
     font-weight: 700;
     letter-spacing: 0;
     color: #000000;
-    background-color: #EDF2E6;
-    background-image: linear-gradient(180deg, #F7FBF3 0%, #E7EFDC 55%, #DDE9D0 100%);
+    /* 原站 nav 底图是 nav-bg.gif，整体是灰白，只有极轻的偏绿，这里用中性灰渐变 */
+    background-color: #EFEFEF;
+    background-image: linear-gradient(180deg, #FBFBFB 0%, #F0F0F0 55%, #E7E7E7 100%);
     border-top: 1px solid var(--mf-line);
     border-bottom: 1px solid var(--mf-line);
 }
@@ -2433,8 +2444,8 @@ body #chat .mes.selected {
     padding: 0 5px;
     border: 1px solid var(--mf-line);
     border-radius: 0;
-    background-color: #FBFCF8;
-    background-image: linear-gradient(180deg, #FBFCF8 0%, #EDF2E6 100%);
+    background-color: #FBFBFB;
+    background-image: linear-gradient(180deg, #FBFBFB 0%, #EDEDED 100%);
     color: #777777;
     font-size: 12px;
     font-weight: 400;
@@ -2444,8 +2455,8 @@ body #chat .mes.selected {
 
 @media (hover: hover) and (pointer: fine) {
     .welcomePanel .welcomeShortcuts .menu_button:hover {
-        background-image: linear-gradient(180deg, #FFFFFF 0%, #E3EDD8 100%);
-        border-color: var(--mf-line);
+        background-image: linear-gradient(180deg, #FFFFFF 0%, #E6E6E6 100%);
+        border-color: #C0C0C0;
         color: var(--mf-title);
     }
 }
@@ -2483,26 +2494,31 @@ body #chat .mes.selected {
     border: none;
 }
 
-/* ---------- 列表：.picnews .e1 横向图格 ---------- */
+/* ---------- 列表：.picnews .e1 横向图格 ----------
+ * 原站 .e1 { padding-top:8px; padding-bottom:8px }，li 之间没有额外 gap，
+ * 行距完全由 li 的固定高度（136px）撑出来。
+ */
 .welcomePanel .welcomeRecent .recentChatList {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     align-items: flex-start;
-    gap: 18px 0;
-    padding: 0 2px;
+    gap: 0;
+    padding: 8px 0;
 }
 
-/* 原站 .e1 li：等分五列、竖向排列（图 → 标题）、居中、无边框 */
+/* 原站 .e1 li：126×136，左内距 5px，居中，overflow hidden */
 .welcomePanel .welcomeRecent .recentChatList .recentChat {
     position: relative;
     display: flex;
     flex-direction: column;
-    flex: 0 0 20%;
-    max-width: 20%;
+    flex: 0 0 126px;
+    max-width: 126px;
     align-items: center;
     box-sizing: border-box;
-    padding: 0 6px;
+    height: 136px;
+    overflow: hidden;
+    padding: 0 0 0 5px;
     border: none;
     border-radius: 0;
     background-color: transparent;
@@ -2520,7 +2536,7 @@ body #chat .mes.selected {
     outline-offset: -1px;
 }
 
-/* 缩略图：原站 .e1 li a img —— 120×90 内容 + 2px 白衬 + 1px 灰框 */
+/* 缩略图：原站 .e1 li a img —— 120×90 内容 + 2px 白衬 + 1px #E3E3E3 框 = 124×94 */
 .welcomePanel .welcomeRecent .recentChatList .recentChat .avatar {
     flex: 0 0 auto;
     align-self: center;
@@ -2528,7 +2544,7 @@ body #chat .mes.selected {
     height: 94px;
     margin: 0;
     box-sizing: border-box;
-    padding: 1px;
+    padding: 2px;
     background-color: var(--mf-paper);
     border: 1px solid var(--mf-frame);
     border-radius: 0;
@@ -2564,7 +2580,7 @@ body #chat .mes.selected {
     display: contents;
 }
 
-/* 标题：原站 .e1 li a span —— 居中、两行、超出省略 */
+/* 标题：原站 .e1 li a span { line-height:17px; padding-top:6px }，12px 继承字号，两行 */
 .welcomePanel .welcomeRecent .recentChatList .recentChat .chatName {
     flex: none;
     display: -webkit-box;
@@ -2573,11 +2589,11 @@ body #chat .mes.selected {
     line-clamp: 2;
     overflow: hidden;
     width: 100%;
-    margin-top: 6px;
-    padding: 0;
-    font-size: 13px;
+    margin: 0;
+    padding: 6px 0 0;
+    font-size: 12px;
     font-weight: 400;
-    line-height: 20px;
+    line-height: 17px;
     color: #1C1C1C;
     text-align: center;
     white-space: normal;
@@ -2607,19 +2623,9 @@ body #chat .mes.selected {
     display: none;
 }
 
-/* 日期：一行 11px 灰字，压在图格下面 */
+/* 原站 e1 图格里只有图 + 标题两行，格高 136 已被 94 + 6 + 34 占满，日期收掉 */
 .welcomePanel .welcomeRecent .recentChatList .recentChat .chatDate {
-    flex: none;
-    width: 100%;
-    margin: 2px 0 0;
-    font-size: 11.5px;
-    line-height: 16px;
-    color: var(--mf-ink-4);
-    text-align: center;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    font-variant-numeric: tabular-nums;
+    display: none;
 }
 
 /* 原站 e1 图格里只有图 + 标题，消息数/体积这种元信息在窄格里只会破坏比例，直接收掉 */
@@ -2666,7 +2672,7 @@ body #chat .mes.selected {
 
 @media (hover: hover) and (pointer: fine) {
     .welcomePanel .welcomeRecent .recentChatList .recentChat .chatActions button:hover {
-        background-color: var(--mf-green-bg-2);
+        background-color: var(--mf-bg-hover);
         border-color: var(--mf-green);
         color: var(--mf-green);
     }
@@ -2726,7 +2732,7 @@ body #chat .mes.selected {
 
 @media (hover: hover) and (pointer: fine) {
     .welcomePanel .welcomeRecent .recentChatList .showMoreChats:hover {
-        background-color: var(--mf-green-bg-2);
+        background-color: var(--mf-bg-hover);
         color: var(--mf-green);
     }
 }
@@ -2762,7 +2768,7 @@ body #chat .mes.selected {
 /* ---------- 全屏遮罩 ---------- */
 #preloader,
 .popup.transparent_dialogue_popup:has(#loader) {
-    background-color: var(--mf-green-bg);
+    background-color: var(--mf-bg-soft);
     background-image: none;
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
@@ -3046,11 +3052,16 @@ body #chat .mes.selected {
         letter-spacing: 0;
     }
 
-    /* 欢迎页图格：小屏一行三个（图 98×76） */
+    /* 欢迎页图格：小屏按 96×72 图框等比缩小，仍保持原站 126:136 的格子比例 */
+    .welcomePanel .welcomeRecent .recentChatList {
+        padding: 6px 0;
+    }
+
     .welcomePanel .welcomeRecent .recentChatList .recentChat {
-        flex: 0 0 33.3333%;
-        max-width: 33.3333%;
-        padding: 0 3px;
+        flex: 0 0 102px;
+        max-width: 102px;
+        height: 112px;
+        padding: 0 0 0 4px;
     }
 
     .welcomePanel .welcomeRecent .recentChatList .recentChat .avatar {
@@ -3059,13 +3070,9 @@ body #chat .mes.selected {
     }
 
     .welcomePanel .welcomeRecent .recentChatList .recentChat .chatName {
-        font-size: 12px;
-        line-height: 18px;
-    }
-
-    .welcomePanel .welcomeRecent .recentChatList .recentChat .chatDate {
-        font-size: 10.5px;
-        line-height: 15px;
+        padding-top: 4px;
+        font-size: 11.5px;
+        line-height: 16px;
     }
 
     .welcomePanel .welcomeRecent .recentChatList .recentChat .chatName {

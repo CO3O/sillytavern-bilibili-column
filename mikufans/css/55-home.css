@@ -37,7 +37,8 @@
  */
 #chat:has(.welcomePanel) {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) 320px;
+    /* 原站 .pleft 692 + .pright 260；928 - 260 - 8 = 660，正好放 5 个 126px 图格 */
+    grid-template-columns: minmax(0, 1fr) 260px;
     align-content: start;
     align-items: start;
     column-gap: 8px;
@@ -56,11 +57,7 @@
     margin: 0 0 6px;
 }
 
-/* 双栏后左列只剩 ~600px，图格从五等分改成四等分（150px 列宽刚好容下 124px 画框） */
-#chat:has(.welcomePanel) .welcomeRecent .recentChatList .recentChat {
-    flex: 0 0 25%;
-    max-width: 25%;
-}
+
 
 /* 右栏只有 264px：消息块按侧栏密度收紧，否则标题会把时间挤到第二行 */
 #chat:has(.welcomePanel) > .mes[is_user="false"] .ch_name,
@@ -154,7 +151,7 @@
     padding: 0;
     border: 1px solid var(--mf-line);
     border-radius: 0;
-    background-color: var(--mf-green-bg);
+    background-color: var(--mf-bg-soft);
     background-image: linear-gradient(180deg, #FBFCF8 0%, #EDF2E6 100%);
     color: #777777;
     font-size: 11px;
@@ -193,8 +190,9 @@
     font-weight: 700;
     letter-spacing: 0;
     color: #000000;
-    background-color: #EDF2E6;
-    background-image: linear-gradient(180deg, #F7FBF3 0%, #E7EFDC 55%, #DDE9D0 100%);
+    /* 原站 nav 底图是 nav-bg.gif，整体是灰白，只有极轻的偏绿，这里用中性灰渐变 */
+    background-color: #EFEFEF;
+    background-image: linear-gradient(180deg, #FBFBFB 0%, #F0F0F0 55%, #E7E7E7 100%);
     border-top: 1px solid var(--mf-line);
     border-bottom: 1px solid var(--mf-line);
 }
@@ -222,8 +220,8 @@
     padding: 0 5px;
     border: 1px solid var(--mf-line);
     border-radius: 0;
-    background-color: #FBFCF8;
-    background-image: linear-gradient(180deg, #FBFCF8 0%, #EDF2E6 100%);
+    background-color: #FBFBFB;
+    background-image: linear-gradient(180deg, #FBFBFB 0%, #EDEDED 100%);
     color: #777777;
     font-size: 12px;
     font-weight: 400;
@@ -233,8 +231,8 @@
 
 @media (hover: hover) and (pointer: fine) {
     .welcomePanel .welcomeShortcuts .menu_button:hover {
-        background-image: linear-gradient(180deg, #FFFFFF 0%, #E3EDD8 100%);
-        border-color: var(--mf-line);
+        background-image: linear-gradient(180deg, #FFFFFF 0%, #E6E6E6 100%);
+        border-color: #C0C0C0;
         color: var(--mf-title);
     }
 }
@@ -272,26 +270,31 @@
     border: none;
 }
 
-/* ---------- 列表：.picnews .e1 横向图格 ---------- */
+/* ---------- 列表：.picnews .e1 横向图格 ----------
+ * 原站 .e1 { padding-top:8px; padding-bottom:8px }，li 之间没有额外 gap，
+ * 行距完全由 li 的固定高度（136px）撑出来。
+ */
 .welcomePanel .welcomeRecent .recentChatList {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     align-items: flex-start;
-    gap: 18px 0;
-    padding: 0 2px;
+    gap: 0;
+    padding: 8px 0;
 }
 
-/* 原站 .e1 li：等分五列、竖向排列（图 → 标题）、居中、无边框 */
+/* 原站 .e1 li：126×136，左内距 5px，居中，overflow hidden */
 .welcomePanel .welcomeRecent .recentChatList .recentChat {
     position: relative;
     display: flex;
     flex-direction: column;
-    flex: 0 0 20%;
-    max-width: 20%;
+    flex: 0 0 126px;
+    max-width: 126px;
     align-items: center;
     box-sizing: border-box;
-    padding: 0 6px;
+    height: 136px;
+    overflow: hidden;
+    padding: 0 0 0 5px;
     border: none;
     border-radius: 0;
     background-color: transparent;
@@ -309,7 +312,7 @@
     outline-offset: -1px;
 }
 
-/* 缩略图：原站 .e1 li a img —— 120×90 内容 + 2px 白衬 + 1px 灰框 */
+/* 缩略图：原站 .e1 li a img —— 120×90 内容 + 2px 白衬 + 1px #E3E3E3 框 = 124×94 */
 .welcomePanel .welcomeRecent .recentChatList .recentChat .avatar {
     flex: 0 0 auto;
     align-self: center;
@@ -317,7 +320,7 @@
     height: 94px;
     margin: 0;
     box-sizing: border-box;
-    padding: 1px;
+    padding: 2px;
     background-color: var(--mf-paper);
     border: 1px solid var(--mf-frame);
     border-radius: 0;
@@ -353,7 +356,7 @@
     display: contents;
 }
 
-/* 标题：原站 .e1 li a span —— 居中、两行、超出省略 */
+/* 标题：原站 .e1 li a span { line-height:17px; padding-top:6px }，12px 继承字号，两行 */
 .welcomePanel .welcomeRecent .recentChatList .recentChat .chatName {
     flex: none;
     display: -webkit-box;
@@ -362,11 +365,11 @@
     line-clamp: 2;
     overflow: hidden;
     width: 100%;
-    margin-top: 6px;
-    padding: 0;
-    font-size: 13px;
+    margin: 0;
+    padding: 6px 0 0;
+    font-size: 12px;
     font-weight: 400;
-    line-height: 20px;
+    line-height: 17px;
     color: #1C1C1C;
     text-align: center;
     white-space: normal;
@@ -396,19 +399,9 @@
     display: none;
 }
 
-/* 日期：一行 11px 灰字，压在图格下面 */
+/* 原站 e1 图格里只有图 + 标题两行，格高 136 已被 94 + 6 + 34 占满，日期收掉 */
 .welcomePanel .welcomeRecent .recentChatList .recentChat .chatDate {
-    flex: none;
-    width: 100%;
-    margin: 2px 0 0;
-    font-size: 11.5px;
-    line-height: 16px;
-    color: var(--mf-ink-4);
-    text-align: center;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    font-variant-numeric: tabular-nums;
+    display: none;
 }
 
 /* 原站 e1 图格里只有图 + 标题，消息数/体积这种元信息在窄格里只会破坏比例，直接收掉 */
@@ -455,7 +448,7 @@
 
 @media (hover: hover) and (pointer: fine) {
     .welcomePanel .welcomeRecent .recentChatList .recentChat .chatActions button:hover {
-        background-color: var(--mf-green-bg-2);
+        background-color: var(--mf-bg-hover);
         border-color: var(--mf-green);
         color: var(--mf-green);
     }
@@ -515,7 +508,7 @@
 
 @media (hover: hover) and (pointer: fine) {
     .welcomePanel .welcomeRecent .recentChatList .showMoreChats:hover {
-        background-color: var(--mf-green-bg-2);
+        background-color: var(--mf-bg-hover);
         color: var(--mf-green);
     }
 }

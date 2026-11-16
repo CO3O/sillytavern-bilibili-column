@@ -1,0 +1,139 @@
+/*
+ * ============================================================
+ *  Mikufans —— SillyTavern 主题
+ *  视觉参考：mikufans.cn（2009，DedeCMS v5.3 grass green）
+ *  取色与构件全部来自本地站点存档：
+ *    · 色板   → templets/style/dedecms.css、page.css（草绿 + 蓝链接 + 橙强调）
+ *    · 构件   → templets/style/layout.css 的 dl.tbox 方框、虚线列表、日期徽标
+ *    · 字体   → 12px Verdana/Arial/Tahoma + 宋体
+ *  本文件只放变量，不放具体样式；改观感优先改这里。
+ * ============================================================
+ */
+
+:root {
+    /* ---------- 纸与绿（页面底 / 块底） ---------- */
+    --mf-paper: #FFFFFF;             /* 内容块、正文底 */
+    --mf-paper-2: #FCFDFA;           /* 次级块、表格斑马 */
+    --mf-green-bg: #F4F8EE;          /* 门户块底（原站 .place / 搜索条） */
+    --mf-green-bg-2: #F8FAEB;        /* 列表悬停、浅绿高亮 */
+    --mf-titlebar-t: #F7FBF3;        /* 标题条渐变起 */
+    --mf-titlebar-b: #EAF2E2;        /* 标题条渐变止 */
+
+    /* ---------- 线 ---------- */
+    --mf-line: #C5DDBC;              /* 主边框（tbox 外框） */
+    --mf-line-2: #EAF2DE;            /* 浅边框（面包屑上下线） */
+    --mf-line-3: #E5EFD6;            /* 更浅的分隔 */
+    --mf-dash: #DCEBD7;              /* 虚线列表分隔 */
+    --mf-frame: #E3E3E3;             /* 图片框 */
+    --mf-frame-2: #DDDDDD;           /* 头像框 */
+    --mf-inset-t: #666666;           /* 内凹框：上/左暗边 */
+    --mf-inset-b: #BBBBBB;           /* 内凹框：下/右亮边 */
+
+    /* ---------- 绿（标题与品牌） ---------- */
+    --mf-title: #4A7749;             /* dl.tbox dt strong 标题绿 */
+    --mf-title-2: #709C5A;           /* 面包屑 / 副标题绿 */
+    --mf-green: #006900;             /* 链接式绿、选中 */
+    --mf-green-deep: #003300;        /* 深绿 */
+    --mf-brand-green: #4CAF50;       /* 字标 Mi */
+    --mf-brand-cyan: #00B0D8;        /* 字标 ku */
+    --mf-brand-pink: #FF0080;        /* 字标 Fans / 列表强调 */
+
+    /* ---------- 字 ---------- */
+    --mf-ink: #333333;
+    --mf-ink-2: #666666;
+    --mf-ink-3: #888888;
+    --mf-ink-4: #999999;
+    --mf-ink-5: #AAAAAA;
+
+    /* ---------- 链接与强调 ---------- */
+    --mf-link: #3366CC;              /* 原站 a */
+    --mf-link-hover: #FF3333;        /* 原站 a:hover */
+    --mf-accent: #FF6600;            /* 橙：当前页、计数 */
+    --mf-accent-2: #FF6633;
+    --mf-red: #C00000;               /* 按钮红 */
+    --mf-red-hover: #E00000;
+    --mf-announce: #FF0000;          /* 公告红字 */
+    --mf-nav-hover: #8A0808;         /* 导航悬停深红 */
+
+    /* ---------- 排版 ---------- */
+    --mf-font: Verdana, Tahoma, "MS Sans Serif", SimSun, "宋体", Arial, sans-serif;
+    --mf-font-mono: Consolas, "Courier New", Courier, monospace;
+    --mf-title-size: 13px;
+    --mf-body-size: 13px;
+    --mf-body-line: 1.75;
+    --mf-meta-size: 11.5px;
+    --mf-comment-size: 13px;
+
+    /* ---------- 尺寸（原站 960 时代的信息密度） ---------- */
+    --mf-radius: 0;                  /* 门户零圆角 */
+    --mf-chat-gap: 8px;
+    --mf-gutter: 10px;
+    --mf-avatar: 24px;               /* 文章块标题条内的小方头像 */
+    --mf-avatar-comment: 26px;       /* 评论项方头像 */
+    --mf-titlebar-h: 30px;           /* tbox 标题条高度（原站 25px，字号放大后略高） */
+    --mf-topbar-height: 34px;        /* 顶栏工具条 */
+
+    /* ---------- 内嵌素材 ---------- */
+    --mf-logo: {{svg:logo.svg}};
+    --mf-wordmark: {{svg:wordmark.svg}};
+    --mf-avatar-default: {{svg:avatar-default.svg}};
+    --mf-ic-bullet: {{svg:bullet.svg}};
+    --mf-ic-quote: {{svg:quote.svg}};
+    --mf-ic-search: {{svg:search.svg}};
+    --mf-ic-close: {{svg:close.svg}};
+    --mf-ic-more: {{svg:more.svg}};
+    --mf-ic-arrow-left: {{svg:arrow-left.svg}};
+    --mf-ic-arrow-right: {{svg:arrow-right.svg}};
+    --mf-ic-totop: {{svg:totop.svg}};
+
+    /* ---------- 覆盖 SillyTavern 内建中性色 ----------
+     * 酒馆默认按深色底写了一批半透明黑/白与灰阶，浅色门户上会糊成一片灰带，
+     * 这里把灰度值改到各自的对应档位，内建组件就会自动变浅。
+     */
+    --black30a: #F4F8EE;
+    --black50a: rgba(197, 221, 188, 0.5);
+    --black60a: rgba(197, 221, 188, 0.7);
+    --white30a: #FFFFFF;
+    --white50a: #FFFFFF;
+    --grey10: #FCFDFA;
+    --grey30: #F4F8EE;
+    --grey50: #C5DDBC;
+    --grey7070a: rgba(153, 153, 153, 0.45);
+    /* 头像一律方角：原站所有头像是 52×52 的 1px 边框方块 */
+    --avatar-base-border-radius-round: 0;
+
+    /* ---------- 顶栏尺寸 ---------- */
+    --topBarIconSize: 15px;
+    --topBarBlockPadding: 4px;
+    /* 酒馆用它算 #sheld 的 top，必须与实际顶栏高度一致，否则内容会钻到顶栏下面 */
+    --topBarBlockSize: var(--mf-topbar-height);
+
+    /* ---------- 兼容别名 ----------
+     * pink 骨架里的分片直接引用了 --bl-*，这里映射一份，
+     * 便于从其它变体搬片段过来时不改颜色。mikufans 自己的分片统一用 --mf-*。
+     */
+    --bl-pink: var(--mf-green);
+    --bl-pink-hover: var(--mf-green);
+    --bl-pink-soft: var(--mf-green-bg-2);
+    --bl-blue: var(--mf-link);
+    --bl-blue-deep: var(--mf-link);
+    --bl-blue-soft: var(--mf-green-bg);
+    --bl-dialogue: var(--mf-brand-pink);
+    --bl-text-1: var(--mf-ink);
+    --bl-text-2: var(--mf-ink-2);
+    --bl-text-3: var(--mf-ink-4);
+    --bl-line: var(--mf-line);
+    --bl-line-soft: var(--mf-line-2);
+    --bl-bg-1: var(--mf-paper);
+    --bl-bg-2: var(--mf-green-bg);
+    --bl-bg-3: var(--mf-paper-2);
+    --bl-bg-sky: var(--mf-paper);
+    --bl-font: var(--mf-font);
+    --bl-font-mono: var(--mf-font-mono);
+    --bl-radius: 0;
+    --bl-radius-sm: 0;
+    --bl-radius-pill: 0;
+    --bl-shadow-card: none;
+    --bl-shadow-float: none;
+    --bl-ease: 120ms linear;
+}

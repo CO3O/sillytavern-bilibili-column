@@ -1,0 +1,394 @@
+/*
+ * 交互层（一）：输入区 = 站点搜索条
+ *
+ * 原站结构：40px 高的浅色条（.search）+ 内凹输入框（.ipt-txt）+ 红色小按钮。
+ * 这里把输入区整条复刻成那个样子，左右按钮做成同高的方角小方块。
+ */
+
+#form_sheld {
+    background-color: var(--mf-green-bg);
+    border-top: 1px solid var(--mf-line-2);
+    border-radius: 0;
+    padding: 6px var(--mf-gutter) 8px;
+}
+
+#nonQRFormItems {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 2px 4px;
+    background-color: var(--mf-paper);
+    /* 原站 .ipt-txt 的内凹边：上/左暗、下/右亮 */
+    border: 1px solid;
+    border-color: var(--mf-inset-t) var(--mf-inset-b) var(--mf-inset-b) var(--mf-inset-t);
+    border-radius: 0;
+    box-shadow: none;
+    transition: none;
+}
+
+#nonQRFormItems:focus-within {
+    border-color: var(--mf-green) var(--mf-inset-b) var(--mf-inset-b) var(--mf-green);
+    box-shadow: none;
+}
+
+/* 输入框本体：无边框，视觉上就是内凹框里的一片白 */
+#send_textarea {
+    flex: 1 1 auto;
+    min-width: 0;
+    height: 24px;
+    min-height: 24px;
+    max-height: 40vh;
+    padding: 2px 4px;
+    margin: 0;
+    background-color: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    color: var(--mf-ink);
+    font-size: var(--mf-body-size);
+    line-height: 20px;
+    text-align: left;
+    resize: none;
+    outline: 1px solid transparent;
+}
+
+#send_textarea::placeholder {
+    color: var(--mf-ink-5);
+}
+
+/* 酒馆内建样式会把输入文字/占位符居中，这里提高特异性改回左对齐 */
+#form_sheld #send_textarea,
+#form_sheld #send_textarea::placeholder {
+    text-align: left;
+}
+
+/* ---------- 左右按钮组：同高方角小块 ---------- */
+#leftSendForm,
+#rightSendForm {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    flex: 0 0 auto;
+    width: max-content;
+    min-width: 0;
+    align-items: center;
+    gap: 3px;
+}
+
+#options_button,
+#leftSendForm .interactable {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    width: 24px;
+    height: 24px;
+    min-width: 24px;
+    padding: 0;
+    border: 1px solid var(--mf-line-2);
+    border-radius: 0;
+    background-color: var(--mf-green-bg);
+    color: var(--mf-ink-2);
+    font-size: 12px;
+    line-height: 1;
+    transition: none;
+}
+
+@media (hover: hover) and (pointer: fine) {
+    #options_button:hover,
+    #leftSendForm .interactable:hover {
+        background-color: var(--mf-green-bg-2);
+        border-color: var(--mf-line);
+        color: var(--mf-green);
+    }
+}
+
+#options_button:active,
+#leftSendForm .interactable:active {
+    background-color: var(--mf-line-2);
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.12);
+    color: var(--mf-green-deep);
+}
+
+#options_button:focus-visible,
+#leftSendForm .interactable:focus-visible {
+    outline: 1px dotted var(--mf-green);
+    outline-offset: 0;
+}
+
+/* ---------- 发送按钮：原站红色搜索按钮 ---------- */
+#send_but:not(.displayNone) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    width: 40px;
+    height: 24px;
+    min-width: 40px;
+    padding: 0;
+    border: 1px solid #9E0000;
+    border-radius: 0;
+    background-color: var(--mf-red);
+    background-image: linear-gradient(180deg, #D82020 0%, var(--mf-red) 55%, #A80000 100%);
+    color: #FFFFFF;
+    font-size: 12px;
+    line-height: 1;
+    cursor: pointer;
+    box-shadow: none;
+    transition: none;
+}
+
+/* 停止 / 继续 / 扮演：同一套红块，显隐仍由酒馆的 .displayNone 控制 */
+#mes_continue,
+#mes_impersonate,
+#stscript_stop,
+#stscript_continue,
+#stscript_pause {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    width: 40px;
+    height: 24px;
+    min-width: 40px;
+    padding: 0;
+    border: 1px solid #9E0000;
+    border-radius: 0;
+    background-color: var(--mf-red);
+    background-image: linear-gradient(180deg, #D82020 0%, var(--mf-red) 55%, #A80000 100%);
+    color: #FFFFFF;
+    font-size: 12px;
+    line-height: 1;
+    cursor: pointer;
+    box-shadow: none;
+    transition: none;
+}
+
+/*
+ * 停止按钮：尺寸与发送按钮对齐。酒馆用 --bottomFormBlockSize 定它的大小，
+ * 这里直接锁同一组宽高，并去掉酒馆自带的 fa-circle-stop 字形，
+ * 用绝对定位的白方块做「停止」符号。
+ */
+#mes_stop {
+    position: relative;
+    box-sizing: border-box;
+    width: 40px !important;
+    height: 24px !important;
+    min-width: 0;
+    padding: 0 !important;
+    border: 1px solid #9E0000;
+    border-radius: 0;
+    background-color: var(--mf-red);
+    background-image: linear-gradient(180deg, #D82020 0%, var(--mf-red) 55%, #A80000 100%);
+    color: #FFFFFF;
+    overflow: clip;
+    cursor: pointer;
+    box-shadow: none;
+    transition: none;
+}
+
+#mes_stop i {
+    display: none;
+}
+
+#mes_stop::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 9px;
+    height: 9px;
+    border-radius: 0;
+    background-color: #FFFFFF;
+}
+
+@media (hover: hover) and (pointer: fine) {
+    #send_but:not(.displayNone):hover,
+    #mes_stop:not(.displayNone):hover,
+    #mes_continue:not(.displayNone):hover,
+    #mes_impersonate:not(.displayNone):hover,
+    #stscript_stop:not(.displayNone):hover,
+    #stscript_continue:not(.displayNone):hover,
+    #stscript_pause:not(.displayNone):hover {
+        background-image: linear-gradient(180deg, #EC3A3A 0%, var(--mf-red-hover) 55%, #B80000 100%);
+    }
+}
+
+#send_but:not(.displayNone):active,
+#mes_stop:not(.displayNone):active,
+#mes_continue:not(.displayNone):active,
+#mes_impersonate:not(.displayNone):active,
+#stscript_stop:not(.displayNone):active,
+#stscript_continue:not(.displayNone):active,
+#stscript_pause:not(.displayNone):active {
+    background-image: none;
+    background-color: #A80000;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.45);
+}
+
+#send_but:not(.displayNone):focus-visible,
+#mes_stop:not(.displayNone):focus-visible,
+#mes_continue:not(.displayNone):focus-visible,
+#mes_impersonate:not(.displayNone):focus-visible,
+#stscript_stop:not(.displayNone):focus-visible,
+#stscript_continue:not(.displayNone):focus-visible,
+#stscript_pause:not(.displayNone):focus-visible {
+    outline: 1px dotted var(--mf-green-deep);
+    outline-offset: 2px;
+}
+
+/* 生成中：停止按钮用更深的红区分，并保留极轻微的明暗呼吸 */
+#mes_stop {
+    animation: mf-stop-blink 1.4s steps(2, end) infinite;
+}
+
+@keyframes mf-stop-blink {
+    0%, 100% { background-image: linear-gradient(180deg, #D82020 0%, var(--mf-red) 55%, #A80000 100%); }
+    50% { background-image: none; background-color: #A00000; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    #mes_stop:not(.displayNone) {
+        animation: none;
+    }
+}
+
+/*
+ * 尺寸加固：酒馆的 `#rightSendForm>div:not(.mes_stop)` 带一个 class，
+ * 特异性 (1,1,1) 高于单 id 的 (1,1,0)，会把上面的红块重新撑成 --bottomFormBlockSize
+ * （实测被拉回到 34.5px 高，整条输入栏跟着变高）。
+ * 这里用 id + 元素 + 容器把特异性提到 (2,1,0)，把右侧所有红块锁在同一组尺寸上。
+ */
+#rightSendForm > div#send_but,
+#rightSendForm > div#mes_continue,
+#rightSendForm > div#mes_impersonate,
+#rightSendForm > div#stscript_stop,
+#rightSendForm > div#stscript_continue,
+#rightSendForm > div#stscript_pause {
+    box-sizing: border-box;
+    width: 40px;
+    height: 24px;
+    min-width: 40px;
+    margin: 0;
+    padding: 0;
+    border: 1px solid #9E0000;
+    border-radius: 0;
+    background-color: var(--mf-red);
+    background-image: linear-gradient(180deg, #D82020 0%, var(--mf-red) 55%, #A80000 100%);
+    color: #FFFFFF;
+    font-size: 12px;
+    line-height: 1;
+    /* 酒馆给右侧按钮 0.7 透明度，门户里实心红块更清楚 */
+    opacity: 1;
+    box-shadow: none;
+}
+
+#send_but::before {
+    font-size: 12px;
+}
+
+/* ---------- 快捷回复：一排小方按钮 ---------- */
+#qr--bar {
+    margin: 0 auto 5px;
+    padding: 0;
+    background: transparent;
+    color: var(--mf-ink-2);
+}
+
+#send_form #qr--bar {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+}
+
+/* quick-reply 扩展的样式表在本主题之后加载，统一用 #form_sheld 提高特异性 */
+#form_sheld #qr--bar > .qr--buttons {
+    flex: 0 0 auto;
+    width: auto;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+    padding: 0;
+}
+
+#form_sheld #qr--bar > .qr--buttons .qr--button {
+    max-width: 210px;
+    padding: 2px 8px;
+    background-color: var(--mf-paper);
+    border: 1px solid var(--mf-line);
+    border-radius: 0;
+    color: var(--mf-ink-2);
+    font-size: 11.5px;
+    line-height: 1.5;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    transition: none;
+}
+
+@media (hover: hover) and (pointer: fine) {
+    #form_sheld #qr--bar > .qr--buttons .qr--button:hover {
+        border-color: var(--mf-green);
+        background-color: var(--mf-green-bg-2);
+        color: var(--mf-green);
+    }
+}
+
+#form_sheld #qr--bar > .qr--buttons .qr--button:active {
+    border-color: var(--mf-green);
+    background-color: var(--mf-line-2);
+    color: var(--mf-green-deep);
+}
+
+body #qr--popout > .qr--body {
+    background-color: var(--mf-paper);
+    border: 1px solid var(--mf-line);
+    border-radius: 0;
+    box-shadow: 2px 2px 0 rgba(197, 221, 188, 0.55);
+}
+
+body #qr--popout > .qr--body > .qr--buttons .qr--button {
+    max-width: 260px;
+    padding: 3px 8px;
+    background-color: var(--mf-paper);
+    border: 1px solid var(--mf-line);
+    border-radius: 0;
+    color: var(--mf-ink-2);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+@media (hover: hover) and (pointer: fine) {
+    body #qr--popout > .qr--body > .qr--buttons .qr--button:hover {
+        background-color: var(--mf-green-bg-2);
+        border-color: var(--mf-green);
+        color: var(--mf-green);
+    }
+}
+
+body #qr--popout > .qr--body > .qr--buttons .qr--button:active {
+    background-color: var(--mf-line-2);
+    border-color: var(--mf-green);
+    color: var(--mf-green-deep);
+}
+
+/* 附件预览条 */
+#file_form .file_attached {
+    border-radius: 0;
+    background-color: var(--mf-paper);
+    border: 1px solid var(--mf-line);
+}
+
+/* 打字指示器文案 */
+#typing_indicator {
+    color: var(--mf-ink-4);
+    font-size: var(--mf-meta-size);
+}

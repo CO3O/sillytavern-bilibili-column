@@ -1,0 +1,405 @@
+/*
+ * 交互层（二）：抽屉、设置面板、表单控件、菜单、提示
+ * 统一为「绿标题条 + 白身 + 1px 实线」的 dl.tbox 块，控件一律直角。
+ */
+
+/* ---------- 面板与抽屉 ---------- */
+.drawer-content,
+#top-settings-holder .drawer-content,
+#left-nav-panel .drawer-content,
+#right-nav-panel .drawer-content {
+    background-color: var(--mf-paper);
+    border-color: var(--mf-line);
+    border-radius: 0;
+    color: var(--mf-ink);
+}
+
+.drawer-content .scrollableInner,
+#left-nav-panel .scrollableInner,
+#right-nav-panel .scrollableInner {
+    scrollbar-width: thin;
+}
+
+/* 面板内部分隔：原站的虚线 */
+#left-nav-panel hr,
+#right-nav-panel hr,
+.drawer-content hr {
+    border: none;
+    border-top: 1px dashed var(--mf-dash);
+    margin: 8px 0;
+}
+
+/* ---------- 文本输入：原站 .ipt-txt 的内凹框 ---------- */
+.text_pole,
+textarea.text_pole,
+input.text_pole,
+input[type="text"],
+input[type="search"],
+input[type="number"],
+input[type="password"] {
+    background-color: var(--mf-paper);
+    border: 1px solid;
+    border-color: var(--mf-inset-t) var(--mf-inset-b) var(--mf-inset-b) var(--mf-inset-t);
+    border-radius: 0;
+    color: var(--mf-ink);
+    font-size: 12px;
+    transition: none;
+}
+
+.text_pole:focus,
+textarea.text_pole:focus,
+input[type="text"]:focus,
+input[type="search"]:focus,
+input[type="number"]:focus,
+input[type="password"]:focus {
+    outline: 1px solid var(--mf-green);
+    outline-offset: -1px;
+    border-color: var(--mf-green) var(--mf-inset-b) var(--mf-inset-b) var(--mf-green);
+    box-shadow: none;
+}
+
+.text_pole::placeholder {
+    color: var(--mf-ink-5);
+}
+
+/* 下拉框 */
+select,
+.text_pole.select,
+.select2-container--default .select2-selection--single,
+.select2-container--default .select2-selection--multiple {
+    background-color: var(--mf-paper);
+    border: 1px solid var(--mf-line);
+    border-radius: 0;
+    color: var(--mf-ink);
+    font-size: 12px;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+    color: var(--mf-ink);
+}
+
+/* 原生下拉的选项默认黑底白字（深色主题专用），白底主题里会突然黑一片 */
+select option {
+    background-color: var(--mf-paper);
+    color: var(--mf-ink);
+}
+
+select option:not(:checked) {
+    background-color: var(--mf-paper);
+    color: var(--mf-ink);
+}
+
+select option:checked {
+    background-color: var(--mf-green-bg-2);
+    color: var(--mf-green-deep);
+}
+
+select option[disabled]:not(:checked) {
+    color: var(--mf-ink-4);
+}
+
+.select2-dropdown {
+    background-color: var(--mf-paper);
+    border: 1px solid var(--mf-line);
+    border-radius: 0;
+    box-shadow: 2px 2px 0 rgba(197, 221, 188, 0.55);
+}
+
+.select2-container--default .select2-results__option--highlighted[aria-selected] {
+    background-color: var(--mf-green-bg-2);
+    color: var(--mf-green);
+}
+
+/* 勾选框 / 滑块 / 单选 */
+input[type="checkbox"],
+input[type="radio"] {
+    accent-color: var(--mf-green);
+    border-radius: 0;
+}
+
+input[type="range"] {
+    accent-color: var(--mf-green);
+}
+
+/* ---------- 按钮：原站 .btn-1 / .btn-2 的方块感 ---------- */
+.menu_button,
+.menu_button_icon {
+    background-color: var(--mf-green-bg);
+    border: 1px solid var(--mf-line);
+    border-radius: 0;
+    color: var(--mf-ink-2);
+    font-size: 12px;
+    transition: none;
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .menu_button:hover,
+    .menu_button_icon:hover {
+        background-color: var(--mf-green-bg-2);
+        border-color: var(--mf-green);
+        color: var(--mf-green);
+    }
+}
+
+.menu_button:active,
+.menu_button_icon:active {
+    background-color: var(--mf-line-2);
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.12);
+    border-color: var(--mf-green);
+    color: var(--mf-green-deep);
+}
+
+.menu_button:focus-visible,
+.menu_button_icon:focus-visible {
+    outline: 1px dotted var(--mf-green-deep);
+    outline-offset: 1px;
+}
+
+.menu_button.selected,
+.menu_button.toggleEnabled {
+    background-color: var(--mf-green);
+    border-color: var(--mf-green-deep);
+    color: #FFFFFF;
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .menu_button.selected:hover,
+    .menu_button.toggleEnabled:hover {
+        background-color: var(--mf-green-deep);
+        color: #FFFFFF;
+    }
+}
+
+/* 危险操作保持红色语义 */
+.menu_button.danger {
+    color: var(--mf-red);
+}
+
+@media (hover: hover) and (pointer: fine) {
+    #delete_button:hover,
+    #reset_button:hover {
+        color: var(--mf-red);
+        border-color: var(--mf-red);
+    }
+}
+
+/* ---------- 角色列表 / 卡片条目 ---------- */
+.character_select,
+.group_select,
+.character_select_container,
+.entity_block {
+    border-radius: 0;
+    border-bottom: 1px dashed var(--mf-dash);
+    transition: none;
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .character_select:hover,
+    .group_select:hover {
+        background-color: var(--mf-green-bg-2);
+    }
+}
+
+.character_select:active,
+.group_select:active {
+    background-color: var(--mf-line-2);
+}
+
+.character_select:focus-visible,
+.group_select:focus-visible {
+    outline: 1px dotted var(--mf-green);
+    outline-offset: -1px;
+}
+
+.character_name_block .ch_name,
+.character_name_block .character_name {
+    color: var(--mf-ink);
+    font-weight: 700;
+    font-size: 12.5px;
+}
+
+.character_name_block .character_file,
+.character_name_block .group_file {
+    color: var(--mf-ink-4);
+    font-size: 11px;
+}
+
+/* 当前选中角色：浅绿条 + 左侧绿竖线 */
+.character_select.is_selected,
+.group_select.is_selected {
+    background-color: var(--mf-green-bg);
+    box-shadow: inset 3px 0 0 var(--mf-title);
+}
+
+/* ---------- 弹出菜单 / 弹层 ---------- */
+#options,
+.options-content,
+.popup,
+.dialogs,
+#dialogue_popup {
+    background-color: var(--mf-paper);
+    border: 1px solid var(--mf-line);
+    border-radius: 0;
+    box-shadow: 2px 2px 0 rgba(197, 221, 188, 0.6);
+    color: var(--mf-ink);
+}
+
+#options .options-content a,
+#options .options-content .interactable {
+    border-radius: 0;
+    transition: none;
+}
+
+@media (hover: hover) and (pointer: fine) {
+    #options .options-content a:hover,
+    #options .options-content .interactable:hover {
+        background-color: var(--mf-green-bg-2);
+        color: var(--mf-green);
+    }
+}
+
+#options .options-content a:active,
+#options .options-content .interactable:active {
+    background-color: var(--mf-line-2);
+    color: var(--mf-green-deep);
+}
+
+/* 弹窗标题 */
+.dialogue_popup_text h2,
+.popup_title,
+.dialogue_popup_controls h3 {
+    color: var(--mf-ink);
+}
+
+/* ---------- 提示消息：白底 + 左侧 3px 色条 ----------
+ * 酒馆原生给 .toast-success 之类铺了语义底色，权重比 #toast-container > div 高；
+ * 只改边框会变成「绿底 + 我的边」的拼接感，所以整块接管。
+ * 原生图标是透明底白色 PNG，放白底上等于消失 —— 关掉 background-image 并收回左侧内边距。
+ */
+body #toast-container > div.toast {
+    background-color: var(--mf-paper);
+    background-image: none;
+    border: 1px solid var(--mf-line);
+    border-left: 3px solid var(--mf-title-2);
+    border-radius: 0;
+    box-shadow: 2px 2px 0 rgba(197, 221, 188, 0.6);
+    color: var(--mf-ink);
+    font-size: 12px;
+    opacity: 1;
+    padding: 8px 10px 8px 12px;
+    width: 300px;
+}
+
+body #toast-container > div.toast.toast-success {
+    border-left-color: var(--mf-green);
+}
+
+body #toast-container > div.toast.toast-error {
+    border-left-color: var(--mf-red);
+}
+
+body #toast-container > div.toast.toast-warning {
+    border-left-color: var(--mf-accent);
+}
+
+body #toast-container > div.toast.toast-info {
+    border-left-color: var(--mf-link);
+}
+
+/* ---------- 设置页分组标题：绿标题条 ---------- */
+#user-settings-block h4,
+#extensions_settings .inline-drawer-toggle.inline-drawer-header,
+#extensions_settings2 .inline-drawer-toggle.inline-drawer-header {
+    background-image: linear-gradient(180deg, var(--mf-titlebar-t) 0%, var(--mf-titlebar-b) 100%);
+    background-color: var(--mf-titlebar-b);
+    border: 1px solid var(--mf-line);
+    border-radius: 0;
+    color: var(--mf-title);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+@media (hover: hover) and (pointer: fine) {
+    #user-settings-block h4:hover,
+    #extensions_settings .inline-drawer-toggle.inline-drawer-header:hover,
+    #extensions_settings2 .inline-drawer-toggle.inline-drawer-header:hover {
+        filter: none;
+        background-image: none;
+        background-color: var(--mf-green-bg-2);
+        color: var(--mf-green-deep);
+    }
+}
+
+/*
+ * 提示词管理器：类名带 completion_ 前缀（聊天补全）和不带前缀（文本补全）两套，
+ * 用 [class*=] 一次覆盖；酒馆自己的规则是 #id #id 级别，这里必须 !important 才压得住。
+ */
+[class*="prompt_manager_prompt"] [class*="prompt_manager_prompt_name"],
+[class*="prompt_manager_prompt_name"] .prompt-manager-inspect-action {
+    color: var(--mf-ink) !important;
+}
+
+/* 启用中的开关用深绿 */
+[class*="prompt_manager_prompt"]:not([class*="prompt_manager_prompt_disabled"]) .prompt-manager-toggle-action {
+    color: var(--mf-green) !important;
+}
+
+/* 禁用项名称酒馆默认用 white30a（深色主题专用），白底上等于隐形 */
+[class*="prompt_manager_prompt_disabled"] {
+    border-color: var(--mf-line) !important;
+    background-color: var(--mf-paper-2) !important;
+}
+
+[class*="prompt_manager_prompt_disabled"] [class*="prompt_manager_prompt_name"],
+[class*="prompt_manager_prompt_disabled"] [class*="prompt_manager_prompt_name"] .prompt-manager-inspect-action {
+    color: var(--mf-ink-5) !important;
+}
+
+/* 表头「名称 / Token」那行同样是 white50a */
+[class*="prompt_manager_header"] {
+    color: var(--mf-ink-4) !important;
+}
+
+/* 图标上的黑色投影是给深色底做的，浅底上去掉更干净 */
+[class*="prompt_manager_prompt"] span span span,
+[class*="prompt_manager_header_advanced"] span {
+    filter: none;
+}
+
+/* 选中态：酒馆默认拿 SmartThemeQuoteColor 铺深色块，统一改成浅绿 */
+.macroBrowser .macro-sort-btn.active,
+.macroBrowser .macro-item.selected,
+#rm_print_characters_block.group_overlay_mode_select .character_select.character_selected,
+#bg_tabs .bg_tabs_list .bg_tab_button.ui-tabs-active {
+    background-color: var(--mf-green-bg);
+    border-color: var(--mf-line);
+    color: var(--mf-ink);
+}
+
+/* ---------- 标签 / 徽章：小方块，浅绿底 ---------- */
+.tag,
+.tag_name,
+.character_version,
+.character_tag {
+    border-radius: 0;
+    background-color: var(--mf-green-bg);
+    border: 1px solid var(--mf-line-2);
+    color: var(--mf-ink-2);
+    font-size: 11px;
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .tag:hover,
+    .character_tag:hover {
+        background-color: var(--mf-green-bg-2);
+        border-color: var(--mf-line);
+        color: var(--mf-green);
+    }
+}
+
+.tag:active,
+.character_tag:active {
+    background-color: var(--mf-line-2);
+    color: var(--mf-green-deep);
+}

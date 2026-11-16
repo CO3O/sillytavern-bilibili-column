@@ -1,0 +1,185 @@
+/*
+ * 适配层：窄屏与移动端
+ * 收边距、降字号、保证触摸目标；虚线列表与直角边框保持不变，不塌成现代卡片。
+ */
+
+@media (max-width: 640px) {
+    :root {
+        --mf-title-size: 12.5px;
+        --mf-body-size: 12.5px;
+        --mf-comment-size: 12.5px;
+        --mf-avatar: 20px;
+        --mf-avatar-comment: 22px;
+        --mf-titlebar-h: 26px;
+        --mf-chat-gap: 6px;
+        --mf-gutter: 6px;
+    }
+
+    /* 标题条：头像更小，左侧让位同步收窄 */
+    #chat .mes[is_user="false"] .ch_name {
+        padding-left: 34px;
+        padding-right: 4px;
+    }
+
+    #chat .mes[is_user="false"] .mesAvatarWrapper {
+        top: 3px;
+        left: 6px;
+    }
+
+    #chat .mes[is_user="false"] .mes_text {
+        padding: 7px 9px 8px;
+    }
+
+    #chat .mes[is_user="true"] {
+        padding: 5px 9px 6px;
+    }
+
+    #chat .mes[is_user="true"] .mesAvatarWrapper {
+        top: 5px;
+        left: 9px;
+    }
+
+    #chat .mes[is_user="true"] .ch_name {
+        padding-left: 30px;
+    }
+
+    #chat .mes_reasoning_details {
+        margin: 0 9px 6px;
+    }
+
+    #chat .mes[is_user="false"] .mes_block::after {
+        margin: 0 9px 6px;
+    }
+
+    /* 输入区整条收窄，按钮仍保持可点 */
+    #form_sheld {
+        padding: 5px 6px 6px;
+    }
+
+    #nonQRFormItems {
+        padding: 2px 3px;
+    }
+
+    #send_but:not(.displayNone),
+    #mes_stop:not(.displayNone),
+    #mes_continue:not(.displayNone),
+    #mes_impersonate:not(.displayNone) {
+        width: 34px;
+        height: 26px;
+    }
+
+    #mes_stop {
+        width: 34px !important;
+        height: 26px !important;
+    }
+
+    #options_button,
+    #leftSendForm .interactable {
+        width: 26px;
+        height: 26px;
+    }
+
+    /* 顶栏：字标缩小，给图标让位 */
+    #top-settings-holder {
+        padding: 0 66px 0 76px;
+    }
+
+    #top-settings-holder::before {
+        left: 6px;
+        width: 64px;
+        height: 18px;
+        background-size: auto 18px;
+    }
+
+    #rightNavHolder > .drawer-toggle {
+        right: 6px;
+    }
+
+    #rightNavDrawerIcon {
+        height: 20px;
+        padding: 0 8px;
+    }
+
+    #rightNavDrawerIcon::after {
+        font-size: 11px;
+        letter-spacing: 0;
+    }
+
+    /* 欢迎页列表紧凑一档 */
+    .welcomePanel .welcomeRecent .recentChatList .recentChat {
+        grid-template-columns: 42px minmax(0, 1fr);
+        column-gap: 8px;
+        padding: 6px;
+    }
+
+    .welcomePanel .welcomeRecent .recentChatList .recentChat .avatar {
+        width: 42px;
+        height: 42px;
+    }
+
+    .welcomePanel .welcomeRecent .recentChatList .recentChat .chatName {
+        padding-right: 0;
+    }
+
+    .welcomePanel .welcomeHeader {
+        font-size: 11.5px;
+    }
+
+    .welcomePanel .welcomeShortcuts .menu_button {
+        height: 20px;
+        padding: 0 6px;
+        font-size: 11px;
+    }
+}
+
+@media (max-width: 500px) {
+    /* 底部工具行在小屏只留两段，避免换行 */
+    #chat .mes[is_user="false"] .mes_block::after {
+        content: "分享　收藏　举报";
+        font-size: 10.5px;
+        letter-spacing: 0;
+    }
+
+    #chat .mes .swipes-counter {
+        font-size: 10px;
+    }
+
+    /* 小屏顶栏只留字标与红按钮 */
+    #top-settings-holder {
+        padding: 0 60px 0 68px;
+    }
+
+    #top-settings-holder::before {
+        width: 56px;
+        height: 16px;
+        background-size: auto 16px;
+    }
+}
+
+/* 中等宽度：红按钮缩一号，右侧留白同步收窄 */
+@media (min-width: 641px) and (max-width: 900px) {
+    #top-settings-holder {
+        padding: 0 78px 0 88px;
+    }
+
+    #rightNavHolder > .drawer-toggle {
+        right: 8px;
+    }
+
+    #rightNavDrawerIcon {
+        height: 20px;
+        padding: 0 10px;
+    }
+
+    #rightNavDrawerIcon::after {
+        font-size: 11.5px;
+    }
+}
+
+/* 尊重系统「减少动态效果」 */
+@media (prefers-reduced-motion: reduce) {
+    #mes_stop,
+    #loader::after {
+        animation: none !important;
+    }
+}

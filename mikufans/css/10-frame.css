@@ -1,0 +1,317 @@
+/*
+ * 框架层：全局排版、顶栏工具条、站名字标、红色小按钮、侧栏标题条、滚动条。
+ * 目标观感：白纸底 + 1px 实线 + 浅绿标题条，零圆角、零阴影、零毛玻璃。
+ */
+
+/* ---------- 全局 ---------- */
+body {
+    font-family: var(--mf-font) !important;
+    background-color: var(--mf-paper) !important;
+    background-image: none !important;
+    color: var(--mf-ink);
+    /* 旧网页没有字间距，字号小、行距紧 */
+    letter-spacing: 0;
+    -webkit-font-smoothing: auto;
+    -moz-osx-font-smoothing: auto;
+}
+
+textarea,
+input,
+select,
+pre,
+code,
+.edit_textarea {
+    font-family: var(--mf-font);
+}
+
+::selection {
+    background-color: var(--mf-green-bg-2);
+    color: var(--mf-green-deep);
+}
+
+/* 全站零圆角、零阴影：从根上掐掉酒馆内建的圆角与投影 */
+:root {
+    --SmartThemeShadowColor: transparent;
+    --SmartThemeBlurStrength: 0;
+}
+
+/* ---------- 顶栏（工具条） ---------- */
+#top-bar {
+    position: relative;
+    /* 酒馆用 --bottomFormBlockSize 算顶栏高度，这里统一到门户工具条高度 */
+    height: var(--mf-topbar-height) !important;
+    background-color: var(--mf-paper);
+    background-image: linear-gradient(180deg, #FFFFFF 0%, #F9FCF5 100%);
+    border-bottom: 1px solid var(--mf-line);
+    border-radius: 0;
+    box-shadow: none;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    z-index: 3005;
+}
+
+/* 顶栏底部那条 2px 绿色渐变，对应原站主导航条的下沿压线 */
+#top-bar::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -1px;
+    height: 2px;
+    background-image: linear-gradient(180deg, var(--mf-titlebar-b), var(--mf-line));
+    pointer-events: none;
+}
+
+#top-settings-holder {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    border-radius: 0;
+    color: var(--mf-ink-2);
+    /* 左侧给字标让位，右侧给红色按钮让位，否则会压住顶栏图标 */
+    padding: 0 88px 0 96px;
+}
+
+/* 左上角站名：MiKuFans 三色字标（矢量内嵌，随字号缩放） */
+#top-settings-holder::before {
+    content: "";
+    position: absolute;
+    left: 8px;
+    top: 50%;
+    width: 80px;
+    height: 22px;
+    transform: translateY(-50%);
+    background-image: var(--mf-logo);
+    background-repeat: no-repeat;
+    background-position: left center;
+    background-size: auto 22px;
+    pointer-events: none;
+}
+
+/* 顶栏图标：默认 0.3 透明度在浅底上几乎看不见，提到 0.75 并改成绿色悬停 */
+.drawer-icon.closedIcon,
+.drawer-icon.openIcon {
+    color: var(--mf-ink-2);
+    opacity: 0.75;
+    border-radius: 0;
+    border: 1px solid transparent;
+    transition: none;
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .drawer-icon.closedIcon:hover {
+        color: var(--mf-green);
+        opacity: 1;
+        background-color: var(--mf-green-bg-2);
+        border-color: var(--mf-line-2);
+    }
+}
+
+.drawer-icon:focus-visible {
+    outline: 1px dotted var(--mf-green);
+    outline-offset: -2px;
+}
+
+.drawer-icon.openIcon {
+    color: var(--mf-green);
+    opacity: 1;
+    background-color: var(--mf-green-bg);
+    border-color: var(--mf-line);
+}
+
+/* 顶栏右侧的角色快捷切换条 */
+.hotswap,
+.hotswap.closedIcon {
+    color: var(--mf-ink-2);
+    opacity: 0.75;
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .hotswap:hover {
+        color: var(--mf-green);
+        opacity: 1;
+    }
+}
+
+/*
+ * 右上角红按钮：复用酒馆原生的「角色管理」按钮（#rightNavDrawerIcon），只换皮，
+ * 这样整块可点、点了就是原来那个面板，功能不丢。
+ * 造型照搬原站搜索按钮：22px 高的红底直角块。
+ */
+#rightNavHolder > .drawer-toggle {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: block;
+}
+
+#rightNavDrawerIcon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: auto;
+    height: 22px;
+    padding: 0 12px;
+    border: 1px solid #9E0000;
+    border-radius: 0;
+    background-color: var(--mf-red);
+    background-image: linear-gradient(180deg, #D82020 0%, var(--mf-red) 55%, #A80000 100%);
+    color: #FFFFFF;
+    opacity: 1;
+    box-shadow: none;
+    cursor: pointer;
+    user-select: none;
+    transition: none;
+}
+
+/* 去掉 FontAwesome 的角色卡片字形，换成「角色」两个字 */
+#rightNavDrawerIcon::before {
+    content: none;
+}
+
+#rightNavDrawerIcon::after {
+    content: "角色";
+    font-family: var(--mf-font);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+@media (hover: hover) and (pointer: fine) {
+    #rightNavDrawerIcon:hover {
+        background-color: var(--mf-red-hover);
+        background-image: linear-gradient(180deg, #EC3A3A 0%, var(--mf-red-hover) 55%, #B80000 100%);
+        color: #FFFFFF;
+        opacity: 1;
+    }
+}
+
+/* 按下：用 1px 内阴影压出「陷进去」的旧网页手感 */
+#rightNavDrawerIcon:active {
+    background-image: none;
+    background-color: #A80000;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.45);
+}
+
+#rightNavDrawerIcon:focus-visible {
+    outline: 1px dotted var(--mf-green-deep);
+    outline-offset: 2px;
+}
+
+/* ---------- 左右侧栏 / 抽屉 ---------- */
+#left-nav-panel,
+#right-nav-panel {
+    background-color: var(--mf-paper);
+    border: 1px solid var(--mf-line);
+    box-shadow: 2px 2px 0 rgba(197, 221, 188, 0.55);
+}
+
+#left-nav-panel .drawer-content,
+#right-nav-panel .drawer-content {
+    background-color: var(--mf-paper);
+}
+
+/* 聊天主列：宽度与位置交给酒馆的「页面宽度」参数，主题不插手 */
+#sheld {
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
+}
+
+.drawer-content {
+    background-color: var(--mf-paper);
+    border-color: var(--mf-line);
+    border-radius: 0;
+    color: var(--mf-ink);
+    /* 宽度不覆盖：跟随酒馆「页面宽度」参数（--sheldWidth），与主体天然同宽 */
+}
+
+/* ---------- 侧栏分组标题：dl.tbox 的绿标题条 ----------
+ * 酒馆给 `.standoutHeader` 铺了一条 348° 的深灰渐变（配深色主题用），
+ * 两者特异性同为 (0,1,0) 且酒馆的样式表在 custom-style 之后生效，
+ * 所以这里加 body 前缀把特异性提到 (0,1,1)，否则会出现「浅绿底 + 灰渐变」的脏色。
+ */
+body .standoutHeader {
+    position: relative;
+    color: var(--mf-title);
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 20px;
+    letter-spacing: 1px;
+    padding: 2px 8px 2px 10px;
+    margin-bottom: 6px;
+    background-color: var(--mf-titlebar-b);
+    background-image: linear-gradient(180deg, var(--mf-titlebar-t) 0%, var(--mf-titlebar-b) 100%);
+    border: 1px solid var(--mf-line);
+    border-bottom-color: #B9D4AF;
+    border-radius: 0;
+}
+
+/* 标题条左端那道深绿竖条 */
+.standoutHeader::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background-color: var(--mf-title);
+}
+
+/* 折叠抽屉标题：同一套标题条造型 */
+.inline-drawer-header,
+.inline-drawer-toggle.inline-drawer-header {
+    color: var(--mf-title);
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 1px;
+    border: 1px solid var(--mf-line);
+    border-radius: 0;
+    background-color: var(--mf-titlebar-b);
+    background-image: linear-gradient(180deg, var(--mf-titlebar-t) 0%, var(--mf-titlebar-b) 100%);
+    transition: none;
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .inline-drawer-header:hover,
+    .inline-drawer-toggle.inline-drawer-header:hover {
+        background-image: none;
+        background-color: var(--mf-green-bg-2);
+        color: var(--mf-green-deep);
+    }
+}
+
+.inline-drawer-icon {
+    color: var(--mf-ink-4);
+}
+
+/* ---------- 滚动条：老式方角滑块 ---------- */
+::-webkit-scrollbar {
+    width: 11px;
+    height: 11px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--mf-green-bg);
+    border-left: 1px solid var(--mf-line-2);
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--mf-line);
+    border: 1px solid #AFCB9F;
+    border-radius: 0;
+}
+
+@media (hover: hover) and (pointer: fine) {
+    ::-webkit-scrollbar-thumb:hover {
+        background-color: #B4D3A6;
+    }
+}
+
+/* ---------- 聊天区容器 ---------- */
+#chat {
+    background-color: var(--mf-green-bg);
+    /* 卡片保持全宽，左右留白放在卡片内部 */
+    padding: 6px 0 8px;
+}

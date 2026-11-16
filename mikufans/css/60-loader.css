@@ -1,0 +1,186 @@
+/*
+ * 加载页：接管 SillyTavern 的加载遮罩，复刻原站那句
+ * 「正在载入,请稍候...」（连全角逗号一起搬）。
+ *
+ * 两条链路都要覆盖，否则切换时会闪一下默认样式：
+ *   1. HTML 首屏的 <div id="preloader">（JS 还没跑起来时）
+ *   2. 初始化后由 action-loader.js 创建的
+ *      <dialog class="popup transparent_dialogue_popup"> 内的 #loader.splash-screen
+ */
+
+/* 站名字标：logo.svg 宽高比 152 / 42 ≈ 3.619 */
+#preloader::before,
+#loader #load-spinner {
+    --mf-brand-h: 26px;
+    --mf-brand-w: calc(var(--mf-brand-h) * 3.619);
+}
+
+/* ---------- 全屏遮罩 ---------- */
+#preloader,
+.popup.transparent_dialogue_popup:has(#loader) {
+    background-color: var(--mf-green-bg);
+    background-image: none;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+}
+
+/* 首屏还没创建 #loader 时，至少先给出站名 */
+#preloader::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: var(--mf-brand-w);
+    height: var(--mf-brand-h);
+    transform: translate(-50%, -50%);
+    background-image: var(--mf-logo);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+
+/* 加载 Popup 本身：铺满视口、去掉弹窗边框与内边距 */
+.popup.transparent_dialogue_popup:has(#loader) {
+    position: fixed !important;
+    inset: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    width: 100dvw !important;
+    height: 100dvh !important;
+    max-width: none !important;
+    max-height: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    overflow: hidden !important;
+}
+
+.popup:has(#loader) :is(.popup-body, .popup-content) {
+    width: 100%;
+    height: 100%;
+    max-height: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+/* ---------- 居中块：一个 dl.tbox ---------- */
+#loader {
+    position: fixed !important;
+    inset: auto !important;
+    left: 50% !important;
+    top: 50% !important;
+    transform: translate(-50%, -50%);
+    /* loader.css 的 #loader.splash-screen 有 width:100%，特异性更高，必须压过去 */
+    width: min(360px, 88vw) !important;
+    height: auto !important;
+    max-height: none !important;
+    margin: 0 !important;
+    padding: 26px 22px 22px;
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* loader.css 里 #loader.splash-screen 有 gap: 4rem，必须压掉 */
+    gap: 0 !important;
+    border: 1px solid var(--mf-line);
+    border-top: 3px solid var(--mf-title);
+    border-radius: 0;
+    background: var(--mf-paper);
+    box-shadow: 2px 2px 0 rgba(197, 221, 188, 0.65);
+    color: var(--mf-ink);
+    font-family: var(--mf-font);
+    overflow: clip;
+}
+
+/* 酒馆自带的 SillyTavern logo 不要 */
+#loader .splash-logo {
+    display: none !important;
+}
+
+/* 站名字标替换掉原生旋转齿轮 */
+#loader #load-spinner {
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    order: 1;
+    width: var(--mf-brand-w) !important;
+    height: var(--mf-brand-h) !important;
+    margin: 0 0 14px;
+    font-size: 0 !important;
+    color: transparent !important;
+    animation: none;
+    background-image: var(--mf-logo);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+
+#loader #load-spinner::before,
+#loader #load-spinner::after {
+    content: none !important;
+}
+
+/* 主文案：原站那句加载提示 */
+#loader::before {
+    content: "正在载入,请稍候...";
+    order: 2;
+    color: var(--mf-title-2);
+    font: 700 13px/1.5 var(--mf-font);
+    letter-spacing: 2px;
+}
+
+/* 副文案：沿用酒馆原生文案，只统一字体与颜色 */
+#loader .splash-message {
+    order: 3;
+    margin: 6px 0 0;
+    color: var(--mf-ink-4);
+    font: 400 11.5px/1.6 var(--mf-font) !important;
+    letter-spacing: 0;
+    opacity: 1;
+}
+
+/* 细进度条：1px 轨道上滑过一小段绿色 */
+#loader::after {
+    content: "";
+    order: 4;
+    width: 180px;
+    height: 1px;
+    margin-top: 16px;
+    background-color: var(--mf-line-2);
+    background-image: linear-gradient(90deg, var(--mf-title-2) 0 44px, transparent 44px);
+    background-repeat: no-repeat;
+    background-position: -44px 0;
+    animation: mf-loading-bar 1.3s linear infinite;
+}
+
+@keyframes mf-loading-bar {
+    from { background-position: -44px 0; }
+    to { background-position: 180px 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    #loader::after {
+        animation: none !important;
+        background-position: 0 0;
+    }
+}
+
+/* 窄屏下收一圈 */
+@media (max-width: 640px) {
+    #loader {
+        width: min(320px, 88vw) !important;
+        padding: 22px 18px 18px;
+    }
+
+    #loader #load-spinner,
+    #preloader::before {
+        --mf-brand-h: 22px;
+    }
+
+    #loader::after {
+        width: 150px;
+    }
+}

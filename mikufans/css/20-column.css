@@ -1,0 +1,413 @@
+/*
+ * 内容层（上）：AI 消息 = DedeCMS 的 dl.tbox 内容块
+ *
+ * 结构照搬原站 side box：
+ *   dt（浅绿渐变标题条：作者名 + 时间 + 右端操作）→ dd（白身正文）
+ * 所以卡片自身不设内边距，标题条才能顶到 1px 外框的左右边。
+ */
+
+/* ---------- 内容块外框 ---------- */
+#chat .mes[is_user="false"] {
+    position: relative;
+    display: block;
+    width: 100%;
+    align-self: center;
+    margin: 0 auto var(--mf-chat-gap);
+    padding: 0;
+    background-color: var(--mf-paper);
+    border: 1px solid var(--mf-line);
+    border-radius: 0;
+    box-shadow: none;
+}
+
+/* ---------- 标题条 ---------- */
+#chat .mes[is_user="false"] .ch_name {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    min-height: var(--mf-titlebar-h);
+    /* 左 42px 给绝对定位的小方头像，右侧留给操作按钮 */
+    padding: 2px 6px 2px 42px;
+    margin: 0;
+    background-color: var(--mf-titlebar-b);
+    background-image: linear-gradient(180deg, var(--mf-titlebar-t) 0%, var(--mf-titlebar-b) 100%);
+    border-bottom: 1px solid var(--mf-line);
+    /* 左端深绿竖条：原站标题条左侧的实心色块 */
+    border-left: 3px solid var(--mf-title);
+    border-top: none;
+    border-right: none;
+}
+
+#chat .mes[is_user="false"] .name_text {
+    font-size: var(--mf-title-size);
+    font-weight: 700;
+    line-height: 1.4;
+    color: var(--mf-title);
+    letter-spacing: 1px;
+    word-break: break-word;
+}
+
+/* 标题条右侧的时间：原站 .tbox dt span.more 的浅绿灰字 */
+#chat .mes .timestamp {
+    margin-left: 8px;
+    font-size: var(--mf-meta-size);
+    color: var(--mf-title-2);
+    font-variant-numeric: tabular-nums;
+}
+
+#chat .mes .mesIDDisplay,
+#chat .mes .tokenCounterDisplay,
+#chat .mes .mes_timer {
+    color: var(--mf-ink-4);
+    font-size: 11px;
+}
+
+/* ---------- 作者头像：标题条左侧的小方块 ---------- */
+#chat .mes[is_user="false"] .mesAvatarWrapper {
+    position: absolute;
+    top: 3px;
+    left: 8px;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--mf-avatar);
+    height: var(--mf-avatar);
+    padding: 0;
+    box-sizing: content-box;
+}
+
+#chat .mes[is_user="false"] .mesAvatarWrapper .avatar {
+    width: var(--mf-avatar);
+    height: var(--mf-avatar);
+    box-sizing: border-box;
+    padding: 1px;
+    background-color: var(--mf-paper);
+    border: 1px solid var(--mf-frame-2);
+    border-radius: 0;
+    overflow: hidden;
+    box-shadow: none;
+    cursor: pointer;
+}
+
+@media (hover: hover) and (pointer: fine) {
+    #chat .mes[is_user="false"] .mesAvatarWrapper .avatar:hover {
+        border-color: #999999;
+    }
+}
+
+/*
+ * 酒馆把 .avatar img 写死成 50×50 且自带 50% 圆角，
+ * 容器缩成 24px 后方图会被裁成「不方的方」，这里让图片填满容器，
+ * 裁切统一交给 .avatar（方角）。
+ */
+#chat .mes .mesAvatarWrapper .avatar img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    object-fit: cover;
+    object-position: center;
+}
+
+#chat .mes[is_user="false"] .mes_block {
+    min-width: 0;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+#chat .mes[is_user="false"]::after {
+    content: none;
+}
+
+/* ---------- 正文排版 ---------- */
+#chat .mes[is_user="false"] .mes_text {
+    padding: 9px 12px 10px 12px;
+    font-size: var(--mf-body-size);
+    line-height: var(--mf-body-line);
+    color: var(--mf-ink);
+    word-break: break-word;
+    overflow-wrap: anywhere;
+}
+
+#chat .mes_text p {
+    margin: 0 0 0.75em;
+}
+
+#chat .mes_text p:last-child {
+    margin-bottom: 0;
+}
+
+#chat .mes_text strong,
+#chat .mes_text b {
+    font-weight: 700;
+    color: #000000;
+}
+
+#chat .mes_text em,
+#chat .mes_text i {
+    color: var(--mf-ink-2);
+}
+
+/* 对话引号内文字：原站正文里的强调用深粉 */
+#chat .mes_text q {
+    color: var(--mf-brand-pink);
+}
+
+/* 链接：原站蓝链接，悬停转红并加下划线 */
+#chat .mes_text a {
+    color: var(--mf-link);
+    text-decoration: none;
+    border-bottom: none;
+}
+
+@media (hover: hover) and (pointer: fine) {
+    #chat .mes_text a:hover {
+        color: var(--mf-link-hover);
+        text-decoration: underline;
+    }
+}
+
+/* 标题层级：门户小标题，前面挂一个绿色方块 */
+#chat .mes_text h1,
+#chat .mes_text h2,
+#chat .mes_text h3,
+#chat .mes_text h4 {
+    position: relative;
+    color: var(--mf-ink);
+    font-weight: 700;
+    line-height: 1.5;
+    margin: 1.1em 0 0.5em;
+    padding-left: 10px;
+}
+
+#chat .mes_text h1::before,
+#chat .mes_text h2::before,
+#chat .mes_text h3::before,
+#chat .mes_text h4::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.45em;
+    width: 4px;
+    height: 0.95em;
+    background-color: var(--mf-title-2);
+}
+
+#chat .mes_text h1 { font-size: 1.3em; }
+#chat .mes_text h2 { font-size: 1.16em; }
+#chat .mes_text h3 { font-size: 1.06em; }
+
+#chat .mes_text h1:first-child,
+#chat .mes_text h2:first-child,
+#chat .mes_text h3:first-child {
+    margin-top: 0;
+}
+
+/* 引用：原站评论引用块 —— 浅绿底 + 左侧绿线 + 左上角引号 */
+#chat .mes_text blockquote {
+    margin: 0 0 0.8em;
+    padding: 6px 10px 6px 26px;
+    background-color: var(--mf-green-bg);
+    border: 1px solid var(--mf-line-2);
+    border-left: 3px solid var(--mf-title-2);
+    border-radius: 0;
+    color: var(--mf-ink-2);
+    background-image: var(--mf-ic-quote);
+    background-repeat: no-repeat;
+    background-position: 8px 7px;
+    background-size: 12px auto;
+}
+
+#chat .mes_text blockquote p:last-child {
+    margin-bottom: 0;
+}
+
+/* 列表：方块项目符号（原站 ico-2.gif 的现代版） */
+#chat .mes_text ul,
+#chat .mes_text ol {
+    margin: 0 0 0.8em;
+    padding-left: 1.5em;
+}
+
+#chat .mes_text li {
+    margin-bottom: 0.25em;
+}
+
+#chat .mes_text ul > li::marker {
+    content: "";
+    color: transparent;
+}
+
+#chat .mes_text ul > li {
+    list-style: none;
+    position: relative;
+    padding-left: 12px;
+}
+
+#chat .mes_text ul > li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.72em;
+    width: 4px;
+    height: 4px;
+    background-color: var(--mf-title-2);
+}
+
+#chat .mes_text ol > li::marker {
+    color: var(--mf-title-2);
+    font-weight: 700;
+}
+
+/* 行内代码 */
+#chat .mes_text code {
+    padding: 1px 4px;
+    border: 1px solid var(--mf-line-2);
+    background-color: var(--mf-green-bg);
+    color: var(--mf-red);
+    border-radius: 0;
+    font-family: var(--mf-font-mono);
+    font-size: 0.92em;
+}
+
+/* 代码块：仿原站「代码示例」灰白块 */
+#chat .mes_text pre {
+    margin: 0 0 0.8em;
+    padding: 8px 10px;
+    background-color: var(--mf-paper-2);
+    border: 1px solid var(--mf-line);
+    border-radius: 0;
+    overflow-x: auto;
+}
+
+#chat .mes_text pre code {
+    padding: 0;
+    border: none;
+    background: transparent;
+    color: var(--mf-ink);
+    font-size: 12.5px;
+    line-height: 1.7;
+}
+
+/* 分割线：原站的虚线分隔 */
+#chat .mes_text hr {
+    height: 0;
+    border: none;
+    border-top: 1px dashed var(--mf-dash);
+    margin: 1em 0;
+}
+
+/* 表格：1px 实线 + 浅绿表头，原站内容表格的样式 */
+#chat .mes_text table {
+    width: 100%;
+    margin: 0 0 0.8em;
+    border-collapse: collapse;
+    font-size: 0.95em;
+}
+
+#chat .mes_text th,
+#chat .mes_text td {
+    padding: 4px 8px;
+    border: 1px solid var(--mf-line);
+    text-align: left;
+}
+
+#chat .mes_text th {
+    background-color: var(--mf-green-bg);
+    color: var(--mf-title);
+    font-weight: 700;
+}
+
+#chat .mes_text tr:nth-child(even) td {
+    background-color: var(--mf-paper-2);
+}
+
+/* ---------- 标题条里的操作按钮 ---------- */
+#chat .mes .mes_button {
+    color: var(--mf-title-2);
+    opacity: 1;
+    border-radius: 0;
+    transition: none;
+}
+
+@media (hover: hover) and (pointer: fine) {
+    #chat .mes .mes_button:hover {
+        color: var(--mf-green-deep);
+        background-color: rgba(255, 255, 255, 0.7);
+    }
+}
+
+#chat .mes .mes_button:active {
+    color: var(--mf-green-deep);
+    background-color: rgba(197, 221, 188, 0.6);
+}
+
+#chat .mes .mes_button:focus-visible {
+    outline: 1px dotted var(--mf-green);
+    outline-offset: 0;
+}
+
+#chat .mes .mes_buttons {
+    opacity: 0.5;
+    transition: none;
+}
+
+@media (hover: hover) and (pointer: fine) {
+    #chat .mes:hover .mes_buttons {
+        opacity: 1;
+    }
+}
+
+@media (hover: none) {
+    #chat .mes .mes_buttons {
+        opacity: 1;
+    }
+}
+
+/* ---------- 推理块（思考过程）：折叠的注释小框 ---------- */
+#chat .mes_reasoning_details {
+    margin: 0 12px 8px;
+    padding: 6px 8px;
+    background-color: var(--mf-green-bg);
+    border: 1px dashed var(--mf-dash);
+    border-radius: 0;
+}
+
+#chat .mes_reasoning_header,
+#chat .mes_reasoning_header_title {
+    color: var(--mf-title-2);
+    font-size: 12px;
+    font-weight: 700;
+}
+
+#chat .mes_reasoning {
+    color: var(--mf-ink-2);
+    font-size: 12.5px;
+    line-height: 1.7;
+}
+
+/* 楼层里插入的图片 / 附件：1px 图框 + 2px 白衬（原站 .e1 img 的画框） */
+#chat .mes_media_wrapper img,
+#chat .mes_file_wrapper img {
+    border: 1px solid var(--mf-frame);
+    border-radius: 0;
+    padding: 2px;
+    background-color: var(--mf-paper);
+}
+
+/* 底部操作行插槽：由 05-portal-glyphs.css 填充内容 */
+#chat .mes[is_user="false"] .mes_block::after {
+    display: block;
+    margin: 0 12px 8px;
+    padding-top: 6px;
+    border-top: 1px dashed var(--mf-dash);
+    font-size: 11px;
+    line-height: 1.6;
+    color: var(--mf-ink-4);
+    letter-spacing: 0;
+    user-select: none;
+}

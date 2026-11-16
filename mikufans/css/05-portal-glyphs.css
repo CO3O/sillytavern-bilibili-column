@@ -1,0 +1,56 @@
+/*
+ * 门户装饰字形：不引入 bilibili 的图标字体，全部用自绘 SVG 与文字排版承担。
+ * 这里只放「装饰性内容」，布局尺寸写在各层自己的分片里。
+ */
+
+/* AI 文章块底部工具行：原站内容页脚那排灰字链接 */
+#chat .mes[is_user="false"] .mes_block::after {
+    content: "分享　收藏　举报　·　本文由 Mikufans 整理";
+}
+
+/* 用户评论底部工具行 */
+#chat .mes[is_user="true"] .mes_block::after {
+    content: "赞　回复";
+}
+
+/* 打字指示器：方块闪动点（原站没有动效，用静态方块 + 灰字） */
+#typing_indicator::before {
+    content: "";
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    margin-right: 5px;
+    background-color: var(--mf-title-2);
+    vertical-align: 1px;
+}
+
+/* 加载文案左侧的小方块 */
+#loading_mes::before {
+    content: "";
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    margin-right: 6px;
+    background-color: var(--mf-title-2);
+    vertical-align: 1px;
+}
+
+/* 翻页箭头：给酒馆里出现的「上一页 / 下一页」类按钮统一成三角图标 */
+.swipe_left::before,
+.swipe_right::before {
+    content: "";
+    display: block;
+    width: 6px;
+    height: 10px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+
+.swipe_left::before {
+    background-image: var(--mf-ic-arrow-left);
+}
+
+.swipe_right::before {
+    background-image: var(--mf-ic-arrow-right);
+}

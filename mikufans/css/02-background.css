@@ -1,0 +1,38 @@
+/*
+ * 背景层：2009 年的白纸底。
+ *
+ * 原站是纯白页面 + 顶部一条浅绿装饰带，没有任何插画。
+ * 这里保留纯白，只在极低对比度上叠一层 1px 横向参考线（间距 26px），
+ * 模拟旧网页那种「表格辅助线」的印刷感——几乎看不见，但密度上更像门户。
+ */
+
+#bg1,
+#bg_custom {
+    position: fixed;
+    inset: 0;
+    width: 100% !important;
+    height: 100% !important;
+    background-color: var(--mf-paper) !important;
+    background-image:
+        /* 顶部装饰带：与原站 header 下方那条浅绿渐变对应 */
+        linear-gradient(180deg, var(--mf-green-bg) 0%, rgba(244, 248, 238, 0) 120px),
+        /* 1px 横向参考线 */
+        repeating-linear-gradient(
+            180deg,
+            rgba(197, 221, 188, 0.22) 0 1px,
+            transparent 1px 26px
+        ) !important;
+    background-repeat: no-repeat, repeat !important;
+    background-position: left top, left top !important;
+    background-size: 100% 120px, 100% 26px !important;
+    background-attachment: scroll !important;
+    filter: none !important;
+}
+
+/* 不用伪元素叠动画：原站是静态页面，动效全部收掉 */
+#bg1::before,
+#bg1::after,
+#bg_custom::before,
+#bg_custom::after {
+    content: none !important;
+}

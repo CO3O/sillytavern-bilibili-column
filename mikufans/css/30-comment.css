@@ -1,0 +1,222 @@
+/*
+ * 内容层（下）：用户消息 = 评论区的 .f2 列表项
+ * 虚线上下分隔、方头像、蓝昵称、灰时间、左上角引号。
+ * 不做卡片外框——评论在门户里就是「一条条排在内容块下面」的。
+ */
+
+#chat .mes[is_user="true"] {
+    position: relative;
+    display: block;
+    width: 100%;
+    align-self: center;
+    margin: 0 auto 4px;
+    padding: 6px 12px 8px;
+    background-color: var(--mf-green-bg-2);
+    border: none;
+    border-top: 1px dashed var(--mf-dash);
+    border-bottom: 1px dashed var(--mf-dash);
+    border-radius: 0;
+    box-shadow: none;
+}
+
+@media (hover: hover) and (pointer: fine) {
+    #chat .mes[is_user="true"]:hover {
+        background-color: #F5F8E6;
+    }
+}
+
+/* 评论者头像：方角小图，贴昵称行左侧 */
+#chat .mes[is_user="true"] .mesAvatarWrapper {
+    position: absolute;
+    top: 6px;
+    left: 12px;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--mf-avatar-comment);
+    height: var(--mf-avatar-comment);
+    padding: 0;
+    box-sizing: content-box;
+}
+
+#chat .mes[is_user="true"] .mesAvatarWrapper .avatar {
+    width: var(--mf-avatar-comment);
+    height: var(--mf-avatar-comment);
+    box-sizing: border-box;
+    padding: 1px;
+    background-color: var(--mf-paper);
+    border: 1px solid var(--mf-frame-2);
+    border-radius: 0;
+    overflow: hidden;
+    box-shadow: none;
+}
+
+#chat .mes[is_user="true"] .mesAvatarWrapper .avatar img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: 0;
+    object-fit: cover;
+}
+
+#chat .mes[is_user="true"] .mes_block {
+    min-width: 0;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+#chat .mes[is_user="true"]::after {
+    content: none;
+}
+
+/* 昵称行：蓝链接 + 灰色时间 */
+#chat .mes[is_user="true"] .ch_name {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    min-height: var(--mf-avatar-comment);
+    padding-left: 36px;
+    margin-bottom: 2px;
+    border-bottom: none;
+}
+
+#chat .mes[is_user="true"] .name_text {
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1.5;
+    color: var(--mf-link);
+    letter-spacing: 0;
+}
+
+#chat .mes[is_user="true"] .timestamp {
+    font-size: 11px;
+    color: var(--mf-ink-4);
+    margin-left: 6px;
+    font-variant-numeric: tabular-nums;
+}
+
+/* 评论正文：左上角引号 + 缩进，照原站 .f2 p */
+#chat .mes[is_user="true"] .mes_text {
+    padding: 1px 0 0 16px;
+    font-size: var(--mf-comment-size);
+    line-height: 1.7;
+    color: var(--mf-ink);
+    word-break: break-word;
+    overflow-wrap: anywhere;
+    background-image: var(--mf-ic-quote);
+    background-repeat: no-repeat;
+    background-position: 0 5px;
+    background-size: 10px auto;
+}
+
+#chat .mes[is_user="true"] .mes_text p {
+    margin: 0 0 0.5em;
+}
+
+#chat .mes[is_user="true"] .mes_text p:last-child {
+    margin-bottom: 0;
+}
+
+#chat .mes[is_user="true"] .mes_text blockquote {
+    margin: 0 0 0.5em;
+    padding: 4px 8px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 1px solid var(--mf-line-2);
+    border-left: 2px solid var(--mf-title-2);
+    border-radius: 0;
+    color: var(--mf-ink-2);
+}
+
+#chat .mes[is_user="true"] .mes_text code {
+    padding: 1px 3px;
+    border: 1px solid var(--mf-line-2);
+    background-color: rgba(255, 255, 255, 0.85);
+    color: var(--mf-red);
+    border-radius: 0;
+    font-family: var(--mf-font-mono);
+    font-size: 0.92em;
+}
+
+#chat .mes[is_user="true"] .mes_text pre {
+    margin: 0 0 0.5em;
+    padding: 6px 8px;
+    background-color: var(--mf-paper);
+    border: 1px solid var(--mf-line);
+    border-radius: 0;
+    overflow-x: auto;
+}
+
+#chat .mes[is_user="true"] .mes_text pre code {
+    border: none;
+    background: transparent;
+    padding: 0;
+    color: var(--mf-ink);
+}
+
+#chat .mes[is_user="true"] .mes_text a {
+    color: var(--mf-link);
+    text-decoration: none;
+}
+
+@media (hover: hover) and (pointer: fine) {
+    #chat .mes[is_user="true"] .mes_text a:hover {
+        color: var(--mf-link-hover);
+        text-decoration: underline;
+    }
+}
+
+/* 评论底部装饰行由 05-portal-glyphs.css 填充 */
+#chat .mes[is_user="true"] .mes_block::after {
+    display: block;
+    margin-top: 4px;
+    padding-left: 16px;
+    font-size: 11px;
+    line-height: 1.5;
+    color: var(--mf-ink-5);
+    letter-spacing: 1px;
+    user-select: none;
+}
+
+/* 右侧滑动切换块 */
+#chat .mes .swipeRightBlock {
+    color: var(--mf-ink-4);
+}
+
+#chat .mes .swipe_left,
+#chat .mes .swipe_right {
+    color: var(--mf-ink-4);
+    border-radius: 0;
+    transition: none;
+}
+
+@media (hover: hover) and (pointer: fine) {
+    #chat .mes .swipe_left:hover,
+    #chat .mes .swipe_right:hover {
+        color: var(--mf-green);
+    }
+}
+
+#chat .mes .swipe_left:active,
+#chat .mes .swipe_right:active {
+    opacity: 0.7;
+}
+
+#chat .mes .swipe_left:focus-visible,
+#chat .mes .swipe_right:focus-visible {
+    outline: 1px dotted var(--mf-green);
+    outline-offset: 0;
+}
+
+#chat .mes .swipes-counter {
+    color: var(--mf-ink-4);
+    font-size: 11px;
+    font-variant-numeric: tabular-nums;
+}
+
+/* 选中的楼层：原站行高亮用浅绿 */
+#chat .mes.selected {
+    background-color: var(--mf-green-bg);
+    outline: 1px solid var(--mf-line);
+}

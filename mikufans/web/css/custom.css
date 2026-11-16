@@ -4,6 +4,11 @@
  * 离线版（Mikufans V1）是内嵌 CSS 的那份，两者互不影响。
  */
 
-/* ref 用标签名（与 dark 的 @v2.4.1DARK 同一策略）：标签一经推送不再移动，
- * 样式迭代要发新标签并改这里的 ref，光改 ?v= 只对浏览器缓存生效，CDN 可能还是旧文件。 */
-@import url("https://cdn.jsdelivr.net/gh/CO3O/sillytavern-bilibili-column@v1MIKUFANS/mikufans/web/theme.css?v=1");
+/*
+ * ref 用 commit 短 hash（与 pink 的 @379aaa5 同一策略）而不是标签名：
+ * 新推送的标签在 jsDelivr 侧要等索引，实测 v1MIKUFANS 刚发布时是 404，
+ * 而同一份文件用 @6077f5c 立刻 200。commit 与标签一样不可变，不会漂移。
+ * 样式迭代：改 ref 指向新的 commit（或等标签索引好之后换回标签名），
+ * 光改 ?v= 只对浏览器缓存生效，CDN 可能还是旧文件。
+ */
+@import url("https://cdn.jsdelivr.net/gh/CO3O/sillytavern-bilibili-column@6077f5c/mikufans/web/theme.css?v=1");
